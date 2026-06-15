@@ -29,6 +29,11 @@ const nextConfig = {
       // Le serveur autorise 10 Mo / fichier × 3 fichiers + champs déclaratifs.
       bodySizeLimit: '40mb',
     },
+    // Modules natifs Node : Next.js doit les laisser en require() dynamique
+    // au lieu de les bundler. Sinon le bundler tree-shake le binaire .node et
+    // on perd l'engine au runtime ("No native build was found for platform=…").
+    // @node-rs/argon2 : Rust napi, prebuilt linux-x64-gnu utilisé par Vercel.
+    serverComponentsExternalPackages: ['@node-rs/argon2'],
   },
   transpilePackages: ['@qualiof/db', '@qualiof/shared'],
   // Redirects pour URLs "naturelles" tapées à la main par les utilisateurs.
