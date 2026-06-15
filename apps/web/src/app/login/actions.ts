@@ -2,7 +2,7 @@
 
 import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
-import argon2 from 'argon2';
+import * as argon2 from '@node-rs/argon2';
 import { prisma } from '@qualiof/db';
 import { loginSchema, type LoginInput } from '@qualiof/shared';
 import { lucia } from '@/lib/auth';

@@ -53,8 +53,9 @@ vi.mock('@qualiof/db', () => ({
   },
 }));
 
-vi.mock('argon2', () => ({
-  default: { verify: vi.fn() },
+vi.mock('@node-rs/argon2', () => ({
+  verify: vi.fn(),
+  hash: vi.fn(),
 }));
 
 vi.mock('@/lib/auth', () => ({
@@ -103,7 +104,7 @@ vi.mock('@/lib/rate-limit', () => ({
 
 import { loginAction } from '../actions';
 import { prisma } from '@qualiof/db';
-import argon2 from 'argon2';
+import * as argon2 from '@node-rs/argon2';
 
 const VALID_PASSWORD = 'longenough123';
 

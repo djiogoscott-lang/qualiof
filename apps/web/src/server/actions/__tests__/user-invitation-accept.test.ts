@@ -57,8 +57,9 @@ vi.mock('@/lib/auth', () => ({
   },
 }));
 
-vi.mock('argon2', () => ({
-  default: { hash: vi.fn().mockResolvedValue('hashed-pwd-stub') },
+vi.mock('@node-rs/argon2', () => ({
+  hash: vi.fn().mockResolvedValue('hashed-pwd-stub'),
+  verify: vi.fn(),
 }));
 
 vi.mock('next/headers', () => ({
@@ -83,7 +84,7 @@ import { acceptInvitation } from '../user-invitation-accept';
 import { prisma } from '@qualiof/db';
 import { lucia } from '@/lib/auth';
 import { logUserAction } from '@/lib/audit-log';
-import argon2 from 'argon2';
+import * as argon2 from '@node-rs/argon2';
 
 describe('acceptInvitation', () => {
   beforeEach(() => {

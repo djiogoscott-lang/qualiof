@@ -18,7 +18,7 @@ import * as path from 'node:path';
 loadEnv({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../.env') });
 
 import { PrismaClient, UserRole, OpcoStatus, DocType } from '@prisma/client';
-import argon2 from 'argon2';
+import * as argon2 from '@node-rs/argon2';
 
 const prisma = new PrismaClient();
 

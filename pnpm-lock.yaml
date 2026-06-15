@@ -35,6 +35,9 @@ importers:
       '@mistralai/mistralai':
         specifier: ^2.2.5
         version: 2.2.5
+      '@node-rs/argon2':
+        specifier: ^2.0.2
+        version: 2.0.2
       '@prisma/client':
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
@@ -65,9 +68,6 @@ importers:
       archiver:
         specifier: ^7.0.1
         version: 7.0.1
-      argon2:
-        specifier: ^0.41.1
-        version: 0.41.1
       bullmq:
         specifier: ^5.76.4
         version: 5.76.4
@@ -201,6 +201,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@node-rs/argon2':
+        specifier: ^2.0.2
+        version: 2.0.2
       '@prisma/client':
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
@@ -217,9 +220,6 @@ importers:
       '@types/node':
         specifier: ^22.10.0
         version: 22.19.17
-      argon2:
-        specifier: ^0.41.1
-        version: 0.41.1
       dotenv-cli:
         specifier: ^7.4.2
         version: 7.4.4
@@ -1107,8 +1107,20 @@ packages:
     cpu: [arm]
     os: [android]
 
+  '@node-rs/argon2-android-arm-eabi@2.0.2':
+    resolution: {integrity: sha512-DV/H8p/jt40lrao5z5g6nM9dPNPGEHL+aK6Iy/og+dbL503Uj0AHLqj1Hk9aVUSCNnsDdUEKp4TVMi0YakDYKw==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+
   '@node-rs/argon2-android-arm64@1.7.0':
     resolution: {integrity: sha512-s9j/G30xKUx8WU50WIhF0fIl1EdhBGq0RQ06lEhZ0Gi0ap8lhqbE2Bn5h3/G2D1k0Dx+yjeVVNmt/xOQIRG38A==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+
+  '@node-rs/argon2-android-arm64@2.0.2':
+    resolution: {integrity: sha512-1LKwskau+8O1ktKx7TbK7jx1oMOMt4YEXZOdSNIar1TQKxm6isZ0cRXgHLibPHEcNHgYRsJWDE9zvDGBB17QDg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
@@ -1119,8 +1131,20 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+  '@node-rs/argon2-darwin-arm64@2.0.2':
+    resolution: {integrity: sha512-3TTNL/7wbcpNju5YcqUrCgXnXUSbD7ogeAKatzBVHsbpjZQbNb1NDxDjqqrWoTt6XL3z9mJUMGwbAk7zQltHtA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
   '@node-rs/argon2-darwin-x64@1.7.0':
     resolution: {integrity: sha512-5oi/pxqVhODW/pj1+3zElMTn/YukQeywPHHYDbcAW3KsojFjKySfhcJMd1DjKTc+CHQI+4lOxZzSUzK7mI14Hw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@node-rs/argon2-darwin-x64@2.0.2':
+    resolution: {integrity: sha512-vNPfkLj5Ij5111UTiYuwgxMqE7DRbOS2y58O2DIySzSHbcnu+nipmRKg+P0doRq6eKIJStyBK8dQi5Ic8pFyDw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -1131,14 +1155,33 @@ packages:
     cpu: [x64]
     os: [freebsd]
 
+  '@node-rs/argon2-freebsd-x64@2.0.2':
+    resolution: {integrity: sha512-M8vQZk01qojQfCqQU0/O1j1a4zPPrz93zc9fSINY7Q/6RhQRBCYwDw7ltDCZXg5JRGlSaeS8cUXWyhPGar3cGg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+
   '@node-rs/argon2-linux-arm-gnueabihf@1.7.0':
     resolution: {integrity: sha512-7DjDZ1h5AUHAtRNjD19RnQatbhL+uuxBASuuXIBu4/w6Dx8n7YPxwTP4MXfsvuRgKuMWiOb/Ub/HJ3kXVCXRkg==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
 
+  '@node-rs/argon2-linux-arm-gnueabihf@2.0.2':
+    resolution: {integrity: sha512-7EmmEPHLzcu0G2GDh30L6G48CH38roFC2dqlQJmtRCxs6no3tTE/pvgBGatTp/o2n2oyOJcfmgndVFcUpwMnww==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+
   '@node-rs/argon2-linux-arm64-gnu@1.7.0':
     resolution: {integrity: sha512-nJDoMP4Y3YcqGswE4DvP080w6O24RmnFEDnL0emdI8Nou17kNYBzP2546Nasx9GCyLzRcYQwZOUjrtUuQ+od2g==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@node-rs/argon2-linux-arm64-gnu@2.0.2':
+    resolution: {integrity: sha512-6lsYh3Ftbk+HAIZ7wNuRF4SZDtxtFTfK+HYFAQQyW7Ig3LHqasqwfUKRXVSV5tJ+xTnxjqgKzvZSUJCAyIfHew==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1151,8 +1194,22 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@node-rs/argon2-linux-arm64-musl@2.0.2':
+    resolution: {integrity: sha512-p3YqVMNT/4DNR67tIHTYGbedYmXxW9QlFmF39SkXyEbGQwpgSf6pH457/fyXBIYznTU/smnG9EH+C1uzT5j4hA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
   '@node-rs/argon2-linux-x64-gnu@1.7.0':
     resolution: {integrity: sha512-EmgqZOlf4Jurk/szW1iTsVISx25bKksVC5uttJDUloTgsAgIGReCpUUO1R24pBhu9ESJa47iv8NSf3yAfGv6jQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@node-rs/argon2-linux-x64-gnu@2.0.2':
+    resolution: {integrity: sha512-ZM3jrHuJ0dKOhvA80gKJqBpBRmTJTFSo2+xVZR+phQcbAKRlDMSZMFDiKbSTnctkfwNFtjgDdh5g1vaEV04AvA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -1165,13 +1222,31 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@node-rs/argon2-linux-x64-musl@2.0.2':
+    resolution: {integrity: sha512-of5uPqk7oCRF/44a89YlWTEfjsftPywyTULwuFDKyD8QtVZoonrJR6ZWvfFE/6jBT68S0okAkAzzMEdBVWdxWw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
   '@node-rs/argon2-wasm32-wasi@1.7.0':
     resolution: {integrity: sha512-Evmk9VcxqnuwQftfAfYEr6YZYSPLzmKUsbFIMep5nTt9PT4XYRFAERj7wNYp+rOcBenF3X4xoB+LhwcOMTNE5w==}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
 
+  '@node-rs/argon2-wasm32-wasi@2.0.2':
+    resolution: {integrity: sha512-U3PzLYKSQYzTERstgtHLd4ZTkOF9co57zTXT77r0cVUsleGZOrd6ut7rHzeWwoJSiHOVxxa0OhG1JVQeB7lLoQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+
   '@node-rs/argon2-win32-arm64-msvc@1.7.0':
     resolution: {integrity: sha512-qgsU7T004COWWpSA0tppDqDxbPLgg8FaU09krIJ7FBl71Sz8SFO40h7fDIjfbTT5w7u6mcaINMQ5bSHu75PCaA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@node-rs/argon2-win32-arm64-msvc@2.0.2':
+    resolution: {integrity: sha512-Eisd7/NM0m23ijrGr6xI2iMocdOuyl6gO27gfMfya4C5BODbUSP7ljKJ7LrA0teqZMdYHesRDzx36Js++/vhiQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -1182,14 +1257,30 @@ packages:
     cpu: [ia32]
     os: [win32]
 
+  '@node-rs/argon2-win32-ia32-msvc@2.0.2':
+    resolution: {integrity: sha512-GsE2ezwAYwh72f9gIjbGTZOf4HxEksb5M2eCaj+Y5rGYVwAdt7C12Q2e9H5LRYxWcFvLH4m4jiSZpQQ4upnPAQ==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+
   '@node-rs/argon2-win32-x64-msvc@1.7.0':
     resolution: {integrity: sha512-9oq4ShyFakw8AG3mRls0AoCpxBFcimYx7+jvXeAf2OqKNO+mSA6eZ9z7KQeVCi0+SOEUYxMGf5UiGiDb9R6+9Q==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
+  '@node-rs/argon2-win32-x64-msvc@2.0.2':
+    resolution: {integrity: sha512-cJxWXanH4Ew9CfuZ4IAEiafpOBCe97bzoKowHCGk5lG/7kR4WF/eknnBlHW9m8q7t10mKq75kruPLtbSDqgRTw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
   '@node-rs/argon2@1.7.0':
     resolution: {integrity: sha512-zfULc+/tmcWcxn+nHkbyY8vP3+MpEqKORbszt4UkpqZgBgDAAIYvuDN/zukfTgdmo6tmJKKVfzigZOPk4LlIog==}
+    engines: {node: '>= 10'}
+
+  '@node-rs/argon2@2.0.2':
+    resolution: {integrity: sha512-t64wIsPEtNd4aUPuTAyeL2ubxATCBGmeluaKXEMAFk/8w6AJIVVkeLKMBpgLW6LU2t5cQxT+env/c6jxbtTQBg==}
     engines: {node: '>= 10'}
 
   '@node-rs/bcrypt-android-arm-eabi@1.9.0':
@@ -1316,10 +1407,6 @@ packages:
 
   '@pdf-lib/upng@1.0.1':
     resolution: {integrity: sha512-dQK2FUMQtowVP00mtIksrlZhdFXQZPC+taih1q4CvPZ5vqdxR/LKBaFg0oAfzd1GlHZXXSPdQfzQnt+ViGvEIQ==}
-
-  '@phc/format@1.0.0':
-    resolution: {integrity: sha512-m7X9U6BG2+J+R1lSOdCiITLLrxm+cWlNI3HUFA92oLO77ObGNzaKdh8pMLqdZcshtkKuV84olNNXDfMc4FezBQ==}
-    engines: {node: '>=10'}
 
   '@pinojs/redact@0.4.0':
     resolution: {integrity: sha512-k2ENnmBugE/rzQfEcdWHcCY+/FM3VLzH9cYEsbdsoqrvzAKRhUZeRNhAZvB8OitQJ1TBed3yqWtdjzS6wJKBwg==}
@@ -2428,10 +2515,6 @@ packages:
 
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
-
-  argon2@0.41.1:
-    resolution: {integrity: sha512-dqCW8kJXke8Ik+McUcMDltrbuAWETPyU6iq+4AhxqKphWi7pChB/Zgd/Tp/o8xRLbg8ksMj46F/vph9wnxpTzQ==}
-    engines: {node: '>=16.17.0'}
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
@@ -3575,20 +3658,12 @@ packages:
   node-abort-controller@3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
 
-  node-addon-api@8.7.0:
-    resolution: {integrity: sha512-9MdFxmkKaOYVTV+XVRG8ArDwwQ77XIgIPyKASB1k3JPq3M8fGQQQE3YpMOrKm6g//Ktx8ivZr8xo1Qmtqub+GA==}
-    engines: {node: ^18 || ^20 || >= 21}
-
   node-exports-info@1.6.0:
     resolution: {integrity: sha512-pyFS63ptit/P5WqUkt+UUfe+4oevH+bFeIiPPdfb0pFeYEu/1ELnJu5l+5EcTKYL5M7zaAa7S8ddywgXypqKCw==}
     engines: {node: '>= 0.4'}
 
   node-gyp-build-optional-packages@5.2.2:
     resolution: {integrity: sha512-s+w+rBWnpTMwSFbaE0UXsRlg7hU4FjekKU4eyAih5T8nJuNZT1nNsskXpxmeqSK9UzkBl6UgRlnKc8hz8IEqOw==}
-    hasBin: true
-
-  node-gyp-build@4.8.4:
-    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
 
   node-releases@2.0.38:
@@ -5451,31 +5526,61 @@ snapshots:
   '@node-rs/argon2-android-arm-eabi@1.7.0':
     optional: true
 
+  '@node-rs/argon2-android-arm-eabi@2.0.2':
+    optional: true
+
   '@node-rs/argon2-android-arm64@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-android-arm64@2.0.2':
     optional: true
 
   '@node-rs/argon2-darwin-arm64@1.7.0':
     optional: true
 
+  '@node-rs/argon2-darwin-arm64@2.0.2':
+    optional: true
+
   '@node-rs/argon2-darwin-x64@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-darwin-x64@2.0.2':
     optional: true
 
   '@node-rs/argon2-freebsd-x64@1.7.0':
     optional: true
 
+  '@node-rs/argon2-freebsd-x64@2.0.2':
+    optional: true
+
   '@node-rs/argon2-linux-arm-gnueabihf@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-linux-arm-gnueabihf@2.0.2':
     optional: true
 
   '@node-rs/argon2-linux-arm64-gnu@1.7.0':
     optional: true
 
+  '@node-rs/argon2-linux-arm64-gnu@2.0.2':
+    optional: true
+
   '@node-rs/argon2-linux-arm64-musl@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-linux-arm64-musl@2.0.2':
     optional: true
 
   '@node-rs/argon2-linux-x64-gnu@1.7.0':
     optional: true
 
+  '@node-rs/argon2-linux-x64-gnu@2.0.2':
+    optional: true
+
   '@node-rs/argon2-linux-x64-musl@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-linux-x64-musl@2.0.2':
     optional: true
 
   '@node-rs/argon2-wasm32-wasi@1.7.0':
@@ -5486,13 +5591,27 @@ snapshots:
       memfs-browser: 3.5.10302
     optional: true
 
+  '@node-rs/argon2-wasm32-wasi@2.0.2':
+    dependencies:
+      '@napi-rs/wasm-runtime': 0.2.12
+    optional: true
+
   '@node-rs/argon2-win32-arm64-msvc@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-win32-arm64-msvc@2.0.2':
     optional: true
 
   '@node-rs/argon2-win32-ia32-msvc@1.7.0':
     optional: true
 
+  '@node-rs/argon2-win32-ia32-msvc@2.0.2':
+    optional: true
+
   '@node-rs/argon2-win32-x64-msvc@1.7.0':
+    optional: true
+
+  '@node-rs/argon2-win32-x64-msvc@2.0.2':
     optional: true
 
   '@node-rs/argon2@1.7.0':
@@ -5511,6 +5630,23 @@ snapshots:
       '@node-rs/argon2-win32-arm64-msvc': 1.7.0
       '@node-rs/argon2-win32-ia32-msvc': 1.7.0
       '@node-rs/argon2-win32-x64-msvc': 1.7.0
+
+  '@node-rs/argon2@2.0.2':
+    optionalDependencies:
+      '@node-rs/argon2-android-arm-eabi': 2.0.2
+      '@node-rs/argon2-android-arm64': 2.0.2
+      '@node-rs/argon2-darwin-arm64': 2.0.2
+      '@node-rs/argon2-darwin-x64': 2.0.2
+      '@node-rs/argon2-freebsd-x64': 2.0.2
+      '@node-rs/argon2-linux-arm-gnueabihf': 2.0.2
+      '@node-rs/argon2-linux-arm64-gnu': 2.0.2
+      '@node-rs/argon2-linux-arm64-musl': 2.0.2
+      '@node-rs/argon2-linux-x64-gnu': 2.0.2
+      '@node-rs/argon2-linux-x64-musl': 2.0.2
+      '@node-rs/argon2-wasm32-wasi': 2.0.2
+      '@node-rs/argon2-win32-arm64-msvc': 2.0.2
+      '@node-rs/argon2-win32-ia32-msvc': 2.0.2
+      '@node-rs/argon2-win32-x64-msvc': 2.0.2
 
   '@node-rs/bcrypt-android-arm-eabi@1.9.0':
     optional: true
@@ -5610,8 +5746,6 @@ snapshots:
   '@pdf-lib/upng@1.0.1':
     dependencies:
       pako: 1.0.11
-
-  '@phc/format@1.0.0': {}
 
   '@pinojs/redact@0.4.0': {}
 
@@ -6750,12 +6884,6 @@ snapshots:
       - react-native-b4a
 
   arg@5.0.2: {}
-
-  argon2@0.41.1:
-    dependencies:
-      '@phc/format': 1.0.0
-      node-addon-api: 8.7.0
-      node-gyp-build: 4.8.4
 
   argparse@2.0.1: {}
 
@@ -8099,8 +8227,6 @@ snapshots:
 
   node-abort-controller@3.1.1: {}
 
-  node-addon-api@8.7.0: {}
-
   node-exports-info@1.6.0:
     dependencies:
       array.prototype.flatmap: 1.3.3
@@ -8112,8 +8238,6 @@ snapshots:
     dependencies:
       detect-libc: 2.1.2
     optional: true
-
-  node-gyp-build@4.8.4: {}
 
   node-releases@2.0.38: {}
 
