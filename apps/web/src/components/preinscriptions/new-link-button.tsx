@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { Plus, Copy, Check, Mail, Loader2, X, ExternalLink } from 'lucide-react';
+import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { createPreEnrollmentLink } from '@/server/actions/preinscriptions';
 
@@ -29,20 +30,33 @@ export function NewLinkButton() {
   const handleSubmit = () => {
     setError(null);
     startTransition(async () => {
-      const r = await createPreEnrollmentLink({
-        email: email.trim() || undefined,
-        firstName: firstName.trim() || undefined,
-        lastName: lastName.trim() || undefined,
-      });
-      if (r.ok && r.url) {
-        setGeneratedUrl(r.url);
-        if (email.trim()) {
-          setEmailStatus(r.emailSent ? 'sent' : r.emailDryRun ? 'dryrun' : 'failed');
+      // Defense-in-depth : la server action est censée toujours retourner
+      // { ok, error? } mais on protège aussi le client contre un throw
+      // (ex: network broken pendant la transition).
+      try {
+        const r = await createPreEnrollmentLink({
+          email: email.trim() || undefined,
+          firstName: firstName.trim() || undefined,
+          lastName: lastName.trim() || undefined,
+        });
+        if (r.ok) {
+          setGeneratedUrl(r.url);
+          if (email.trim()) {
+            setEmailStatus(r.emailSent ? 'sent' : r.emailDryRun ? 'dryrun' : 'failed');
+          } else {
+            setEmailStatus('none');
+          }
+          toast.success('Lien de pré-inscription généré');
         } else {
-          setEmailStatus('none');
+          setError(r.error);
+          toast.error(r.error);
         }
-      } else {
-        setError(r.error ?? 'Erreur');
+      } catch (e) {
+        const msg =
+          (e as Error)?.message ??
+          "Erreur réseau lors de la génération du lien. Réessaie.";
+        setError(msg);
+        toast.error(msg);
       }
     });
   };
@@ -79,24 +93,36 @@ export function NewLinkButton() {
     const reason = directOpenValidation();
     if (reason) {
       setError(reason);
+      toast.error(reason);
       return;
     }
     setError(null);
     // Pré-ouvre un onglet vide depuis le user gesture → contourne le popup-blocker
     const win = window.open('about:blank', '_blank', 'noopener,noreferrer');
     startTransition(async () => {
-      const r = await createPreEnrollmentLink({
-        email: email.trim(),
-        firstName: firstName.trim(),
-        lastName: lastName.trim(),
-      });
-      if (r.ok && r.url) {
-        if (win) win.location.href = r.url;
-        setOpen(false);
-        reset();
-      } else {
+      try {
+        const r = await createPreEnrollmentLink({
+          email: email.trim(),
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+        });
+        if (r.ok) {
+          if (win) win.location.href = r.url;
+          setOpen(false);
+          reset();
+          toast.success('Formulaire de pré-inscription ouvert dans un nouvel onglet');
+        } else {
+          if (win) win.close();
+          setError(r.error);
+          toast.error(r.error);
+        }
+      } catch (e) {
         if (win) win.close();
-        setError(r.error ?? 'Erreur lors de la génération du lien.');
+        const msg =
+          (e as Error)?.message ??
+          "Erreur réseau lors de la génération du lien. Réessaie.";
+        setError(msg);
+        toast.error(msg);
       }
     });
   };
