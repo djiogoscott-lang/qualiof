@@ -85,6 +85,16 @@ vi.mock('@/lib/mailer', () => ({
   sendMail: vi.fn().mockResolvedValue({ ok: true, dryRun: true }),
 }));
 
+vi.mock('@/lib/mailer-queue/enqueue', () => ({
+  enqueueMail: vi.fn().mockImplementation(async (input) => {
+    // Forward au mock sendMail pour préserver les assertions de tests existantes
+    // (Test 1/9/13 vérifient sendMailMock.mock.calls).
+    const { sendMail } = await import('@/lib/mailer');
+    await sendMail(input);
+    return { ok: true, mode: 'dry-run' as const };
+  }),
+}));
+
 vi.mock('@/lib/of-config', () => ({
   loadOfConfig: vi.fn().mockResolvedValue({
     name: 'Start Academy',
