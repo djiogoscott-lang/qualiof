@@ -23,7 +23,7 @@ export function LearnerTabs({ tabs }: { tabs: Tab[] }) {
   const active = sp.get('tab') ?? 'info';
 
   return (
-    <div className="border-b border-border">
+    <div className="border-b border-slate-200">
       <nav className="flex gap-1 -mb-px">
         {tabs.map((t) => {
           const isActive = active === t.key;
@@ -40,7 +40,7 @@ export function LearnerTabs({ tabs }: { tabs: Tab[] }) {
                 'inline-flex items-center gap-2 px-4 py-2.5 text-sm border-b-2 transition-colors',
                 isActive
                   ? 'border-primary text-primary font-medium'
-                  : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border',
+                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-200',
               )}
             >
               <Icon className="h-4 w-4" />
@@ -51,7 +51,7 @@ export function LearnerTabs({ tabs }: { tabs: Tab[] }) {
                   aria-label={t.badgeTitle}
                   className={cn(
                     'inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full text-[10px] font-semibold',
-                    isActive ? 'bg-primary text-white' : 'bg-muted text-muted-foreground',
+                    isActive ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500',
                   )}
                 >
                   {t.badge}

@@ -66,7 +66,7 @@ export function IdentityCheckPanel({
   // Cas 1 : pas de pièce uploadée
   if (!hasDocument) {
     return (
-      <div className="rounded-2xl border border-dashed border-border bg-white p-5 text-sm text-muted-foreground">
+      <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-5 text-sm text-slate-500">
         <div className="inline-flex items-center gap-2">
           <ImageOff className="h-4 w-4" />
           Aucune pièce d'identité jointe (optionnel — sera demandé à la conversion).
@@ -166,11 +166,11 @@ export function IdentityCheckPanel({
               ) : (
                 <AlertTriangle className="h-3.5 w-3.5 text-amber-700 shrink-0" />
               )}
-              <span className="text-muted-foreground w-32 shrink-0">{c.field}</span>
-              <span className={c.match ? 'text-foreground' : 'text-amber-900 font-medium'}>
+              <span className="text-slate-500 w-32 shrink-0">{c.field}</span>
+              <span className={c.match ? 'text-slate-900' : 'text-amber-900 font-medium'}>
                 {c.saisi}
                 {!c.match && (
-                  <span className="text-muted-foreground ml-2">
+                  <span className="text-slate-500 ml-2">
                     (CNI : <strong>{c.extrait}</strong>)
                   </span>
                 )}
@@ -181,14 +181,14 @@ export function IdentityCheckPanel({
       )}
 
       {complements.length > 0 && (
-        <div className="border-t border-border/50 pt-3 mt-3">
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
+        <div className="border-t border-slate-200/50 pt-3 mt-3">
+          <div className="text-[10px] uppercase tracking-wide text-slate-500 mb-1.5 font-semibold">
             Compléments OCR
           </div>
           <div className="space-y-1 text-xs">
             {complements.map((c) => (
               <div key={c.label} className="flex items-center gap-2">
-                <span className="text-muted-foreground w-32 shrink-0">{c.label}</span>
+                <span className="text-slate-500 w-32 shrink-0">{c.label}</span>
                 <span className="font-medium">{c.value}</span>
               </div>
             ))}

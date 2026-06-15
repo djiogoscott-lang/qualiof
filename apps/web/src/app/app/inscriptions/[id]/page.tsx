@@ -58,7 +58,7 @@ export default async function PreEnrollmentDetailPage({
       <div>
         <Link
           href="/app/inscriptions"
-          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary mb-2"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-primary mb-2"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Toutes les pré-inscriptions
         </Link>
@@ -74,7 +74,7 @@ export default async function PreEnrollmentDetailPage({
                 </h1>
                 <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
               </div>
-              <p className="text-sm text-muted-foreground">{pe.email ?? '— pas d\'email —'}</p>
+              <p className="text-sm text-slate-500">{pe.email ?? '— pas d\'email —'}</p>
             </div>
           </div>
           {(pe.status === 'EXTRACTED' || pe.status === 'EXTRACTING' || pe.status === 'SUBMITTED') && (
@@ -149,8 +149,8 @@ export default async function PreEnrollmentDetailPage({
       )}
 
       {/* Données déclaratives */}
-      <section className="rounded-2xl border border-border bg-white p-6">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground mb-3">
+      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
           Données saisies par le contact
         </h2>
         <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
@@ -213,8 +213,8 @@ export default async function PreEnrollmentDetailPage({
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border bg-white p-3">
-      <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-0.5">{label}</div>
+    <div className="rounded-xl border border-slate-200 bg-white p-3">
+      <div className="text-[10px] uppercase tracking-wide text-slate-500 mb-0.5">{label}</div>
       <div className="text-sm font-medium">{value}</div>
     </div>
   );
@@ -223,9 +223,9 @@ function Meta({ label, value }: { label: string; value: string }) {
 function Row({ label, value }: { label: string; value: string | null | undefined }) {
   return (
     <div className="flex items-center gap-3 py-1">
-      <dt className="text-xs text-muted-foreground w-32 shrink-0">{label}</dt>
+      <dt className="text-xs text-slate-500 w-32 shrink-0">{label}</dt>
       <dd className="text-sm font-medium flex-1 min-w-0 truncate">
-        {value ?? <span className="text-muted-foreground italic">—</span>}
+        {value ?? <span className="text-slate-500 italic">—</span>}
       </dd>
     </div>
   );
@@ -241,20 +241,20 @@ function ExtractCard({
   data: any;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-white p-5">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
       <h3 className="font-semibold text-sm inline-flex items-center gap-2 mb-3">
         <Icon className="h-4 w-4 text-primary" /> {title}
         <Sparkles className="h-3 w-3 text-purple-500 ml-auto" />
       </h3>
       {!data ? (
-        <p className="text-xs text-muted-foreground italic">Aucune donnée extraite (pièce manquante ou non lisible).</p>
+        <p className="text-xs text-slate-500 italic">Aucune donnée extraite (pièce manquante ou non lisible).</p>
       ) : (
         <dl className="space-y-1.5 text-xs">
           {Object.entries(data).map(([key, value]) => (
             <div key={key} className="flex items-start gap-2">
-              <dt className="text-muted-foreground capitalize w-32 shrink-0">{key}</dt>
+              <dt className="text-slate-500 capitalize w-32 shrink-0">{key}</dt>
               <dd className="font-medium break-all">
-                {value == null || value === '' ? <span className="italic text-muted-foreground">∅</span> : String(value)}
+                {value == null || value === '' ? <span className="italic text-slate-500">∅</span> : String(value)}
               </dd>
             </div>
           ))}

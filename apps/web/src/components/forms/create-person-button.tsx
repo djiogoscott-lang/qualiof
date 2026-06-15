@@ -207,11 +207,11 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
     onChange: (f: File | null) => void,
     hint: string,
   ) => (
-    <label className="flex items-center gap-2 px-3 py-2 border border-dashed border-border rounded-lg cursor-pointer hover:bg-muted/50">
-      <Upload className="h-3.5 w-3.5 text-muted-foreground" />
+    <label className="flex items-center gap-2 px-3 py-2 border border-dashed border-slate-200 rounded-lg cursor-pointer hover:bg-slate-100/50">
+      <Upload className="h-3.5 w-3.5 text-slate-500" />
       <div className="flex-1 min-w-0">
         <div className="text-xs font-medium">{label}</div>
-        <div className="text-[10px] text-muted-foreground truncate">
+        <div className="text-[10px] text-slate-500 truncate">
           {file ? `✓ ${file.name}` : hint}
         </div>
       </div>
@@ -229,7 +229,7 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
+        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
       >
         <UserPlus className="h-4 w-4" /> {buttonLabel ?? 'Nouvel apprenant'}
       </button>
@@ -240,7 +240,7 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
             <h3 className="font-semibold text-lg mb-2">
               {enrollInSessionId ? 'Nouvel apprenant + inscription' : 'Nouvel apprenant'}
             </h3>
-            <p className="text-xs text-muted-foreground mb-4">
+            <p className="text-xs text-slate-500 mb-4">
               Upload les documents (CFP, CNI, RIB) pour pré-remplir automatiquement le formulaire,
               ou saisis directement à la main.
               {enrollInSessionId && (
@@ -254,7 +254,7 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
             </p>
 
             {/* Bloc upload + extraction */}
-            <div className="bg-muted/30 rounded-xl p-3 mb-4 space-y-2">
+            <div className="bg-slate-100/30 rounded-xl p-3 mb-4 space-y-2">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {fileBox('Attestation CFP', cfpFile, setCfpFile, 'PDF URSSAF')}
                 {fileBox("Carte d'identité", cniFile, setCniFile, 'CNI / Passeport')}
@@ -264,7 +264,7 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
                 type="button"
                 onClick={handleExtract}
                 disabled={extracting || (!cniFile && !ribFile && !cfpFile)}
-                className="w-full inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center gap-2 h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium hover:from-indigo-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {extracting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Sparkles className="h-3.5 w-3.5" />}
                 {extracting ? 'Extraction en cours…' : 'Pré-remplir avec l\'IA'}
@@ -279,8 +279,8 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
                 </div>
               )}
               {extras && (
-                <div className="text-[11px] text-muted-foreground border-t border-border pt-2 mt-2 space-y-1">
-                  <div className="font-medium text-foreground inline-flex items-center gap-1"><Check className="h-3 w-3 text-green-600" /> Données extraites :</div>
+                <div className="text-[11px] text-slate-500 border-t border-slate-200 pt-2 mt-2 space-y-1">
+                  <div className="font-medium text-slate-900 inline-flex items-center gap-1"><Check className="h-3 w-3 text-green-600" /> Données extraites :</div>
                   {extras.iban && <div>IBAN : <span className="font-mono">{extras.iban}</span></div>}
                   {extras.bic && <div>BIC : <span className="font-mono">{extras.bic}</span> {extras.bankName && `(${extras.bankName})`}</div>}
                   {extras.contributionAmount !== null && extras.contributionAmount !== undefined && (
@@ -312,67 +312,67 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
             <form onSubmit={onSubmit} className="space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Civilité</label>
-                  <select value={civility} onChange={(e) => setCivility(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Civilité</label>
+                  <select value={civility} onChange={(e) => setCivility(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
                     <option value="">—</option>
                     <option value="M.">M.</option>
                     <option value="Mme">Mme</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Prénom *</label>
-                  <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Prénom *</label>
+                  <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Nom *</label>
-                  <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Date de naissance</label>
-                  <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Nom de naissance</label>
-                  <input type="text" value={birthName} onChange={(e) => setBirthName(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Nom *</label>
+                  <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Email</label>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Date de naissance</label>
+                  <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Téléphone</label>
-                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Nom de naissance</label>
+                  <input type="text" value={birthName} onChange={(e) => setBirthName(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Email</label>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Téléphone</label>
+                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">Adresse — rue</label>
-                <input type="text" value={addressStreet} onChange={(e) => setAddressStreet(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                <label className="block text-xs font-medium text-slate-500 mb-1">Adresse — rue</label>
+                <input type="text" value={addressStreet} onChange={(e) => setAddressStreet(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">CP</label>
-                  <input type="text" value={addressPostalCode} onChange={(e) => setAddressPostalCode(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">CP</label>
+                  <input type="text" value={addressPostalCode} onChange={(e) => setAddressPostalCode(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
                 <div className="col-span-2">
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Ville</label>
-                  <input type="text" value={addressCity} onChange={(e) => setAddressCity(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Ville</label>
+                  <input type="text" value={addressCity} onChange={(e) => setAddressCity(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">Statut professionnel</label>
-                <input type="text" value={professionalStatus} onChange={(e) => setProfessionalStatus(e.target.value)} placeholder="Ex: Agent commercial" className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                <label className="block text-xs font-medium text-slate-500 mb-1">Statut professionnel</label>
+                <input type="text" value={professionalStatus} onChange={(e) => setProfessionalStatus(e.target.value)} placeholder="Ex: Agent commercial" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Dernier diplôme (AGEFICE)</label>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Dernier diplôme (AGEFICE)</label>
                   <select
                     value={diplomas}
                     onChange={(e) => setDiplomas(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   >
                     <option value="">— Choisir —</option>
                     {DIPLOME_OPTIONS.map((o) => (
@@ -381,11 +381,11 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Expérience pro (AGEFICE)</label>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Expérience pro (AGEFICE)</label>
                   <select
                     value={professionalExperience}
                     onChange={(e) => setProfessionalExperience(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   >
                     <option value="">— Choisir —</option>
                     {EXPERIENCE_OPTIONS.map((o) => (
@@ -396,17 +396,17 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">SIRET (auto-entreprise)</label>
-                  <input type="text" value={siret} onChange={(e) => setSiret(e.target.value)} placeholder="14 chiffres" className="w-full px-3 py-2 border border-border rounded-lg text-sm font-mono" />
-                  <p className="text-[10px] text-muted-foreground mt-1">Si rempli : crée auto-entreprise + lien EI_SELF</p>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">SIRET (auto-entreprise)</label>
+                  <input type="text" value={siret} onChange={(e) => setSiret(e.target.value)} placeholder="14 chiffres" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono" />
+                  <p className="text-[10px] text-slate-500 mt-1">Si rempli : crée auto-entreprise + lien EI_SELF</p>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Code NAF</label>
-                  <input type="text" value={activityCode} onChange={(e) => setActivityCode(e.target.value)} placeholder="Ex: 6831Z" className="w-full px-3 py-2 border border-border rounded-lg text-sm font-mono" />
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Code NAF</label>
+                  <input type="text" value={activityCode} onChange={(e) => setActivityCode(e.target.value)} placeholder="Ex: 6831Z" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono" />
                 </div>
               </div>
-              <div className="rounded-lg border border-border bg-muted/20 p-3 space-y-2">
-                <label className="text-xs font-medium text-muted-foreground inline-flex items-center gap-1.5">
+              <div className="rounded-lg border border-slate-200 bg-slate-100/20 p-3 space-y-2">
+                <label className="text-xs font-medium text-slate-500 inline-flex items-center gap-1.5">
                   <Building2 className="h-3.5 w-3.5" /> Enseigne / réseau immobilier (2e LegalLink)
                 </label>
                 <EnseignePicker
@@ -430,14 +430,14 @@ export function CreatePersonButton({ enrollInSessionId, defaultPrice = 0, button
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">N° de sécurité sociale</label>
-                <input type="text" value={socialSecurityNb} onChange={(e) => setSocialSecurityNb(e.target.value)} placeholder="13 chiffres" className="w-full px-3 py-2 border border-border rounded-lg text-sm font-mono" />
-                <p className="text-[10px] text-muted-foreground mt-1">Stocké dans table SensitiveData (RGPD)</p>
+                <label className="block text-xs font-medium text-slate-500 mb-1">N° de sécurité sociale</label>
+                <input type="text" value={socialSecurityNb} onChange={(e) => setSocialSecurityNb(e.target.value)} placeholder="13 chiffres" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono" />
+                <p className="text-[10px] text-slate-500 mt-1">Stocké dans table SensitiveData (RGPD)</p>
               </div>
               {error && <div className="text-xs text-red-600 bg-red-50 border border-red-200 rounded p-2">{error}</div>}
               <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={() => { setOpen(false); reset(); }} disabled={busy} className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted">Annuler</button>
-                <button type="submit" disabled={busy || !firstName || !lastName} className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50">{busy ? 'Création…' : "Créer l'apprenant"}</button>
+                <button type="button" onClick={() => { setOpen(false); reset(); }} disabled={busy} className="px-3 py-1.5 text-sm border border-slate-200 rounded-lg hover:bg-slate-100">Annuler</button>
+                <button type="submit" disabled={busy || !firstName || !lastName} className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50">{busy ? 'Création…' : "Créer l'apprenant"}</button>
               </div>
             </form>
           </div>

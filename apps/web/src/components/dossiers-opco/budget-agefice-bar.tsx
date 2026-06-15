@@ -48,7 +48,7 @@ export function BudgetAgeficeBar({ consumed, year }: Props) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="text-[9px] text-muted-foreground tabular-nums leading-tight mt-0.5">
+      <div className="text-[9px] text-slate-500 tabular-nums leading-tight mt-0.5">
         {pct}% · {fmtEUR.format(consumed)}
       </div>
     </div>

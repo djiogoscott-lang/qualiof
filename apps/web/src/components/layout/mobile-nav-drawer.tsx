@@ -44,23 +44,23 @@ export function MobileNavDrawer({ open, onOpenChange, role }: MobileNavDrawerPro
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
         <Dialog.Content
-          className="fixed inset-y-0 left-0 z-50 flex flex-col w-72 max-w-[85vw] bg-white border-r border-border shadow-xl data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left"
+          className="fixed inset-y-0 left-0 z-50 flex flex-col w-72 max-w-[85vw] bg-white border-r border-slate-200 shadow-xl data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left"
           aria-describedby={undefined}
         >
           <Dialog.Title className="sr-only">Navigation principale</Dialog.Title>
 
-          <div className="border-b border-border flex items-center justify-between px-6 py-5">
+          <div className="border-b border-slate-200 flex items-center justify-between px-6 py-5">
             <Link href="/app" className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-lg bg-primary text-white font-bold inline-flex items-center justify-center shrink-0">
                 Q
               </div>
               <div>
                 <div className="font-semibold text-sm leading-tight">QualiOF</div>
-                <div className="text-[11px] text-muted-foreground">Start Academy</div>
+                <div className="text-[11px] text-slate-500">Start Academy</div>
               </div>
             </Link>
             <Dialog.Close
-              className="p-1.5 rounded-md hover:bg-muted text-muted-foreground"
+              className="p-1.5 rounded-md hover:bg-slate-100 text-slate-500"
               aria-label="Fermer le menu"
             >
               <X className="h-4 w-4" />

@@ -67,14 +67,14 @@ export async function ProductSatisfactionPanel({
 
   if (satisfactionAssets.length === 0) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/20 p-5">
+      <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/20 p-5">
         <div className="flex items-center gap-2 mb-2">
-          <GraduationCap className="h-4 w-4 text-muted-foreground" />
-          <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+          <GraduationCap className="h-4 w-4 text-slate-500" />
+          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
             Satisfaction globale de la formation
           </h2>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-slate-500">
           {sessions} session{sessions > 1 ? 's' : ''} planifiée{sessions > 1 ? 's' : ''} ·{' '}
           <strong>{totalUniqueLearners}</strong> stagiaire{totalUniqueLearners > 1 ? 's' : ''} formé{totalUniqueLearners > 1 ? 's' : ''} ·{' '}
           aucune satisfaction collectée encore — lance le pack de fin de formation sur les sessions terminées.
@@ -93,8 +93,8 @@ export async function ProductSatisfactionPanel({
 
   if (contents.length === 0) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/20 p-5">
-        <p className="text-xs text-muted-foreground italic">
+      <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/20 p-5">
+        <p className="text-xs text-slate-500 italic">
           Satisfactions présentes mais données corrompues.
         </p>
       </section>
@@ -112,18 +112,18 @@ export async function ProductSatisfactionPanel({
           <GraduationCap className="h-4 w-4 text-primary" />
           Satisfaction globale de la formation
         </h2>
-        <span className="text-xs text-muted-foreground inline-flex items-center gap-3">
+        <span className="text-xs text-slate-500 inline-flex items-center gap-3">
           <span className="inline-flex items-center gap-1">
             <Users className="h-3 w-3" />
-            <strong className="text-foreground">{totalUniqueLearners}</strong> stagiaire{totalUniqueLearners > 1 ? 's' : ''} formé{totalUniqueLearners > 1 ? 's' : ''}
+            <strong className="text-slate-900">{totalUniqueLearners}</strong> stagiaire{totalUniqueLearners > 1 ? 's' : ''} formé{totalUniqueLearners > 1 ? 's' : ''}
           </span>
           <span>·</span>
           <span>
-            <strong className="text-foreground">{sessionsAvecSatisfaction}</strong>/{sessions} session{sessions > 1 ? 's' : ''} évaluée{sessionsAvecSatisfaction > 1 ? 's' : ''}
+            <strong className="text-slate-900">{sessionsAvecSatisfaction}</strong>/{sessions} session{sessions > 1 ? 's' : ''} évaluée{sessionsAvecSatisfaction > 1 ? 's' : ''}
           </span>
           <span>·</span>
           <span>
-            <strong className="text-foreground">{agg.totalStagiaires}</strong> évaluation{agg.totalStagiaires > 1 ? 's' : ''}
+            <strong className="text-slate-900">{agg.totalStagiaires}</strong> évaluation{agg.totalStagiaires > 1 ? 's' : ''}
           </span>
         </span>
       </div>
@@ -148,19 +148,19 @@ export async function ProductSatisfactionPanel({
 
       {/* Détail critères repliable */}
       <details className="mb-3">
-        <summary className="cursor-pointer text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 select-none">
+        <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1.5 select-none">
           Détail par critère ({agg.byCriterion.length} critères évalués)
         </summary>
         <div className="mt-3 space-y-2">
           {Array.from(new Set(agg.byCriterion.map((c) => c.section))).map((sect) => (
             <div key={sect}>
-              <div className="text-[11px] font-semibold text-foreground/80 uppercase tracking-wide mt-2 mb-1">{sect}</div>
+              <div className="text-[11px] font-semibold text-slate-900/80 uppercase tracking-wide mt-2 mb-1">{sect}</div>
               {agg.byCriterion
                 .filter((c) => c.section === sect)
                 .map((c) => (
                   <div key={c.criterionLabel} className="flex items-center gap-2 py-1 text-xs">
-                    <span className="flex-1 text-foreground/80">{c.criterionLabel}</span>
-                    <div className="w-28 h-1.5 rounded-full bg-muted overflow-hidden">
+                    <span className="flex-1 text-slate-900/80">{c.criterionLabel}</span>
+                    <div className="w-28 h-1.5 rounded-full bg-slate-100 overflow-hidden">
                       <div className={`h-full ${progressBarColor(c.score)}`} style={{ width: `${c.score}%` }} />
                     </div>
                     <span className="tabular-nums font-medium w-10 text-right">{c.score}%</span>

@@ -67,7 +67,7 @@ export function DuplicateSessionButton({
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border hover:bg-muted text-muted-foreground"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-500"
           title="Dupliquer cette session"
         >
           <Copy className="h-3.5 w-3.5" />
@@ -80,7 +80,7 @@ export function DuplicateSessionButton({
           <div className="flex items-start justify-between gap-3">
             <div>
               <Dialog.Title className="text-lg font-semibold">Dupliquer la session</Dialog.Title>
-              <Dialog.Description className="text-sm text-muted-foreground mt-1">
+              <Dialog.Description className="text-sm text-slate-500 mt-1">
                 Crée une nouvelle session avec le même produit, tarif et formateurs que <code className="font-mono text-xs">{sessionCode}</code>. Les inscrits ne sont pas reportés. Statut <em>brouillon</em>.
               </Dialog.Description>
             </div>
@@ -88,7 +88,7 @@ export function DuplicateSessionButton({
               <button
                 type="button"
                 disabled={busy}
-                className="shrink-0 h-7 w-7 inline-flex items-center justify-center rounded-md hover:bg-muted text-muted-foreground"
+                className="shrink-0 h-7 w-7 inline-flex items-center justify-center rounded-md hover:bg-slate-100 text-slate-500"
                 aria-label="Fermer"
               >
                 <X className="h-4 w-4" />
@@ -98,16 +98,16 @@ export function DuplicateSessionButton({
 
           <div className="mt-5 space-y-4">
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1">
+              <label className="block text-xs font-medium text-slate-500 mb-1">
                 Nouvelle date de début
               </label>
               <input
                 type="date"
                 value={newStartDate}
                 onChange={(e) => setNewStartDate(e.target.value)}
-                className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
               />
-              <p className="text-[11px] text-muted-foreground mt-1">
+              <p className="text-[11px] text-slate-500 mt-1">
                 La date de fin sera calculée automatiquement (même durée que la session source).
               </p>
             </div>
@@ -125,7 +125,7 @@ export function DuplicateSessionButton({
             {recurring && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-6">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Nombre d'occurrences
                   </label>
                   <input
@@ -134,11 +134,11 @@ export function DuplicateSessionButton({
                     max={24}
                     value={count}
                     onChange={(e) => setCount(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Intervalle (mois)
                   </label>
                   <input
@@ -147,7 +147,7 @@ export function DuplicateSessionButton({
                     max={12}
                     value={intervalMonths}
                     onChange={(e) => setIntervalMonths(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   />
                 </div>
               </div>
@@ -159,7 +159,7 @@ export function DuplicateSessionButton({
               <button
                 type="button"
                 disabled={busy}
-                className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted"
+                className="px-3 py-1.5 text-sm border border-slate-200 rounded-lg hover:bg-slate-100"
               >
                 Annuler
               </button>
@@ -168,7 +168,7 @@ export function DuplicateSessionButton({
               type="button"
               onClick={onConfirm}
               disabled={!newStartDate || busy}
-              className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary-600 disabled:opacity-50 inline-flex items-center gap-1.5"
+              className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 inline-flex items-center gap-1.5"
             >
               <Copy className="h-3.5 w-3.5" />
               {busy ? 'Création…' : 'Dupliquer'}

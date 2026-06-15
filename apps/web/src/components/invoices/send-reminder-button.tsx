@@ -102,11 +102,11 @@ export function SendReminderButton({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[92vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[92vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">
             Envoyer une relance ?
           </Dialog.Title>
-          <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-2 text-sm text-slate-500">
             {lastReminderLabel} Un email sera envoyé immédiatement au payeur
             avec le récapitulatif de la facture. Cette relance s'incrémentera
             dans le compteur (niveau {Math.min(reminderCount + 1, maxLevel)}/
@@ -117,7 +117,7 @@ export function SendReminderButton({
               <button
                 type="button"
                 disabled={pending}
-                className="px-3 py-1.5 rounded-md border border-border hover:bg-muted text-sm disabled:opacity-50"
+                className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-100 text-sm disabled:opacity-50"
               >
                 Annuler
               </button>

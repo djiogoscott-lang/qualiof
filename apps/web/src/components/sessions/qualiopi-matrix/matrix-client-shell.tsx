@@ -137,21 +137,21 @@ export function MatrixClientShell({
 
       <div className="overflow-x-auto -mx-5 sm:mx-0">
         <table className="w-full text-sm border-collapse">
-          <thead className="bg-muted/30">
-            <tr className="text-left text-[11px] uppercase tracking-wide text-muted-foreground">
-              <th className="sticky left-0 bg-muted/30 z-10 px-2 py-2 border-b w-10">
+          <thead className="bg-slate-100/30">
+            <tr className="text-left text-[11px] uppercase tracking-wide text-slate-500">
+              <th className="sticky left-0 bg-slate-100/30 z-10 px-2 py-2 border-b w-10">
                 <input
                   type="checkbox"
                   checked={allSelected}
                   onChange={(e) => handleToggleAll(e.target.checked)}
                   aria-label="Sélectionner tous les apprenants visibles"
                   disabled={readOnly || filteredRows.length === 0}
-                  className="h-4 w-4 rounded border-border accent-primary"
+                  className="h-4 w-4 rounded border-slate-200 accent-primary"
                 />
               </th>
               <th
                 scope="col"
-                className="sticky left-[40px] bg-muted/30 z-10 px-3 py-2 font-semibold border-b min-w-[180px]"
+                className="sticky left-[40px] bg-slate-100/30 z-10 px-3 py-2 font-semibold border-b min-w-[180px]"
               >
                 Apprenant
               </th>
@@ -191,7 +191,7 @@ export function MatrixClientShell({
       </div>
 
       {filteredRows.length === 0 && rows.length > 0 && (
-        <p className="text-sm text-muted-foreground italic text-center py-4">
+        <p className="text-sm text-slate-500 italic text-center py-4">
           Aucun apprenant ne correspond aux filtres actuels.
         </p>
       )}

@@ -74,7 +74,7 @@ export function EnseignePicker({
             onClear();
             setQuery('');
           }}
-          className="text-muted-foreground hover:text-foreground"
+          className="text-slate-500 hover:text-slate-900"
           aria-label="Retirer l'enseigne"
         >
           <X className="h-3.5 w-3.5" />
@@ -101,14 +101,14 @@ export function EnseignePicker({
   return (
     <div className="space-y-2">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
         <input
           type="text"
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
           onFocus={() => setOpen(true)}
           placeholder="Tape le nom de l'enseigne (Akorimmo, Neyrat…)"
-          className="w-full pl-9 pr-3 py-2 border border-border rounded-lg text-sm"
+          className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm"
         />
       </div>
 
@@ -124,10 +124,10 @@ export function EnseignePicker({
         </button>
       )}
 
-      {searching && <div className="text-xs text-muted-foreground italic px-1">Recherche…</div>}
+      {searching && <div className="text-xs text-slate-500 italic px-1">Recherche…</div>}
 
       {results.length > 0 && (
-        <ul className="border border-border rounded-lg divide-y divide-border max-h-48 overflow-y-auto">
+        <ul className="border border-slate-200 rounded-lg divide-y divide-slate-200 max-h-48 overflow-y-auto">
           {results.map((o) => (
             <li key={o.id}>
               <button
@@ -136,10 +136,10 @@ export function EnseignePicker({
                   saveRecent({ id: o.id, legalName: o.legalName });
                   onPick(o.id, o.legalName);
                 }}
-                className="w-full text-left px-3 py-2 hover:bg-muted text-sm"
+                className="w-full text-left px-3 py-2 hover:bg-slate-100 text-sm"
               >
                 <div className="font-medium">{o.legalName}</div>
-                <div className="text-[10px] text-muted-foreground">
+                <div className="text-[10px] text-slate-500">
                   {[o.legalForm, o.siret].filter(Boolean).join(' · ') || '—'}
                 </div>
               </button>
@@ -165,7 +165,7 @@ export function EnseignePicker({
       )}
 
       {!query && !recent.current && (
-        <p className="text-[10px] text-muted-foreground italic px-1">
+        <p className="text-[10px] text-slate-500 italic px-1">
           Optionnel — utile pour les agents commerciaux immobiliers (2e LegalLink AGENT_COMMERCIAL créé automatiquement).
         </p>
       )}

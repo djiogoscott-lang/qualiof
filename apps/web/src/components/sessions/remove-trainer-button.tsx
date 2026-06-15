@@ -40,7 +40,7 @@ export function RemoveTrainerButton({ sessionId, personId, personName }: Props) 
       disabled={pending}
       title={`Retirer ${personName}`}
       aria-label={`Retirer ${personName} de la session`}
-      className="p-1 rounded hover:bg-red-50 text-muted-foreground hover:text-red-600 transition-colors disabled:opacity-50"
+      className="p-1 rounded hover:bg-red-50 text-slate-500 hover:text-red-600 transition-colors disabled:opacity-50"
     >
       {pending ? (
         <Loader2 className="h-4 w-4 animate-spin" />

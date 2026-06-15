@@ -68,7 +68,7 @@ export function OfEmailForm({ initial, onSaved, onCancel }: OfEmailFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-1.5">
-        <label htmlFor="of-emailFrom" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+        <label htmlFor="of-emailFrom" className="text-xs font-medium uppercase tracking-wide text-slate-500">
           Adresse d'envoi
         </label>
         <input
@@ -77,12 +77,12 @@ export function OfEmailForm({ initial, onSaved, onCancel }: OfEmailFormProps) {
           autoComplete="email"
           placeholder="formation@start-academy.fr"
           {...register('emailFrom')}
-          className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
         />
         {errors.emailFrom && (
           <p className="text-xs text-red-600">{errors.emailFrom.message}</p>
         )}
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-[11px] text-slate-500">
           Laisser vide pour repasser au fallback ENV (<code>OF_EMAIL</code>).
         </p>
       </div>
@@ -95,19 +95,19 @@ export function OfEmailForm({ initial, onSaved, onCancel }: OfEmailFormProps) {
         </span>
       </div>
 
-      <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
         <button
           type="button"
           onClick={onCancel}
           disabled={isPending}
-          className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+          className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
         >
           Annuler
         </button>
         <button
           type="submit"
           disabled={isPending}
-          className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? 'Enregistrement…' : 'Enregistrer'}
         </button>

@@ -10,18 +10,18 @@ export default async function LoginPage() {
       {/* Décor : 2 blobs gradient floutés en arrière-plan (style Stripe/Linear) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gradient-to-br from-blue-200/40 to-primary-100/40 blur-3xl"
+        className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-200/50 to-blue-200/40 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-violet-200/30 to-primary-100/40 blur-3xl"
+        className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-blue-200/40 to-indigo-200/50 blur-3xl"
       />
 
       <div className="relative w-full max-w-md">
         {/* Carte de connexion */}
-        <div className="bg-white rounded-2xl ring-1 ring-slate-200/70 shadow-elevated p-8 space-y-6">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-elevated p-8 space-y-6">
           <div className="text-center space-y-3">
-            <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary via-primary-600 to-primary-800 text-white text-xl font-bold shadow-card ring-1 ring-white/20">
+            <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white text-xl font-bold shadow-card ring-1 ring-white/20">
               Q
             </div>
             <div>
@@ -33,8 +33,8 @@ export default async function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-slate-500 mt-6">
-          Compte de démonstration : <code className="font-mono bg-white ring-1 ring-slate-200 rounded px-1.5 py-0.5 text-slate-700 shadow-soft">admin@startacademy.fr</code>{' '}
-          / <code className="font-mono bg-white ring-1 ring-slate-200 rounded px-1.5 py-0.5 text-slate-700 shadow-soft">admin</code>
+          Compte de démonstration : <code className="font-mono bg-white border border-slate-200 rounded px-1.5 py-0.5 text-slate-700 shadow-soft">admin@startacademy.fr</code>{' '}
+          / <code className="font-mono bg-white border border-slate-200 rounded px-1.5 py-0.5 text-slate-700 shadow-soft">admin</code>
         </p>
       </div>
     </div>

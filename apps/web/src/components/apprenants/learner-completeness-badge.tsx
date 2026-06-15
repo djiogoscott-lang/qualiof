@@ -44,7 +44,7 @@ export function LearnerCompletenessBadge({ result }: { result: CompletenessResul
               {percent}% complète
             </span>
             {missing.length > 0 ? (
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-slate-500">
                 · {missing.length} champ{missing.length > 1 ? 's' : ''} à renseigner
               </span>
             ) : (

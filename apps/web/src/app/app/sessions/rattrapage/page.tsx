@@ -27,7 +27,7 @@ export default async function RattrapagePage() {
     <div className="space-y-6 max-w-5xl">
       <Link
         href="/app/sessions"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Retour aux sessions
       </Link>
@@ -45,8 +45,8 @@ export default async function RattrapagePage() {
         <div className="rounded-2xl border border-primary/30 bg-primary-50/30 p-5 flex items-start gap-3">
           <Sparkles className="h-5 w-5 text-primary mt-0.5 shrink-0" />
           <div className="text-sm">
-            <p className="font-medium text-foreground mb-1">Comment ça marche</p>
-            <p className="text-muted-foreground">
+            <p className="font-medium text-slate-900 mb-1">Comment ça marche</p>
+            <p className="text-slate-500">
               Pour chaque apprenant manquant, on te propose les candidats les plus probables (par
               similarité de nom). Clique pour valider l'inscription. Si l'apprenant a plusieurs
               casquettes (cas EI), tu choisis quelle organisation paye. <strong>Tu ne risques jamais
@@ -75,12 +75,12 @@ export default async function RattrapagePage() {
       )}
 
       {data.sessions.length > 0 && (
-        <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
           <h3 className="font-semibold mb-2 inline-flex items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-amber-600" />
             Apprenants candidats absents ?
           </h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-slate-500">
             Si un apprenant Excel n'a aucun candidat dans la liste, c'est probablement qu'il n'existe
             pas dans la base contacts. Va sur <Link href="/app/apprenants" className="text-primary hover:underline">
             la page Apprenants</Link> pour le créer manuellement, puis reviens ici.

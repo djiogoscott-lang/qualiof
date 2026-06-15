@@ -29,10 +29,10 @@ export function LearnerTimeline({ groups, personHrefForEmpty }: Props) {
     return (
       <section
         id="timeline"
-        className="rounded-2xl border border-dashed border-border bg-white p-8 text-center"
+        className="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center"
       >
-        <p className="font-semibold text-foreground mb-1">Aucune session suivie</p>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="font-semibold text-slate-900 mb-1">Aucune session suivie</p>
+        <p className="text-sm text-slate-500 mb-4">
           Cet apprenant n&apos;est inscrit dans aucune session formée.
         </p>
         {personHrefForEmpty && (

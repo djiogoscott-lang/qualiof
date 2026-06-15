@@ -9,7 +9,9 @@
  *     subject: '…',
  *     html: '…',
  *     text: '…',
- *     idempotencyKey: `lead-assigned:${leadId}:${assigneeId}`,
+ *     idempotencyKey: `lead-assigned-${leadId}-${assigneeId}`,
+ *
+ * ⚠ Le jobId BullMQ interdit le caractère `:` ; utiliser `-` comme séparateur.
  *   });
  *
  * Retour :

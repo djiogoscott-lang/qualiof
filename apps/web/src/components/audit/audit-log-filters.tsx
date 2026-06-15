@@ -55,12 +55,12 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
   };
 
   return (
-    <div className="rounded-lg border border-border bg-muted/30 p-4 space-y-3">
+    <div className="rounded-lg border border-slate-200 bg-slate-100/30 p-4 space-y-3">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="space-y-1">
           <label
             htmlFor="audit-filter-user"
-            className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground"
+            className="text-[11px] font-medium uppercase tracking-wide text-slate-500"
           >
             Utilisateur
           </label>
@@ -68,7 +68,7 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
             id="audit-filter-user"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
-            className="w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           >
             <option value="">Tous les utilisateurs</option>
             {users.map((u) => (
@@ -82,7 +82,7 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
         <div className="space-y-1">
           <label
             htmlFor="audit-filter-action"
-            className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground"
+            className="text-[11px] font-medium uppercase tracking-wide text-slate-500"
           >
             Type d'action
           </label>
@@ -90,7 +90,7 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
             id="audit-filter-action"
             value={action}
             onChange={(e) => setAction(e.target.value)}
-            className="w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           >
             <option value="">Toutes les actions</option>
             <option value="parameters.">parameters.* (paramètres OF)</option>
@@ -102,7 +102,7 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
         <div className="space-y-1">
           <label
             htmlFor="audit-filter-from"
-            className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground"
+            className="text-[11px] font-medium uppercase tracking-wide text-slate-500"
           >
             Du
           </label>
@@ -111,14 +111,14 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
             type="date"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
 
         <div className="space-y-1">
           <label
             htmlFor="audit-filter-to"
-            className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground"
+            className="text-[11px] font-medium uppercase tracking-wide text-slate-500"
           >
             Au
           </label>
@@ -127,16 +127,16 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
             type="date"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
       </div>
 
-      <div className="flex justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex justify-end gap-2 pt-2 border-t border-slate-200">
         <button
           type="button"
           onClick={reset}
-          className="inline-flex items-center gap-1.5 rounded-md border border-border bg-white px-3 py-1.5 text-sm hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-100 transition-colors"
         >
           <RotateCcw className="h-3.5 w-3.5" />
           Réinitialiser
@@ -144,7 +144,7 @@ export function AuditLogFilters({ users, initial }: AuditLogFiltersProps) {
         <button
           type="button"
           onClick={apply}
-          className="inline-flex items-center gap-1.5 rounded-md bg-primary text-white text-sm font-medium px-3 py-1.5 hover:bg-primary-600 transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium px-3 py-1.5 shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200"
         >
           <Filter className="h-3.5 w-3.5" />
           Filtrer

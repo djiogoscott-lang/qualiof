@@ -83,7 +83,7 @@ function SharedDocRow({ done, label }: { done: boolean; label: string }) {
       ) : (
         <Minus className="h-4 w-4 text-slate-400 shrink-0" />
       )}
-      <span className={done ? 'text-foreground' : 'text-muted-foreground'}>{label}</span>
+      <span className={done ? 'text-slate-900' : 'text-slate-500'}>{label}</span>
     </li>
   );
 }
@@ -109,7 +109,7 @@ function ParticipantDocRow({
       ) : (
         <Minus className="h-4 w-4 text-slate-400 shrink-0" />
       )}
-      <span className={allDone ? 'text-foreground' : 'text-muted-foreground'}>
+      <span className={allDone ? 'text-slate-900' : 'text-slate-500'}>
         {label}{' '}
         <span className="tabular-nums text-xs">
           ({doneCount}/{total})
@@ -167,7 +167,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
   const missingCount = countMissing(status);
 
   return (
-    <section className="rounded-2xl border border-border bg-white p-5">
+    <section className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-start justify-between gap-3 mb-4 flex-wrap">
         <div className="flex items-center gap-2">
           <ClipboardList className="h-5 w-5 text-primary" />
@@ -178,7 +178,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
 
         {/* CTA contextualisé selon l'état */}
         {!canWrite ? (
-          <span className="text-xs text-muted-foreground">Lecture seule</span>
+          <span className="text-xs text-slate-500">Lecture seule</span>
         ) : complete ? (
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium">
@@ -186,7 +186,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
             </span>
             <a
               href="#section-participants"
-              className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
+              className="text-xs text-slate-500 hover:text-slate-900 underline underline-offset-2"
             >
               Voir les participants
             </a>
@@ -196,7 +196,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
             type="button"
             onClick={handleCompleter}
             disabled={pending || N === 0}
-            className="inline-flex items-center gap-1.5 h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-1.5 h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             title={N === 0 ? 'Aucun apprenant inscrit' : 'Génère les 6 catégories de docs pré-formation'}
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <ClipboardList className="h-4 w-4" />}
@@ -207,7 +207,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
             type="button"
             onClick={handleCompleter}
             disabled={pending}
-            className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 transition-colors disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 transition-colors disabled:opacity-60"
             title="Régénère uniquement les docs manquants (idempotent)"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <ClipboardList className="h-4 w-4" />}
@@ -225,7 +225,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
             Documents partagés
           </h3>
           <ul className="space-y-1.5">
@@ -236,7 +236,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
             Documents par stagiaire ({N})
           </h3>
           <ul className="space-y-1.5">
@@ -261,7 +261,7 @@ export function PreparationPedagogiqueBlock({ sessionId, initialStatus, canWrite
       </div>
 
       {analyseBesoinInflight > 0 && (
-        <p className="text-[11px] text-muted-foreground mt-3 italic">
+        <p className="text-[11px] text-slate-500 mt-3 italic">
           Analyse besoin générée par Ollama en arrière-plan ({analyseBesoinInflight} restant{analyseBesoinInflight > 1 ? 's' : ''}) · rafraîchissement auto toutes les 5s.
         </p>
       )}

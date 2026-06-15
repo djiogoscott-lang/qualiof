@@ -119,8 +119,8 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
           {/* Coordonnées */}
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Coordonnées
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -141,12 +141,12 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
           </section>
 
           {/* Sessions animées */}
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Sessions animées ({totalSessions})
             </h2>
             {trainer.trainerSessions.length === 0 ? (
-              <p className="text-sm text-muted-foreground italic">Pas encore d'affectation à une session.</p>
+              <p className="text-sm text-slate-500 italic">Pas encore d'affectation à une session.</p>
             ) : (
               <ul className="space-y-2">
                 {trainer.trainerSessions.slice(0, 12).map((ts) => {
@@ -154,7 +154,7 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
                   return (
                     <li
                       key={ts.id}
-                      className="flex items-center gap-3 p-2.5 rounded-lg border border-border hover:bg-muted/30 transition-colors"
+                      className="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
                     >
                       <Badge variant="muted" className="font-mono shrink-0">{ts.session.code}</Badge>
                       <Link
@@ -162,7 +162,7 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
                         className="flex-1 min-w-0 text-sm hover:text-primary transition-colors"
                       >
                         <div className="font-medium truncate">{ts.session.name ?? '(sans nom)'}</div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-xs text-slate-500">
                           {new Date(ts.session.startDate).toLocaleDateString('fr-FR')}
                           {ts.session.product?.theme ? ` · ${ts.session.product.theme}` : ''}
                           {ts.session.product?.durationHours ? ` · ${ts.session.product.durationHours}h` : ''}
@@ -177,7 +177,7 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
               </ul>
             )}
             {trainer.trainerSessions.length > 12 && (
-              <p className="text-xs text-muted-foreground mt-3 text-center">
+              <p className="text-xs text-slate-500 mt-3 text-center">
                 + {trainer.trainerSessions.length - 12} autre(s) session(s)
               </p>
             )}
@@ -187,8 +187,8 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
         {/* Sidebar */}
         <div className="space-y-6">
           {topThemes.length > 0 && (
-            <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
                 <Award className="h-4 w-4" /> Expertise
               </h2>
               <ul className="space-y-3">
@@ -198,11 +198,11 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
                     <li key={t.theme}>
                       <div className="flex items-center justify-between gap-2 text-sm mb-1">
                         <span className="font-medium truncate">{t.theme}</span>
-                        <span className="text-xs text-muted-foreground tabular-nums shrink-0">
+                        <span className="text-xs text-slate-500 tabular-nums shrink-0">
                           {t.sessions} session{t.sessions > 1 ? 's' : ''} · {t.hours}h
                         </span>
                       </div>
-                      <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+                      <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
                         <div
                           className="h-full bg-primary rounded-full transition-all"
                           style={{ width: `${pct}%` }}
@@ -212,24 +212,24 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
                   );
                 })}
               </ul>
-              <p className="text-[11px] text-muted-foreground mt-3">
+              <p className="text-[11px] text-slate-500 mt-3">
                 Top thèmes par volume horaire animé (sessions terminées + en cours).
               </p>
             </section>
           )}
 
           {subOrg && (
-            <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
                 <Briefcase className="h-4 w-4" /> Structure de sous-traitance
               </h2>
               <Link
                 href={`/app/organisations/${subOrg.id}`}
-                className="block p-3 rounded-lg border border-border hover:bg-muted/30 transition-colors"
+                className="block p-3 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
               >
                 <div className="font-medium">{subOrg.legalName}</div>
                 {subOrg.siret && (
-                  <div className="text-xs text-muted-foreground mt-1">
+                  <div className="text-xs text-slate-500 mt-1">
                     SIRET <code className="font-mono">{subOrg.siret}</code>
                   </div>
                 )}
@@ -241,8 +241,8 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
           )}
 
           {/* Profil pédagogique */}
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Profil pédagogique
             </h2>
             <dl className="space-y-3 text-sm">
@@ -267,23 +267,23 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
 
           {/* Disponibilités */}
           {trainer.trainerAvailabilities.length > 0 && (
-            <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-muted-foreground">
+            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-slate-500">
                 Prochaines disponibilités
               </h2>
               <ul className="space-y-2 text-sm">
                 {trainer.trainerAvailabilities.map((a) => (
                   <li key={a.id} className="text-xs">
                     <span className="font-medium">{new Date(a.startsAt).toLocaleDateString('fr-FR')}</span>
-                    <span className="text-muted-foreground"> · {a.status}</span>
+                    <span className="text-slate-500"> · {a.status}</span>
                   </li>
                 ))}
               </ul>
             </section>
           )}
 
-          <section className="rounded-2xl border border-dashed border-border bg-muted/30 p-5 text-xs text-muted-foreground">
-            <p className="font-semibold text-foreground mb-1.5">Bientôt disponible :</p>
+          <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/30 p-5 text-xs text-slate-500">
+            <p className="font-semibold text-slate-900 mb-1.5">Bientôt disponible :</p>
             <ul className="space-y-0.5 list-disc pl-4">
               <li>Édition des coordonnées et tarif (palier 2.2)</li>
               <li>Calendrier de disponibilités cliquable (palier 3)</li>
@@ -298,15 +298,15 @@ export default async function FormateurDetailPage({ params }: { params: Promise<
 
 function StatBlock({ label, value, hint, suffix }: { label: string; value: number; hint?: string; suffix?: string }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5">
-      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
+      <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">
         {label}
       </div>
       <div className="text-3xl font-semibold mt-1.5 tabular-nums">
         {value}
-        {suffix && <span className="text-base text-muted-foreground ml-1">{suffix}</span>}
+        {suffix && <span className="text-base text-slate-500 ml-1">{suffix}</span>}
       </div>
-      {hint && <div className="text-xs text-muted-foreground mt-1">{hint}</div>}
+      {hint && <div className="text-xs text-slate-500 mt-1">{hint}</div>}
     </div>
   );
 }
@@ -321,9 +321,9 @@ function FieldIcon({
 }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+      <Icon className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-medium">{label}</div>
+        <div className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">{label}</div>
         <div className={multiline ? 'whitespace-pre-line' : ''}>{value}</div>
       </div>
     </div>

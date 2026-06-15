@@ -58,7 +58,7 @@ export function SessionDatesEditor({ sessionId, initialStart, initialEnd }: Prop
 
   if (!editing) {
     return (
-      <span className="inline-flex items-center gap-1 text-xs text-muted-foreground group">
+      <span className="inline-flex items-center gap-1 text-xs text-slate-500 group">
         <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
         {toFrDate(initialStart)} → {toFrDate(initialEnd)}
         <button
@@ -66,7 +66,7 @@ export function SessionDatesEditor({ sessionId, initialStart, initialEnd }: Prop
           onClick={() => setEditing(true)}
           title="Modifier les dates"
           aria-label="Modifier les dates de la session"
-          className="opacity-50 group-hover:opacity-100 hover:text-foreground transition-opacity ml-1"
+          className="opacity-50 group-hover:opacity-100 hover:text-slate-900 transition-opacity ml-1"
         >
           <Pencil className="h-3 w-3" />
         </button>
@@ -76,21 +76,21 @@ export function SessionDatesEditor({ sessionId, initialStart, initialEnd }: Prop
 
   return (
     <span className="inline-flex items-center gap-1.5 text-xs">
-      <Calendar className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+      <Calendar className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" />
       <input
         type="date"
         value={startStr}
         onChange={(e) => setStartStr(e.target.value)}
         disabled={pending}
-        className="h-7 px-1.5 rounded border border-border text-xs"
+        className="h-7 px-1.5 rounded border border-slate-200 text-xs"
       />
-      <span className="text-muted-foreground">→</span>
+      <span className="text-slate-500">→</span>
       <input
         type="date"
         value={endStr}
         onChange={(e) => setEndStr(e.target.value)}
         disabled={pending}
-        className="h-7 px-1.5 rounded border border-border text-xs"
+        className="h-7 px-1.5 rounded border border-slate-200 text-xs"
       />
       <button
         type="button"
@@ -106,7 +106,7 @@ export function SessionDatesEditor({ sessionId, initialStart, initialEnd }: Prop
         onClick={cancel}
         disabled={pending}
         title="Annuler"
-        className="p-1 rounded text-muted-foreground hover:bg-muted disabled:opacity-50"
+        className="p-1 rounded text-slate-500 hover:bg-slate-100 disabled:opacity-50"
       >
         <X className="h-3.5 w-3.5" />
       </button>

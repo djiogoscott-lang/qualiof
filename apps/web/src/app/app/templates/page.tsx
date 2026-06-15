@@ -37,7 +37,7 @@ export default async function TemplatesPage() {
     <div className="space-y-8">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">Modèles de documents</h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-sm text-slate-500 mt-1">
           Catalogue read-only des {total} templates utilisés pour générer les documents
           Qualiopi, AGEFICE et les emails. Chaque template est défini dans le code source —
           voir la colonne « Source » pour le chemin de fichier.
@@ -53,13 +53,13 @@ export default async function TemplatesPage() {
             <div className="flex items-center gap-2">
               <Icon className="h-5 w-5 text-primary-700" />
               <h2 className="text-lg font-semibold">{CATEGORY_LABELS[cat]}</h2>
-              <span className="text-xs text-muted-foreground rounded-full bg-muted px-2 py-0.5">
+              <span className="text-xs text-slate-500 rounded-full bg-slate-100 px-2 py-0.5">
                 {counts[cat]}
               </span>
             </div>
             <div className="rounded-lg border bg-card overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
+                <thead className="bg-slate-100/50 text-xs uppercase tracking-wider text-slate-500">
                   <tr>
                     <th className="px-4 py-2 text-left font-medium">Template</th>
                     <th className="px-4 py-2 text-left font-medium">Source</th>
@@ -68,15 +68,15 @@ export default async function TemplatesPage() {
                 </thead>
                 <tbody className="divide-y">
                   {items.map((t) => (
-                    <tr key={t.id} className="hover:bg-muted/30">
+                    <tr key={t.id} className="hover:bg-slate-100/30">
                       <td className="px-4 py-3 align-top">
                         <div className="font-medium">{t.label}</div>
-                        <div className="text-xs text-muted-foreground mt-0.5">
+                        <div className="text-xs text-slate-500 mt-0.5">
                           {t.description}
                         </div>
                       </td>
                       <td className="px-4 py-3 align-top">
-                        <code className="text-xs text-muted-foreground break-all">
+                        <code className="text-xs text-slate-500 break-all">
                           {t.sourcePath}
                         </code>
                       </td>
@@ -91,7 +91,7 @@ export default async function TemplatesPage() {
                             </span>
                           ))}
                           {t.variables.length > 6 && (
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-xs text-slate-500">
                               +{t.variables.length - 6}
                             </span>
                           )}
@@ -106,8 +106,8 @@ export default async function TemplatesPage() {
         );
       })}
 
-      <aside className="rounded-lg border border-dashed bg-muted/30 p-4 text-xs text-muted-foreground">
-        <strong className="text-foreground">Note V1 (Phase 12) :</strong> cette vue est en
+      <aside className="rounded-lg border border-dashed bg-slate-100/30 p-4 text-xs text-slate-500">
+        <strong className="text-slate-900">Note V1 (Phase 12) :</strong> cette vue est en
         lecture seule. L&apos;édition des templates passe encore par le code source. Si tu
         as besoin de modifier un template, ouvre le fichier listé dans la colonne « Source »
         et propose le changement via une PR (ou demande à Claude via /gsd:quick). Un aperçu

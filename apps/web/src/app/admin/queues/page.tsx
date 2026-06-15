@@ -134,7 +134,7 @@ function Counter({ label, value, tone }: { label: string; value: number; tone: '
   return (
     <div className={`rounded-xl ring-1 p-4 ${cls}`}>
       <div className="text-2xl font-semibold tabular-nums">{value}</div>
-      <div className="text-xs uppercase tracking-wide text-muted-foreground mt-1">{label}</div>
+      <div className="text-xs uppercase tracking-wide text-slate-500 mt-1">{label}</div>
     </div>
   );
 }
@@ -157,7 +157,7 @@ export default async function QueuesPage() {
         <Server className="h-6 w-6 text-primary" />
         <div>
           <h1 className="text-2xl font-semibold">Queues BullMQ</h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-slate-500">
             Monitoring temps réel des jobs (closure docs, relances factures). Actualise la page pour rafraîchir.
           </p>
         </div>
@@ -179,9 +179,9 @@ export default async function QueuesPage() {
             <Counter label="Paused"    value={q.counts.paused}    tone="neutral" />
           </div>
 
-          <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-slate-50 text-xs uppercase tracking-wide text-muted-foreground">
+              <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
                 <tr>
                   <th className="text-left p-3">Job</th>
                   <th className="text-left p-3">État</th>
@@ -194,7 +194,7 @@ export default async function QueuesPage() {
               <tbody>
                 {q.recent.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="p-6 text-center text-muted-foreground text-xs">
+                    <td colSpan={6} className="p-6 text-center text-slate-500 text-xs">
                       Aucun job récent dans cette queue.
                     </td>
                   </tr>
@@ -202,11 +202,11 @@ export default async function QueuesPage() {
                 {q.recent.map((j) => (
                   <tr key={j.id} className="border-t border-slate-100">
                     <td className="p-3 font-mono text-xs">
-                      <span className="text-muted-foreground">#{j.id.slice(0, 8)}</span>{' '}
+                      <span className="text-slate-500">#{j.id.slice(0, 8)}</span>{' '}
                       <span>{j.name}</span>
                     </td>
                     <td className="p-3"><StateBadge state={j.state} /></td>
-                    <td className="p-3 text-xs text-muted-foreground">
+                    <td className="p-3 text-xs text-slate-500">
                       {formatRelative(j.timestamp)}
                     </td>
                     <td className="p-3 text-xs tabular-nums">

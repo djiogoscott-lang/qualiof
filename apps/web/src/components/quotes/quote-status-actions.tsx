@@ -53,7 +53,7 @@ export function QuoteStatusActions({ quoteId, status, linesCount }: Props) {
         onClick={() => run(() => markAsSent(quoteId), 'Devis marqué envoyé')}
         disabled={pending || linesCount === 0}
         title={linesCount === 0 ? 'Ajoute au moins une ligne avant d\'envoyer' : 'Marquer le devis comme envoyé au client'}
-        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
         Marquer envoyé
@@ -77,7 +77,7 @@ export function QuoteStatusActions({ quoteId, status, linesCount }: Props) {
           type="button"
           onClick={() => run(() => markAsRejected(quoteId), 'Devis refusé')}
           disabled={pending}
-          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-foreground text-sm font-medium hover:bg-muted/40 disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm font-medium hover:bg-slate-100/40 disabled:opacity-60"
         >
           <XCircle className="h-4 w-4" />
           Refusé
@@ -92,7 +92,7 @@ export function QuoteStatusActions({ quoteId, status, linesCount }: Props) {
       type="button"
       onClick={() => run(() => reopenQuote(quoteId), 'Devis rouvert en brouillon')}
       disabled={pending}
-      className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-foreground text-sm font-medium hover:bg-muted/40 disabled:opacity-60"
+      className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm font-medium hover:bg-slate-100/40 disabled:opacity-60"
     >
       {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <RotateCcw className="h-4 w-4" />}
       Rouvrir

@@ -108,12 +108,15 @@ export async function createPreEnrollmentLink(input: {
         );
         // Sprint 3 — Queue mailer pour ne pas bloquer l'action sur l'envoi SMTP.
         // Idempotency key par token : empêche un double-clic de générer 2 mails.
+        // ⚠ BullMQ jobId interdit `:` → utiliser `-` comme séparateur (cf log
+        // "Custom Id cannot contain :" qui cassait silencieusement l'envoi
+        // et forçait le fallback inline en dry-run même quand SMTP est configuré).
         const r = await enqueueMail({
           to: input.email.trim(),
           subject,
           html,
           text,
-          idempotencyKey: `preinscription-link:${token}`,
+          idempotencyKey: `preinscription-link-${token}`,
         });
         emailSent = r.ok && r.mode !== 'dry-run';
         emailDryRun = r.mode === 'dry-run';

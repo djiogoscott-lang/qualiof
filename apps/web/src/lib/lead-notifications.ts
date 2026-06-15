@@ -106,7 +106,7 @@ export async function notifyLeadAssigned(opts: NotifyLeadAssignedOptions): Promi
       subject,
       html,
       text,
-      idempotencyKey: `lead-assigned:${opts.leadId}:${owner.id}`,
+      idempotencyKey: `lead-assigned-${opts.leadId}-${owner.id}`,
     });
     // Pitfall 5 (option b) : on ignore volontairement le résultat dryRun.
     // L'AuditLog atteste la décision d'envoi, pas la livraison physique.

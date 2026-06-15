@@ -70,7 +70,7 @@ export function Sidebar({ role }: SidebarProps) {
         )}
       >
         <Link href="/app" className="flex items-center gap-3 group">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary via-primary-600 to-primary-800 text-white font-bold inline-flex items-center justify-center shrink-0 shadow-card ring-1 ring-white/20 transition-all duration-200 group-hover:scale-105 group-hover:shadow-card-hover">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-bold inline-flex items-center justify-center shrink-0 shadow-card ring-1 ring-white/20 transition-all duration-200 group-hover:scale-105 group-hover:shadow-card-hover">
             Q
           </div>
           {!collapsed && (

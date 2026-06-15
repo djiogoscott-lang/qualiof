@@ -164,14 +164,14 @@ export default async function ProductDetailPage({
                 {product.code}
               </Badge>
               <Badge variant="info">{MOD_LABEL[product.modality] ?? product.modality}</Badge>
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1 text-xs text-slate-500">
                 <Clock className="h-3.5 w-3.5" /> {product.durationHours}h
               </span>
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1 text-xs text-slate-500">
                 <Users className="h-3.5 w-3.5" /> {product.capacityMin}–{product.capacityMax} personnes
               </span>
               {Number(product.priceHT) > 0 && (
-                <span className="text-xs font-medium text-foreground">
+                <span className="text-xs font-medium text-slate-900">
                   {Number(product.priceHT).toFixed(0)} € HT
                 </span>
               )}

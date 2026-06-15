@@ -114,7 +114,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors"
+          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors"
         >
           <Plus className="h-4 w-4" />
           Ajouter une source
@@ -122,7 +122,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[560px] max-w-[95vw] max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[560px] max-w-[95vw] max-h-[90vh] overflow-y-auto rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <div className="flex items-start gap-3 mb-5">
             <div className="shrink-0 rounded-md bg-primary-50 p-2 text-primary-700">
               <Newspaper className="h-5 w-5" />
@@ -131,7 +131,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <Dialog.Title className="text-lg font-semibold">
                 Ajouter une source de veille
               </Dialog.Title>
-              <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+              <Dialog.Description className="mt-1 text-sm text-slate-500">
                 Documenter une nouvelle source pour l&apos;audit Qualiopi (indicateurs 23 / 24 / 25 / 26).
               </Dialog.Description>
             </div>
@@ -142,14 +142,14 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-theme"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Thème *
                 </label>
                 <select
                   id="add-theme"
                   {...register('theme')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 >
                   {(Object.keys(THEME_LABELS) as Theme[]).map((t) => (
                     <option key={t} value={t}>
@@ -165,7 +165,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-frequency"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Fréquence
                 </label>
@@ -174,7 +174,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                   type="text"
                   placeholder="Mensuelle, Hebdo, Trimestrielle…"
                   {...register('frequency')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -182,7 +182,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
             <div className="space-y-1.5">
               <label
                 htmlFor="add-title"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 Titre *
               </label>
@@ -191,7 +191,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                 type="text"
                 placeholder="Titre court de la source (ex: France Compétences — Actualités)"
                 {...register('title')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
               {errors.title && (
                 <p className="text-xs text-red-600">{errors.title.message}</p>
@@ -201,7 +201,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
             <div className="space-y-1.5">
               <label
                 htmlFor="add-url"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 URL
               </label>
@@ -210,7 +210,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                 type="url"
                 placeholder="https://…"
                 {...register('url')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
               {errors.url && (
                 <p className="text-xs text-red-600">{errors.url.message}</p>
@@ -221,7 +221,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-source"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Source
                 </label>
@@ -230,13 +230,13 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                   type="text"
                   placeholder="Organisme, éditeur…"
                   {...register('source')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-responsable"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Responsable
                 </label>
@@ -245,7 +245,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                   type="text"
                   placeholder="Direction, Nom Prénom…"
                   {...register('responsable')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -254,7 +254,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-typesource"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Type de source
                 </label>
@@ -263,13 +263,13 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                   type="text"
                   placeholder="RSS, Newsletter, Site web…"
                   {...register('typeSource')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
               <div className="space-y-1.5">
                 <label
                   htmlFor="add-modesuivi"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Mode de suivi
                 </label>
@@ -278,7 +278,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                   type="text"
                   placeholder="Email, RSS reader, manuel…"
                   {...register('modeSuivi')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -286,7 +286,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
             <div className="space-y-1.5">
               <label
                 htmlFor="add-exploitation"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 Exploitation (audit Qualiopi)
               </label>
@@ -295,7 +295,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
                 rows={3}
                 placeholder="Comment cette source est-elle exploitée dans l'OF ?"
                 {...register('exploitation')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
             </div>
 
@@ -305,12 +305,12 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               </p>
             )}
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-border">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
               <Dialog.Close asChild>
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
                 >
                   Annuler
                 </button>
@@ -318,7 +318,7 @@ export function AddVeilleDialog({ defaultTheme }: AddVeilleDialogProps) {
               <button
                 type="submit"
                 disabled={pending}
-                className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {pending ? 'Ajout…' : 'Ajouter la source'}
               </button>

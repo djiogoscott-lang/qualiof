@@ -51,7 +51,7 @@ export function InvoicesListTable({ rows }: Props) {
     return (
       <div
         role="status"
-        className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card py-16 text-center text-sm text-slate-500"
+        className="rounded-2xl border border-slate-200 bg-white shadow-sm py-16 text-center text-sm text-slate-500"
       >
         Aucune facture pour cette période
       </div>
@@ -59,7 +59,7 @@ export function InvoicesListTable({ rows }: Props) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card">
+    <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
       <table className="min-w-full">
         <thead>
           <tr className="bg-slate-50/50 border-b border-slate-200">

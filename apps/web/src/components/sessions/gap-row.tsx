@@ -26,17 +26,17 @@ export function GapRow({ gap }: { gap: SessionGap }) {
   const [resolved, setResolved] = useState<Set<string>>(new Set());
 
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-3 p-4 hover:bg-muted/30 transition-colors text-left"
+        className="w-full flex items-center gap-3 p-4 hover:bg-slate-100/30 transition-colors text-left"
       >
-        {open ? <ChevronDown className="h-4 w-4 text-muted-foreground" /> : <ChevronRight className="h-4 w-4 text-muted-foreground" />}
+        {open ? <ChevronDown className="h-4 w-4 text-slate-500" /> : <ChevronRight className="h-4 w-4 text-slate-500" />}
         <Badge variant="muted" className="font-mono">{gap.sessionCode}</Badge>
         <div className="flex-1 min-w-0">
           <div className="font-medium text-sm truncate">{gap.sessionName ?? '(sans nom)'}</div>
-          <div className="text-xs text-muted-foreground mt-0.5">
+          <div className="text-xs text-slate-500 mt-0.5">
             {new Date(gap.startDate).toLocaleDateString('fr-FR')} ·{' '}
             {gap.registeredCount}/{gap.expectedCount} inscrits
           </div>
@@ -54,7 +54,7 @@ export function GapRow({ gap }: { gap: SessionGap }) {
       </button>
 
       {open && (
-        <ul className="border-t border-border divide-y divide-border bg-muted/10">
+        <ul className="border-t border-slate-200 divide-y divide-slate-200 bg-slate-100/10">
           {gap.missing.map((m) => (
             <MissingRow
               key={m.rawName}
@@ -130,7 +130,7 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
         <AlertCircle className="h-4 w-4 text-amber-600 shrink-0" />
         <div className="flex-1">
           <div className="text-sm font-medium">{rawName}</div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-slate-500">
             Apprenant cité dans l'Excel mais non inscrit en base.
           </div>
         </div>
@@ -138,7 +138,7 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
           type="button"
           onClick={ignore}
           disabled={pending}
-          className="text-xs text-muted-foreground hover:text-foreground"
+          className="text-xs text-slate-500 hover:text-slate-900"
         >
           Ignorer
         </button>
@@ -158,9 +158,9 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
                 type="button"
                 disabled={pending}
                 onClick={() => inscribe(pickedCandidate.id, link.organization.id)}
-                className="w-full flex items-center gap-2 p-2.5 rounded-md border border-border bg-white hover:border-primary hover:shadow-sm transition-all text-left text-sm"
+                className="w-full flex items-center gap-2 p-2.5 rounded-md border border-slate-200 bg-white hover:border-primary hover:shadow-sm transition-all text-left text-sm"
               >
-                <Briefcase className="h-3.5 w-3.5 text-muted-foreground" />
+                <Briefcase className="h-3.5 w-3.5 text-slate-500" />
                 <span className="flex-1 truncate">{link.organization.legalName}</span>
                 <Badge variant={isEi ? 'primary' : 'muted'}>
                   {isEi ? 'EI' : ROLE_LABELS[link.role] ?? link.role}
@@ -172,7 +172,7 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
           <button
             type="button"
             onClick={() => setPickedCandidate(null)}
-            className="text-xs text-muted-foreground hover:text-foreground mt-1"
+            className="text-xs text-slate-500 hover:text-slate-900 mt-1"
           >
             ← Choisir un autre apprenant
           </button>
@@ -180,7 +180,7 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
       ) : (
         <div className="ml-7 space-y-1.5">
           {candidates.length === 0 ? (
-            <div className="text-xs text-muted-foreground italic">
+            <div className="text-xs text-slate-500 italic">
               Aucun candidat trouvé. Vérifie qu'il existe dans la base apprenants.
             </div>
           ) : (
@@ -198,12 +198,12 @@ function MissingRow({ sessionId, rawName, candidates, defaultPrice, done, onReso
                       setPickedCandidate(c);
                     }
                   }}
-                  className="w-full flex items-center gap-2 p-2.5 rounded-md border border-border bg-white hover:border-primary hover:shadow-sm transition-all text-left text-sm disabled:opacity-50"
+                  className="w-full flex items-center gap-2 p-2.5 rounded-md border border-slate-200 bg-white hover:border-primary hover:shadow-sm transition-all text-left text-sm disabled:opacity-50"
                   title={noLinks ? 'Aucune organisation rattachée à cet apprenant' : ''}
                 >
                   <span className="flex-1 truncate">
                     <span className="font-medium">{c.firstName} {c.lastName.toUpperCase()}</span>
-                    {c.email && <span className="text-xs text-muted-foreground ml-2">{c.email}</span>}
+                    {c.email && <span className="text-xs text-slate-500 ml-2">{c.email}</span>}
                   </span>
                   {c.legalLinks.length === 0 && <Badge variant="warning" className="shrink-0">pas d'org</Badge>}
                   {c.legalLinks.length === 1 && (

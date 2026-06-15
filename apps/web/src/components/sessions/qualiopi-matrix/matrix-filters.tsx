@@ -57,7 +57,7 @@ const FINANCING_LABELS: Record<MatrixFilterState['financingFilter'], string> = {
 
 const CHIP_BASE =
   'inline-flex items-center gap-2 px-3 h-8 rounded-full border text-xs font-medium transition-all duration-300 ease-out active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none';
-const CHIP_INACTIVE = 'bg-white text-foreground border-border hover:bg-muted/40';
+const CHIP_INACTIVE = 'bg-white text-slate-900 border-slate-200 hover:bg-slate-100/40';
 const CHIP_ACTIVE = 'bg-primary-50 text-primary-700 border-primary-100';
 
 function isDefault(state: MatrixFilterState): boolean {
@@ -112,13 +112,13 @@ export function MatrixFilters({ sessionId, opcoOptions, onChange }: MatrixFilter
           <DropdownMenu.Content
             align="start"
             sideOffset={4}
-            className="bg-white border border-border rounded-lg shadow-lg py-1 min-w-[180px] z-50"
+            className="bg-white border border-slate-200 rounded-lg shadow-lg py-1 min-w-[180px] z-50"
           >
             {(['name-asc', 'name-desc', 'opco', 'status'] as const).map((k) => (
               <DropdownMenu.Item
                 key={k}
                 onSelect={() => patch({ sort: k })}
-                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
               >
                 {SORT_LABELS[k]}
               </DropdownMenu.Item>
@@ -143,11 +143,11 @@ export function MatrixFilters({ sessionId, opcoOptions, onChange }: MatrixFilter
           <DropdownMenu.Content
             align="start"
             sideOffset={4}
-            className="bg-white border border-border rounded-lg shadow-lg py-1 min-w-[180px] z-50"
+            className="bg-white border border-slate-200 rounded-lg shadow-lg py-1 min-w-[180px] z-50"
           >
             <DropdownMenu.Item
               onSelect={() => patch({ opcoFilter: 'all' })}
-              className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+              className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
             >
               Tous
             </DropdownMenu.Item>
@@ -155,7 +155,7 @@ export function MatrixFilters({ sessionId, opcoOptions, onChange }: MatrixFilter
               <DropdownMenu.Item
                 key={opco}
                 onSelect={() => patch({ opcoFilter: opco })}
-                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
               >
                 {opco}
               </DropdownMenu.Item>
@@ -180,13 +180,13 @@ export function MatrixFilters({ sessionId, opcoOptions, onChange }: MatrixFilter
           <DropdownMenu.Content
             align="start"
             sideOffset={4}
-            className="bg-white border border-border rounded-lg shadow-lg py-1 min-w-[180px] z-50"
+            className="bg-white border border-slate-200 rounded-lg shadow-lg py-1 min-w-[180px] z-50"
           >
             {(['all', 'self', 'sponsor', 'mixed'] as const).map((k) => (
               <DropdownMenu.Item
                 key={k}
                 onSelect={() => patch({ financingFilter: k })}
-                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+                className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
               >
                 {FINANCING_LABELS[k]}
               </DropdownMenu.Item>
@@ -210,7 +210,7 @@ export function MatrixFilters({ sessionId, opcoOptions, onChange }: MatrixFilter
         <button
           type="button"
           onClick={reset}
-          className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-900"
         >
           <RotateCcw className="h-3 w-3" aria-hidden="true" /> Réinitialiser les filtres
         </button>

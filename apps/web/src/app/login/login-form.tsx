@@ -74,12 +74,12 @@ export function LoginForm() {
         disabled={isPending}
         className="
           w-full h-11 rounded-xl
-          bg-slate-900 text-white font-medium text-sm shadow-soft
+          bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium text-sm shadow-soft
           transition-all duration-300 ease-out
-          hover:bg-slate-800 hover:-translate-y-0.5
-          hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.35),0_0_20px_rgba(15,23,42,0.18)]
+          hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5
+          hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)]
           active:scale-[0.97]
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-1
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-1
           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-soft disabled:active:scale-100
         "
       >

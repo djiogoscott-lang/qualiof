@@ -25,12 +25,12 @@ export function Pagination({ total, page, pageSize, basePath, searchParams = {} 
   const start = (page - 1) * pageSize + 1;
   const end = Math.min(page * pageSize, total);
 
-  // Bouton SaaS Premium — bordure + shadow-soft, hover élévation.
+  // Bouton SaaS Premium — bordure slate + shadow-sm, hover élévation.
   const btn = (disabled: boolean) =>
     cn(
       'inline-flex h-9 items-center gap-1 px-3 rounded-xl text-xs font-semibold',
-      'bg-white text-slate-700 ring-1 ring-slate-200 shadow-soft transition-all duration-200',
-      'hover:ring-slate-300 hover:shadow-card hover:text-slate-900 hover:-translate-y-0.5',
+      'bg-white text-slate-700 border border-slate-200 shadow-sm transition-all duration-200',
+      'hover:border-slate-300 hover:shadow-md hover:text-slate-900 hover:-translate-y-0.5',
       disabled && 'opacity-40 pointer-events-none',
     );
 

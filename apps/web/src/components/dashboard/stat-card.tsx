@@ -11,21 +11,21 @@ interface Props {
 
 export function StatCard({ icon: Icon, label, value, hint, tone = 'default' }: Props) {
   const toneClasses = {
-    default: 'bg-white border-border',
+    default: 'bg-white border-slate-200',
     warning: 'bg-amber-50 border-amber-200',
     success: 'bg-emerald-50 border-emerald-200',
   };
   const iconBg = {
-    default: 'bg-primary-50 text-primary-700',
+    default: 'bg-indigo-50 text-indigo-600',
     warning: 'bg-amber-100 text-amber-700',
     success: 'bg-emerald-100 text-emerald-700',
   };
 
   return (
-    <div className={cn('rounded-2xl border p-5 transition-shadow hover:shadow-sm', toneClasses[tone])}>
+    <div className={cn('rounded-2xl border p-5 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5', toneClasses[tone])}>
       <div className="flex items-start justify-between">
         <div>
-          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+          <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">
             {label}
           </div>
           <div className="text-3xl font-semibold mt-1.5 tabular-nums">{value}</div>
@@ -34,7 +34,7 @@ export function StatCard({ icon: Icon, label, value, hint, tone = 'default' }: P
           <Icon className="h-4.5 w-4.5" />
         </div>
       </div>
-      {hint && <div className="text-xs text-muted-foreground mt-3">{hint}</div>}
+      {hint && <div className="text-xs text-slate-500 mt-3">{hint}</div>}
     </div>
   );
 }

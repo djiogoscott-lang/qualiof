@@ -54,9 +54,9 @@ export function SignatureProofPanel({
   }).format(signatureSignedAt);
 
   return (
-    <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-4">
+    <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
       <div className="flex items-start justify-between gap-3 flex-wrap">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
           <PenTool className="h-4 w-4" /> Signature électronique
         </h2>
         <span className="inline-flex items-center gap-1 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">
@@ -66,7 +66,7 @@ export function SignatureProofPanel({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
         {/* Preview signature */}
-        <div className="rounded-lg border border-border bg-slate-50 p-2">
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={sigUrl}
@@ -87,20 +87,20 @@ export function SignatureProofPanel({
           )}
           {signatureUserAgent && (
             <ProofRow icon={Monitor} label="Navigateur">
-              <span className="text-xs text-muted-foreground break-words">
+              <span className="text-xs text-slate-500 break-words">
                 {signatureUserAgent}
               </span>
             </ProofRow>
           )}
           <ProofRow icon={ShieldCheck} label="Hash SHA-256">
             <div className="flex items-center gap-2">
-              <code className="text-[10px] font-mono bg-muted px-2 py-1 rounded break-all flex-1 min-w-0">
+              <code className="text-[10px] font-mono bg-slate-100 px-2 py-1 rounded break-all flex-1 min-w-0">
                 {signatureHash.slice(0, 16)}…{signatureHash.slice(-16)}
               </code>
               <button
                 type="button"
                 onClick={handleCopy}
-                className="h-7 w-7 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground inline-flex items-center justify-center shrink-0"
+                className="h-7 w-7 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 inline-flex items-center justify-center shrink-0"
                 title="Copier le hash complet"
                 aria-label="Copier le hash complet"
               >
@@ -111,7 +111,7 @@ export function SignatureProofPanel({
         </dl>
       </div>
 
-      <p className="text-[11px] text-muted-foreground italic border-t border-border pt-3">
+      <p className="text-[11px] text-slate-500 italic border-t border-slate-200 pt-3">
         Signature électronique de niveau "simple" (eIDAS). La preuve combine
         signature graphique + horodatage + IP + hash cryptographique. Recevable
         pour les CGV, conventions de formation et attestations. Pour les
@@ -133,9 +133,9 @@ function ProofRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <Icon className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5" />
+      <Icon className="h-4 w-4 text-slate-500 shrink-0 mt-0.5" />
       <div className="flex-1 min-w-0">
-        <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">
+        <div className="text-[10px] uppercase tracking-wide text-slate-500 font-semibold mb-0.5">
           {label}
         </div>
         <div>{children}</div>

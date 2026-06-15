@@ -86,7 +86,7 @@ export function SessionLocationPicker({ sessionId }: Props) {
 
   if (loading) {
     return (
-      <div className="text-xs text-muted-foreground">
+      <div className="text-xs text-slate-500">
         <Loader2 className="inline h-3 w-3 animate-spin mr-1" /> Chargement…
       </div>
     );
@@ -96,12 +96,12 @@ export function SessionLocationPicker({ sessionId }: Props) {
     return (
       <div className="space-y-2 max-w-md">
         <div className="flex items-center justify-between">
-          <p className="text-xs font-medium text-foreground">Nouveau lieu</p>
+          <p className="text-xs font-medium text-slate-900">Nouveau lieu</p>
           <button
             type="button"
             onClick={() => setMode('pick')}
             disabled={pending}
-            className="text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+            className="text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1"
           >
             <X className="h-3 w-3" /> Annuler
           </button>
@@ -111,7 +111,7 @@ export function SessionLocationPicker({ sessionId }: Props) {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           placeholder="Nom du lieu (ex : Salle Cagnes-sur-Mer)"
-          className="w-full h-9 rounded-md border border-border px-2 text-sm"
+          className="w-full h-9 rounded-md border border-slate-200 px-2 text-sm"
           autoFocus
         />
         <input
@@ -119,7 +119,7 @@ export function SessionLocationPicker({ sessionId }: Props) {
           value={newStreet}
           onChange={(e) => setNewStreet(e.target.value)}
           placeholder="Adresse (optionnel)"
-          className="w-full h-9 rounded-md border border-border px-2 text-sm"
+          className="w-full h-9 rounded-md border border-slate-200 px-2 text-sm"
         />
         <div className="flex gap-2">
           <input
@@ -127,21 +127,21 @@ export function SessionLocationPicker({ sessionId }: Props) {
             value={newPostalCode}
             onChange={(e) => setNewPostalCode(e.target.value)}
             placeholder="Code postal"
-            className="w-28 h-9 rounded-md border border-border px-2 text-sm"
+            className="w-28 h-9 rounded-md border border-slate-200 px-2 text-sm"
           />
           <input
             type="text"
             value={newCity}
             onChange={(e) => setNewCity(e.target.value)}
             placeholder="Ville"
-            className="flex-1 h-9 rounded-md border border-border px-2 text-sm"
+            className="flex-1 h-9 rounded-md border border-slate-200 px-2 text-sm"
           />
         </div>
         <button
           type="button"
           onClick={handleCreate}
           disabled={pending || !newName.trim()}
-          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
         >
           {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
           Créer et définir
@@ -158,7 +158,7 @@ export function SessionLocationPicker({ sessionId }: Props) {
             value={selected}
             onChange={(e) => setSelected(e.target.value)}
             disabled={pending}
-            className="h-9 rounded-md border border-border px-2 text-sm bg-white"
+            className="h-9 rounded-md border border-slate-200 px-2 text-sm bg-white"
           >
             <option value="">— Choisir un lieu existant —</option>
             {locations.map((l) => {
@@ -175,15 +175,15 @@ export function SessionLocationPicker({ sessionId }: Props) {
             type="button"
             onClick={handleSave}
             disabled={pending || !selected}
-            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <MapPin className="h-4 w-4" />}
             Définir
           </button>
-          <span className="text-xs text-muted-foreground">ou</span>
+          <span className="text-xs text-slate-500">ou</span>
         </>
       ) : (
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-slate-500">
           Aucun lieu enregistré pour l'instant.
         </p>
       )}

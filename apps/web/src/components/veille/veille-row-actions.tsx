@@ -50,7 +50,7 @@ export function VeilleRowActions({ watch }: VeilleRowActionsProps) {
             type="button"
             aria-label="Actions sur cette source de veille"
             title="Actions"
-            className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
+            className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors disabled:opacity-50"
             disabled={pending}
           >
             <MoreVertical className="h-4 w-4" />
@@ -60,14 +60,14 @@ export function VeilleRowActions({ watch }: VeilleRowActionsProps) {
           <DropdownMenu.Content
             align="end"
             sideOffset={4}
-            className="z-50 min-w-[160px] rounded-md border border-border bg-white p-1 shadow-md data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
+            className="z-50 min-w-[160px] rounded-md border border-slate-200 bg-white p-1 shadow-md data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
           >
             <DropdownMenu.Item
               onSelect={(e) => {
                 e.preventDefault();
                 setEditOpen(true);
               }}
-              className="flex items-center gap-2 px-2 py-1.5 text-sm rounded-sm cursor-pointer outline-none hover:bg-muted focus:bg-muted"
+              className="flex items-center gap-2 px-2 py-1.5 text-sm rounded-sm cursor-pointer outline-none hover:bg-slate-100 focus:bg-slate-100"
             >
               <Pencil className="h-3.5 w-3.5" />
               Modifier
@@ -78,7 +78,7 @@ export function VeilleRowActions({ watch }: VeilleRowActionsProps) {
                 e.preventDefault();
                 onArchive();
               }}
-              className="flex items-center gap-2 px-2 py-1.5 text-sm rounded-sm cursor-pointer outline-none hover:bg-muted focus:bg-muted text-amber-700"
+              className="flex items-center gap-2 px-2 py-1.5 text-sm rounded-sm cursor-pointer outline-none hover:bg-slate-100 focus:bg-slate-100 text-amber-700"
             >
               <Archive className="h-3.5 w-3.5" />
               Archiver

@@ -121,12 +121,12 @@ export default async function LeadsPage() {
         />
       </section>
 
-      <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         {leads.length === 0 ? (
           <div className="p-12 text-center space-y-2">
-            <Megaphone className="h-10 w-10 text-muted-foreground mx-auto" />
+            <Megaphone className="h-10 w-10 text-slate-500 mx-auto" />
             <h3 className="font-semibold">Aucun lead pour l'instant</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-slate-500">
               Les leads apparaîtront ici (formulaire public, salon, recommandation, LinkedIn).
             </p>
           </div>
@@ -134,7 +134,7 @@ export default async function LeadsPage() {
           <div className="overflow-x-auto -mx-4 sm:mx-0">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border bg-muted/40 text-left">
+                <tr className="border-b border-slate-200 bg-slate-100/40 text-left">
                   <Th>Statut</Th>
                   <Th>Contact</Th>
                   <Th>Source</Th>
@@ -151,7 +151,7 @@ export default async function LeadsPage() {
                   return (
                     <tr
                       key={l.id}
-                      className="border-b border-border last:border-0 hover:bg-muted/20"
+                      className="border-b border-slate-200 last:border-0 hover:bg-slate-100/20"
                     >
                       <Td>
                         <Badge variant={STATUS_VARIANT[l.status] ?? 'muted'}>
@@ -161,13 +161,13 @@ export default async function LeadsPage() {
                       <Td>
                         <div className="font-medium">{contactName}</div>
                         {l.email && (
-                          <div className="text-xs text-muted-foreground">{l.email}</div>
+                          <div className="text-xs text-slate-500">{l.email}</div>
                         )}
                       </Td>
-                      <Td>{l.source ?? <span className="text-muted-foreground">—</span>}</Td>
+                      <Td>{l.source ?? <span className="text-slate-500">—</span>}</Td>
                       <Td>
                         {l.interestedProduct?.title ?? (
-                          <span className="text-muted-foreground">—</span>
+                          <span className="text-slate-500">—</span>
                         )}
                       </Td>
                       <Td>
@@ -183,7 +183,7 @@ export default async function LeadsPage() {
                           </span>
                         )}
                       </Td>
-                      <Td className="text-xs text-muted-foreground">
+                      <Td className="text-xs text-slate-500">
                         {fmtDate.format(l.createdAt)}
                       </Td>
                     </tr>
@@ -200,7 +200,7 @@ export default async function LeadsPage() {
 
 function Th({ children }: { children: React.ReactNode }) {
   return (
-    <th className="px-4 py-2 text-[11px] uppercase tracking-wide font-semibold text-muted-foreground">
+    <th className="px-4 py-2 text-[11px] uppercase tracking-wide font-semibold text-slate-500">
       {children}
     </th>
   );
@@ -220,14 +220,14 @@ function Kpi({
   variant: 'muted' | 'info' | 'success' | 'warning';
 }) {
   const cls: Record<string, string> = {
-    muted: 'border-border bg-muted/30',
+    muted: 'border-slate-200 bg-slate-100/30',
     info: 'border-blue-200 bg-blue-50',
     success: 'border-emerald-200 bg-emerald-50',
     warning: 'border-amber-200 bg-amber-50',
   };
   return (
     <div className={`rounded-xl border p-4 ${cls[variant]}`}>
-      <div className="text-xs uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
       <div className="text-2xl font-semibold mt-1 tabular-nums">{value}</div>
     </div>
   );

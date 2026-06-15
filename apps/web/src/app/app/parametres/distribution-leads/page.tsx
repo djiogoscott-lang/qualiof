@@ -56,7 +56,7 @@ export default async function DistributionLeadsConfigPage() {
         </span>
         <div>
           <h1 className="text-2xl font-semibold">Distribution des leads</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             Paramètres de l&apos;auto-assignation Lead → Commercial et des notifications associées.
           </p>
         </div>

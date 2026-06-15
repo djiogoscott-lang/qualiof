@@ -117,7 +117,7 @@ export function OfInvoicingForm({
         <div className="space-y-1.5 max-w-xs">
           <label
             htmlFor="of-invoicePrefix"
-            className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+            className="text-xs font-medium uppercase tracking-wide text-slate-500"
           >
             Préfixe numéro
           </label>
@@ -129,7 +129,7 @@ export function OfInvoicingForm({
               setValueAs: (v) => (typeof v === 'string' ? v.toUpperCase() : v),
             })}
             placeholder="FAC"
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.invoicePrefix && (
             <p className="text-xs text-red-600">{errors.invoicePrefix.message}</p>
@@ -137,30 +137,30 @@ export function OfInvoicingForm({
         </div>
 
         <div className="rounded-md bg-slate-50 border border-slate-200 px-3 py-2 text-sm">
-          <span className="text-xs uppercase tracking-wide text-muted-foreground">
+          <span className="text-xs uppercase tracking-wide text-slate-500">
             Prochain numéro
           </span>
           <div className="font-mono mt-1">{previewNumber}</div>
           {invoiceCount > 0 && (
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               {invoiceCount} facture{invoiceCount > 1 ? 's' : ''} émise{invoiceCount > 1 ? 's' : ''} à ce jour.
             </p>
           )}
         </div>
 
-        <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+        <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
           <button
             type="button"
             onClick={onCancel}
             disabled={isPending}
-            className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+            className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
           >
             Annuler
           </button>
           <button
             type="submit"
             disabled={isPending}
-            className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? 'Enregistrement…' : 'Enregistrer'}
           </button>
@@ -173,11 +173,11 @@ export function OfInvoicingForm({
       <Dialog.Root open={confirmOpen} onOpenChange={setConfirmOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
             <Dialog.Title className="text-lg font-semibold">
               Confirmer le changement de préfixe
             </Dialog.Title>
-            <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+            <Dialog.Description className="mt-2 text-sm text-slate-500">
               Vous avez déjà émis <strong>{invoiceCount}</strong> facture
               {invoiceCount > 1 ? 's' : ''} avec le préfixe{' '}
               <strong>{initial.invoicePrefix}</strong>. Passer à{' '}
@@ -193,7 +193,7 @@ export function OfInvoicingForm({
               <Dialog.Close asChild>
                 <button
                   type="button"
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors"
                 >
                   Annuler
                 </button>

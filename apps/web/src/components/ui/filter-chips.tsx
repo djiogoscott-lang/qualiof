@@ -26,8 +26,8 @@ export function FilterChips({ chips }: { chips: Chip[] }) {
           className={cn(
             'inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-xs font-semibold transition-all duration-200',
             chip.active
-              ? 'bg-slate-900 text-white shadow-card ring-1 ring-slate-700'
-              : 'bg-white text-slate-700 ring-1 ring-slate-200 shadow-soft hover:shadow-card hover:ring-slate-300 hover:text-slate-900 hover:-translate-y-0.5',
+              ? 'bg-slate-900 text-white shadow-sm border border-slate-800'
+              : 'bg-white text-slate-700 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 hover:text-slate-900 hover:-translate-y-0.5',
           )}
         >
           {chip.label}

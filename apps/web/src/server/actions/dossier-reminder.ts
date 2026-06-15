@@ -145,7 +145,7 @@ export async function sendDossierReminderEmail(
     subject,
     html,
     text,
-    idempotencyKey: `dossier-reminder:${participantId}:${reminderType}:${todayKey}`,
+    idempotencyKey: `dossier-reminder-${participantId}-${reminderType}-${todayKey}`,
   });
   if (!r.ok) return { ok: false, to: recipient, error: r.error };
   return { ok: true, to: recipient, reminderType, dryRun: r.mode === 'dry-run' };

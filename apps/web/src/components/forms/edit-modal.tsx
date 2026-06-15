@@ -90,7 +90,7 @@ export function EditModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border hover:bg-muted text-foreground"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm hover:border-slate-300 hover:shadow-md hover:text-slate-900 hover:-translate-y-0.5 transition-all duration-200"
       >
         <Pencil className="h-3.5 w-3.5" />
         {buttonLabel}
@@ -98,18 +98,18 @@ export function EditModal({
 
       {open && (
         <div
-          className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-150"
           onClick={() => !busy && setOpen(false)}
         >
           <div
-            className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-xl max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl border border-slate-200 p-6 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="font-semibold text-lg mb-4">{title}</h3>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <h3 className="font-semibold text-lg text-slate-900 mb-5 tracking-tight">{title}</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
               {fields.map((f) => (
-                <div key={f.name}>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                <div key={f.name} className="space-y-1.5">
+                  <label className="block text-xs font-medium text-slate-700">
                     {f.label}
                     {f.required && <span className="text-red-600 ml-0.5">*</span>}
                   </label>
@@ -119,13 +119,13 @@ export function EditModal({
                       onChange={(e) => setValues({ ...values, [f.name]: e.target.value })}
                       placeholder={f.placeholder}
                       rows={f.rows ?? 3}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     />
                   ) : f.type === 'select' ? (
                     <select
                       value={values[f.name] ?? ''}
                       onChange={(e) => setValues({ ...values, [f.name]: e.target.value })}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-white"
+                      className="w-full h-10 px-3 border border-slate-200 rounded-xl text-sm text-slate-900 bg-white shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     >
                       <option value="">— Aucun —</option>
                       {f.options?.map((o) => (
@@ -142,13 +142,13 @@ export function EditModal({
                       onChange={(e) => setValues({ ...values, [f.name]: e.target.value })}
                       placeholder={f.placeholder}
                       required={f.required}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full h-10 px-3 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     />
                   )}
                 </div>
               ))}
               {error && (
-                <div className="text-xs text-red-600 bg-red-50 border border-red-200 rounded p-2">
+                <div className="text-xs text-red-700 bg-red-50 border border-red-200 rounded-xl px-3 py-2.5 shadow-sm">
                   {error}
                 </div>
               )}
@@ -157,14 +157,14 @@ export function EditModal({
                   type="button"
                   onClick={() => setOpen(false)}
                   disabled={busy}
-                  className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted"
+                  className="h-10 px-4 text-sm font-medium border border-slate-200 bg-white text-slate-700 rounded-xl shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 active:scale-[0.97] disabled:opacity-50"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={busy}
-                  className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+                  className="h-10 px-5 text-sm font-medium bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm transition-all duration-200 hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                 >
                   {busy ? 'Enregistrement…' : 'Enregistrer'}
                 </button>

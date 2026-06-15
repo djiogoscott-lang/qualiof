@@ -42,7 +42,7 @@ export function ComposeOpcoButton({
       onClick={onClick}
       disabled={pending || disabled}
       title={disabled ? 'Émets d\'abord la facture' : 'Composer le dossier OPCO complet'}
-      className="inline-flex items-center justify-center h-7 w-7 rounded-md text-muted-foreground hover:bg-blue-50 hover:text-blue-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+      className="inline-flex items-center justify-center h-7 w-7 rounded-md text-slate-500 hover:bg-blue-50 hover:text-blue-700 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
     >
       {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Mailbox className="h-3.5 w-3.5" />}
     </button>

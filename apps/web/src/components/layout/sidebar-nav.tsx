@@ -111,19 +111,19 @@ export function SidebarNav({ nav, collapsed, onNavigate }: SidebarNavProps) {
                           'group flex items-center gap-3 rounded-lg text-sm transition-all duration-200 ease-in-out relative',
                           collapsed ? 'justify-center p-2.5' : 'px-3 py-2',
                           active
-                            // Active : carte blanche flottante + accent bleu marine + rail gauche.
-                            ? 'bg-white text-primary font-semibold shadow-card ring-1 ring-slate-200/60'
+                            // Active : carte blanche flottante + accent indigo + rail gauche.
+                            ? 'bg-white text-indigo-700 font-semibold shadow-card border border-slate-200'
                             : 'text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-soft',
                         )}
                       >
                         {/* Pastille active discrète à gauche (sidebar non-collapsed seulement) */}
                         {active && !collapsed && (
-                          <span className="absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-r-full bg-primary" aria-hidden />
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-r-full bg-indigo-600" aria-hidden />
                         )}
                         <Icon
                           className={cn(
                             'h-[18px] w-[18px] shrink-0 transition-colors',
-                            active ? 'text-primary' : 'text-slate-400 group-hover:text-slate-700',
+                            active ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-700',
                           )}
                           strokeWidth={active ? 2.2 : 1.75}
                         />

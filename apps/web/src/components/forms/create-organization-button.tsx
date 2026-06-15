@@ -60,7 +60,7 @@ export function CreateOrganizationButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
+        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
       >
         <Plus className="h-4 w-4" /> Nouvelle organisation
       </button>
@@ -73,31 +73,31 @@ export function CreateOrganizationButton() {
             </h3>
             <form onSubmit={onSubmit} className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">Raison sociale *</label>
-                <input type="text" value={legalName} onChange={(e) => setLegalName(e.target.value)} required autoFocus className="w-full px-3 py-2 border border-border rounded-lg text-sm" />
+                <label className="block text-xs font-medium text-slate-500 mb-1">Raison sociale *</label>
+                <input type="text" value={legalName} onChange={(e) => setLegalName(e.target.value)} required autoFocus className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Forme juridique *</label>
-                  <select value={legalForm} onChange={(e) => setLegalForm(e.target.value as any)} className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-white">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Forme juridique *</label>
+                  <select value={legalForm} onChange={(e) => setLegalForm(e.target.value as any)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white">
                     {FORMS.map((f) => <option key={f.value} value={f.value}>{f.label}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">OPCO financeur</label>
-                  <select value={opcoCode} onChange={(e) => setOpcoCode(e.target.value)} className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-white">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">OPCO financeur</label>
+                  <select value={opcoCode} onChange={(e) => setOpcoCode(e.target.value)} className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white">
                     {OPCOS.map((o) => <option key={o} value={o}>{o || '— aucun —'}</option>)}
                   </select>
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">SIRET (14 chiffres)</label>
-                <input type="text" value={siret} onChange={(e) => setSiret(e.target.value)} placeholder="12345678900012" className="w-full px-3 py-2 border border-border rounded-lg text-sm font-mono" />
+                <label className="block text-xs font-medium text-slate-500 mb-1">SIRET (14 chiffres)</label>
+                <input type="text" value={siret} onChange={(e) => setSiret(e.target.value)} placeholder="12345678900012" className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono" />
               </div>
               {error && <div className="text-xs text-red-600 bg-red-50 border border-red-200 rounded p-2">{error}</div>}
               <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={() => setOpen(false)} disabled={busy} className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted">Annuler</button>
-                <button type="submit" disabled={busy} className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50">{busy ? 'Création…' : 'Créer l\'organisation'}</button>
+                <button type="button" onClick={() => setOpen(false)} disabled={busy} className="px-3 py-1.5 text-sm border border-slate-200 rounded-lg hover:bg-slate-100">Annuler</button>
+                <button type="submit" disabled={busy} className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50">{busy ? 'Création…' : 'Créer l\'organisation'}</button>
               </div>
             </form>
           </div>

@@ -41,12 +41,12 @@ export function IdentityDocsCard({ personId, cniKey, ribKey, cfpKey }: Props) {
   ];
 
   return (
-    <section className="rounded-2xl border border-border bg-white p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white p-6">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
           Documents d'identité & bancaires
         </h2>
-        <FileText className="h-4 w-4 text-muted-foreground" />
+        <FileText className="h-4 w-4 text-slate-500" />
       </div>
       <div className="grid grid-cols-1 gap-2">
         {chips.map((c) => (
@@ -129,7 +129,7 @@ function DocRow({ personId, chip }: { personId: string; chip: ChipDef }) {
                       href={docUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-foreground underline"
+                      className="text-xs text-slate-500 hover:text-slate-900 underline"
                     >
                       Ouvrir / Télécharger
                     </a>
@@ -137,14 +137,14 @@ function DocRow({ personId, chip }: { personId: string; chip: ChipDef }) {
                       <button
                         type="button"
                         aria-label="Fermer"
-                        className="rounded-md p-1 hover:bg-muted"
+                        className="rounded-md p-1 hover:bg-slate-100"
                       >
                         <X className="h-4 w-4" />
                       </button>
                     </Dialog.Close>
                   </div>
                 </div>
-                <iframe src={docUrl} className="flex-1 w-full bg-muted" title={chip.label} />
+                <iframe src={docUrl} className="flex-1 w-full bg-slate-100" title={chip.label} />
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>

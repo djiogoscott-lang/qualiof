@@ -25,7 +25,7 @@ export function LeadDistributionPie({ slices }: { slices: Slice[] }) {
   const total = slices.reduce((s, x) => s + x.value, 0);
   if (total === 0) {
     return (
-      <div className="text-sm text-muted-foreground italic">Aucun lead actif</div>
+      <div className="text-sm text-slate-500 italic">Aucun lead actif</div>
     );
   }
 
@@ -82,7 +82,7 @@ export function LeadDistributionPie({ slices }: { slices: Slice[] }) {
             />
             <span>
               {s.label}{' '}
-              <span className="text-muted-foreground">({s.value})</span>
+              <span className="text-slate-500">({s.value})</span>
             </span>
           </li>
         ))}

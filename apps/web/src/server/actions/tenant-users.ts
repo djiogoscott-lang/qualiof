@@ -165,7 +165,7 @@ export async function inviteUser(
       subject,
       html,
       text,
-      idempotencyKey: `user-invitation:${invitation.id}`,
+      idempotencyKey: `user-invitation-${invitation.id}`,
     });
 
     await logUserAction({
@@ -333,7 +333,7 @@ export async function resetUserPassword(
       subject,
       html,
       text,
-      idempotencyKey: `user-password-reset:${invitation.id}`,
+      idempotencyKey: `user-password-reset-${invitation.id}`,
     });
 
     await logUserAction({
@@ -466,7 +466,7 @@ export async function resendInvitation(
       subject,
       html,
       text,
-      idempotencyKey: `user-invitation-resend:${invitation.id}`,
+      idempotencyKey: `user-invitation-resend-${invitation.id}`,
     });
 
     await logUserAction({

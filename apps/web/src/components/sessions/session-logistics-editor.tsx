@@ -48,16 +48,16 @@ export function SessionLogisticsEditor({ sessionId, initial }: Props) {
   }
 
   return (
-    <section className="rounded-2xl border border-border bg-white p-5">
+    <section className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
           Logistique session (Qualiopi C4.i17)
         </h2>
         <button
           type="button"
           onClick={save}
           disabled={pending}
-          className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md bg-primary text-white text-xs font-medium hover:bg-primary-600 disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 h-8 px-3 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-xs font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-60"
         >
           {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Check className="h-3.5 w-3.5" />}
           Enregistrer
@@ -83,14 +83,14 @@ export function SessionLogisticsEditor({ sessionId, initial }: Props) {
                 placeholder="Dates (ex: Du 12/05 au 14/05)"
                 value={trainerLodgingDates}
                 onChange={(e) => setTrainerLodgingDates(e.target.value)}
-                className="w-full px-2.5 py-1.5 border border-border rounded-md text-xs"
+                className="w-full px-2.5 py-1.5 border border-slate-200 rounded-md text-xs"
               />
               <input
                 type="text"
                 placeholder="Lieu (ex: Hôtel Mercure Nice)"
                 value={trainerLodgingPlace}
                 onChange={(e) => setTrainerLodgingPlace(e.target.value)}
-                className="w-full px-2.5 py-1.5 border border-border rounded-md text-xs"
+                className="w-full px-2.5 py-1.5 border border-slate-200 rounded-md text-xs"
               />
             </div>
           )}
@@ -114,7 +114,7 @@ export function SessionLogisticsEditor({ sessionId, initial }: Props) {
                 value={disabilityAdaptations}
                 onChange={(e) => setDisabilityAdaptations(e.target.value)}
                 rows={3}
-                className="w-full px-2.5 py-1.5 border border-border rounded-md text-xs"
+                className="w-full px-2.5 py-1.5 border border-slate-200 rounded-md text-xs"
               />
             </div>
           )}

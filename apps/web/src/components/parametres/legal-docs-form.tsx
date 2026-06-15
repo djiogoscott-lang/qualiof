@@ -116,9 +116,9 @@ export function LegalDocsForm({ initial, onSaved, onCancel }: Props) {
           rows={10}
           disabled={isPending}
           placeholder="# Article 1 — Objet&#10;&#10;Les présentes conditions générales de vente régissent…&#10;&#10;## Article 2 — Inscription&#10;&#10;Toute inscription à une formation…"
-          className="w-full rounded-md border border-border px-3 py-2 text-sm font-mono"
+          className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm font-mono"
         />
-        <p className="text-xs text-muted-foreground mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           Markdown supporté (titres ##, listes, **gras**, *italique*). Max 50000 caractères.
         </p>
         {errors.cgvMarkdown && (
@@ -146,9 +146,9 @@ export function LegalDocsForm({ initial, onSaved, onCancel }: Props) {
           rows={10}
           disabled={isPending}
           placeholder="# Règlement intérieur de l'organisme de formation&#10;&#10;## Article 1 — Discipline&#10;&#10;Les stagiaires sont tenus de respecter les horaires de la formation…"
-          className="w-full rounded-md border border-border px-3 py-2 text-sm font-mono"
+          className="w-full rounded-md border border-slate-200 px-3 py-2 text-sm font-mono"
         />
-        <p className="text-xs text-muted-foreground mt-1">
+        <p className="text-xs text-slate-500 mt-1">
           Indicateur Qualiopi 9 — info déroulement prestation. Distribué aux stagiaires en début de formation.
         </p>
         {errors.reglementInterieurMarkdown && (
@@ -156,13 +156,13 @@ export function LegalDocsForm({ initial, onSaved, onCancel }: Props) {
         )}
       </div>
 
-      <div className="flex items-center justify-end gap-2 pt-3 border-t border-border">
+      <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
         {onCancel && (
           <button
             type="button"
             onClick={onCancel}
             disabled={isPending}
-            className="h-9 px-3 text-sm font-medium text-muted-foreground hover:text-foreground"
+            className="h-9 px-3 text-sm font-medium text-slate-500 hover:text-slate-900"
           >
             Annuler
           </button>
@@ -170,7 +170,7 @@ export function LegalDocsForm({ initial, onSaved, onCancel }: Props) {
         <button
           type="submit"
           disabled={isPending}
-          className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+          className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
         >
           {isPending ? 'Sauvegarde…' : 'Enregistrer'}
         </button>

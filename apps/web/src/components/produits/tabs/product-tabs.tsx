@@ -40,7 +40,7 @@ export function ProductTabs({ activeTab }: Props) {
 
   return (
     <nav
-      className="border-b border-border flex overflow-x-auto"
+      className="border-b border-slate-200 flex overflow-x-auto"
       role="tablist"
       aria-label="Onglets fiche produit"
     >
@@ -68,7 +68,7 @@ export function ProductTabs({ activeTab }: Props) {
               'px-4 py-3 text-sm whitespace-nowrap border-b-2 transition-colors',
               isActive
                 ? 'border-primary text-primary font-medium'
-                : 'border-transparent text-muted-foreground hover:text-foreground',
+                : 'border-transparent text-slate-500 hover:text-slate-900',
             )}
           >
             {tab.label}

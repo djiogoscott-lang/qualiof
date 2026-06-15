@@ -89,7 +89,7 @@ export function RecordPaymentForm({
             min="0.01"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="mt-1 w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+            className="mt-1 w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
           />
         </div>
         <div>
@@ -98,12 +98,12 @@ export function RecordPaymentForm({
             type="date"
             value={receivedAt}
             onChange={(e) => setReceivedAt(e.target.value)}
-            className="mt-1 w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+            className="mt-1 w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
           />
         </div>
         <div>
           <label className="text-xs font-medium">Mode de règlement</label>
-          <select value={method} onChange={(e) => setMethod(e.target.value)} className="mt-1 w-full h-9 px-3 rounded-md border border-input bg-white text-sm">
+          <select value={method} onChange={(e) => setMethod(e.target.value)} className="mt-1 w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm">
             {METHODS.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}
           </select>
         </div>
@@ -114,7 +114,7 @@ export function RecordPaymentForm({
             value={reference}
             onChange={(e) => setReference(e.target.value)}
             placeholder="N° chèque, libellé virement…"
-            className="mt-1 w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+            className="mt-1 w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
           />
         </div>
       </div>
@@ -124,7 +124,7 @@ export function RecordPaymentForm({
         </div>
       )}
       <div className="flex justify-end gap-2 pt-1">
-        <button type="button" onClick={() => setOpen(false)} className="h-9 px-3 rounded-md border border-input bg-white text-sm">Annuler</button>
+        <button type="button" onClick={() => setOpen(false)} className="h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm">Annuler</button>
         <button
           type="button"
           onClick={handle}

@@ -88,6 +88,12 @@ export function NewLinkButton() {
    * Génère le lien ET ouvre directement le formulaire dans un nouvel onglet.
    * Astuce popup-blocker : on ouvre un onglet `about:blank` AVANT l'await
    * (depuis le click sync), puis on redirige une fois l'URL reçue.
+   *
+   * ⚠ Ne pas passer `noopener,noreferrer` au window.open : avec `noopener`,
+   * la valeur de retour devient `null` (ou un proxy gelé selon les navigateurs),
+   * donc `win.location.href = r.url` ne fait rien → l'onglet reste sur
+   * `about:blank` après création du lien. Comme la cible est notre propre
+   * app (même origin), retirer ces flags est sans risque.
    */
   const handleOpenDirectly = () => {
     const reason = directOpenValidation();
@@ -97,8 +103,9 @@ export function NewLinkButton() {
       return;
     }
     setError(null);
-    // Pré-ouvre un onglet vide depuis le user gesture → contourne le popup-blocker
-    const win = window.open('about:blank', '_blank', 'noopener,noreferrer');
+    // Pré-ouvre un onglet vide depuis le user gesture → contourne le popup-blocker.
+    // Pas de `noopener` ici, on a besoin de manipuler win.location.href ensuite.
+    const win = window.open('about:blank', '_blank');
     startTransition(async () => {
       try {
         const r = await createPreEnrollmentLink({
@@ -107,17 +114,24 @@ export function NewLinkButton() {
           lastName: lastName.trim(),
         });
         if (r.ok) {
-          if (win) win.location.href = r.url;
+          if (win && !win.closed) {
+            win.location.href = r.url;
+          } else {
+            // Fallback : si l'onglet a été fermé ou bloqué, on tente une
+            // ouverture directe (peut être bloquée par popup-blocker côté
+            // navigateur — dans ce cas l'utilisateur verra un message Chrome).
+            window.open(r.url, '_blank');
+          }
           setOpen(false);
           reset();
           toast.success('Formulaire de pré-inscription ouvert dans un nouvel onglet');
         } else {
-          if (win) win.close();
+          if (win && !win.closed) win.close();
           setError(r.error);
           toast.error(r.error);
         }
       } catch (e) {
-        if (win) win.close();
+        if (win && !win.closed) win.close();
         const msg =
           (e as Error)?.message ??
           "Erreur réseau lors de la génération du lien. Réessaie.";
@@ -132,69 +146,69 @@ export function NewLinkButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
+        className="inline-flex items-center gap-2 h-9 px-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
       >
         <Plus className="h-4 w-4" /> Nouveau formulaire
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => { setOpen(false); reset(); }}>
+        <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-150" onClick={() => { setOpen(false); reset(); }}>
           <div
-            className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 space-y-4"
+            className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
               <h2 className="font-semibold text-lg">
                 {generatedUrl ? '🎉 Lien généré' : 'Nouveau formulaire de pré-inscription'}
               </h2>
-              <button type="button" onClick={() => { setOpen(false); reset(); }} className="h-7 w-7 rounded-md hover:bg-muted inline-flex items-center justify-center">
+              <button type="button" onClick={() => { setOpen(false); reset(); }} className="h-7 w-7 rounded-md hover:bg-slate-100 inline-flex items-center justify-center">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             {!generatedUrl ? (
               <>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-slate-500">
                   Renseigne (optionnellement) le contact à qui tu enverras le lien.
                   Tu pourras laisser vide et juste partager le lien généré.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-medium text-foreground">Prénom</label>
+                    <label className="text-xs font-medium text-slate-900">Prénom</label>
                     <input
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="mt-1 w-full h-9 px-3 rounded-md border border-input text-sm"
+                      className="mt-1 w-full h-9 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="Jean"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-foreground">Nom</label>
+                    <label className="text-xs font-medium text-slate-900">Nom</label>
                     <input
                       type="text"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="mt-1 w-full h-9 px-3 rounded-md border border-input text-sm"
+                      className="mt-1 w-full h-9 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="DUPONT"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-foreground">
-                    Email <span className="text-muted-foreground">(optionnel)</span>
+                  <label className="text-xs font-medium text-slate-900">
+                    Email <span className="text-slate-500">(optionnel)</span>
                   </label>
                   <div className="mt-1 relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full h-9 pl-9 pr-3 rounded-md border border-input text-sm"
+                      className="w-full h-9 pl-9 pr-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="contact@example.fr"
                     />
                   </div>
-                  <p className="text-[11px] text-muted-foreground mt-1">
+                  <p className="text-[11px] text-slate-500 mt-1">
                     Si renseigné, le lien sera <strong>envoyé automatiquement par email</strong> au contact.
                   </p>
                 </div>
@@ -204,7 +218,7 @@ export function NewLinkButton() {
                   </div>
                 )}
 
-                {/* CTA shortcut Aurora — génère + ouvre directement le formulaire */}
+                {/* CTA shortcut — génère + ouvre directement le formulaire */}
                 <button
                   type="button"
                   onClick={handleOpenDirectly}
@@ -214,9 +228,9 @@ export function NewLinkButton() {
                     'group relative w-full inline-flex items-center justify-center gap-2 h-11 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ease-out',
                     directOpenInvalidReason
                       // Accès refusé : disabled visuel + curseur not-allowed (Prénom/Nom/Email manquants ou invalides)
-                      ? 'bg-slate-100 text-slate-400 cursor-not-allowed ring-1 ring-slate-200'
-                      // Valide : gradient Aurora violet→bleu + glow violet + lift au hover
-                      : 'bg-gradient-to-br from-violet-600 via-blue-600 to-primary text-white shadow-soft hover:-translate-y-0.5 hover:shadow-[0_10px_28px_-4px_rgba(124,58,237,0.5),0_0_24px_rgba(124,58,237,0.3)] active:scale-[0.97]',
+                      ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
+                      // Valide : gradient indigo→blue + glow indigo + lift au hover
+                      : 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-soft hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_10px_28px_-4px_rgba(79,70,229,0.5),0_0_24px_rgba(79,70,229,0.3)] active:scale-[0.97]',
                     pending && 'opacity-70 cursor-wait',
                   )}
                 >
@@ -261,8 +275,8 @@ export function NewLinkButton() {
                     onClick={handleSubmit}
                     disabled={pending}
                     className={cn(
-                      'inline-flex items-center gap-1.5 h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]',
-                      pending && 'opacity-70 cursor-wait',
+                      'inline-flex items-center gap-1.5 h-9 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]',
+                      pending && 'opacity-70 cursor-wait hover:translate-y-0',
                     )}
                   >
                     {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Générer le lien'}
@@ -271,7 +285,7 @@ export function NewLinkButton() {
               </>
             ) : (
               <>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-slate-500">
                   Voici le lien à partager avec ton contact. Il est valable <strong>30 jours</strong>.
                   Le contact pourra y déposer sa CNI, son RIB et son attestation CFP AGEFICE.
                 </p>
@@ -296,15 +310,17 @@ export function NewLinkButton() {
                     type="text"
                     value={generatedUrl}
                     readOnly
-                    className="flex-1 h-10 px-3 rounded-md border border-input text-xs bg-muted/30 font-mono"
+                    className="flex-1 h-10 px-3 rounded-xl border border-slate-200 text-xs bg-slate-50 text-slate-700 font-mono shadow-sm focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     onFocus={(e) => e.currentTarget.select()}
                   />
                   <button
                     type="button"
                     onClick={handleCopy}
                     className={cn(
-                      'h-10 px-3 rounded-md inline-flex items-center gap-1.5 text-sm font-medium transition-all duration-300 ease-out active:scale-[0.97]',
-                      copied ? 'bg-emerald-100 text-emerald-700' : 'bg-primary text-white hover:bg-primary-600',
+                      'h-10 px-3 rounded-xl inline-flex items-center gap-1.5 text-sm font-medium shadow-sm transition-all duration-300 ease-out active:scale-[0.97]',
+                      copied
+                        ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                        : 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md',
                     )}
                   >
                     {copied ? <><Check className="h-4 w-4" /> Copié</> : <><Copy className="h-4 w-4" /> Copier</>}

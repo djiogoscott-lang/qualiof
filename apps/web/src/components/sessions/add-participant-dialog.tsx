@@ -48,7 +48,7 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
+        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
       >
         <Plus className="h-4 w-4" /> Inscrire un apprenant
       </button>
@@ -65,18 +65,18 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pointer-events-none overflow-y-auto">
-        <div className="bg-white rounded-2xl shadow-xl border border-border w-full max-w-lg pointer-events-auto mt-16 mb-8">
-          <div className="flex items-center justify-between p-5 border-b border-border">
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-lg pointer-events-auto mt-16 mb-8">
+          <div className="flex items-center justify-between p-5 border-b border-slate-200">
             <div>
               <h2 className="font-semibold">Inscrire un apprenant</h2>
-              <p className="text-xs text-muted-foreground mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Pour les apprenants multi-casquettes (EI), tu choisiras la bonne organisation à payer.
               </p>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="h-8 w-8 inline-flex items-center justify-center rounded text-muted-foreground hover:bg-muted/50"
+              className="h-8 w-8 inline-flex items-center justify-center rounded text-slate-500 hover:bg-slate-100/50"
               aria-label="Fermer"
             >
               <X className="h-4 w-4" />
@@ -85,7 +85,7 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
 
           <div className="p-5 space-y-4">
             <div>
-              <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+              <label className="text-xs font-medium text-slate-500 block mb-1.5">
                 Apprenant
               </label>
               <PersonOrOrgPicker
@@ -98,7 +98,7 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
 
             {selection && (
               <div>
-                <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+                <label className="text-xs font-medium text-slate-500 block mb-1.5">
                   Tarif HT (€)
                 </label>
                 <input
@@ -106,9 +106,9 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
                   step="0.01"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
-                  className="w-full h-9 px-3 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-xs text-slate-500 mt-1">
                   Hérite du prix par apprenant de la session ({defaultPrice} €). Modifiable.
                 </p>
               </div>
@@ -121,11 +121,11 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
             )}
           </div>
 
-          <div className="flex justify-end gap-2 p-5 border-t border-border">
+          <div className="flex justify-end gap-2 p-5 border-t border-slate-200">
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="h-9 px-4 rounded-md text-sm font-medium border border-border hover:bg-muted/30"
+              className="h-9 px-4 rounded-md text-sm font-medium border border-slate-200 hover:bg-slate-100/30"
             >
               Annuler
             </button>
@@ -133,7 +133,7 @@ export function AddParticipantDialog({ sessionId, defaultPrice, excludePersonIds
               type="button"
               onClick={handleSubmit}
               disabled={!selection || pending}
-              className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] disabled:opacity-50"
+              className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] disabled:opacity-50"
             >
               {pending ? 'Inscription…' : 'Inscrire'}
             </button>

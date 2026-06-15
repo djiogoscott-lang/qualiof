@@ -27,7 +27,7 @@ export function MobileMenuButton({ role }: MobileMenuButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="md:hidden -ml-1 p-2 rounded-md hover:bg-muted text-foreground"
+        className="md:hidden -ml-1 p-2 rounded-md hover:bg-slate-100 text-slate-900"
         aria-label="Ouvrir le menu"
       >
         <Menu className="h-5 w-5" />

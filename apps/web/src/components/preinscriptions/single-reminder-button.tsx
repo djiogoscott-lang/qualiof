@@ -52,10 +52,10 @@ export function SingleReminderButton({
     : null;
 
   return (
-    <div className="rounded-xl border border-border bg-white p-4 flex items-center justify-between">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 flex items-center justify-between">
       <div className="text-sm">
         <div className="font-medium">Relances email</div>
-        <div className="text-xs text-muted-foreground">
+        <div className="text-xs text-slate-500">
           {reminderCount === 0
             ? 'Aucune relance envoyée pour l\'instant.'
             : `${reminderCount} relance${reminderCount > 1 ? 's' : ''} envoyée${reminderCount > 1 ? 's' : ''}${lastDate ? ` · dernière le ${lastDate}` : ''}.`}
@@ -66,7 +66,7 @@ export function SingleReminderButton({
           type="button"
           onClick={() => run(false)}
           disabled={pending}
-          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 disabled:opacity-60"
         >
           {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Bell className="h-4 w-4" />}
           Envoyer une relance
@@ -76,7 +76,7 @@ export function SingleReminderButton({
           onClick={() => run(true)}
           disabled={pending}
           title="Forcer l'envoi (ignore cooldown 6j et limite 3 relances)"
-          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-muted/40 disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md text-xs text-slate-500 hover:text-slate-900 hover:bg-slate-100/40 disabled:opacity-60"
         >
           Forcer
         </button>

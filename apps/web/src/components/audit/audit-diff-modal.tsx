@@ -67,12 +67,12 @@ export function AuditDiffModal({ diff, action }: AuditDiffModalProps) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[640px] max-w-[92vw] max-h-[80vh] overflow-y-auto rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[640px] max-w-[92vw] max-h-[80vh] overflow-y-auto rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">
             Détail :{' '}
             <span className="font-mono text-base">{action}</span>
           </Dialog.Title>
-          <Dialog.Description className="mt-1 text-xs text-muted-foreground">
+          <Dialog.Description className="mt-1 text-xs text-slate-500">
             Modifications enregistrées dans l'AuditLog.
           </Dialog.Description>
 
@@ -80,7 +80,7 @@ export function AuditDiffModal({ diff, action }: AuditDiffModalProps) {
             {beforeAfter ? (
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left text-[11px] uppercase tracking-wide text-muted-foreground">
+                  <tr className="text-left text-[11px] uppercase tracking-wide text-slate-500">
                     <th className="py-2 font-semibold">Champ</th>
                     <th className="py-2 font-semibold">Avant</th>
                     <th className="py-2 font-semibold">Après</th>
@@ -88,7 +88,7 @@ export function AuditDiffModal({ diff, action }: AuditDiffModalProps) {
                 </thead>
                 <tbody>
                   {Object.entries(diff).map(([k, v]) => (
-                    <tr key={k} className="border-t border-border align-top">
+                    <tr key={k} className="border-t border-slate-200 align-top">
                       <td className="py-2 font-mono text-xs font-medium">
                         {k}
                       </td>
@@ -105,17 +105,17 @@ export function AuditDiffModal({ diff, action }: AuditDiffModalProps) {
                 </tbody>
               </table>
             ) : (
-              <pre className="text-xs bg-slate-50 border border-border rounded p-3 overflow-x-auto whitespace-pre-wrap break-all">
+              <pre className="text-xs bg-slate-50 border border-slate-200 rounded p-3 overflow-x-auto whitespace-pre-wrap break-all">
                 {JSON.stringify(diff, null, 2)}
               </pre>
             )}
           </div>
 
-          <div className="flex justify-end mt-5 pt-3 border-t border-border">
+          <div className="flex justify-end mt-5 pt-3 border-t border-slate-200">
             <Dialog.Close asChild>
               <button
                 type="button"
-                className="rounded-md border border-border bg-white px-3 py-1.5 text-sm hover:bg-muted transition-colors"
+                className="rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-100 transition-colors"
               >
                 Fermer
               </button>

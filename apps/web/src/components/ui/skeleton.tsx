@@ -40,7 +40,7 @@ export function PageHeaderSkeleton() {
 /** Pastille KPI : icône cercle + chiffre + label (cohérent avec KpiPill réel). */
 export function KpiPillSkeleton() {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5 flex items-center gap-4">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 flex items-center gap-4">
       <Skeleton className="h-11 w-11 rounded-xl shrink-0" />
       <div className="flex-1 space-y-2">
         <Skeleton className="h-7 w-12" />
@@ -81,7 +81,7 @@ export function ListRowSkeleton() {
 /** Liste cartes encapsulée dans son conteneur — N rows. */
 export function ListSkeleton({ rows = 6 }: { rows?: number }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
       {Array.from({ length: rows }).map((_, i) => (
         <ListRowSkeleton key={i} />
       ))}
@@ -92,7 +92,7 @@ export function ListSkeleton({ rows = 6 }: { rows?: number }) {
 /** Carte générique avec titre + corps (utile pour panneaux). */
 export function CardSkeleton({ lines = 4, className }: { lines?: number; className?: string }) {
   return (
-    <div className={cn('rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-3', className)}>
+    <div className={cn('rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-3', className)}>
       <Skeleton className="h-5 w-1/3" />
       <div className="space-y-2 pt-2">
         {Array.from({ length: lines }).map((_, i) => (
@@ -120,7 +120,7 @@ export function FilterChipsSkeleton({ pills = 5 }: { pills?: number }) {
 /** Tableau (DataTable) — header + N rows. Utilise la même structure ring/shadow. */
 export function DataTableSkeleton({ rows = 8, columns = 4 }: { rows?: number; columns?: number }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
       {/* Header */}
       <div className="bg-slate-50/60 border-b border-slate-100 px-4 py-3.5 flex gap-4">
         {Array.from({ length: columns }).map((_, i) => (
@@ -178,7 +178,7 @@ export function DetailHeaderSkeleton({
 /** Section avec titre + grille de lignes label/value (pour fiches). */
 export function DetailSectionSkeleton({ rows = 4, title = true }: { rows?: number; title?: boolean }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-4">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
       {title && <Skeleton className="h-4 w-1/3" />}
       <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 pt-1">
         {Array.from({ length: rows }).map((_, i) => (
@@ -223,7 +223,7 @@ export function DashboardSkeleton() {
         <Skeleton className="h-3 w-32 mb-3" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5 space-y-4">
+            <div key={i} className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 space-y-4">
               <Skeleton className="h-11 w-11 rounded-xl" />
               <div className="space-y-2">
                 <Skeleton className="h-2.5 w-24" />
@@ -249,7 +249,7 @@ export function DashboardSkeleton() {
       </section>
 
       {/* Chart mois */}
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-4">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
         <Skeleton className="h-5 w-64" />
         <Skeleton className="h-56 w-full rounded-lg" />
       </div>

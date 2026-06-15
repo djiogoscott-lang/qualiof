@@ -46,9 +46,9 @@ export function ProductProgrammeTab({
 
   if (!hasContent) {
     return (
-      <div className="rounded-lg border border-dashed border-border bg-muted/30 p-8 text-center">
+      <div className="rounded-lg border border-dashed border-slate-200 bg-slate-100/30 p-8 text-center">
         <h3 className="text-base font-semibold mb-1">Programme de formation à créer</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-sm text-slate-500 mb-4">
           Générez le programme Qualiopi pour ce produit en 1 clic.
         </p>
         <div className="inline-block">
@@ -75,7 +75,7 @@ export function ProductProgrammeTab({
             </span>
             <div className="text-sm">
               <div className="font-semibold">Programme PDF disponible</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-slate-500">
                 Document Qualiopi partagé pour toutes les sessions de ce produit.
               </div>
             </div>
@@ -92,25 +92,25 @@ export function ProductProgrammeTab({
       )}
 
       {markdown && markdown.trim().length > 0 && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-          <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide text-muted-foreground">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <h3 className="font-semibold mb-3 text-sm uppercase tracking-wide text-slate-500">
             Programme détaillé
           </h3>
           <div
-            className="text-sm text-foreground leading-relaxed max-h-[600px] overflow-auto
+            className="text-sm text-slate-900 leading-relaxed max-h-[600px] overflow-auto
               [&_h1]:text-lg [&_h1]:font-semibold [&_h1]:mt-4 [&_h1]:mb-2
               [&_h2]:text-base [&_h2]:font-semibold [&_h2]:mt-4 [&_h2]:mb-2
-              [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:uppercase [&_h3]:tracking-wide [&_h3]:text-muted-foreground [&_h3]:mt-3 [&_h3]:mb-1
+              [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:uppercase [&_h3]:tracking-wide [&_h3]:text-slate-500 [&_h3]:mt-3 [&_h3]:mb-1
               [&_h4]:font-semibold [&_h4]:mt-2 [&_h4]:mb-1
               [&_p]:my-2
               [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-2 [&_ul]:space-y-1
               [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:my-2 [&_ol]:space-y-1
               [&_li]:leading-snug
               [&_strong]:font-semibold [&_em]:italic
-              [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-xs
+              [&_code]:bg-slate-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-xs
               [&_table]:my-3 [&_table]:border-collapse [&_table]:w-full
-              [&_th]:border [&_th]:border-border [&_th]:px-2 [&_th]:py-1 [&_th]:bg-muted [&_th]:text-left
-              [&_td]:border [&_td]:border-border [&_td]:px-2 [&_td]:py-1
+              [&_th]:border [&_th]:border-slate-200 [&_th]:px-2 [&_th]:py-1 [&_th]:bg-slate-100 [&_th]:text-left
+              [&_td]:border [&_td]:border-slate-200 [&_td]:px-2 [&_td]:py-1
               [&_a]:text-primary [&_a]:underline"
             dangerouslySetInnerHTML={{ __html: marked.parse(markdown, { async: false }) as string }}
           />

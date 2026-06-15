@@ -43,14 +43,14 @@ export async function SessionSatisfactionPanel({
 
   if (assets.length === 0) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/20 p-5">
+      <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/20 p-5">
         <div className="flex items-center gap-2 mb-2">
-          <Smile className="h-4 w-4 text-muted-foreground" />
-          <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+          <Smile className="h-4 w-4 text-slate-500" />
+          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
             Satisfaction de la session
           </h2>
         </div>
-        <p className="text-xs text-muted-foreground italic">
+        <p className="text-xs text-slate-500 italic">
           Aucune satisfaction individuelle générée — lance le pack de fin de formation pour calculer la satisfaction globale.
         </p>
       </section>
@@ -67,8 +67,8 @@ export async function SessionSatisfactionPanel({
 
   if (contents.length === 0) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/20 p-5">
-        <p className="text-xs text-muted-foreground italic">
+      <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/20 p-5">
+        <p className="text-xs text-slate-500 italic">
           Satisfactions présentes mais données vides — régénère le pack.
         </p>
       </section>
@@ -78,13 +78,13 @@ export async function SessionSatisfactionPanel({
   const agg: SatisfactionSessionAgg = aggregateSatisfactions(contents);
 
   return (
-    <section className="rounded-2xl border border-border bg-white p-5">
+    <section className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
           <Smile className="h-4 w-4 text-primary" />
           Satisfaction de la session
         </h2>
-        <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
           <Users className="h-3 w-3" />
           {agg.totalStagiaires} stagiaire{agg.totalStagiaires > 1 ? 's' : ''} évaluant{agg.totalStagiaires > 1 ? 's' : ''}
         </span>
@@ -110,19 +110,19 @@ export async function SessionSatisfactionPanel({
 
       {/* Détail critères par section, repliable */}
       <details className="mb-3">
-        <summary className="cursor-pointer text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 select-none">
+        <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1.5 select-none">
           Détail par critère ({agg.byCriterion.length} critères évalués)
         </summary>
         <div className="mt-3 space-y-2">
           {Array.from(new Set(agg.byCriterion.map((c) => c.section))).map((sect) => (
             <div key={sect}>
-              <div className="text-[11px] font-semibold text-foreground/80 uppercase tracking-wide mt-2 mb-1">{sect}</div>
+              <div className="text-[11px] font-semibold text-slate-900/80 uppercase tracking-wide mt-2 mb-1">{sect}</div>
               {agg.byCriterion
                 .filter((c) => c.section === sect)
                 .map((c) => (
                   <div key={c.criterionLabel} className="flex items-center gap-2 py-1 text-xs">
-                    <span className="flex-1 text-foreground/80">{c.criterionLabel}</span>
-                    <div className="w-28 h-1.5 rounded-full bg-muted overflow-hidden">
+                    <span className="flex-1 text-slate-900/80">{c.criterionLabel}</span>
+                    <div className="w-28 h-1.5 rounded-full bg-slate-100 overflow-hidden">
                       <div className={`h-full ${progressBarColor(c.score)}`} style={{ width: `${c.score}%` }} />
                     </div>
                     <span className="tabular-nums font-medium w-10 text-right">{c.score}%</span>

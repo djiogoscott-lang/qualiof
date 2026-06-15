@@ -93,10 +93,10 @@ export function UploadSignedDocDialog({ open, onOpenChange, participantId, docTy
           className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0"
         />
         <Dialog.Content
-          className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0"
+          className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0"
         >
           <Dialog.Title className="text-lg font-semibold">Téléverser le PDF signé</Dialog.Title>
-          <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-2 text-sm text-slate-500">
             Le PDF apparaîtra comme preuve de signature dans la matrice (pastille verte).
           </Dialog.Description>
 
@@ -113,9 +113,9 @@ export function UploadSignedDocDialog({ open, onOpenChange, participantId, docTy
                 disabled={pending}
                 className="block w-full text-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none"
               />
-              <p className="text-xs text-muted-foreground mt-1">Format PDF · max 10 Mo</p>
+              <p className="text-xs text-slate-500 mt-1">Format PDF · max 10 Mo</p>
               {file && (
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-slate-500 mt-2">
                   {file.name} · {Math.round(file.size / 1024)} Ko
                 </p>
               )}
@@ -135,7 +135,7 @@ export function UploadSignedDocDialog({ open, onOpenChange, participantId, docTy
                 <button
                   type="button"
                   disabled={pending}
-                  className="px-3 py-1.5 rounded-md border border-border hover:bg-muted text-sm disabled:opacity-50"
+                  className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-100 text-sm disabled:opacity-50"
                 >
                   Annuler
                 </button>

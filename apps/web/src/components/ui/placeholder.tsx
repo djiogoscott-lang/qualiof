@@ -14,7 +14,7 @@ export function Placeholder({ icon: Icon = Sparkles, title, subtitle, palier, fe
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-        {subtitle && <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>}
+        {subtitle && <p className="text-sm text-slate-500 mt-1">{subtitle}</p>}
       </div>
 
       <div className="rounded-2xl border border-dashed border-primary-200 bg-primary-50/30 p-10 text-center">
@@ -22,15 +22,15 @@ export function Placeholder({ icon: Icon = Sparkles, title, subtitle, palier, fe
           <Icon className="h-6 w-6" />
         </div>
         <h2 className="text-lg font-semibold">Bientôt disponible</h2>
-        <p className="text-sm text-muted-foreground mt-1.5 max-w-md mx-auto">
+        <p className="text-sm text-slate-500 mt-1.5 max-w-md mx-auto">
           Cette section arrive au <span className="font-medium text-primary-700">{palier}</span>.
         </p>
         {features.length > 0 && (
           <div className="mt-6 max-w-md mx-auto text-left">
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
               Au programme :
             </div>
-            <ul className="space-y-1.5 text-sm text-foreground">
+            <ul className="space-y-1.5 text-sm text-slate-900">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />

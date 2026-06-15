@@ -60,17 +60,17 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
   return (
     <div className="space-y-6 relative">
-      {/* Aurora gradient mesh — fond subtil bleu→violet→fuchsia derrière le hero */}
+      {/* Halo subtil indigo→blue derrière le hero — Slate/Indigo SaaS theme. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-8 -left-8 h-72 w-[42rem] rounded-full bg-gradient-to-br from-blue-200/25 via-violet-200/20 to-fuchsia-200/15 blur-3xl -z-10"
+        className="pointer-events-none absolute -top-8 -left-8 h-72 w-[42rem] rounded-full bg-gradient-to-br from-indigo-200/30 to-blue-200/20 blur-3xl -z-10"
       />
 
       {/* Hero SaaS Premium */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="min-w-0">
           <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-            Bonjour <span className="bg-gradient-to-r from-primary via-blue-600 to-violet-600 bg-clip-text text-transparent">{user.firstName}</span> 👋
+            Bonjour <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">{user.firstName}</span> 👋
           </h1>
           <p className="text-slate-500 text-sm mt-1.5">
             Pilotage Start Academy
@@ -81,7 +81,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         <div className="flex flex-wrap gap-2">
           <Link
             href="/app/sessions/nouvelle"
-            className="inline-flex items-center gap-1.5 h-10 px-4 rounded-xl text-sm font-medium bg-gradient-to-br from-primary to-primary-700 text-white shadow-soft transition-all duration-300 ease-out hover:from-primary-600 hover:to-primary-800 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] active:scale-[0.97]"
+            className="inline-flex items-center gap-1.5 h-10 px-4 rounded-xl text-sm font-medium bg-gradient-to-br from-primary to-primary-700 text-white shadow-soft transition-all duration-300 ease-out hover:from-primary-600 hover:to-primary-800 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97]"
           >
             <Calendar className="h-4 w-4" strokeWidth={1.75} /> Nouvelle session
           </Link>
@@ -157,13 +157,13 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         id="dashboard-detailed"
         title="Indicateurs détaillés"
         subtitle="CA, cashflow, volumes & moyennes"
-        icon={<BarChart3 className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
+        icon={<BarChart3 className="h-4 w-4 text-slate-500" aria-hidden="true" />}
       >
         {/* Bandeau CA */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Wallet className="h-3.5 w-3.5 text-muted-foreground" />
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <Wallet className="h-3.5 w-3.5 text-slate-500" />
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
               Chiffre d'affaires {yearLabel.toLowerCase()}
             </h3>
           </div>
@@ -180,8 +180,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         {/* Cashflow : DSO + factures en attente */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <Clock className="h-3.5 w-3.5 text-slate-500" />
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
               Cashflow
             </h3>
           </div>
@@ -202,8 +202,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         {/* Performance */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <BarChart3 className="h-3.5 w-3.5 text-muted-foreground" />
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <BarChart3 className="h-3.5 w-3.5 text-slate-500" />
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
               Performance — moyennes & volumes
             </h3>
           </div>
@@ -221,7 +221,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
       {/* Alertes + Pipeline */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 transition-shadow hover:shadow-card-hover">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition-shadow hover:shadow-card-hover">
           <h2 className="text-base font-bold inline-flex items-center gap-2.5 mb-4 text-slate-900">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-50 to-amber-100 text-amber-600 ring-1 ring-amber-200/60">
               <AlertTriangle className="h-4 w-4" strokeWidth={2} />
@@ -242,7 +242,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
           )}
         </div>
 
-        <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 transition-shadow hover:shadow-card-hover">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition-shadow hover:shadow-card-hover">
           <h2 className="text-base font-bold inline-flex items-center gap-2.5 mb-4 text-slate-900">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 ring-1 ring-blue-200/60">
               <Sparkles className="h-4 w-4" strokeWidth={2} />
@@ -306,7 +306,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       </section>
 
       {/* Chart mois */}
-      <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 transition-shadow hover:shadow-card-hover">
+      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition-shadow hover:shadow-card-hover">
         <div className="flex items-center justify-between mb-5">
           <div>
             <h2 className="text-base font-bold text-slate-900 inline-flex items-center gap-2.5">
@@ -327,7 +327,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
       <SatisfactionOverviewPanel tenantId={user.tenantId} />
 
       {/* Sessions récentes */}
-      <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 transition-shadow hover:shadow-card-hover">
+      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition-shadow hover:shadow-card-hover">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-bold inline-flex items-center gap-2.5 text-slate-900">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 ring-1 ring-blue-200/60">
@@ -425,7 +425,7 @@ function PrioCard({
       {sub && <div className={`text-xs font-medium mt-2.5 ${accentStyles.accentText}`}>{sub}</div>}
     </>
   );
-  const baseCard = `group block rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5 transition-all duration-300 ease-out hover:shadow-card-hover hover:-translate-y-0.5 ${accentStyles.cardRing}`;
+  const baseCard = `group block rounded-2xl border border-slate-200 bg-white shadow-sm p-5 transition-all duration-300 ease-out hover:shadow-card-hover hover:-translate-y-0.5 ${accentStyles.cardRing}`;
   if (href) {
     return (
       <Link href={href as any} className={baseCard}>
@@ -469,7 +469,7 @@ function CaCard({
       {hint && <div className="text-[11px] text-slate-500 mt-1">{hint}</div>}
     </>
   );
-  const base = 'rounded-xl ring-1 ring-slate-200/70 bg-white shadow-soft p-4 transition-all duration-200';
+  const base = 'rounded-xl border border-slate-200 bg-white shadow-soft p-4 transition-all duration-200';
   if (href) {
     return (
       <Link href={href as any} className={`${base} block hover:shadow-card hover:ring-slate-300 hover:-translate-y-0.5 cursor-pointer`}>
@@ -490,7 +490,7 @@ function PerfCard({
   value: string;
 }) {
   return (
-    <div className="rounded-xl ring-1 ring-slate-200/70 bg-white shadow-soft p-4 transition-all duration-200 hover:shadow-card hover:ring-slate-300 hover:-translate-y-0.5">
+    <div className="rounded-xl border border-slate-200 bg-white shadow-soft p-4 transition-all duration-200 hover:shadow-card hover:ring-slate-300 hover:-translate-y-0.5">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{label}</span>
         <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 text-slate-500 ring-1 ring-slate-100">
@@ -569,7 +569,7 @@ function TopList({
   ];
 
   return (
-    <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 transition-shadow hover:shadow-card-hover">
+    <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 transition-shadow hover:shadow-card-hover">
       <h2 className="font-bold mb-4 inline-flex items-center gap-2.5 text-base text-slate-900">
         <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 ring-1 ring-blue-200/60">
           <Icon className="h-4 w-4" strokeWidth={2} />

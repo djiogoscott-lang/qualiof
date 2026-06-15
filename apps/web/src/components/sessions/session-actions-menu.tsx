@@ -49,7 +49,7 @@ export function SessionActionsMenu({ children, label = 'Plus d’actions' }: Pro
         title={label}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="inline-flex items-center justify-center h-9 w-9 rounded-md border border-border bg-white hover:bg-muted/40 transition-colors text-foreground"
+        className="inline-flex items-center justify-center h-9 w-9 rounded-md border border-slate-200 bg-white hover:bg-slate-100/40 transition-colors text-slate-900"
       >
         <MoreVertical className="h-4 w-4" />
       </button>
@@ -57,9 +57,9 @@ export function SessionActionsMenu({ children, label = 'Plus d’actions' }: Pro
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-full mt-1 z-40 w-64 rounded-lg border border-border bg-white shadow-lg p-2 space-y-1"
+          className="absolute right-0 top-full mt-1 z-40 w-64 rounded-lg border border-slate-200 bg-white shadow-lg p-2 space-y-1"
         >
-          <div className="px-2 pb-1.5 mb-1 text-[10px] uppercase tracking-wider font-semibold text-muted-foreground border-b border-border/60">
+          <div className="px-2 pb-1.5 mb-1 text-[10px] uppercase tracking-wider font-semibold text-slate-500 border-b border-slate-200/60">
             {label}
           </div>
           {/* Les enfants sont rendus tels quels : chaque bouton conserve son look

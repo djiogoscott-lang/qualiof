@@ -58,7 +58,7 @@ export default async function UsersAdminPage() {
         </div>
       </div>
       <UsersTable users={users} currentUserId={admin.id} />
-      <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+      <p className="text-xs text-slate-500 flex items-center gap-1.5">
         <UserPlus className="h-3.5 w-3.5" aria-hidden="true" />
         L'invitation envoie un email contenant un lien d'activation valable 7 jours.
         Les comptes désactivés conservent leur historique (AuditLog, leads assignés,

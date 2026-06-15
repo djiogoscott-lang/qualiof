@@ -127,7 +127,7 @@ export function UserRowActions({
           <button
             type="button"
             disabled={pending}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
             aria-label={`Actions pour ${userEmail}`}
           >
             <MoreVertical className="h-4 w-4" />
@@ -137,16 +137,16 @@ export function UserRowActions({
           <DropdownMenu.Content
             align="end"
             sideOffset={4}
-            className="z-50 min-w-[220px] rounded-lg border border-border bg-white shadow-xl p-1 animate-in fade-in zoom-in-95"
+            className="z-50 min-w-[220px] rounded-lg border border-slate-200 bg-white shadow-xl p-1 animate-in fade-in zoom-in-95"
           >
             <DropdownMenu.Item
               onSelect={(e) => {
                 e.preventDefault();
                 setRoleDialogOpen(true);
               }}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-muted"
+              className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-slate-100"
             >
-              <ShieldCheck className="h-4 w-4 text-muted-foreground" />
+              <ShieldCheck className="h-4 w-4 text-slate-500" />
               Modifier le rôle
             </DropdownMenu.Item>
 
@@ -156,9 +156,9 @@ export function UserRowActions({
                   e.preventDefault();
                   handleResend();
                 }}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-muted"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-slate-100"
               >
-                <Mail className="h-4 w-4 text-muted-foreground" />
+                <Mail className="h-4 w-4 text-slate-500" />
                 Renvoyer l'invitation
               </DropdownMenu.Item>
             )}
@@ -169,9 +169,9 @@ export function UserRowActions({
                 setResetConfirmOpen(true);
               }}
               disabled={disabled}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-muted data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed"
+              className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm data-[highlighted]:bg-slate-100 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed"
             >
-              <KeyRound className="h-4 w-4 text-muted-foreground" />
+              <KeyRound className="h-4 w-4 text-slate-500" />
               Réinitialiser le mot de passe
             </DropdownMenu.Item>
 
@@ -196,12 +196,12 @@ export function UserRowActions({
                   setDisableConfirmOpen(true);
                 }}
                 disabled={!canDisable}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm text-red-700 data-[highlighted]:bg-red-50 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed data-[disabled]:text-muted-foreground"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-md cursor-pointer outline-none text-sm text-red-700 data-[highlighted]:bg-red-50 data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed data-[disabled]:text-slate-500"
               >
                 <PowerOff className="h-4 w-4" />
                 Désactiver
                 {isSelf && (
-                  <span className="ml-auto text-[10px] text-muted-foreground">
+                  <span className="ml-auto text-[10px] text-slate-500">
                     (vous)
                   </span>
                 )}
@@ -230,11 +230,11 @@ export function UserRowActions({
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[420px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
+          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[420px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
             <Dialog.Title className="text-lg font-semibold">
               Réinitialiser le mot de passe
             </Dialog.Title>
-            <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+            <Dialog.Description className="mt-2 text-sm text-slate-500">
               Un email contenant un lien pour redéfinir le mot de passe sera
               envoyé à <span className="font-medium">{userEmail}</span>. Le lien
               sera valable 7 jours.
@@ -244,7 +244,7 @@ export function UserRowActions({
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
                 >
                   Annuler
                 </button>
@@ -253,7 +253,7 @@ export function UserRowActions({
                 type="button"
                 onClick={handleResetConfirmed}
                 disabled={pending}
-                className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {pending ? 'Envoi…' : 'Envoyer l\'email'}
               </button>
@@ -272,11 +272,11 @@ export function UserRowActions({
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[440px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
+          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[440px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
             <Dialog.Title className="text-lg font-semibold">
               Désactiver l'utilisateur
             </Dialog.Title>
-            <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+            <Dialog.Description className="mt-2 text-sm text-slate-500">
               <span className="font-medium">{userEmail}</span> ne pourra plus se
               connecter et ses sessions actives seront immédiatement fermées.
               L'historique (AuditLog, leads assignés, etc.) est conservé. Cette
@@ -287,7 +287,7 @@ export function UserRowActions({
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50"
                 >
                   Annuler
                 </button>

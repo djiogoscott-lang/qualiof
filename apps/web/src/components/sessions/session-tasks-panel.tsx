@@ -64,7 +64,7 @@ export async function SessionTasksPanel({ sessionId, tenantId }: Props) {
                     </span>
                   </div>
                   {t.description && (
-                    <p className="text-xs text-foreground/80 whitespace-pre-wrap">{t.description}</p>
+                    <p className="text-xs text-slate-900/80 whitespace-pre-wrap">{t.description}</p>
                   )}
                 </div>
               </div>

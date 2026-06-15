@@ -104,7 +104,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 transition-all duration-300 ease-out active:scale-[0.97]"
+          className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 transition-all duration-300 ease-out active:scale-[0.97]"
           aria-label="Modifier les détails de la session"
         >
           <Pencil className="h-4 w-4" /> Modifier
@@ -112,9 +112,9 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[640px] max-w-[92vw] max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[640px] max-w-[92vw] max-h-[90vh] overflow-y-auto rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">Modifier la session</Dialog.Title>
-          <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-1 text-sm text-slate-500">
             Édite les 9 champs scalaires (nom, dates, capacités, modalité, prix HT, langue,
             notes). Les autres champs (statut, lieu, formateurs, logistique) restent éditables
             individuellement depuis la fiche.
@@ -132,11 +132,11 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                 id="name"
                 type="text"
                 {...register('name')}
-                className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                 placeholder="Laissez vide pour autogénération depuis le produit"
                 aria-invalid={!!errors.name}
               />
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Nom affiché sur la fiche et les documents Qualiopi.
               </p>
               {errors.name && (
@@ -152,7 +152,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
               <select
                 id="modality"
                 {...register('modality')}
-                className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                 aria-invalid={!!errors.modality}
               >
                 {(Object.keys(MODALITY_LABELS) as Array<keyof typeof MODALITY_LABELS>).map(
@@ -179,7 +179,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                     id="startDate"
                     type="date"
                     {...register('startDate')}
-                    className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                    className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                     aria-invalid={!!errors.startDate}
                   />
                   {errors.startDate && (
@@ -194,7 +194,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                     id="endDate"
                     type="date"
                     {...register('endDate')}
-                    className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                    className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                     aria-invalid={!!errors.endDate}
                   />
                   {errors.endDate && (
@@ -202,7 +202,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                   )}
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Les horaires d&apos;origine (heure/minute) sont préservés.
               </p>
             </div>
@@ -219,7 +219,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                   min="1"
                   step="1"
                   {...register('capacityMin', { valueAsNumber: true })}
-                  className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                   aria-invalid={!!errors.capacityMin}
                 />
                 {errors.capacityMin && (
@@ -236,7 +236,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                   min="1"
                   step="1"
                   {...register('capacityMax', { valueAsNumber: true })}
-                  className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                   aria-invalid={!!errors.capacityMax}
                 />
                 {errors.capacityMax && (
@@ -263,10 +263,10 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                       return Number.isNaN(n) ? null : n;
                     },
                   })}
-                  className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                   aria-invalid={!!errors.pricePerLearner}
                 />
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-xs text-slate-500 mt-1">
                   Laisser vide pour &laquo;&nbsp;aucun prix spécifique&nbsp;&raquo; (utilise
                   le prix produit).
                 </p>
@@ -285,7 +285,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                   type="text"
                   maxLength={8}
                   {...register('language')}
-                  className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                   placeholder="fr"
                   aria-invalid={!!errors.language}
                 />
@@ -304,7 +304,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                 id="internalNotes"
                 rows={3}
                 {...register('internalNotes')}
-                className="w-full px-3 py-2 rounded-md border border-input bg-white text-sm"
+                className="w-full px-3 py-2 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                 placeholder="Visibles uniquement en interne (jamais sur les documents apprenants)."
                 aria-invalid={!!errors.internalNotes}
               />
@@ -318,7 +318,7 @@ export function EditSessionDetailsDialog({ sessionId, initial }: Props) {
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-3 rounded-md border border-input bg-white text-sm disabled:opacity-50"
+                  className="h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm disabled:opacity-50"
                 >
                   Annuler
                 </button>

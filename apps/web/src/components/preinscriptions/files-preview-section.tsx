@@ -88,7 +88,7 @@ function FileCard({
 
   const downloadUrl = `/api/preinscriptions/${preEnrollmentId}/file/${kind}`;
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-4 flex items-center gap-2.5 text-sm group hover:ring-primary-200 hover:shadow-card-hover transition-all duration-200">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-4 flex items-center gap-2.5 text-sm group hover:ring-primary-200 hover:shadow-card-hover transition-all duration-200">
       <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary-50 to-primary-100 text-primary shrink-0 ring-1 ring-primary-100">
         <Icon className="h-4 w-4" />
       </span>
@@ -134,11 +134,11 @@ function PreviewModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-150"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl ring-1 ring-slate-200 shadow-elevated max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden"
+        className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-100 bg-gradient-to-r from-slate-50/80 to-transparent">

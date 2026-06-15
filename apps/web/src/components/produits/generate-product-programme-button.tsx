@@ -33,7 +33,7 @@ export function GenerateProductProgrammeButton({ productId }: { productId: strin
         onClick={handleGenerate}
         disabled={pending}
         className={cn(
-          'inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97]',
+          'inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]',
           pending && 'opacity-70 cursor-wait',
         )}
         title="Génère le programme PDF prêt pour Qualiopi à partir des champs ci-dessous"
@@ -46,7 +46,7 @@ export function GenerateProductProgrammeButton({ productId }: { productId: strin
           href={`/api/documents/${docId}`}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-primary"
+          className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"
         >
           <ExternalLink className="h-3 w-3" /> Réouvrir
         </a>

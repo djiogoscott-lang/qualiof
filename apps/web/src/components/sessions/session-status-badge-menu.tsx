@@ -71,7 +71,7 @@ export function SessionStatusBadgeMenu({
         <DropdownMenu.Content
           align="end"
           sideOffset={4}
-          className="z-50 min-w-[160px] rounded-md border border-border bg-white p-1 shadow-lg animate-in fade-in zoom-in-95"
+          className="z-50 min-w-[160px] rounded-md border border-slate-200 bg-white p-1 shadow-lg animate-in fade-in zoom-in-95"
           onClick={(e) => e.stopPropagation()}
         >
           {ALL_STATUSES.map((s) => {
@@ -83,7 +83,7 @@ export function SessionStatusBadgeMenu({
                 onSelect={() => onSelect(s)}
                 className={cn(
                   'flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none',
-                  'data-[highlighted]:bg-muted',
+                  'data-[highlighted]:bg-slate-100',
                   isCurrent && 'font-medium',
                 )}
               >

@@ -25,7 +25,7 @@ export default async function NouvelleSessionPage() {
       <div>
         <Link
           href="/app/sessions"
-          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary mb-2"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-primary mb-2"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Toutes les sessions
         </Link>

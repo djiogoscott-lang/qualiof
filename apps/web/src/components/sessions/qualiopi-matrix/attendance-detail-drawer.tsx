@@ -119,9 +119,9 @@ export function AttendanceDetailDrawer({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/30 z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
         <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] max-w-[90vw] max-h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-2xl z-50 data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
-          <div className="sticky top-0 bg-white border-b border-border px-6 py-4 z-10">
+          <div className="sticky top-0 bg-white border-b border-slate-200 px-6 py-4 z-10">
             <Dialog.Title className="text-lg font-semibold">Émargement détaillé</Dialog.Title>
-            <Dialog.Description className="text-sm text-muted-foreground mt-1">
+            <Dialog.Description className="text-sm text-slate-500 mt-1">
               {participantName ?? 'Participant'}
               {sessionCode ? ` · ${sessionCode}` : ''}
             </Dialog.Description>
@@ -129,7 +129,7 @@ export function AttendanceDetailDrawer({
 
           <div className="px-6 py-4">
             {loading && (
-              <div className="flex items-center justify-center gap-2 py-8 text-sm text-muted-foreground">
+              <div className="flex items-center justify-center gap-2 py-8 text-sm text-slate-500">
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                 Chargement de l'émargement…
               </div>
@@ -144,19 +144,19 @@ export function AttendanceDetailDrawer({
             {!loading && !error && slots !== null && (
               <>
                 {slots.length === 0 ? (
-                  <p className="text-sm text-muted-foreground text-center py-6">
+                  <p className="text-sm text-slate-500 text-center py-6">
                     Aucun créneau enregistré
                   </p>
                 ) : (
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
+                      <tr className="text-left text-xs uppercase tracking-wide text-slate-500">
                         <th className="px-2 py-2 font-semibold">Date</th>
                         <th className="px-2 py-2 font-semibold">Matin</th>
                         <th className="px-2 py-2 font-semibold">Après-midi</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-border">
+                    <tbody className="divide-y divide-slate-200">
                       {dates.map((d) => {
                         const row = byDate.get(d)!;
                         const dateFR = new Date(d).toLocaleDateString('fr-FR');
@@ -175,14 +175,14 @@ export function AttendanceDetailDrawer({
             )}
           </div>
 
-          <div className="sticky bottom-0 bg-white border-t border-border px-6 py-3 flex items-center justify-between z-10">
-            <span className="text-sm text-muted-foreground tabular-nums">
+          <div className="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between z-10">
+            <span className="text-sm text-slate-500 tabular-nums">
               {signedCount}/{totalSlots} demi-journées signées
             </span>
             <Dialog.Close asChild>
               <button
                 type="button"
-                className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium border border-border bg-white hover:bg-muted/40"
+                className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium border border-slate-200 bg-white hover:bg-slate-100/40"
               >
                 Fermer
               </button>

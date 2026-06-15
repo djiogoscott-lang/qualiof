@@ -115,8 +115,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Identité juridique
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -130,8 +130,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
             </dl>
           </section>
 
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Coordonnées
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -149,9 +149,9 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
             </dl>
           </section>
 
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
             <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
-              <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
                 Personnes rattachées ({org.legalLinks.length})
               </h2>
               <AddPersonToOrgButton
@@ -160,15 +160,15 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
               />
             </div>
             {org.legalLinks.length === 0 ? (
-              <p className="text-sm text-muted-foreground italic">Aucune personne rattachée.</p>
+              <p className="text-sm text-slate-500 italic">Aucune personne rattachée.</p>
             ) : (
               <ul className="space-y-2">
                 {org.legalLinks.map((link) => (
                   <li
                     key={link.id}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted/30 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
                   >
-                    <Users className="h-4 w-4 text-muted-foreground shrink-0" />
+                    <Users className="h-4 w-4 text-slate-500 shrink-0" />
                     <Link
                       href={`/app/apprenants/${link.person.id}`}
                       className="font-medium hover:text-primary transition-colors flex-1 min-w-0 truncate"
@@ -222,8 +222,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
           )}
 
           {org.opcoCatalog && (
-            <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-muted-foreground">
+            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-slate-500">
                 {org.opcoCatalog.name}
               </h2>
               <dl className="space-y-2 text-sm">
@@ -275,7 +275,7 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
 function Field({ label, value, multiline }: { label: string; value: React.ReactNode; multiline?: boolean }) {
   return (
     <div>
-      <dt className="text-[11px] uppercase tracking-wide text-muted-foreground font-medium">{label}</dt>
+      <dt className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">{label}</dt>
       <dd className={multiline ? 'whitespace-pre-line' : ''}>{value}</dd>
     </div>
   );
@@ -294,9 +294,9 @@ function FieldIcon({
 }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+      <Icon className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-medium">{label}</div>
+        <div className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">{label}</div>
         <div className={multiline ? 'whitespace-pre-line' : ''}>{value}</div>
       </div>
     </div>

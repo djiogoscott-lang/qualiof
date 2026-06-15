@@ -61,7 +61,7 @@ export function DistributionLeadsForm({ initial }: Props) {
       />
 
       <div
-        className={`pl-4 border-l-2 ${auto ? 'border-primary/40' : 'border-border'} space-y-6`}
+        className={`pl-4 border-l-2 ${auto ? 'border-primary/40' : 'border-slate-200'} space-y-6`}
       >
         <ToggleRow
           label="Notification email à l'assignation"
@@ -77,7 +77,7 @@ export function DistributionLeadsForm({ initial }: Props) {
         />
       </div>
 
-      <div className="flex justify-end pt-4 border-t border-border">
+      <div className="flex justify-end pt-4 border-t border-slate-200">
         <button
           type="submit"
           disabled={pending}
@@ -107,11 +107,11 @@ function ToggleRow({
         type="checkbox"
         {...register}
         disabled={disabled}
-        className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-2 focus:ring-primary/40 disabled:cursor-not-allowed"
+        className="mt-1 h-4 w-4 rounded border-slate-200 text-primary focus:ring-2 focus:ring-primary/40 disabled:cursor-not-allowed"
       />
       <div className="flex-1">
         <div className="text-sm font-medium">{label}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">{description}</div>
+        <div className="text-xs text-slate-500 mt-0.5">{description}</div>
       </div>
     </label>
   );

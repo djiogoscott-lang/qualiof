@@ -145,14 +145,14 @@ export function PersonOrOrgPicker({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="w-full flex items-center gap-3 p-3 rounded-md border border-border bg-white hover:bg-muted/30 transition-colors text-left"
+          className="w-full flex items-center gap-3 p-3 rounded-md border border-slate-200 bg-white hover:bg-slate-100/30 transition-colors text-left"
         >
           <div className="h-9 w-9 rounded-full bg-primary-100 text-primary-700 inline-flex items-center justify-center font-semibold text-xs shrink-0">
             {value.personLabel.split(' ').map((s) => s.charAt(0)).slice(0, 2).join('')}
           </div>
           <div className="flex-1 min-w-0">
             <div className="font-medium text-sm">{value.personLabel}</div>
-            <div className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
+            <div className="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
               <Briefcase className="h-3 w-3" />
               <span className="truncate">{value.sponsorLabel}</span>
               <Badge variant={value.isEi ? 'primary' : 'muted'} className="ml-1">
@@ -163,7 +163,7 @@ export function PersonOrOrgPicker({
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); clear(); }}
-            className="h-7 w-7 inline-flex items-center justify-center text-muted-foreground hover:text-foreground"
+            className="h-7 w-7 inline-flex items-center justify-center text-slate-500 hover:text-slate-900"
             aria-label="Retirer"
           >
             <X className="h-4 w-4" />
@@ -183,14 +183,14 @@ export function PersonOrOrgPicker({
             <div className="font-medium text-sm">
               {pickedPerson.firstName} {pickedPerson.lastName} a {pickedPerson.legalLinks.length} casquettes.
             </div>
-            <div className="text-xs text-muted-foreground mt-0.5">
+            <div className="text-xs text-slate-500 mt-0.5">
               Choisis quelle organisation paye pour cette inscription :
             </div>
           </div>
           <button
             type="button"
             onClick={() => setPickedPerson(null)}
-            className="text-xs text-muted-foreground hover:text-foreground"
+            className="text-xs text-slate-500 hover:text-slate-900"
           >
             Annuler
           </button>
@@ -203,12 +203,12 @@ export function PersonOrOrgPicker({
                 key={link.id}
                 type="button"
                 onClick={() => finalizeSelection(pickedPerson, link)}
-                className="w-full flex items-center gap-3 p-3 rounded-md border border-border bg-white hover:border-primary hover:shadow-sm transition-all text-left"
+                className="w-full flex items-center gap-3 p-3 rounded-md border border-slate-200 bg-white hover:border-primary hover:shadow-sm transition-all text-left"
               >
-                <Briefcase className="h-4 w-4 text-muted-foreground shrink-0" />
+                <Briefcase className="h-4 w-4 text-slate-500 shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="font-medium text-sm truncate">{link.organization.legalName}</div>
-                  <div className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
+                  <div className="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
                     <Badge variant={isEi ? 'primary' : 'muted'}>
                       {isEi ? '💼 EI / Auto-entr.' : ROLE_LABELS[link.role] ?? link.role}
                     </Badge>
@@ -231,7 +231,7 @@ export function PersonOrOrgPicker({
   return (
     <div ref={containerRef} className="relative">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
         <input
           type="text"
           autoFocus={autoFocus}
@@ -239,21 +239,21 @@ export function PersonOrOrgPicker({
           onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
-          className="w-full h-10 pl-9 pr-9 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="w-full h-10 pl-9 pr-9 rounded-md border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
         />
-        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 pointer-events-none" />
       </div>
 
       {open && (
-        <div className="absolute z-30 mt-1 w-full max-h-96 overflow-auto rounded-md border border-border bg-white shadow-lg">
+        <div className="absolute z-30 mt-1 w-full max-h-96 overflow-auto rounded-md border border-slate-200 bg-white shadow-lg">
           {loading ? (
-            <div className="p-4 text-center text-sm text-muted-foreground">Recherche…</div>
+            <div className="p-4 text-center text-sm text-slate-500">Recherche…</div>
           ) : results.length === 0 ? (
-            <div className="p-4 text-center text-sm text-muted-foreground">
+            <div className="p-4 text-center text-sm text-slate-500">
               {query.length < 2 ? 'Tape au moins 2 caractères.' : 'Aucun apprenant trouvé.'}
             </div>
           ) : (
-            <ul className="divide-y divide-border">
+            <ul className="divide-y divide-slate-200">
               {results.map((p) => (
                 <li key={p.id}>
                   <button
@@ -270,7 +270,7 @@ export function PersonOrOrgPicker({
                       <div className="text-sm font-medium truncate">
                         {p.firstName} {p.lastName.toUpperCase()}
                       </div>
-                      <div className="text-xs text-muted-foreground truncate">
+                      <div className="text-xs text-slate-500 truncate">
                         {p.email ?? <span className="italic">email manquant</span>}
                         {p.legalLinks.length > 0 && (
                           <> · {p.legalLinks.length} casquette{p.legalLinks.length > 1 ? 's' : ''}</>

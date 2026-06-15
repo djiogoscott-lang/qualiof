@@ -86,7 +86,7 @@ function PrioCardLocal({
     warning: 'text-amber-600',
   };
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-4">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-4">
       <div className="flex items-center justify-between mb-2">
         <span className="text-xs font-medium text-slate-500">{label}</span>
         <Icon className={cn('h-4 w-4', iconColor[tone])} strokeWidth={1.75} />

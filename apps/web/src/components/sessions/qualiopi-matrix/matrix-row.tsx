@@ -10,7 +10,7 @@
  *
  * Sélection : checkbox bidirectionnelle bind sur parent state via `onSelectionChange`.
  * Selected row : `border-l-4 border-primary bg-primary-50/30` (UI-SPEC).
- * Hover : `bg-muted/30`.
+ * Hover : `bg-slate-100/30`.
  *
  * Cellule pastille avec pdfRef → wrappée dans `<a target=_blank href=/api/documents/{id}>`
  * (D-14 1-clic — UI-SPEC §Key interactions #1).
@@ -64,7 +64,7 @@ export function MatrixRow({
       aria-selected={selected}
       className={cn(
         'transition-colors',
-        selected ? 'border-l-4 border-primary bg-primary-50/30' : 'hover:bg-muted/30',
+        selected ? 'border-l-4 border-primary bg-primary-50/30' : 'hover:bg-slate-100/30',
       )}
     >
       <td className="sticky left-0 bg-white z-10 px-2 py-1.5 border-b align-middle">
@@ -74,7 +74,7 @@ export function MatrixRow({
           onChange={(e) => onSelectionChange(participant.id, e.target.checked)}
           aria-label={`Sélectionner ${participant.fullName}`}
           disabled={readOnly}
-          className="h-4 w-4 rounded border-border accent-primary"
+          className="h-4 w-4 rounded border-slate-200 accent-primary"
         />
       </td>
       <th
@@ -89,7 +89,7 @@ export function MatrixRow({
           {participant.fullName}
         </Link>
         {participant.sponsorOrgLabel && (
-          <span className="text-xs text-muted-foreground truncate block">
+          <span className="text-xs text-slate-500 truncate block">
             {participant.sponsorOrgLabel}
           </span>
         )}

@@ -77,11 +77,11 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
   };
 
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-8 max-w-md mx-auto shadow-sm">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8 max-w-md mx-auto shadow-sm">
       <h1 className="text-xl font-bold mb-1">
         Bienvenue{firstName ? ` ${firstName}` : ''} 👋
       </h1>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-sm text-slate-500 mb-6">
         Vous avez été invité(e) à rejoindre QualiOF en tant que{' '}
         <strong>{ROLE_LABELS[role]}</strong>. Définissez un mot de passe pour activer
         votre compte (<span className="font-mono text-xs">{email}</span>).
@@ -98,7 +98,7 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
             autoComplete="new-password"
             autoFocus
             {...register('password')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.password && (
             <p className="text-xs text-red-600">{errors.password.message}</p>
@@ -114,7 +114,7 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
             type="password"
             autoComplete="new-password"
             {...register('confirm')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.confirm && (
             <p className="text-xs text-red-600">{errors.confirm.message}</p>
@@ -124,12 +124,12 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
         <button
           type="submit"
           disabled={pending}
-          className="w-full rounded-md bg-primary text-white font-medium px-4 py-2.5 hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium px-4 py-2.5 shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {pending ? 'Activation…' : 'Activer mon compte'}
         </button>
 
-        <p className="text-xs text-muted-foreground text-center pt-2">
+        <p className="text-xs text-slate-500 text-center pt-2">
           Après activation, vous serez connecté(e) automatiquement.
         </p>
       </form>

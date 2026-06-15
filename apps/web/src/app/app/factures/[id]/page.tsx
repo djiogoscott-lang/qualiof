@@ -172,7 +172,7 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
 
       {/* Section "Avoirs liés" — D-04 + D-07 cross-nav */}
       {invoice.creditNotes && invoice.creditNotes.length > 0 && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-amber-100 bg-amber-50/40 flex items-center gap-2.5">
             <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-amber-50 text-amber-700">
               <FileText className="h-4 w-4" strokeWidth={2} />
@@ -219,9 +219,9 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/apprenants/${invoice.participant.person.id}`} className="font-medium hover:text-primary">
                 {invoice.participant.person.firstName} {invoice.participant.person.lastName}
               </Link>
-              {invoice.participant.person.email && <div className="text-xs text-muted-foreground mt-0.5">{invoice.participant.person.email}</div>}
+              {invoice.participant.person.email && <div className="text-xs text-slate-500 mt-0.5">{invoice.participant.person.email}</div>}
             </>
-          ) : <span className="text-xs text-muted-foreground italic">Non rattaché</span>}
+          ) : <span className="text-xs text-slate-500 italic">Non rattaché</span>}
         </Block>
 
         <Block icon={Building2} title="Payeur">
@@ -230,9 +230,9 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/organisations/${invoice.payerOrg.id}`} className="font-medium hover:text-primary">
                 {invoice.payerOrg.legalName}
               </Link>
-              {invoice.payerOrg.siret && <div className="text-xs text-muted-foreground mt-0.5 font-mono">SIRET {invoice.payerOrg.siret}</div>}
+              {invoice.payerOrg.siret && <div className="text-xs text-slate-500 mt-0.5 font-mono">SIRET {invoice.payerOrg.siret}</div>}
             </>
-          ) : <span className="text-xs text-muted-foreground italic">—</span>}
+          ) : <span className="text-xs text-slate-500 italic">—</span>}
         </Block>
 
         <Block icon={Calendar} title="Session de formation">
@@ -241,25 +241,25 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/sessions/${invoice.participant.session.id}`} className="font-medium hover:text-primary">
                 {invoice.participant.session.name ?? invoice.participant.session.code}
               </Link>
-              <div className="text-xs text-muted-foreground mt-0.5 font-mono">{invoice.participant.session.code}</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-slate-500 mt-0.5 font-mono">{invoice.participant.session.code}</div>
+              <div className="text-xs text-slate-500">
                 {fmtDate.format(invoice.participant.session.startDate)} → {fmtDate.format(invoice.participant.session.endDate)}
               </div>
             </>
-          ) : <span className="text-xs text-muted-foreground italic">—</span>}
+          ) : <span className="text-xs text-slate-500 italic">—</span>}
         </Block>
 
         <Block icon={FileText} title="Notes">
           {invoice.notes ? (
             <p className="text-sm whitespace-pre-line">{invoice.notes}</p>
-          ) : <span className="text-xs text-muted-foreground italic">Aucune note.</span>}
+          ) : <span className="text-xs text-slate-500 italic">Aucune note.</span>}
         </Block>
       </section>
 
       {/* Historique paiements */}
-      <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
+      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2.5">
-          <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-blue-50 text-primary">
+          <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-indigo-50 text-indigo-600">
             <Wallet className="h-4 w-4" strokeWidth={2} />
           </span>
           <h2 className="font-semibold text-sm text-slate-900">
@@ -299,7 +299,7 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
 
 function Block({ icon: Icon, title, children }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number | string }>; title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
       <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider font-semibold text-slate-500 mb-2.5">
         <Icon className="h-3.5 w-3.5 text-slate-400" strokeWidth={2} /> {title}
       </div>
@@ -311,12 +311,12 @@ function Block({ icon: Icon, title, children }: { icon: React.ComponentType<{ cl
 function KpiCard({ label, value, accent }: { label: string; value: string; accent?: 'primary' | 'success' | 'warning' }) {
   // Folk-style : carte sobre, chiffre coloré uniquement si accent.
   const valueClass =
-    accent === 'primary' ? 'text-blue-700'
-    : accent === 'success' ? 'text-green-700'
+    accent === 'primary' ? 'text-indigo-700'
+    : accent === 'success' ? 'text-emerald-700'
     : accent === 'warning' ? 'text-amber-700'
     : 'text-slate-900';
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-4">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-4">
       <div className="text-xs font-medium text-slate-500 mb-1.5">{label}</div>
       <div className={`text-2xl font-semibold tabular-nums ${valueClass}`}>{value}</div>
     </div>

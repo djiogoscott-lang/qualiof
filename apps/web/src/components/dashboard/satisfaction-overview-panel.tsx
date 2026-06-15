@@ -26,12 +26,12 @@ export async function SatisfactionOverviewPanel({ tenantId }: { tenantId: string
 
   if (assets.length === 0) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/20 p-5">
+      <section className="rounded-2xl border border-dashed border-slate-200 bg-slate-100/20 p-5">
         <div className="flex items-center gap-2 mb-1">
-          <Smile className="h-4 w-4 text-muted-foreground" />
-          <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">Satisfaction</h2>
+          <Smile className="h-4 w-4 text-slate-500" />
+          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">Satisfaction</h2>
         </div>
-        <p className="text-xs text-muted-foreground italic">Aucune évaluation collectée encore.</p>
+        <p className="text-xs text-slate-500 italic">Aucune évaluation collectée encore.</p>
       </section>
     );
   }
@@ -77,26 +77,26 @@ export async function SatisfactionOverviewPanel({ tenantId }: { tenantId: string
     .slice(0, 5);
 
   return (
-    <section className="rounded-2xl border border-border bg-white p-5">
+    <section className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
           <Smile className="h-4 w-4 text-primary" /> Satisfaction stagiaires
         </h2>
-        <span className="text-xs text-muted-foreground">{globalAgg.totalStagiaires} évaluation{globalAgg.totalStagiaires > 1 ? 's' : ''} cumulée{globalAgg.totalStagiaires > 1 ? 's' : ''}</span>
+        <span className="text-xs text-slate-500">{globalAgg.totalStagiaires} évaluation{globalAgg.totalStagiaires > 1 ? 's' : ''} cumulée{globalAgg.totalStagiaires > 1 ? 's' : ''}</span>
       </div>
 
       {/* KPIs globaux — grid-cols-3 OK même mobile : 3 KPI compacts (% + label court) */}
       <div className="grid grid-cols-3 gap-2 mb-4">
-        <div className="text-center p-2 rounded-md bg-muted/30">
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Score global</div>
+        <div className="text-center p-2 rounded-md bg-slate-100/30">
+          <div className="text-[10px] uppercase tracking-wide text-slate-500">Score global</div>
           <div className={`text-2xl font-bold tabular-nums ${scoreColor(globalAgg.globalScore)}`}>{globalAgg.globalScore}%</div>
         </div>
-        <div className="text-center p-2 rounded-md bg-muted/30">
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground">% favorable</div>
+        <div className="text-center p-2 rounded-md bg-slate-100/30">
+          <div className="text-[10px] uppercase tracking-wide text-slate-500">% favorable</div>
           <div className={`text-2xl font-bold tabular-nums ${scoreColor(globalAgg.satisfactionFavorableRate)}`}>{globalAgg.satisfactionFavorableRate}%</div>
         </div>
-        <div className="text-center p-2 rounded-md bg-muted/30">
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Recommandent</div>
+        <div className="text-center p-2 rounded-md bg-slate-100/30">
+          <div className="text-[10px] uppercase tracking-wide text-slate-500">Recommandent</div>
           <div className={`text-2xl font-bold tabular-nums ${scoreColor(globalAgg.recommandationRate)}`}>{globalAgg.recommandationRate}%</div>
         </div>
       </div>
@@ -110,21 +110,21 @@ export async function SatisfactionOverviewPanel({ tenantId }: { tenantId: string
 
       {/* Par session — 5 dernières */}
       <div>
-        <div className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+        <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-2">
           Dernières sessions évaluées
         </div>
-        <ul className="divide-y divide-border">
+        <ul className="divide-y divide-slate-200">
           {recentSessions.map((s) => (
             <li key={s.sessionId}>
               <Link
                 href={`/app/sessions/${s.sessionId}`}
-                className="flex items-center gap-3 py-2 hover:bg-muted/30 px-2 -mx-2 rounded transition-colors"
+                className="flex items-center gap-3 py-2 hover:bg-slate-100/30 px-2 -mx-2 rounded transition-colors"
               >
-                <span className="font-mono text-[10px] bg-muted px-1.5 py-0.5 rounded shrink-0">{s.code}</span>
+                <span className="font-mono text-[10px] bg-slate-100 px-1.5 py-0.5 rounded shrink-0">{s.code}</span>
                 <span className="text-xs truncate flex-1">{s.name}</span>
-                <span className="text-[10px] text-muted-foreground tabular-nums shrink-0">{s.nbEvals} éval.</span>
+                <span className="text-[10px] text-slate-500 tabular-nums shrink-0">{s.nbEvals} éval.</span>
                 <span className={`text-sm font-bold tabular-nums tabular-nums ${scoreColor(s.agg.globalScore)}`}>{s.agg.globalScore}%</span>
-                <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                <ChevronRight className="h-3 w-3 text-slate-500" />
               </Link>
             </li>
           ))}

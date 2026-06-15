@@ -42,7 +42,7 @@ export function RetryExtractionButton({ preEnrollmentId }: { preEnrollmentId: st
       type="button"
       onClick={onClick}
       disabled={busy}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border hover:bg-muted disabled:opacity-50"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-slate-200 hover:bg-slate-100 disabled:opacity-50"
     >
       <RefreshCw className={`h-3.5 w-3.5 ${busy ? 'animate-spin' : ''}`} />
       {busy ? 'Extraction en cours…' : "Relancer l'extraction"}

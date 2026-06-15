@@ -62,7 +62,7 @@ export default async function LeadDetailPage({
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold">{prospectName}</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             Créé le{' '}
             {new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' }).format(
               lead.createdAt,
@@ -74,7 +74,7 @@ export default async function LeadDetailPage({
 
       <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-1">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+          <div className="text-xs uppercase tracking-wide text-slate-500 font-medium">
             Commercial assigné
           </div>
           <div className="text-base font-medium">
@@ -84,13 +84,13 @@ export default async function LeadDetailPage({
                 {ownerName}
               </span>
             ) : (
-              <span className="text-muted-foreground italic">Non assigné</span>
+              <span className="text-slate-500 italic">Non assigné</span>
             )}
           </div>
         </div>
 
         <div className="space-y-1">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+          <div className="text-xs uppercase tracking-wide text-slate-500 font-medium">
             Statut
           </div>
           <LeadStatusSelect leadId={lead.id} current={lead.status} />
@@ -105,7 +105,7 @@ export default async function LeadDetailPage({
         </div>
       </section>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-border pt-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-slate-200 pt-6">
         <DetailRow label="Source" value={lead.source ?? '—'} />
         <DetailRow label="Priorité" value={lead.priority} />
         <DetailRow
@@ -113,7 +113,7 @@ export default async function LeadDetailPage({
           value={
             lead.email ? (
               <span className="inline-flex items-center gap-1.5">
-                <Mail className="h-3.5 w-3.5 text-muted-foreground" />
+                <Mail className="h-3.5 w-3.5 text-slate-500" />
                 <a
                   href={`mailto:${lead.email}`}
                   className="text-primary hover:underline"
@@ -131,7 +131,7 @@ export default async function LeadDetailPage({
           value={
             lead.phone ? (
               <span className="inline-flex items-center gap-1.5">
-                <Phone className="h-3.5 w-3.5 text-muted-foreground" />
+                <Phone className="h-3.5 w-3.5 text-slate-500" />
                 {lead.phone}
               </span>
             ) : (
@@ -144,7 +144,7 @@ export default async function LeadDetailPage({
             label="Organisation"
             value={
               <span className="inline-flex items-center gap-1.5">
-                <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
+                <Building2 className="h-3.5 w-3.5 text-slate-500" />
                 <Link
                   href={`/app/organisations/${lead.organization.id}` as any}
                   className="text-primary hover:underline"
@@ -164,8 +164,8 @@ export default async function LeadDetailPage({
       </section>
 
       {lead.notes && (
-        <section className="border-t border-border pt-6">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+        <section className="border-t border-slate-200 pt-6">
+          <div className="text-xs uppercase tracking-wide text-slate-500 font-medium mb-2">
             Notes
           </div>
           <div className="text-sm whitespace-pre-wrap">{lead.notes}</div>
@@ -184,7 +184,7 @@ function DetailRow({
 }) {
   return (
     <div className="space-y-1">
-      <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+      <div className="text-xs uppercase tracking-wide text-slate-500 font-medium">
         {label}
       </div>
       <div className="text-sm">{value}</div>

@@ -32,7 +32,7 @@ export function CmdkTrigger() {
       onClick={open}
       className="
         w-full flex items-center gap-2 h-10 px-3 rounded-xl
-        bg-white ring-1 ring-slate-200/70 shadow-soft
+        bg-white border border-slate-200 shadow-soft
         text-sm text-slate-500
         transition-all duration-200 ease-in-out
         hover:ring-slate-300 hover:shadow-card hover:text-slate-700
@@ -41,7 +41,7 @@ export function CmdkTrigger() {
     >
       <Search className="h-4 w-4 text-slate-400" strokeWidth={1.75} />
       <span className="hidden sm:inline flex-1 text-left">Rechercher…</span>
-      <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-md px-1.5 py-0.5 ring-1 ring-slate-200/60">
+      <kbd className="hidden sm:inline-flex items-center gap-0.5 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-md px-1.5 py-0.5 border border-slate-200">
         {isMac ? '⌘' : 'Ctrl'} K
       </kbd>
     </button>

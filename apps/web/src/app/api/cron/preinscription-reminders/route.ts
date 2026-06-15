@@ -108,7 +108,7 @@ export async function GET(req: Request) {
       subject,
       html,
       text,
-      idempotencyKey: `preinscription-reminder-cron:${pre.id}:${reminderNumber}`,
+      idempotencyKey: `preinscription-reminder-cron-${pre.id}-${reminderNumber}`,
     });
     if (!r.ok) {
       errors++;

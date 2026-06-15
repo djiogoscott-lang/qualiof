@@ -92,7 +92,7 @@ export function AddPersonToOrgButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border hover:bg-muted"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-slate-200 hover:bg-slate-100"
       >
         <Plus className="h-3.5 w-3.5" />
         Ajouter une personne rattachée
@@ -112,7 +112,7 @@ export function AddPersonToOrgButton({
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-slate-500 hover:text-slate-900"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -121,33 +121,33 @@ export function AddPersonToOrgButton({
             {!selected ? (
               <div className="space-y-3">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
                   <input
                     type="text"
                     value={query}
                     onChange={(e) => handleSearch(e.target.value)}
                     placeholder="Chercher un apprenant existant (nom, prénom, email…)"
                     autoFocus
-                    className="w-full pl-9 pr-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm"
                   />
                 </div>
 
-                {searching && <div className="text-xs text-muted-foreground italic">Recherche…</div>}
+                {searching && <div className="text-xs text-slate-500 italic">Recherche…</div>}
 
                 {results.length > 0 && (
-                  <ul className="border border-border rounded-lg divide-y divide-border max-h-64 overflow-y-auto">
+                  <ul className="border border-slate-200 rounded-lg divide-y divide-slate-200 max-h-64 overflow-y-auto">
                     {results.map((p) => (
                       <li key={p.id}>
                         <button
                           type="button"
                           onClick={() => setSelected(p)}
-                          className="w-full text-left px-3 py-2 hover:bg-muted text-sm"
+                          className="w-full text-left px-3 py-2 hover:bg-slate-100 text-sm"
                         >
                           <div className="font-medium">
                             {p.firstName} {p.lastName.toUpperCase()}
                           </div>
                           {p.email && (
-                            <div className="text-xs text-muted-foreground">{p.email}</div>
+                            <div className="text-xs text-slate-500">{p.email}</div>
                           )}
                         </button>
                       </li>
@@ -156,7 +156,7 @@ export function AddPersonToOrgButton({
                 )}
 
                 {query.length >= 2 && results.length === 0 && !searching && (
-                  <div className="text-xs text-muted-foreground italic">
+                  <div className="text-xs text-slate-500 italic">
                     Aucun résultat. Crée d'abord la personne depuis /app/apprenants.
                   </div>
                 )}
@@ -169,25 +169,25 @@ export function AddPersonToOrgButton({
                     {selected.firstName} {selected.lastName.toUpperCase()}
                   </span>
                   {selected.email && (
-                    <span className="text-xs text-muted-foreground">· {selected.email}</span>
+                    <span className="text-xs text-slate-500">· {selected.email}</span>
                   )}
                   <button
                     type="button"
                     onClick={() => setSelected(null)}
-                    className="ml-auto text-muted-foreground hover:text-foreground"
+                    className="ml-auto text-slate-500 hover:text-slate-900"
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Rôle / Casquette dans cette organisation
                   </label>
                   <select
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-white"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm bg-white"
                   >
                     {ROLE_OPTIONS.map((r) => (
                       <option key={r.value} value={r.value}>
@@ -208,7 +208,7 @@ export function AddPersonToOrgButton({
                     type="button"
                     onClick={() => setOpen(false)}
                     disabled={pending}
-                    className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted"
+                    className="px-3 py-1.5 text-sm border border-slate-200 rounded-lg hover:bg-slate-100"
                   >
                     Annuler
                   </button>
@@ -216,7 +216,7 @@ export function AddPersonToOrgButton({
                     type="button"
                     onClick={handleSubmit}
                     disabled={pending}
-                    className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+                    className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
                   >
                     {pending ? 'Ajout…' : 'Rattacher'}
                   </button>

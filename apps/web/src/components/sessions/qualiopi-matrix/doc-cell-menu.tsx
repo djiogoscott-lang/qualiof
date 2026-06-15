@@ -66,7 +66,7 @@ export interface DocCellMenuProps {
 }
 
 const ITEM_CLS =
-  'flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted';
+  'flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100';
 
 export function DocCellMenu({
   participantId,
@@ -182,7 +182,7 @@ export function DocCellMenu({
               'p-1 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none transition-colors',
               state === 'MISSING'
                 ? 'text-primary hover:bg-primary-50'
-                : 'hover:bg-muted/50',
+                : 'hover:bg-slate-100/50',
               pending && 'opacity-50 cursor-wait',
             )}
             title={state === 'MISSING' ? 'Générer ce document' : 'Actions sur ce document'}
@@ -198,7 +198,7 @@ export function DocCellMenu({
           <DropdownMenu.Content
             align="end"
             sideOffset={4}
-            className="bg-white border border-border rounded-lg shadow-lg py-1 min-w-[220px] z-50"
+            className="bg-white border border-slate-200 rounded-lg shadow-lg py-1 min-w-[220px] z-50"
           >
             {/* Groupe Génération */}
             {showGenerate && (

@@ -3,18 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --primary: #00527A;
-  --primary-hover: #004161;
-  /* Force le rendu clair, ignore le dark-mode système macOS */
+  /* Slate/Indigo SaaS theme (adopté 2026-06-15). */
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  /* Force le rendu clair, ignore le dark-mode système. */
   color-scheme: light only;
 }
 
 html, body {
   height: 100%;
-  /* La police vient de Tailwind via la classe `font-sans` (chaînée à
-     `var(--font-inter)`). On laisse Tailwind appliquer pour bénéficier du
-     swap + preload de next/font. */
-  background: #FAFBFC;
+  /* slate-50 — léger contraste avec les cards blanches. */
+  background: #F8FAFC;
   color: #0F172A;
 }
 

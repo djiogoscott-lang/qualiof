@@ -54,16 +54,16 @@ export function QuoteHeaderEditor({ quoteId, disabled, initial }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-white p-5">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+        <h3 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
           Entête + notes
         </h3>
         {!disabled && !editing && (
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="inline-flex items-center gap-1 h-7 px-2 rounded text-xs border border-border bg-white hover:bg-muted/40"
+            className="inline-flex items-center gap-1 h-7 px-2 rounded text-xs border border-slate-200 bg-white hover:bg-slate-100/40"
           >
             <Pencil className="h-3 w-3" /> Modifier
           </button>
@@ -73,36 +73,36 @@ export function QuoteHeaderEditor({ quoteId, disabled, initial }: Props) {
       {!editing ? (
         <div className="text-sm space-y-3">
           <div>
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+            <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-1">
               <Layout className="h-3 w-3" />
               Entête personnalisée
             </div>
             {initial.headerCustomMd ? (
-              <pre className="whitespace-pre-wrap text-xs bg-muted/30 rounded p-2 max-h-32 overflow-auto">
+              <pre className="whitespace-pre-wrap text-xs bg-slate-100/30 rounded p-2 max-h-32 overflow-auto">
                 {initial.headerCustomMd}
               </pre>
             ) : (
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-xs text-slate-500 italic">
                 Entête par défaut (logo + raison sociale + SIRET de l'OF).
               </p>
             )}
           </div>
           <div>
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+            <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-1">
               <StickyNote className="h-3 w-3" />
               Notes / mentions
             </div>
             {initial.notes ? (
               <p className="text-xs whitespace-pre-line">{initial.notes}</p>
             ) : (
-              <p className="text-xs text-muted-foreground italic">Aucune note.</p>
+              <p className="text-xs text-slate-500 italic">Aucune note.</p>
             )}
           </div>
         </div>
       ) : (
         <form onSubmit={handleSave} className="space-y-3">
           <div>
-            <label className="block text-[11px] font-medium text-muted-foreground mb-1">
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">
               Entête personnalisée (markdown — vide = entête OF par défaut)
             </label>
             <textarea
@@ -110,11 +110,11 @@ export function QuoteHeaderEditor({ quoteId, disabled, initial }: Props) {
               onChange={(e) => setHeaderCustomMd(e.target.value)}
               rows={5}
               placeholder="**Start Academy**&#10;Organisme de formation Qualiopi&#10;SIRET 123 456 789 00012&#10;contact@start-academy.fr"
-              className="w-full px-2 py-1.5 border border-border rounded text-xs font-mono"
+              className="w-full px-2 py-1.5 border border-slate-200 rounded text-xs font-mono"
             />
           </div>
           <div>
-            <label className="block text-[11px] font-medium text-muted-foreground mb-1">
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">
               Notes / mentions bas de devis
             </label>
             <textarea
@@ -122,7 +122,7 @@ export function QuoteHeaderEditor({ quoteId, disabled, initial }: Props) {
               onChange={(e) => setNotes(e.target.value)}
               rows={4}
               placeholder="Paiement à 30 jours fin de mois.&#10;Formation exonérée de TVA (art. 261-4-4° CGI)."
-              className="w-full px-2 py-1.5 border border-border rounded text-xs"
+              className="w-full px-2 py-1.5 border border-slate-200 rounded text-xs"
             />
           </div>
 
@@ -137,14 +137,14 @@ export function QuoteHeaderEditor({ quoteId, disabled, initial }: Props) {
               type="button"
               onClick={() => setEditing(false)}
               disabled={pending}
-              className="h-8 px-3 rounded border border-border bg-white text-xs hover:bg-muted/40"
+              className="h-8 px-3 rounded border border-slate-200 bg-white text-xs hover:bg-slate-100/40"
             >
               Annuler
             </button>
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center gap-1.5 h-8 px-3 rounded bg-primary text-white text-xs font-medium hover:bg-primary-600 disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 h-8 px-3 rounded bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-xs font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-60"
             >
               {pending && <Loader2 className="h-3 w-3 animate-spin" />}
               Enregistrer

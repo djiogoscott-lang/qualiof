@@ -801,7 +801,7 @@ export async function sendInvoiceReminder(input: {
     subject,
     html,
     text,
-    idempotencyKey: `invoice-reminder:${invoice.id}:${nextLevel}`,
+    idempotencyKey: `invoice-reminder-${invoice.id}-${nextLevel}`,
   });
   const dryRun = mailResult.mode === 'dry-run';
 

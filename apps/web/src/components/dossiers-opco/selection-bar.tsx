@@ -84,7 +84,7 @@ export function DossierSelectionBar() {
   }
 
   return (
-    <div className="fixed left-1/2 bottom-6 z-40 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-border bg-white shadow-lg px-3 py-2">
+    <div className="fixed left-1/2 bottom-6 z-40 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white shadow-lg px-3 py-2">
       <span className="text-sm font-medium px-2">
         {count} dossier{count > 1 ? 's' : ''} sélectionné{count > 1 ? 's' : ''}
       </span>
@@ -140,7 +140,7 @@ export function DossierSelectionBar() {
         onClick={clear}
         disabled={pending}
         title="Désélectionner"
-        className="inline-flex items-center justify-center h-8 w-8 rounded-full text-muted-foreground hover:bg-muted disabled:opacity-50"
+        className="inline-flex items-center justify-center h-8 w-8 rounded-full text-slate-500 hover:bg-slate-100 disabled:opacity-50"
       >
         <X className="h-3.5 w-3.5" />
       </button>

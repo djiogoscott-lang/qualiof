@@ -144,8 +144,8 @@ export default async function OrganisationsPage({ searchParams }: { searchParams
       header: 'Raison sociale',
       cell: (row) => (
         <div>
-          <div className="font-medium text-foreground">{row.legalName}</div>
-          <div className="text-xs text-muted-foreground mt-0.5 flex items-center gap-2">
+          <div className="font-medium text-slate-900">{row.legalName}</div>
+          <div className="text-xs text-slate-500 mt-0.5 flex items-center gap-2">
             <Badge variant="muted" className="text-[10px]">{FORM_LABEL[row.legalForm] ?? row.legalForm}</Badge>
             {row.network && <span>{row.network}</span>}
             {row.representative && !row.network && <span>{row.representative}</span>}
@@ -160,21 +160,21 @@ export default async function OrganisationsPage({ searchParams }: { searchParams
         row.siret ? (
           <code className="font-mono text-xs">{row.siret}</code>
         ) : (
-          <span className="text-xs text-muted-foreground italic">—</span>
+          <span className="text-xs text-slate-500 italic">—</span>
         ),
     },
     {
       key: 'opco',
       header: 'OPCO',
       cell: (row) =>
-        row.opcoCode ? <Badge variant="default">{formatFunderCode(row.opcoCode)}</Badge> : <span className="text-xs text-muted-foreground italic">—</span>,
+        row.opcoCode ? <Badge variant="default">{formatFunderCode(row.opcoCode)}</Badge> : <span className="text-xs text-slate-500 italic">—</span>,
     },
     {
       key: 'links',
       header: 'Apprenants liés',
       cell: (row) => (
         <span className="inline-flex items-center gap-1.5 text-sm">
-          <Users className="h-3.5 w-3.5 text-muted-foreground" /> {row._count.legalLinks}
+          <Users className="h-3.5 w-3.5 text-slate-500" /> {row._count.legalLinks}
         </span>
       ),
     },

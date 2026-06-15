@@ -132,7 +132,7 @@ export function ParticipantActionsMenu({
           <button
             type="button"
             disabled={pending}
-            className="inline-flex items-center justify-center h-7 w-7 rounded-md border border-border text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300 ease-out active:scale-[0.97]"
+            className="inline-flex items-center justify-center h-7 w-7 rounded-md border border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 ease-out active:scale-[0.97]"
             aria-label={`Actions pour ${participantName}`}
             title="Actions"
           >
@@ -143,44 +143,44 @@ export function ParticipantActionsMenu({
           <DropdownMenu.Content
             align="end"
             sideOffset={4}
-            className="z-50 min-w-[220px] rounded-md border border-border bg-white p-1 shadow-lg animate-in fade-in zoom-in-95"
+            className="z-50 min-w-[220px] rounded-md border border-slate-200 bg-white p-1 shadow-lg animate-in fade-in zoom-in-95"
           >
-            <div className="px-2.5 py-1.5 text-[10px] uppercase tracking-wide text-muted-foreground font-semibold border-b border-border mb-1">
+            <div className="px-2.5 py-1.5 text-[10px] uppercase tracking-wide text-slate-500 font-semibold border-b border-slate-200 mb-1">
               Documents
             </div>
             <DropdownMenu.Item
               disabled={pending}
               onSelect={(e) => { e.preventDefault(); generate('CONVENTION'); }}
-              className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+              className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
             >
               <span className="inline-flex items-center gap-2">
                 <FileText className="h-3.5 w-3.5 text-sky-700" />
                 {docs.CONVENTION ? 'Régénérer convention' : 'Générer convention'}
               </span>
-              {docs.CONVENTION && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+              {docs.CONVENTION && <ExternalLink className="h-3 w-3 text-slate-500" />}
             </DropdownMenu.Item>
             <DropdownMenu.Item
               disabled={pending}
               onSelect={(e) => { e.preventDefault(); generate('PROGRAMME'); }}
-              className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+              className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
             >
               <span className="inline-flex items-center gap-2">
                 <FileText className="h-3.5 w-3.5 text-amber-700" />
                 {docs.PROGRAMME ? 'Régénérer programme' : 'Générer programme'}
               </span>
-              {docs.PROGRAMME && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+              {docs.PROGRAMME && <ExternalLink className="h-3 w-3 text-slate-500" />}
             </DropdownMenu.Item>
             {showAgefice && (
               <DropdownMenu.Item
                 disabled={pending}
                 onSelect={(e) => { e.preventDefault(); generate('AGEFICE'); }}
-                className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+                className="flex items-center justify-between gap-2 px-2.5 py-1.5 rounded text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
               >
                 <span className="inline-flex items-center gap-2">
                   <Receipt className="h-3.5 w-3.5 text-amber-700" />
                   {docs.AGEFICE ? 'Régénérer AGEFICE' : 'Générer AGEFICE'}
                 </span>
-                {docs.AGEFICE && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+                {docs.AGEFICE && <ExternalLink className="h-3 w-3 text-slate-500" />}
               </DropdownMenu.Item>
             )}
             {/* Action destructive — Désinscrire le participant (RBAC ADMIN+MANAGER server-side) */}
@@ -206,11 +206,11 @@ export function ParticipantActionsMenu({
     <Dialog.Root open={confirmOpen} onOpenChange={setConfirmOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[440px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[440px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">
             Désinscrire {participantName} ?
           </Dialog.Title>
-          <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-2 text-sm text-slate-500">
             Cette action est définitive. L&apos;inscription sera supprimée de la session.
             Les documents déjà générés (convention, programme, AGEFICE) restent
             disponibles dans la fiche apprenant.
@@ -220,7 +220,7 @@ export function ParticipantActionsMenu({
               <button
                 type="button"
                 disabled={pending}
-                className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-60"
+                className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-60"
               >
                 Annuler
               </button>

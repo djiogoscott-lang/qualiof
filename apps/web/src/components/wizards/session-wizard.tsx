@@ -226,23 +226,23 @@ export function SessionWizard({
   return (
     <div className="space-y-6">
       {/* Progress */}
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
         <ol className="flex items-center gap-2">
           {STEPS.map(({ n, label, icon: Icon }, i) => (
             <li key={n} className="flex items-center gap-2 flex-1">
               <div
                 className={cn(
                   'h-9 w-9 rounded-full inline-flex items-center justify-center shrink-0 transition-all duration-300 ease-out active:scale-[0.97]',
-                  step > n ? 'bg-emerald-500 text-white' : step === n ? 'bg-primary text-white' : 'bg-muted text-muted-foreground',
+                  step > n ? 'bg-emerald-500 text-white' : step === n ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500',
                 )}
               >
                 {step > n ? <Check className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                <div className="text-[10px] uppercase tracking-wide text-slate-500">
                   Étape {n}
                 </div>
-                <div className={cn('text-sm font-medium', step === n ? 'text-foreground' : 'text-muted-foreground')}>
+                <div className={cn('text-sm font-medium', step === n ? 'text-slate-900' : 'text-slate-500')}>
                   {label}
                 </div>
               </div>
@@ -250,7 +250,7 @@ export function SessionWizard({
                 <div
                   className={cn(
                     'h-0.5 w-full mx-2 transition-all duration-300 ease-out active:scale-[0.97]',
-                    step > n ? 'bg-emerald-500' : 'bg-muted',
+                    step > n ? 'bg-emerald-500' : 'bg-slate-100',
                   )}
                 />
               )}
@@ -261,22 +261,22 @@ export function SessionWizard({
 
       {/* Étape 1 — Produit */}
       {step === 1 && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-5">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-5">
           <div>
             <h2 className="font-semibold text-lg">1. Choisis le produit de formation</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Tu peux dérouler la liste ou taper un nom / thème pour filtrer.
             </p>
           </div>
           <div className="flex gap-2">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
               <input
                 type="text"
                 value={productQuery}
                 onChange={(e) => runProductSearch(e.target.value)}
                 placeholder="Cherche un produit (titre, code, thème…)"
-                className="w-full pl-9 pr-3 h-10 rounded-md border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full pl-9 pr-3 h-10 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </div>
             <QuickCreateProductButton
@@ -290,7 +290,7 @@ export function SessionWizard({
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[450px] overflow-y-auto">
             {productResults.length === 0 ? (
-              <p className="text-sm text-muted-foreground italic col-span-2 py-8 text-center">
+              <p className="text-sm text-slate-500 italic col-span-2 py-8 text-center">
                 Aucun produit ne correspond.
               </p>
             ) : (
@@ -305,7 +305,7 @@ export function SessionWizard({
                       'text-left rounded-xl border p-4 transition-all',
                       selected
                         ? 'border-primary-300 bg-primary-50 ring-2 ring-primary-200'
-                        : 'border-border bg-white hover:border-primary-200',
+                        : 'border-slate-200 bg-white hover:border-primary-200',
                     )}
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">
@@ -339,10 +339,10 @@ export function SessionWizard({
 
       {/* Étape 2 — Dates / lieu / formateurs */}
       {step === 2 && selectedProduct && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-6">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-6">
           <div>
             <h2 className="font-semibold text-lg">2. Dates, lieu et formateurs</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Produit : <strong>{selectedProduct.title}</strong> · {selectedProduct.durationHours}h · {selectedProduct.modality}
             </p>
           </div>
@@ -360,7 +360,7 @@ export function SessionWizard({
                     setEndDate(computeEndDateISO(next, selectedProduct.durationHours));
                   }
                 }}
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
               {startDate && !isBusinessDayISO(startDate) && (
                 <p className="mt-1 text-[11px] text-amber-600">
@@ -378,10 +378,10 @@ export function SessionWizard({
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
               {selectedProduct?.durationHours ? (
-                <p className="mt-1 text-[11px] text-muted-foreground">
+                <p className="mt-1 text-[11px] text-slate-500">
                   Auto-calculée : {Math.max(1, Math.ceil(selectedProduct.durationHours / 8))} jour
                   {Math.ceil(selectedProduct.durationHours / 8) > 1 ? 's' : ''} ouvré
                   {Math.ceil(selectedProduct.durationHours / 8) > 1 ? 's' : ''} ({selectedProduct.durationHours}h ÷ 8h/j)
@@ -392,7 +392,7 @@ export function SessionWizard({
               <select
                 value={modality}
                 onChange={(e) => setModality(e.target.value as Modality)}
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               >
                 <option value="PRESENTIEL">Présentiel</option>
                 <option value="DISTANCIEL">Distanciel</option>
@@ -406,7 +406,7 @@ export function SessionWizard({
                 min={1}
                 value={capacityMax}
                 onChange={(e) => setCapacityMax(e.target.value)}
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </Field>
             <Field label="Lieu (nom du site)">
@@ -415,7 +415,7 @@ export function SessionWizard({
                 value={locationName}
                 onChange={(e) => setLocationName(e.target.value)}
                 placeholder="Ex: Salle Start Academy Nice"
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </Field>
             <Field label="Ville">
@@ -424,7 +424,7 @@ export function SessionWizard({
                 value={locationCity}
                 onChange={(e) => setLocationCity(e.target.value)}
                 placeholder="Ex: Nice"
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </Field>
             <Field label="Tarif par apprenant (€ HT)" className="md:col-span-2">
@@ -435,7 +435,7 @@ export function SessionWizard({
                 value={pricePerLearner}
                 onChange={(e) => setPricePerLearner(e.target.value)}
                 placeholder={Number(selectedProduct.priceHT) > 0 ? String(Number(selectedProduct.priceHT)) : 'Ex: 480'}
-                className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </Field>
           </div>
@@ -443,7 +443,7 @@ export function SessionWizard({
           <Field label="Formateur(s) — au moins 1" required>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {initialTrainers.length === 0 ? (
-                <p className="text-sm text-muted-foreground italic col-span-2">
+                <p className="text-sm text-slate-500 italic col-span-2">
                   Aucun formateur en base. Importe d'abord les formateurs ou crée-en un.
                 </p>
               ) : (
@@ -462,7 +462,7 @@ export function SessionWizard({
                         'flex items-center gap-2 px-3 h-10 rounded-md border text-sm transition-all duration-300 ease-out active:scale-[0.97]',
                         selected
                           ? 'border-primary-300 bg-primary-50 text-primary-800'
-                          : 'border-border bg-white hover:border-primary-200',
+                          : 'border-slate-200 bg-white hover:border-primary-200',
                       )}
                     >
                       <GraduationCap className="h-4 w-4" />
@@ -482,7 +482,7 @@ export function SessionWizard({
               value={internalNotes}
               onChange={(e) => setInternalNotes(e.target.value)}
               rows={2}
-              className="w-full px-3 py-2 rounded-md border border-input bg-white text-sm"
+              className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               placeholder="Spécificités, consignes formateur, etc."
             />
           </Field>
@@ -491,10 +491,10 @@ export function SessionWizard({
 
       {/* Étape 3 — Participants */}
       {step === 3 && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-5">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-5">
           <div>
             <h2 className="font-semibold text-lg">3. Inscrits — apprenants & casquettes</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Pour chaque apprenant multi-casquettes, tu choisiras la bonne organisation sponsor (qui paye et reçoit le remboursement).
             </p>
           </div>
@@ -504,12 +504,12 @@ export function SessionWizard({
               {participants.map((p) => (
                 <li
                   key={p.personId}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-border bg-white"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-white"
                 >
                   <Users className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-sm">{p.personLabel}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">
+                    <div className="text-xs text-slate-500 mt-0.5">
                       {p.isEi && <span className="text-primary font-semibold">[EI] </span>}
                       via <strong>{p.sponsorLabel}</strong>
                     </div>
@@ -518,7 +518,7 @@ export function SessionWizard({
                       onChange={(e) =>
                         setParticipantFinancing(p.personId, e.target.value as FinancingMode)
                       }
-                      className="mt-2 h-8 px-2 rounded border border-input bg-white text-xs"
+                      className="mt-2 h-8 px-2 rounded-lg border border-slate-200 bg-white text-xs text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     >
                       <option value="">— Mode de financement —</option>
                       <option value="OPCO">OPCO</option>
@@ -558,7 +558,7 @@ export function SessionWizard({
                     setPickerOpen(false);
                     setPickerDefaultQuery(null);
                   }}
-                  className="text-xs text-muted-foreground hover:text-foreground"
+                  className="text-xs text-slate-500 hover:text-slate-900"
                 >
                   Annuler
                 </button>
@@ -577,7 +577,7 @@ export function SessionWizard({
             <button
               type="button"
               onClick={() => setPickerOpen(true)}
-              className="w-full h-12 rounded-lg border-2 border-dashed border-border hover:border-primary-300 hover:bg-primary-50/30 inline-flex items-center justify-center gap-2 text-sm font-medium text-primary transition-all duration-300 ease-out active:scale-[0.97]"
+              className="w-full h-12 rounded-xl border-2 border-dashed border-slate-300 hover:border-indigo-400 hover:bg-indigo-50/40 inline-flex items-center justify-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-all duration-300 ease-out active:scale-[0.97]"
             >
               <Plus className="h-4 w-4" /> Ajouter un apprenant
             </button>
@@ -599,10 +599,10 @@ export function SessionWizard({
 
       {/* Étape 4 — Récap */}
       {step === 4 && selectedProduct && (
-        <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-5">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-5">
           <div>
             <h2 className="font-semibold text-lg">4. Récapitulatif</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Vérifie tout avant de confirmer la création de la session.
             </p>
           </div>
@@ -636,16 +636,16 @@ export function SessionWizard({
             />
           </dl>
 
-          <div className="rounded-lg border border-border bg-muted/20 p-4">
+          <div className="rounded-lg border border-slate-200 bg-slate-100/20 p-4">
             <h3 className="font-medium text-sm mb-2">
               Inscrits ({participants.length}) · CA prévu {totalHT.toFixed(0)} € HT
             </h3>
             <ul className="space-y-1 text-sm">
               {participants.map((p) => (
                 <li key={p.personId} className="flex items-center gap-2">
-                  <Users className="h-3 w-3 text-muted-foreground" />
+                  <Users className="h-3 w-3 text-slate-500" />
                   <span className="font-medium">{p.personLabel}</span>
-                  <span className="text-xs text-muted-foreground">via {p.sponsorLabel}</span>
+                  <span className="text-xs text-slate-500">via {p.sponsorLabel}</span>
                   {p.financingMode && (
                     <Badge variant="muted" className="text-[10px]">
                       {p.financingMode}
@@ -657,8 +657,8 @@ export function SessionWizard({
           </div>
 
           {internalNotes && (
-            <div className="rounded-lg border border-border p-4 text-sm">
-              <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
+            <div className="rounded-lg border border-slate-200 p-4 text-sm">
+              <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
                 Notes internes
               </div>
               {internalNotes}
@@ -680,21 +680,21 @@ export function SessionWizard({
       {/* Footer actions sticky en bas — toujours visible même si l'étape
           contient 20 cartes produits (résout friction "bouton Suivant
           introuvable" de l'audit UX) */}
-      <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 ml-[var(--sidebar-w,256px)]">
+      <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-slate-200 bg-white/90 backdrop-blur-md ml-[var(--sidebar-w,256px)]">
         <div className="max-w-screen-2xl mx-auto px-8 py-3 flex items-center justify-between gap-3">
           <button
             type="button"
             onClick={goPrev}
             disabled={step === 1 || pending}
             className={cn(
-              'inline-flex items-center gap-1.5 h-10 px-4 rounded-md border border-input text-sm font-medium hover:bg-muted/50 transition-all duration-300 ease-out active:scale-[0.97]',
-              (step === 1 || pending) && 'opacity-50 cursor-not-allowed',
+              'inline-flex items-center gap-1.5 h-10 px-4 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 transition-all duration-300 ease-out active:scale-[0.97]',
+              (step === 1 || pending) && 'opacity-50 cursor-not-allowed hover:translate-y-0',
             )}
           >
             <ChevronLeft className="h-4 w-4" /> Précédent
           </button>
           {step === 1 && selectedProduct && (
-            <span className="text-xs text-muted-foreground hidden sm:inline">
+            <span className="text-xs text-slate-500 hidden sm:inline">
               ✓ {selectedProduct.code} — {selectedProduct.title.slice(0, 40)}{selectedProduct.title.length > 40 ? '…' : ''}
             </span>
           )}
@@ -703,7 +703,7 @@ export function SessionWizard({
               type="button"
               onClick={goNext}
               disabled={pending}
-              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)] transition-all duration-300 ease-out active:scale-[0.97] shadow-sm"
+              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] transition-all duration-300 ease-out active:scale-[0.97]"
             >
               Suivant <ChevronRight className="h-4 w-4" />
             </button>
@@ -713,8 +713,8 @@ export function SessionWizard({
               onClick={handleSubmit}
               disabled={pending}
               className={cn(
-                'inline-flex items-center gap-1.5 h-10 px-5 rounded-md bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-all duration-300 ease-out active:scale-[0.97] shadow-sm',
-                pending && 'opacity-70 cursor-wait',
+                'inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold shadow-sm hover:from-emerald-600 hover:to-emerald-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(16,185,129,0.45),0_0_20px_rgba(16,185,129,0.25)] transition-all duration-300 ease-out active:scale-[0.97]',
+                pending && 'opacity-70 cursor-wait hover:translate-y-0',
               )}
             >
               {pending ? 'Création…' : <>Créer la session <Check className="h-4 w-4" /></>}
@@ -739,7 +739,7 @@ function Field({
 }) {
   return (
     <div className={cn('space-y-1.5', className)}>
-      <label className="text-xs font-medium text-foreground">
+      <label className="text-xs font-medium text-slate-900">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       {children}
@@ -758,9 +758,9 @@ function RecapRow({
 }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+      <Icon className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <dt className="text-xs uppercase tracking-wide text-muted-foreground">{label}</dt>
+        <dt className="text-xs uppercase tracking-wide text-slate-500">{label}</dt>
         <dd className="text-sm font-medium">{value}</dd>
       </div>
     </div>

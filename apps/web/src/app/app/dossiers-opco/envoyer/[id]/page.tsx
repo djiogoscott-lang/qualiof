@@ -38,26 +38,26 @@ export default async function ComposeOpcoPage({
   if (sub.status !== 'DRAFT') {
     return (
       <div className="space-y-4">
-        <div className="rounded-2xl border border-border bg-muted/30 p-6">
+        <div className="rounded-2xl border border-slate-200 bg-slate-100/30 p-6">
           <h1 className="text-xl font-semibold inline-flex items-center gap-2">
             <Mail className="h-5 w-5 text-primary" /> Dossier OPCO — {STATUS_LABELS[sub.status]}
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             {sub.participant.person.firstName} {sub.participant.person.lastName.toUpperCase()} ·{' '}
             {sub.participant.session.product.title}
           </p>
           {sub.sentAt && (
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-slate-500 mt-2">
               Envoyé le {fmtDate.format(sub.sentAt)} à {sub.recipientEmail ?? '—'}
             </p>
           )}
           {sub.internalNotes && (
-            <p className="text-xs text-muted-foreground mt-1 italic">{sub.internalNotes}</p>
+            <p className="text-xs text-slate-500 mt-1 italic">{sub.internalNotes}</p>
           )}
         </div>
         <a
           href="/app/dossiers-opco"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900"
         >
           ← Retour à la liste
         </a>

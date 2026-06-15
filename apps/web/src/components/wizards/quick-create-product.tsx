@@ -200,31 +200,31 @@ export function QuickCreateProductButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 h-10 px-3 rounded-md border border-input text-sm font-medium hover:bg-muted/50 transition-all duration-300 ease-out active:scale-[0.97]"
+        className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:border-slate-300 hover:shadow-md hover:text-slate-900 hover:-translate-y-0.5 transition-all duration-300 ease-out active:scale-[0.97]"
       >
         <Plus className="h-4 w-4" /> Nouveau produit
       </button>
 
       {open && (
         <div
-          className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-150"
           onClick={() => !busy && !aiBusy && setOpen(false)}
         >
           <div
-            className="bg-white rounded-2xl p-6 max-w-3xl w-full shadow-xl max-h-[92vh] overflow-y-auto"
+            className="bg-white rounded-2xl border border-slate-200 p-6 max-w-3xl w-full shadow-2xl max-h-[92vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="font-semibold text-lg">Créer un produit de formation</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Programme conforme Qualiopi — pré-remplissage IA disponible
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-slate-500 hover:text-slate-900"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -234,7 +234,7 @@ export function QuickCreateProductButton({
               {/* Bloc essentiel */}
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Intitulé *
                   </label>
                   <input
@@ -243,13 +243,13 @@ export function QuickCreateProductButton({
                     onChange={(e) => setTitle(e.target.value)}
                     required
                     autoFocus
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     placeholder="ex: L'IA au service des conseillers immobiliers"
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1">
                       Durée (heures) *
                     </label>
                     <input
@@ -258,12 +258,12 @@ export function QuickCreateProductButton({
                       value={durationHours}
                       onChange={(e) => setDurationHours(e.target.value)}
                       required
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="21"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1">
                       Prix HT / stagiaire (€)
                     </label>
                     <input
@@ -271,12 +271,12 @@ export function QuickCreateProductButton({
                       inputMode="decimal"
                       value={priceHT}
                       onChange={(e) => setPriceHT(e.target.value)}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="3024"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1">
                       Capacité max
                     </label>
                     <input
@@ -284,19 +284,19 @@ export function QuickCreateProductButton({
                       min="1"
                       value={capacityMax}
                       onChange={(e) => setCapacityMax(e.target.value)}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1">
                       Modalité
                     </label>
                     <select
                       value={modality}
                       onChange={(e) => setModality(e.target.value as Modality)}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-white"
+                      className="w-full h-10 px-3 border border-slate-200 rounded-xl text-sm text-slate-900 bg-white shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     >
                       <option value="PRESENTIEL">Présentiel</option>
                       <option value="DISTANCIEL">Distanciel</option>
@@ -305,14 +305,14 @@ export function QuickCreateProductButton({
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-muted-foreground mb-1">
+                    <label className="block text-xs font-medium text-slate-500 mb-1">
                       Thème
                     </label>
                     <input
                       type="text"
                       value={theme}
                       onChange={(e) => setTheme(e.target.value)}
-                      className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                       placeholder="IA, Immobilier, Management…"
                     />
                   </div>
@@ -354,115 +354,115 @@ export function QuickCreateProductButton({
               {/* Champs Qualiopi */}
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Objectifs pédagogiques (un par ligne)
                   </label>
                   <textarea
                     value={objectives}
                     onChange={(e) => setObjectives(e.target.value)}
                     rows={4}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm font-sans"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     placeholder="Comprendre les fondamentaux…&#10;Maîtriser les outils…&#10;Intégrer l'IA dans la stratégie…"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Public visé
                   </label>
                   <textarea
                     value={targetAudience}
                     onChange={(e) => setTargetAudience(e.target.value)}
                     rows={2}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Prérequis
                   </label>
                   <input
                     type="text"
                     value={prerequisites}
                     onChange={(e) => setPrerequisites(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Méthodes pédagogiques
                   </label>
                   <textarea
                     value={pedagogicalMethods}
                     onChange={(e) => setPedagogicalMethods(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Supports pédagogiques (livret, Canva…)
                   </label>
                   <textarea
                     value={pedagogicalSupport}
                     onChange={(e) => setPedagogicalSupport(e.target.value)}
                     rows={2}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Programme détaillé (Markdown — ## titres, listes à puces)
                   </label>
                   <textarea
                     value={programMd}
                     onChange={(e) => setProgramMd(e.target.value)}
                     rows={10}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-xs font-mono"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs font-mono text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                     placeholder="## Jour 1 : Introduction&#10;### Matin (9h-12h)&#10;- Accueil et présentation&#10;- ..."
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Modalités d'évaluation
                   </label>
                   <textarea
                     value={evaluationMethods}
                     onChange={(e) => setEvaluationMethods(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Profil du formateur
                   </label>
                   <textarea
                     value={trainerProfile}
                     onChange={(e) => setTrainerProfile(e.target.value)}
                     rows={2}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Accessibilité PMR
                   </label>
                   <textarea
                     value={accessibility}
                     onChange={(e) => setAccessibility(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">
+                  <label className="block text-xs font-medium text-slate-500 mb-1">
                     Conditions d'accès et délais
                   </label>
                   <textarea
                     value={accessConditions}
                     onChange={(e) => setAccessConditions(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                   />
                 </div>
               </div>
@@ -472,19 +472,19 @@ export function QuickCreateProductButton({
                   {error}
                 </div>
               )}
-              <div className="flex justify-end gap-2 pt-2 border-t border-border">
+              <div className="flex justify-end gap-2 pt-2 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
                   disabled={busy}
-                  className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted"
+                  className="h-10 px-4 text-sm font-medium border border-slate-200 bg-white text-slate-700 rounded-xl shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all duration-200 active:scale-[0.97] disabled:opacity-50"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={busy || aiBusy}
-                  className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+                  className="h-10 px-5 text-sm font-medium bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm transition-all duration-200 hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] disabled:opacity-50 disabled:hover:translate-y-0"
                 >
                   {busy ? 'Création…' : 'Créer le produit'}
                 </button>

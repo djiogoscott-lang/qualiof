@@ -138,7 +138,7 @@ export default async function VeillePage({
             title="Veille Qualiopi"
             subtitle="Critère 6 — indicateurs 23 / 24 / 25 / 26"
           />
-          <div className="flex items-center gap-2 shrink-0 text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 shrink-0 text-xs text-slate-500">
             <Newspaper className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Inbox — suggestions automatiques</span>
           </div>
@@ -225,7 +225,7 @@ export default async function VeillePage({
           title="Veille Qualiopi"
           subtitle="Critère 6 — indicateurs 23 / 24 / 25 / 26"
         />
-        <div className="flex items-center gap-2 shrink-0 text-xs text-muted-foreground">
+        <div className="flex items-center gap-2 shrink-0 text-xs text-slate-500">
           <Newspaper className="h-3.5 w-3.5" aria-hidden="true" />
           <span>Sources réglementaires & sectorielles</span>
         </div>

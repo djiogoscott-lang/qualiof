@@ -32,14 +32,14 @@ export default async function PublicPreEnrollmentPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-primary-50/30">
-      <header className="border-b border-border bg-white">
+      <header className="border-b border-slate-200 bg-white">
         <div className="max-w-3xl mx-auto px-6 py-5 flex items-center gap-3">
           <div className="h-10 w-10 rounded-lg bg-primary text-white font-bold inline-flex items-center justify-center">
             S
           </div>
           <div>
             <div className="font-semibold">Start Academy</div>
-            <div className="text-xs text-muted-foreground">Organisme de formation Qualiopi</div>
+            <div className="text-xs text-slate-500">Organisme de formation Qualiopi</div>
           </div>
         </div>
       </header>
@@ -58,7 +58,7 @@ export default async function PublicPreEnrollmentPage({
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                 Bienvenue {pe.firstName ? pe.firstName : ''} 👋
               </h1>
-              <p className="text-sm text-muted-foreground mt-2 max-w-md mx-auto">
+              <p className="text-sm text-slate-500 mt-2 max-w-md mx-auto">
                 Pour finaliser ton dossier de pré-inscription, dépose tes pièces justificatives
                 et complète quelques informations. <strong>Ça ne te prendra que 2 minutes.</strong>
               </p>
@@ -74,8 +74,8 @@ export default async function PublicPreEnrollmentPage({
         )}
       </main>
 
-      <footer className="border-t border-border bg-white py-5 mt-10">
-        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+      <footer className="border-t border-slate-200 bg-white py-5 mt-10">
+        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
           <div className="inline-flex items-center gap-1.5">
             <ShieldCheck className="h-3.5 w-3.5" /> Données stockées en France · Qualiopi · RGPD
           </div>

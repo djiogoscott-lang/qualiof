@@ -105,7 +105,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
   }
   if (!batch) {
     return (
-      <div className="rounded-lg border border-border bg-white p-6 text-sm text-muted-foreground">
+      <div className="rounded-lg border border-slate-200 bg-white p-6 text-sm text-slate-500">
         <Loader2 className="inline-block h-4 w-4 mr-2 animate-spin" /> Chargement…
       </div>
     );
@@ -162,11 +162,11 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
   return (
     <div className="space-y-5">
       {/* Header status + actions */}
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
             <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-slate-500">
               {batch.doneDocs} / {batch.totalDocs} documents générés
               {batch.errorDocs > 0 && <span className="text-red-600"> · {batch.errorDocs} erreur(s)</span>}
               {stubCount > 0 && <span className="text-amber-600"> · {stubCount} doc(s) à régénérer (IA)</span>}
@@ -178,7 +178,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
                 type="button"
                 onClick={() => handleRetry(false)}
                 disabled={retrying}
-                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 disabled:opacity-60"
+                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {retrying ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
                 Régénérer les erreurs
@@ -199,7 +199,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
             {canDownload && (
               <a
                 href={`/api/closure/${batchId}/zip`}
-                className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600"
+                className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200"
               >
                 <Download className="h-4 w-4" /> Télécharger le zip
               </a>
@@ -208,21 +208,21 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
         </div>
 
         {/* Progress bar */}
-        <div className="mt-4 h-2 w-full rounded-full bg-muted overflow-hidden">
+        <div className="mt-4 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
           <div
-            className={`h-full transition-all duration-500 ${batch.errorDocs > 0 ? 'bg-amber-500' : 'bg-primary'}`}
+            className={`h-full transition-all duration-500 ${batch.errorDocs > 0 ? 'bg-gradient-to-r from-amber-400 to-amber-500' : 'bg-gradient-to-r from-indigo-500 to-blue-500'}`}
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="mt-1 text-right text-xs text-muted-foreground tabular-nums">{pct}%</div>
+        <div className="mt-1 text-right text-xs text-slate-500 tabular-nums">{pct}%</div>
       </div>
 
       {/* Liste des participants */}
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
-        <div className="px-5 py-3 border-b border-border bg-muted/30">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-5 py-3 border-b border-slate-200 bg-slate-100/30">
           <h2 className="font-semibold text-sm">{groups.size} apprenant(s)</h2>
         </div>
-        <ul className="divide-y divide-border">
+        <ul className="divide-y divide-slate-200">
           {Array.from(groups.values()).map((g) => (
             <li key={g.name} className="p-4">
               <div className="font-medium text-sm mb-2">{g.name}</div>
@@ -233,7 +233,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
                     className={`flex items-center gap-2 text-xs px-2.5 py-1.5 rounded-md border ${
                       j.status === 'DONE' && j.usedStub
                         ? 'border-amber-200 bg-amber-50/60'
-                        : 'border-border bg-muted/20'
+                        : 'border-slate-200 bg-slate-100/20'
                     }`}
                     title={j.errorMessage ?? undefined}
                   >

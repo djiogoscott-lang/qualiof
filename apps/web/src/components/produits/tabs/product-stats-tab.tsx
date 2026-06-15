@@ -84,16 +84,16 @@ function PrioCardLocal({
   const inner = (
     <>
       <div className="flex items-center gap-3 mb-2">
-        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-muted text-foreground">
+        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-slate-100 text-slate-900">
           <Icon className="h-4 w-4" />
         </span>
-        <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium leading-tight">
+        <div className="text-xs uppercase tracking-wide text-slate-500 font-medium leading-tight">
           {label}
         </div>
       </div>
       <div className="text-2xl font-bold tabular-nums leading-tight">{value}</div>
       {subtitle && (
-        <div className="text-xs text-muted-foreground mt-1">{subtitle}</div>
+        <div className="text-xs text-slate-500 mt-1">{subtitle}</div>
       )}
     </>
   );
@@ -103,12 +103,12 @@ function PrioCardLocal({
       <Link
         href={href as any}
         title={hint}
-        className="rounded-lg border border-border bg-white p-5 block hover:border-primary hover:bg-primary-50/30 transition-colors cursor-pointer"
+        className="rounded-lg border border-slate-200 bg-white p-5 block hover:border-primary hover:bg-primary-50/30 transition-colors cursor-pointer"
       >
         {inner}
       </Link>
     );
   }
 
-  return <div className="rounded-lg border border-border bg-white p-5">{inner}</div>;
+  return <div className="rounded-lg border border-slate-200 bg-white p-5">{inner}</div>;
 }

@@ -53,14 +53,14 @@ export function GroupHeaderRow({
 }) {
   return (
     <tr
-      className="border-b border-border bg-primary-50/40 hover:bg-primary-50/70 cursor-pointer transition-colors"
+      className="border-b border-slate-200 bg-primary-50/40 hover:bg-primary-50/70 cursor-pointer transition-colors"
       onClick={onToggle}
     >
       <td colSpan={colSpan} className="px-3 py-2.5">
         <div className="flex items-center gap-3 flex-wrap">
           <button
             type="button"
-            className="inline-flex items-center justify-center h-6 w-6 rounded text-muted-foreground hover:bg-white"
+            className="inline-flex items-center justify-center h-6 w-6 rounded text-slate-500 hover:bg-white"
             aria-label={expanded ? 'Réduire' : 'Développer'}
           >
             {expanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
@@ -68,18 +68,18 @@ export function GroupHeaderRow({
 
           <Users className="h-4 w-4 text-primary shrink-0" />
 
-          <div className="text-xs whitespace-nowrap text-muted-foreground tabular-nums">
+          <div className="text-xs whitespace-nowrap text-slate-500 tabular-nums">
             {fmtDate.format(group.sessionStartDate)}
           </div>
 
           <div className="font-medium text-sm flex-1 min-w-[180px]">
             {group.sponsorName}
-            <span className="text-xs text-muted-foreground ml-2">
+            <span className="text-xs text-slate-500 ml-2">
               · {group.participantCount} apprenant{group.participantCount > 1 ? 's' : ''}
             </span>
           </div>
 
-          <div className="text-xs text-muted-foreground line-clamp-1 max-w-[320px]">
+          <div className="text-xs text-slate-500 line-clamp-1 max-w-[320px]">
             {group.sessionName}
           </div>
 
@@ -88,7 +88,7 @@ export function GroupHeaderRow({
           </div>
 
           {group.sponsorOpcoCode && (
-            <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-white border border-border text-[10px] font-medium uppercase">
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-white border border-slate-200 text-[10px] font-medium uppercase">
               {group.sponsorOpcoCode}
             </span>
           )}

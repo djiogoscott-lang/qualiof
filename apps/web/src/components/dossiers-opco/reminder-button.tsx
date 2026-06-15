@@ -34,7 +34,7 @@ export function DossierReminderButton({ participantId, disabled }: Props) {
       onClick={run}
       disabled={pending}
       title="Relancer par email"
-      className="inline-flex items-center justify-center h-7 w-7 rounded-md text-muted-foreground hover:bg-muted hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-wait"
+      className="inline-flex items-center justify-center h-7 w-7 rounded-md text-slate-500 hover:bg-slate-100 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-wait"
     >
       {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Mail className="h-3.5 w-3.5" />}
     </button>

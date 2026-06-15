@@ -155,32 +155,32 @@ export function PreEnrollmentActions({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-5">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-5">
         <h2 className="font-semibold text-base">Identité à créer</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <Field label="Prénom" required>
-            <input value={firstName} onChange={(e) => setFirstName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input value={firstName} onChange={(e) => setFirstName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Nom" required>
-            <input value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Nom de naissance">
-            <input value={birthName} onChange={(e) => setBirthName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input value={birthName} onChange={(e) => setBirthName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Email" required>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Téléphone">
-            <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Date de naissance">
-            <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Lieu de naissance">
-            <input value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+            <input value={birthPlace} onChange={(e) => setBirthPlace(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
           </Field>
           <Field label="Statut professionnel">
-            <select value={professionalStatus} onChange={(e) => setProfessionalStatus(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm">
+            <select value={professionalStatus} onChange={(e) => setProfessionalStatus(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm">
               <option value="">— Choisir —</option>
               <option value="Agent commercial">Agent commercial (auto-entrepreneur)</option>
               <option value="Salarié">Salarié</option>
@@ -188,13 +188,13 @@ export function PreEnrollmentActions({
             </select>
           </Field>
           <Field label="N° Sécurité sociale" className="md:col-span-2">
-            <input value={socialSecurityNb} onChange={(e) => setSocialSecurityNb(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white font-mono text-xs" />
+            <input value={socialSecurityNb} onChange={(e) => setSocialSecurityNb(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white font-mono text-xs" />
           </Field>
         </div>
       </div>
 
       {isEi && (
-        <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 space-y-5">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 space-y-5">
           <h2 className="font-semibold text-base inline-flex items-center gap-3">
             Auto-entreprise / Org EI à créer
             <label className="text-xs font-normal inline-flex items-center gap-1.5 ml-auto">
@@ -205,40 +205,40 @@ export function PreEnrollmentActions({
           {createEiOrg && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <Field label="SIRET">
-                <input value={eiSiret} onChange={(e) => setEiSiret(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm font-mono" />
+                <input value={eiSiret} onChange={(e) => setEiSiret(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-mono" />
               </Field>
               <Field label="Raison sociale">
-                <input value={eiLegalName} onChange={(e) => setEiLegalName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" placeholder={`${firstName} ${lastName.toUpperCase()}`} />
+                <input value={eiLegalName} onChange={(e) => setEiLegalName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" placeholder={`${firstName} ${lastName.toUpperCase()}`} />
               </Field>
               <Field label="Code APE/NAF">
-                <input value={eiNaf} onChange={(e) => setEiNaf(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm font-mono" />
+                <input value={eiNaf} onChange={(e) => setEiNaf(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-mono" />
               </Field>
               <Field label="Adresse">
-                <input value={eiAddress} onChange={(e) => setEiAddress(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={eiAddress} onChange={(e) => setEiAddress(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="Code postal">
-                <input value={eiPostalCode} onChange={(e) => setEiPostalCode(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={eiPostalCode} onChange={(e) => setEiPostalCode(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="Ville">
-                <input value={eiCity} onChange={(e) => setEiCity(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={eiCity} onChange={(e) => setEiCity(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="IBAN" className="md:col-span-2">
-                <input value={iban} onChange={(e) => setIban(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm font-mono" />
+                <input value={iban} onChange={(e) => setIban(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-mono" />
               </Field>
               <Field label="BIC">
-                <input value={bic} onChange={(e) => setBic(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm font-mono" />
+                <input value={bic} onChange={(e) => setBic(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-mono" />
               </Field>
               <Field label="Banque">
-                <input value={bankName} onChange={(e) => setBankName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={bankName} onChange={(e) => setBankName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="N° affiliation URSSAF">
-                <input value={affiliationUrssaf} onChange={(e) => setAffiliationUrssaf(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={affiliationUrssaf} onChange={(e) => setAffiliationUrssaf(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="Nom du PA AGEFICE rattaché">
-                <input value={paName} onChange={(e) => setPaName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={paName} onChange={(e) => setPaName(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
               <Field label="Adresse du PA AGEFICE" className="md:col-span-2">
-                <input value={paAddress} onChange={(e) => setPaAddress(e.target.value)} className="w-full h-10 px-3 rounded-md border border-input bg-white text-sm" />
+                <input value={paAddress} onChange={(e) => setPaAddress(e.target.value)} className="w-full h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm" />
               </Field>
             </div>
           )}
@@ -268,7 +268,7 @@ export function PreEnrollmentActions({
           type="button"
           onClick={handleReExtract}
           disabled={pending}
-          className="inline-flex items-center gap-2 h-10 px-3 rounded-md border border-input bg-white text-sm hover:bg-muted/30 transition-all duration-300 ease-out active:scale-[0.97]"
+          className="inline-flex items-center gap-2 h-10 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm hover:bg-slate-100/30 transition-all duration-300 ease-out active:scale-[0.97]"
         >
           <RefreshCw className="h-4 w-4" /> Re-extraire avec l'IA
         </button>

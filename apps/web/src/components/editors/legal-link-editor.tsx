@@ -100,7 +100,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
   return (
     <div className="space-y-3">
       {links.length === 0 ? (
-        <p className="text-sm text-muted-foreground italic">
+        <p className="text-sm text-slate-500 italic">
           Aucune organisation rattachée à cet apprenant.
         </p>
       ) : (
@@ -110,14 +110,14 @@ export function LegalLinkEditor({ personId, links }: Props) {
             return (
               <li
                 key={link.id}
-                className="flex items-start gap-3 p-3 rounded-lg border border-border bg-white hover:bg-muted/30 transition-colors"
+                className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100/30 transition-colors"
               >
-                <Briefcase className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+                <Briefcase className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <a
                       href={`/app/organisations/${link.organization.id}`}
-                      className="font-medium text-foreground hover:text-primary transition-colors"
+                      className="font-medium text-slate-900 hover:text-primary transition-colors"
                     >
                       {link.organization.legalName}
                     </a>
@@ -130,7 +130,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                     )}
                   </div>
                   {link.organization.siret && (
-                    <div className="text-xs text-muted-foreground mt-1">
+                    <div className="text-xs text-slate-500 mt-1">
                       SIRET <code className="font-mono">{link.organization.siret}</code>
                     </div>
                   )}
@@ -140,7 +140,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                     type="button"
                     onClick={() => handleSetPrimary(link.id)}
                     disabled={pending || link.isPrimary}
-                    className="h-7 w-7 inline-flex items-center justify-center rounded text-muted-foreground hover:text-amber-600 hover:bg-amber-50 disabled:opacity-30"
+                    className="h-7 w-7 inline-flex items-center justify-center rounded text-slate-500 hover:text-amber-600 hover:bg-amber-50 disabled:opacity-30"
                     title={link.isPrimary ? 'Déjà principal' : 'Marquer principal'}
                   >
                     {link.isPrimary ? <Star className="h-3.5 w-3.5 fill-current" /> : <StarOff className="h-3.5 w-3.5" />}
@@ -149,7 +149,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                     type="button"
                     onClick={() => handleDelete(link.id)}
                     disabled={pending}
-                    className="h-7 w-7 inline-flex items-center justify-center rounded text-muted-foreground hover:text-red-600 hover:bg-red-50 disabled:opacity-30"
+                    className="h-7 w-7 inline-flex items-center justify-center rounded text-slate-500 hover:text-red-600 hover:bg-red-50 disabled:opacity-30"
                     title="Retirer le lien"
                   >
                     <X className="h-3.5 w-3.5" />
@@ -176,7 +176,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
             <button
               type="button"
               onClick={() => { setAdding(false); setSelectedOrg(null); setOrgQuery(''); }}
-              className="text-xs text-muted-foreground hover:text-foreground"
+              className="text-xs text-slate-500 hover:text-slate-900"
             >
               Annuler
             </button>
@@ -184,30 +184,30 @@ export function LegalLinkEditor({ personId, links }: Props) {
 
           {/* Org picker */}
           {selectedOrg ? (
-            <div className="flex items-center gap-2 p-2 rounded-md bg-white border border-border">
-              <Briefcase className="h-4 w-4 text-muted-foreground" />
+            <div className="flex items-center gap-2 p-2 rounded-md bg-white border border-slate-200">
+              <Briefcase className="h-4 w-4 text-slate-500" />
               <span className="text-sm flex-1 truncate">{selectedOrg.legalName}</span>
               <button
                 type="button"
                 onClick={() => setSelectedOrg(null)}
-                className="text-xs text-muted-foreground hover:text-foreground"
+                className="text-xs text-slate-500 hover:text-slate-900"
               >
                 Changer
               </button>
             </div>
           ) : (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
               <input
                 type="text"
                 value={orgQuery}
                 onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Rechercher une organisation…"
-                className="w-full h-9 pl-9 pr-3 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full h-9 pl-9 pr-3 rounded-md border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 autoFocus
               />
               {orgResults.length > 0 && (
-                <ul className="absolute z-10 mt-1 w-full max-h-60 overflow-auto rounded-md border border-border bg-white shadow-lg divide-y divide-border">
+                <ul className="absolute z-10 mt-1 w-full max-h-60 overflow-auto rounded-md border border-slate-200 bg-white shadow-lg divide-y divide-slate-200">
                   {orgResults.map((o) => (
                     <li key={o.id}>
                       <button
@@ -216,7 +216,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                         className="w-full text-left p-2.5 hover:bg-primary-50/50 transition-colors"
                       >
                         <div className="text-sm font-medium truncate">{o.legalName}</div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-xs text-slate-500">
                           {o.legalForm} {o.siret && `· ${o.siret}`}
                         </div>
                       </button>
@@ -231,13 +231,13 @@ export function LegalLinkEditor({ personId, links }: Props) {
           {selectedOrg && (
             <>
               <div>
-                <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+                <label className="text-xs font-medium text-slate-500 block mb-1.5">
                   Rôle
                 </label>
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full h-9 px-3 rounded-md border border-border bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full h-9 px-3 rounded-md border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 >
                   {ROLE_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -255,7 +255,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                   type="checkbox"
                   checked={makePrimary}
                   onChange={(e) => setMakePrimary(e.target.checked)}
-                  className="h-4 w-4 rounded border-border"
+                  className="h-4 w-4 rounded border-slate-200"
                 />
                 Marquer comme lien principal
               </label>
@@ -270,7 +270,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                 <button
                   type="button"
                   onClick={() => setAdding(false)}
-                  className="h-9 px-4 rounded-md text-sm font-medium border border-border hover:bg-muted/30"
+                  className="h-9 px-4 rounded-md text-sm font-medium border border-slate-200 hover:bg-slate-100/30"
                 >
                   Annuler
                 </button>
@@ -278,7 +278,7 @@ export function LegalLinkEditor({ personId, links }: Props) {
                   type="button"
                   onClick={handleSubmit}
                   disabled={pending}
-                  className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-50"
+                  className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
                 >
                   {pending ? 'Création…' : 'Créer le lien'}
                 </button>

@@ -43,7 +43,7 @@ export function BatchProgressAutoRefresh({ status, totalDocs, doneDocs, errorDoc
         <h2 className="font-semibold inline-flex items-center gap-2 text-primary-900">
           <Package className="h-4 w-4" /> Pack de fin de formation en cours
         </h2>
-        <span className="ml-auto text-xs text-muted-foreground tabular-nums">
+        <span className="ml-auto text-xs text-slate-500 tabular-nums">
           rafraîchissement auto · toutes les 5s
         </span>
       </div>
@@ -57,7 +57,7 @@ export function BatchProgressAutoRefresh({ status, totalDocs, doneDocs, errorDoc
             · {errorDocs} erreur{errorDocs > 1 ? 's' : ''}
           </span>
         )}
-        <span className="text-muted-foreground tabular-nums">
+        <span className="text-slate-500 tabular-nums">
           · {remaining} restant{remaining > 1 ? 's' : ''}
         </span>
         <span className="ml-auto text-xl font-bold tabular-nums text-primary">
@@ -72,7 +72,7 @@ export function BatchProgressAutoRefresh({ status, totalDocs, doneDocs, errorDoc
         />
       </div>
 
-      <p className="text-[11px] text-muted-foreground mt-2 italic">
+      <p className="text-[11px] text-slate-500 mt-2 italic">
         Ollama traite les docs un par un (concurrence=3). Tu peux quitter cette page — la génération continue côté serveur. Tu recevras un email à la fin.
       </p>
     </section>

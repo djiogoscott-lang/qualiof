@@ -57,7 +57,7 @@ export function VeilleTabsClient({
 
   return (
     <nav
-      className="flex items-center gap-1 border-b border-border overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0"
+      className="flex items-center gap-1 border-b border-slate-200 overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0"
       role="tablist"
       aria-label="Onglets veille Qualiopi"
     >
@@ -76,7 +76,7 @@ export function VeilleTabsClient({
               'px-3 py-2.5 text-sm whitespace-nowrap border-b-2 transition-colors',
               isActive
                 ? 'border-primary text-primary font-medium'
-                : 'border-transparent text-muted-foreground hover:text-foreground',
+                : 'border-transparent text-slate-500 hover:text-slate-900',
             )}
           >
             {t.label}
@@ -97,7 +97,7 @@ export function VeilleTabsClient({
             'px-3 py-2.5 text-sm whitespace-nowrap border-b-2 transition-colors ml-auto flex items-center gap-1.5',
             activeTab === 'inbox'
               ? 'border-amber-500 text-amber-700 font-medium'
-              : 'border-transparent text-muted-foreground hover:text-foreground',
+              : 'border-transparent text-slate-500 hover:text-slate-900',
           )}
         >
           <Inbox className="h-4 w-4" aria-hidden="true" />

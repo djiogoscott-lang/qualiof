@@ -33,7 +33,7 @@ export default async function NewLeadPage() {
       />
       <header>
         <h1 className="text-2xl font-semibold">Nouveau lead</h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-sm text-slate-500 mt-1">
           Le commercial le moins chargé sera automatiquement assigné (si
           l'auto-distribution est active).
         </p>

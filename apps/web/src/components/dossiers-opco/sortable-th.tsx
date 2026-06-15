@@ -45,7 +45,7 @@ export function SortableTh({ sortKey, children, className }: Props) {
   return (
     <th
       className={cn(
-        'px-3 py-2 text-[11px] uppercase tracking-wide font-semibold text-muted-foreground',
+        'px-3 py-2 text-[11px] uppercase tracking-wide font-semibold text-slate-500',
         className,
       )}
     >
@@ -53,7 +53,7 @@ export function SortableTh({ sortKey, children, className }: Props) {
         type="button"
         onClick={next}
         className={cn(
-          'inline-flex items-center gap-1 hover:text-foreground transition-colors',
+          'inline-flex items-center gap-1 hover:text-slate-900 transition-colors',
           isActive && 'text-primary',
         )}
       >

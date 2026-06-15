@@ -46,7 +46,7 @@ export function BackToListLink({
     <Link
       href={href as any}
       className={cn(
-        'inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors',
+        'inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors',
         className,
       )}
     >

@@ -23,12 +23,12 @@ export function GroupModeToggle() {
   }
 
   return (
-    <div className="inline-flex items-center rounded-md border border-border bg-white text-xs h-9 overflow-hidden">
+    <div className="inline-flex items-center rounded-md border border-slate-200 bg-white text-xs h-9 overflow-hidden">
       <button
         type="button"
         onClick={() => setGrouped(false)}
         className={`inline-flex items-center gap-1.5 px-3 h-full transition-colors ${
-          !grouped ? 'bg-primary text-white' : 'text-muted-foreground hover:bg-muted/40'
+          !grouped ? 'bg-primary text-white' : 'text-slate-500 hover:bg-slate-100/40'
         }`}
         title="Une ligne par inscription"
       >
@@ -38,7 +38,7 @@ export function GroupModeToggle() {
         type="button"
         onClick={() => setGrouped(true)}
         className={`inline-flex items-center gap-1.5 px-3 h-full transition-colors ${
-          grouped ? 'bg-primary text-white' : 'text-muted-foreground hover:bg-muted/40'
+          grouped ? 'bg-primary text-white' : 'text-slate-500 hover:bg-slate-100/40'
         }`}
         title="Regroupe par sponsor + session"
       >

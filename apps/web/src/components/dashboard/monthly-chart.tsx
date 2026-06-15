@@ -10,7 +10,7 @@ interface Props {
 export function MonthlyChart({ data }: Props) {
   if (data.length === 0) {
     return (
-      <div className="text-sm text-muted-foreground italic">Pas encore de sessions à afficher.</div>
+      <div className="text-sm text-slate-500 italic">Pas encore de sessions à afficher.</div>
     );
   }
   const fmt = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
@@ -35,7 +35,7 @@ export function MonthlyChart({ data }: Props) {
           );
         })}
       </div>
-      <div className="flex gap-2 text-[10px] text-muted-foreground">
+      <div className="flex gap-2 text-[10px] text-slate-500">
         {data.map((d, i) => (
           <div key={i} className="flex-1 text-center">{d.month}</div>
         ))}

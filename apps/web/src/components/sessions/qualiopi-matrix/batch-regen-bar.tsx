@@ -107,7 +107,7 @@ export function BatchRegenBar({
       className={cn(
         'data-[state=visible]:animate-in data-[state=visible]:slide-in-from-bottom-4 data-[state=visible]:fade-in-0',
         // Mobile : full-width bottom bar
-        'fixed bottom-0 inset-x-0 z-30 border-t border-border bg-foreground text-white shadow-lg',
+        'fixed bottom-0 inset-x-0 z-30 border-t border-slate-200 bg-foreground text-white shadow-lg',
         // Desktop : pill centered
         'sm:bottom-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:rounded-full sm:border-0 sm:shadow-2xl',
         'flex items-center gap-3 px-6 py-3 flex-wrap',
@@ -132,7 +132,7 @@ export function BatchRegenBar({
           <button
             type="button"
             disabled={pending}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-foreground text-sm font-medium hover:bg-muted/40 disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-slate-900 text-sm font-medium hover:bg-slate-100/40 disabled:opacity-60"
           >
             {pending ? (
               <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
@@ -147,9 +147,9 @@ export function BatchRegenBar({
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="bg-white text-foreground border border-border rounded-lg shadow-2xl py-1 min-w-[260px] max-h-[60vh] overflow-y-auto z-50"
+            className="bg-white text-slate-900 border border-slate-200 rounded-lg shadow-2xl py-1 min-w-[260px] max-h-[60vh] overflow-y-auto z-50"
           >
-            <div className="px-3 py-2 text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+            <div className="px-3 py-2 text-xs uppercase tracking-wide text-slate-500 font-semibold">
               Types de documents
             </div>
             {batchableKinds.map((kind) => {
@@ -161,7 +161,7 @@ export function BatchRegenBar({
                   checked={checked}
                   onCheckedChange={(c) => toggleKind(kind, c === true)}
                   onSelect={(e) => e.preventDefault()}
-                  className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-muted"
+                  className="flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none data-[highlighted]:bg-slate-100"
                 >
                   <input
                     type="checkbox"
@@ -169,7 +169,7 @@ export function BatchRegenBar({
                     readOnly
                     aria-hidden="true"
                     tabIndex={-1}
-                    className="h-3.5 w-3.5 rounded border-border accent-primary pointer-events-none"
+                    className="h-3.5 w-3.5 rounded border-slate-200 accent-primary pointer-events-none"
                   />
                   {lbl}
                 </DropdownMenu.CheckboxItem>

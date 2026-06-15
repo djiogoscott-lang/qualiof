@@ -43,7 +43,7 @@ export function GenerateConventionButton({
           type="button"
           onClick={handleGenerate}
           disabled={pending}
-          className="text-[11px] text-muted-foreground hover:text-foreground"
+          className="text-[11px] text-slate-500 hover:text-slate-900"
         >
           Régénérer
         </button>

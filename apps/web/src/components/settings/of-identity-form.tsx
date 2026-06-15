@@ -88,20 +88,20 @@ export function OfIdentityForm({ initial, onSaved, onCancel }: OfIdentityFormPro
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5 sm:col-span-2">
-          <label htmlFor="of-name" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-name" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Raison sociale *
           </label>
           <input
             id="of-name"
             type="text"
             {...register('name')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.name && <p className="text-xs text-red-600">{errors.name.message}</p>}
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="of-siret" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-siret" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             SIRET
           </label>
           <input
@@ -110,13 +110,13 @@ export function OfIdentityForm({ initial, onSaved, onCancel }: OfIdentityFormPro
             inputMode="numeric"
             placeholder="14 chiffres"
             {...register('siret')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.siret && <p className="text-xs text-red-600">{errors.siret.message}</p>}
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="of-numDA" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-numDA" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             N° Déclaration d'activité
           </label>
           <input
@@ -124,13 +124,13 @@ export function OfIdentityForm({ initial, onSaved, onCancel }: OfIdentityFormPro
             type="text"
             placeholder="Ex: 11 75 12345 75"
             {...register('numDA')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.numDA && <p className="text-xs text-red-600">{errors.numDA.message}</p>}
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="of-rcs" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-rcs" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             RCS
           </label>
           <input
@@ -138,13 +138,13 @@ export function OfIdentityForm({ initial, onSaved, onCancel }: OfIdentityFormPro
             type="text"
             placeholder="Ex: RCS Paris 814 237 186"
             {...register('rcs')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.rcs && <p className="text-xs text-red-600">{errors.rcs.message}</p>}
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="of-legalForm" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-legalForm" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Forme juridique
           </label>
           <input
@@ -152,25 +152,25 @@ export function OfIdentityForm({ initial, onSaved, onCancel }: OfIdentityFormPro
             type="text"
             placeholder="SAS, EURL, SARL, ..."
             {...register('legalForm')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.legalForm && <p className="text-xs text-red-600">{errors.legalForm.message}</p>}
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
         <button
           type="button"
           onClick={onCancel}
           disabled={isPending}
-          className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+          className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
         >
           Annuler
         </button>
         <button
           type="submit"
           disabled={isPending}
-          className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? 'Enregistrement…' : 'Enregistrer'}
         </button>

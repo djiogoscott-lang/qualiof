@@ -505,12 +505,12 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               initialEnd={session.endDate}
             />
             {session.product?.durationHours ? (
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1 text-xs text-slate-500">
                 <Clock className="h-3.5 w-3.5" /> {session.product.durationHours}h
               </span>
             ) : null}
             {Number(session.pricePerLearner ?? 0) > 0 && (
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1 text-xs text-slate-500">
                 <Euro className="h-3.5 w-3.5" /> {Number(session.pricePerLearner).toFixed(0)} € total session
               </span>
             )}
@@ -540,10 +540,10 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
         }`}>
           <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
             <div>
-              <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
                 <ClipboardCheck className="h-4 w-4" /> Dossier Qualiopi
               </h2>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 {totalCompleted}/{totalExpected} docs ({totalP} apprenant{totalP > 1 ? 's' : ''} × {PERSONAL_DOC_TOTAL} docs)
               </p>
             </div>
@@ -553,7 +553,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               {completionPct}%
             </div>
           </div>
-          <div className="h-2 rounded-full bg-white border border-border overflow-hidden mb-4">
+          <div className="h-2 rounded-full bg-white border border-slate-200 overflow-hidden mb-4">
             <div
               className={`h-full transition-all ${completionPct >= 90 ? 'bg-emerald-500' : completionPct >= 50 ? 'bg-amber-500' : 'bg-red-500'}`}
               style={{ width: `${completionPct}%` }}
@@ -561,12 +561,12 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
           </div>
           {docsMissingMost.length > 0 ? (
             <div>
-              <p className="text-xs font-semibold text-foreground/70 mb-2 uppercase tracking-wide">
+              <p className="text-xs font-semibold text-slate-900/70 mb-2 uppercase tracking-wide">
                 ⚠ Ce qui manque le plus
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {docsMissingMost.map((d) => (
-                  <li key={d.type} className="bg-white border border-border rounded-md px-3 py-2 text-xs flex items-center justify-between">
+                  <li key={d.type} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-xs flex items-center justify-between">
                     <span className="font-medium">{d.label}</span>
                     <span className={`font-semibold tabular-nums ${d.count === 0 ? 'text-red-600' : 'text-amber-700'}`}>
                       {d.count}/{d.total}
@@ -635,8 +635,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
-            <div className="flex items-center justify-between p-5 border-b border-border gap-3">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between p-5 border-b border-slate-200 gap-3">
               <h2 className="font-semibold inline-flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" /> Inscrits ({session.participants.length})
               </h2>
@@ -659,11 +659,11 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
             {session.participants.length === 0 ? (
-              <div className="p-8 text-center text-sm text-muted-foreground">
+              <div className="p-8 text-center text-sm text-slate-500">
                 Aucun apprenant inscrit. Probablement non matché à l'import (homonymie ou nom tronqué dans l'export Excel).
               </div>
             ) : (
-              <div className="divide-y divide-border">
+              <div className="divide-y divide-slate-200">
                 {(() => {
                   // Groupement par sponsorOrg : 1 facture = 1 sponsor (EI = 1 ligne, SARL = N salariés)
                   const groups = new Map<string, { sponsor: typeof session.participants[number]['sponsorOrg']; participants: typeof session.participants }>();
@@ -677,15 +677,15 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                     const totalHT = g.participants.reduce((s, p) => s + Number(p.priceHT), 0);
                     const allInvoiced = g.participants.every((p) => p.invoiceSent);
                     return (
-                      <div key={g.sponsor.id} className="p-4 hover:bg-muted/30 transition-colors">
+                      <div key={g.sponsor.id} className="p-4 hover:bg-slate-100/30 transition-colors">
                         {/* Header sponsor */}
                         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
-                          <div className="text-xs text-muted-foreground inline-flex items-center gap-2">
+                          <div className="text-xs text-slate-500 inline-flex items-center gap-2">
                             <Briefcase className="h-3 w-3" />
                             <span>Sponsor :</span>
                             <Link
                               href={`/app/organisations/${g.sponsor.id}`}
-                              className="text-foreground font-medium hover:text-primary"
+                              className="text-slate-900 font-medium hover:text-primary"
                             >
                               {g.sponsor.legalName}
                             </Link>
@@ -725,7 +725,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                                 >
                                   {p.person.firstName} {p.person.lastName.toUpperCase()}
                                 </Link>
-                                <div className="text-xs text-muted-foreground mt-0.5 inline-flex items-center gap-2 flex-wrap">
+                                <div className="text-xs text-slate-500 mt-0.5 inline-flex items-center gap-2 flex-wrap">
                                   <span className="tabular-nums">{Number(p.priceHT).toFixed(2)} €</span>
                                   <span>·</span>
                                   <span>{p.enrollmentStatus}</span>
@@ -800,9 +800,9 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               contenu visible — sinon le scroll arrive sur du vide. */}
           <section
             id="section-formateurs"
-            className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5 scroll-mt-20 target:ring-2 target:ring-primary target:ring-offset-2"
+            className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 scroll-mt-20 target:ring-2 target:ring-primary target:ring-offset-2"
           >
-            <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground mb-3">
+            <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
               Formateurs
             </h2>
             {session.trainers.length === 0 ? (
@@ -815,7 +815,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               </div>
             ) : (
               <>
-                <ul className="divide-y divide-border">
+                <ul className="divide-y divide-slate-200">
                   {session.trainers.map((t) => (
                     <li key={t.id} className="flex items-center gap-3 py-2">
                       <PrimaryTrainerToggle
@@ -829,7 +829,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                           {t.person.firstName} {t.person.lastName}
                         </span>
                         {t.role && (
-                          <span className="text-xs text-muted-foreground ml-2">· {t.role}</span>
+                          <span className="text-xs text-slate-500 ml-2">· {t.role}</span>
                         )}
                       </div>
                       {t.isPrimary && (
@@ -845,8 +845,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 pt-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground mb-2">Ajouter un autre formateur :</p>
+                <div className="mt-4 pt-4 border-t border-slate-200">
+                  <p className="text-xs text-slate-500 mb-2">Ajouter un autre formateur :</p>
                   <SessionTrainerPicker sessionId={session.id} setAsPrimary={false} />
                 </div>
               </>
@@ -858,9 +858,9 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               actionnable (BUG-18). */}
           <section
             id="section-lieu"
-            className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5 scroll-mt-20"
+            className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 scroll-mt-20"
           >
-            <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground mb-3">
+            <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
               Lieu de formation
             </h2>
             {session.location ? (
@@ -873,7 +873,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                       | null;
                     if (!addr) return null;
                     return (
-                      <div className="text-muted-foreground mt-1">
+                      <div className="text-slate-500 mt-1">
                         {[addr.street, [addr.postalCode, addr.city].filter(Boolean).join(' ')]
                           .filter(Boolean)
                           .join(', ')}
@@ -882,7 +882,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                   })()}
                 </div>
                 <details className="text-sm">
-                  <summary className="cursor-pointer text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1">
+                  <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1">
                     Changer de lieu
                   </summary>
                   <div className="mt-2">
@@ -927,15 +927,15 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               (cf docCompletionByParticipant) — utilisées aussi dans les
               badges par-ligne de la liste des inscrits. */}
           {session.participants.length > 0 && (
-            <details className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden group">
-              <summary className="flex items-center justify-between p-5 border-b border-border cursor-pointer hover:bg-muted/20 transition-colors list-none [&::-webkit-details-marker]:hidden">
+            <details className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden group">
+              <summary className="flex items-center justify-between p-5 border-b border-slate-200 cursor-pointer hover:bg-slate-100/20 transition-colors list-none [&::-webkit-details-marker]:hidden">
                 <h2 className="font-semibold inline-flex items-center gap-2">
                   <ClipboardCheck className="h-5 w-5 text-primary" /> Conformité Qualiopi
-                  <span className="text-xs font-normal text-muted-foreground ml-2 tabular-nums">
+                  <span className="text-xs font-normal text-slate-500 ml-2 tabular-nums">
                     {totalCompleted}/{totalExpected} docs · {completionPct}%
                   </span>
                 </h2>
-                <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1 text-xs text-slate-500">
                   <span className="hidden group-open:inline">Replier</span>
                   <span className="inline group-open:hidden">Voir la matrice détaillée</span>
                   <ChevronRight className="h-3.5 w-3.5 transition-transform group-open:rotate-90" />
@@ -943,8 +943,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               </summary>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-muted/30">
-                    <tr className="text-left text-[11px] uppercase tracking-wide text-muted-foreground">
+                  <thead className="bg-slate-100/30">
+                    <tr className="text-left text-[11px] uppercase tracking-wide text-slate-500">
                       <th className="px-4 py-2 font-semibold">Apprenant</th>
                       <th className="px-2 py-2 font-semibold text-center">Check-list (C4.i17)</th>
                       <th className="px-2 py-2 font-semibold text-center">Convention</th>
@@ -964,7 +964,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                       <th className="px-2 py-2 font-semibold text-center">Facture</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-border">
+                  <tbody className="divide-y divide-slate-200">
                     {session.participants.map((p) => {
                       const docs = docsByParticipant.get(p.id);
                       const assets = assetsByParticipant.get(p.id);
@@ -990,7 +990,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                         { label: invoice?.number ?? 'Facture', href: invoice ? `/app/factures/${invoice.id}` : undefined },
                       ];
                       return (
-                        <tr key={p.id} className="hover:bg-muted/20">
+                        <tr key={p.id} className="hover:bg-slate-100/20">
                           <td className="px-4 py-2">
                             <Link
                               href={`/app/apprenants/${p.person.id}?tab=documents`}
@@ -1049,41 +1049,41 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
             const renderRow = (b: typeof latest) => (
               <Link
                 href={`/app/sessions/${session.id}/closure/${b.id}` as Route}
-                className="flex items-center gap-3 p-4 hover:bg-muted/20 transition-colors"
+                className="flex items-center gap-3 p-4 hover:bg-slate-100/20 transition-colors"
               >
                 <Badge variant={variantOf(b.status)}>{b.status}</Badge>
                 <span className="text-sm flex-1">
                   {b.doneDocs} / {b.totalDocs} docs
                   {b.errorDocs > 0 && <span className="text-red-600"> · {b.errorDocs} erreur(s)</span>}
                 </span>
-                <span className="text-xs text-muted-foreground tabular-nums">
+                <span className="text-xs text-slate-500 tabular-nums">
                   {new Date(b.createdAt).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' })}
                 </span>
-                <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                <ChevronRight className="h-3.5 w-3.5 text-slate-500" />
               </Link>
             );
             return (
-              <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
-                <div className="p-5 border-b border-border flex items-center justify-between gap-3 flex-wrap">
+              <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                <div className="p-5 border-b border-slate-200 flex items-center justify-between gap-3 flex-wrap">
                   <h2 className="font-semibold inline-flex items-center gap-2">
                     <Package className="h-5 w-5 text-primary" /> Pack fin de formation
                   </h2>
                   <Link
                     href={`/app/sessions/${session.id}/closure` as Route}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+                    className="text-xs text-slate-500 hover:text-slate-900 transition-colors inline-flex items-center gap-1"
                   >
                     Voir l&apos;historique complet <ChevronRight className="h-3 w-3" />
                   </Link>
                 </div>
-                <ul className="divide-y divide-border">
+                <ul className="divide-y divide-slate-200">
                   <li key={latest.id}>{renderRow(latest)}</li>
                 </ul>
                 {previous.length > 0 && (
-                  <details className="border-t border-border">
-                    <summary className="cursor-pointer select-none text-xs text-muted-foreground hover:text-foreground transition-colors px-5 py-3 list-none [&::-webkit-details-marker]:hidden">
+                  <details className="border-t border-slate-200">
+                    <summary className="cursor-pointer select-none text-xs text-slate-500 hover:text-slate-900 transition-colors px-5 py-3 list-none [&::-webkit-details-marker]:hidden">
                       ▸ Historique ({previous.length} pack{previous.length > 1 ? 's' : ''} précédent{previous.length > 1 ? 's' : ''})
                     </summary>
-                    <ul className="divide-y divide-border bg-muted/10">
+                    <ul className="divide-y divide-slate-200 bg-slate-100/10">
                       {previous.map((b) => (
                         <li key={b.id}>{renderRow(b)}</li>
                       ))}
@@ -1098,23 +1098,23 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
         <div className="space-y-6">
           {/* BUG-17 anchor — completeness badge link vers la section Produit (fallback si pas de productId) */}
           <div id="section-produit" className="scroll-mt-20" />
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Produit de formation
             </h2>
             {session.product ? (
               <Link
                 href={`/app/produits/${session.product.id}`}
-                className="block p-3 rounded-lg border border-border hover:bg-muted/30 transition-colors"
+                className="block p-3 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
               >
                 <div className="font-medium">{session.product.title}</div>
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="text-xs text-slate-500 mt-1">
                   <Badge variant="muted" className="font-mono mr-2">{session.product.code}</Badge>
                   {session.product.durationHours}h · {session.product.modality}
                 </div>
               </Link>
             ) : (
-              <p className="text-sm text-muted-foreground italic">—</p>
+              <p className="text-sm text-slate-500 italic">—</p>
             )}
           </section>
 
@@ -1123,8 +1123,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               dans la matrice 17-col).
               Programme + Déroulé = niveau PRODUIT
               Grille obs session + Check-list = niveau SESSION */}
-          <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground inline-flex items-center gap-2">
+          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
               <FileText className="h-4 w-4" /> Documents partagés
             </h2>
             <ul className="space-y-1.5 text-sm">
@@ -1134,10 +1134,10 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                 { label: 'Grille observation (C3.i11)', href: grilleSessionDocId ? `/api/documents/${grilleSessionDocId}` : null, scope: 'Session' },
                 { label: 'Check-list formation (C4.i17)', href: checklistDocId ? `/api/documents/${checklistDocId}` : null, scope: 'Session' },
               ].map((d) => (
-                <li key={d.label} className="flex items-center justify-between gap-2 py-1.5 border-b last:border-0 border-border/50">
+                <li key={d.label} className="flex items-center justify-between gap-2 py-1.5 border-b last:border-0 border-slate-200/50">
                   <div className="min-w-0 flex-1">
-                    <div className="font-medium text-foreground truncate">{d.label}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{d.scope}</div>
+                    <div className="font-medium text-slate-900 truncate">{d.label}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-slate-500">{d.scope}</div>
                   </div>
                   {d.href ? (
                     <a
@@ -1150,7 +1150,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                       <ChevronRight className="h-3 w-3" />
                     </a>
                   ) : (
-                    <span className="text-[10px] text-muted-foreground italic shrink-0">Non généré</span>
+                    <span className="text-[10px] text-slate-500 italic shrink-0">Non généré</span>
                   )}
                 </li>
               ))}
@@ -1158,11 +1158,11 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
           </section>
 
           {session.internalNotes && (
-            <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
-              <h2 className="font-semibold mb-2 text-sm uppercase tracking-wide text-muted-foreground">
+            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <h2 className="font-semibold mb-2 text-sm uppercase tracking-wide text-slate-500">
                 Notes internes
               </h2>
-              <p className="text-xs text-muted-foreground whitespace-pre-line">
+              <p className="text-xs text-slate-500 whitespace-pre-line">
                 {session.internalNotes}
               </p>
             </section>

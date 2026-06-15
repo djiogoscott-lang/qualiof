@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 /**
  * DataTableFolk — SaaS Premium (Stripe/Linear/Vercel).
  *
- *  - `ring-1 ring-slate-200/70 rounded-2xl shadow-card` pour profondeur visible.
+ *  - `border border-slate-200 rounded-2xl shadow-card` pour profondeur visible.
  *  - Header `bg-gradient-to-b from-slate-50 to-white border-b border-slate-200`,
  *    libellés `text-xs font-bold uppercase tracking-wider text-slate-600`.
  *  - Rows séparées par `border-b border-slate-100/80`, `py-3.5 px-4` aérées,
@@ -37,14 +37,14 @@ interface Props<T> {
 export function DataTableFolk<T>({ rows, columns, rowKey, rowHref, empty }: Props<T>) {
   if (rows.length === 0) {
     return (
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card py-20 text-center text-sm text-slate-500">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm py-20 text-center text-sm text-slate-500">
         {empty ?? 'Aucun résultat.'}
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden transition-shadow hover:shadow-card-hover">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-card-hover">
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>

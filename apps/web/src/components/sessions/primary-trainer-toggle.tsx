@@ -52,7 +52,7 @@ export function PrimaryTrainerToggle({
       className={`inline-flex items-center justify-center h-6 w-6 rounded transition-colors ${
         isPrimary
           ? 'text-amber-500'
-          : 'text-muted-foreground/40 hover:text-amber-500 hover:bg-amber-50'
+          : 'text-slate-500/40 hover:text-amber-500 hover:bg-amber-50'
       }`}
     >
       {pending ? (

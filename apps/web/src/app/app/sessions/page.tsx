@@ -220,7 +220,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
       </div>
 
       {rows.length === 0 ? (
-        <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card py-16 text-center">
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm py-16 text-center">
           <div className="inline-flex h-10 w-10 mb-3 rounded-lg bg-slate-100 text-slate-400 items-center justify-center">
             <Calendar className="h-5 w-5" strokeWidth={1.75} />
           </div>
@@ -249,10 +249,10 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
             }
             return Array.from(grouped.entries()).map(([month, items]) => (
               <div key={month}>
-                <h2 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2 px-2">
-                  {month} <span className="text-foreground/40">— {items.length} session{items.length > 1 ? 's' : ''}</span>
+                <h2 className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2 px-2">
+                  {month} <span className="text-slate-900/40">— {items.length} session{items.length > 1 ? 's' : ''}</span>
                 </h2>
-                <div className="rounded-2xl border border-border bg-white divide-y divide-border overflow-hidden">
+                <div className="rounded-2xl border border-slate-200 bg-white divide-y divide-slate-200 overflow-hidden">
                   {items.map((s) => {
                     const start = new Date(s.startDate);
                     const end = new Date(s.endDate);
@@ -260,7 +260,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                     const isPast = end < now;
                     const noLearners = s._count.participants === 0;
                     const primaryTrainer = s.trainers[0]?.person;
-                    const rowBg = noLearners ? 'bg-amber-50/40 hover:bg-amber-50' : 'hover:bg-muted/30';
+                    const rowBg = noLearners ? 'bg-amber-50/40 hover:bg-amber-50' : 'hover:bg-slate-100/30';
                     return (
                       <Link
                         key={s.id}
@@ -272,7 +272,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-medium truncate">{s.name ?? s.product?.title ?? '(sans nom)'}</div>
-                          <div className="text-xs text-muted-foreground mt-0.5 flex items-center gap-3 flex-wrap">
+                          <div className="text-xs text-slate-500 mt-0.5 flex items-center gap-3 flex-wrap">
                             <span className="inline-flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {sameDay

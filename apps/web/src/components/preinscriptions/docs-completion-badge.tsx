@@ -42,7 +42,7 @@ export function DocsCompletionBadge({
             'text-[11px] font-semibold tabular-nums ml-1',
             tone === 'complete' && 'text-emerald-700',
             tone === 'partial' && 'text-amber-700',
-            tone === 'muted' && 'text-muted-foreground',
+            tone === 'muted' && 'text-slate-500',
           )}
         >
           {count}/{total}
@@ -60,7 +60,7 @@ export function DocsCompletionBadge({
             'text-sm font-semibold tabular-nums',
             tone === 'complete' && 'text-emerald-700',
             tone === 'partial' && 'text-amber-700',
-            tone === 'muted' && 'text-muted-foreground',
+            tone === 'muted' && 'text-slate-500',
           )}
         >
           {count}/{total} pièces reçues

@@ -46,21 +46,21 @@ export function TresoStatusBlock({ participants }: Props) {
   return (
     <section
       aria-labelledby="treso-status-heading"
-      className="rounded-2xl border border-border bg-white p-5"
+      className="rounded-2xl border border-slate-200 bg-white p-5"
     >
       <h2
         id="treso-status-heading"
-        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-muted-foreground mb-3"
+        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-slate-500 mb-3"
       >
         <Wallet className="h-4 w-4" aria-hidden="true" /> Trésorerie & suivi OPCO
       </h2>
-      <p className="text-xs text-muted-foreground mb-3">
+      <p className="text-xs text-slate-500 mb-3">
         Importé depuis le suivi Excel <em>Tréso AGEFICE</em>. Source de vérité encaissement.
       </p>
       <div className="overflow-x-auto -mx-2 sm:mx-0">
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-xs uppercase tracking-wide text-muted-foreground border-b border-border">
+            <tr className="text-xs uppercase tracking-wide text-slate-500 border-b border-slate-200">
               <th className="text-left px-2 py-2 font-semibold">Apprenant</th>
               {STEPS.map((s) => (
                 <th key={s.key} className="text-center px-2 py-2 font-semibold">
@@ -69,7 +69,7 @@ export function TresoStatusBlock({ participants }: Props) {
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-border/60">
+          <tbody className="divide-y divide-slate-200/60">
             {participants.map((p) => (
               <tr key={p.id}>
                 <td className="px-2 py-1.5 font-medium">{p.personName}</td>

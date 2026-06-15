@@ -62,17 +62,17 @@ function PrioCard({
   sub: string;
 }) {
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
       <div className="flex items-center gap-3 mb-2">
-        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-muted text-foreground">
+        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-slate-100 text-slate-900">
           <Icon className="h-4 w-4" />
         </span>
-        <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium leading-tight">
+        <p className="text-xs uppercase tracking-wide text-slate-500 font-medium leading-tight">
           {label}
         </p>
       </div>
       <p className="text-2xl font-bold tabular-nums leading-tight">{value}</p>
-      <p className="text-xs text-muted-foreground mt-1">{sub}</p>
+      <p className="text-xs text-slate-500 mt-1">{sub}</p>
     </div>
   );
 }

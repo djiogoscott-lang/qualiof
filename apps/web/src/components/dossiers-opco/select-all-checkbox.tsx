@@ -31,7 +31,7 @@ export function DossierSelectAllCheckbox({ allIds }: Props) {
       type="checkbox"
       checked={allSelected}
       onChange={(e) => toggleAll(allIds, e.target.checked)}
-      className="h-3.5 w-3.5 rounded border-border accent-primary cursor-pointer"
+      className="h-3.5 w-3.5 rounded border-slate-200 accent-primary cursor-pointer"
       aria-label={allSelected ? 'Tout déselectionner' : 'Tout sélectionner'}
     />
   );

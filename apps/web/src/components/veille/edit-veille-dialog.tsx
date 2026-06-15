@@ -119,7 +119,7 @@ export function EditVeilleDialog({
     >
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[560px] max-w-[95vw] max-h-[90vh] overflow-y-auto rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[560px] max-w-[95vw] max-h-[90vh] overflow-y-auto rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <div className="flex items-start gap-3 mb-5">
             <div className="shrink-0 rounded-md bg-primary-50 p-2 text-primary-700">
               <Pencil className="h-5 w-5" />
@@ -128,7 +128,7 @@ export function EditVeilleDialog({
               <Dialog.Title className="text-lg font-semibold">
                 Modifier la source
               </Dialog.Title>
-              <Dialog.Description className="mt-1 text-sm text-muted-foreground break-words">
+              <Dialog.Description className="mt-1 text-sm text-slate-500 break-words">
                 {watch.title}
               </Dialog.Description>
             </div>
@@ -141,14 +141,14 @@ export function EditVeilleDialog({
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-theme"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Thème *
                 </label>
                 <select
                   id="edit-theme"
                   {...register('theme')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 >
                   {(Object.keys(THEME_LABELS) as Theme[]).map((t) => (
                     <option key={t} value={t}>
@@ -161,7 +161,7 @@ export function EditVeilleDialog({
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-frequency"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Fréquence
                 </label>
@@ -169,7 +169,7 @@ export function EditVeilleDialog({
                   id="edit-frequency"
                   type="text"
                   {...register('frequency')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -177,7 +177,7 @@ export function EditVeilleDialog({
             <div className="space-y-1.5">
               <label
                 htmlFor="edit-title"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 Titre *
               </label>
@@ -185,7 +185,7 @@ export function EditVeilleDialog({
                 id="edit-title"
                 type="text"
                 {...register('title')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
               {errors.title && (
                 <p className="text-xs text-red-600">{errors.title.message}</p>
@@ -195,7 +195,7 @@ export function EditVeilleDialog({
             <div className="space-y-1.5">
               <label
                 htmlFor="edit-url"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 URL
               </label>
@@ -203,7 +203,7 @@ export function EditVeilleDialog({
                 id="edit-url"
                 type="url"
                 {...register('url')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               />
               {errors.url && (
                 <p className="text-xs text-red-600">{errors.url.message}</p>
@@ -214,7 +214,7 @@ export function EditVeilleDialog({
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-source"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Source
                 </label>
@@ -222,13 +222,13 @@ export function EditVeilleDialog({
                   id="edit-source"
                   type="text"
                   {...register('source')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-responsable"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Responsable
                 </label>
@@ -236,7 +236,7 @@ export function EditVeilleDialog({
                   id="edit-responsable"
                   type="text"
                   {...register('responsable')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -245,7 +245,7 @@ export function EditVeilleDialog({
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-typesource"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Type de source
                 </label>
@@ -253,13 +253,13 @@ export function EditVeilleDialog({
                   id="edit-typesource"
                   type="text"
                   {...register('typeSource')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
               <div className="space-y-1.5">
                 <label
                   htmlFor="edit-modesuivi"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Mode de suivi
                 </label>
@@ -267,7 +267,7 @@ export function EditVeilleDialog({
                   id="edit-modesuivi"
                   type="text"
                   {...register('modeSuivi')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
               </div>
             </div>
@@ -278,12 +278,12 @@ export function EditVeilleDialog({
               </p>
             )}
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-border">
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
               <Dialog.Close asChild>
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
                 >
                   Annuler
                 </button>
@@ -291,7 +291,7 @@ export function EditVeilleDialog({
               <button
                 type="submit"
                 disabled={pending}
-                className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {pending ? 'Enregistrement…' : 'Enregistrer'}
               </button>

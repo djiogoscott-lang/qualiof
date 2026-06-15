@@ -60,7 +60,7 @@ export function ExportPdfButton({ theme, label }: ExportPdfButtonProps) {
       onClick={handleClick}
       disabled={pending}
       title="Génère et trace en historique un PDF de l'audit Qualiopi pour ce thème"
-      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-border bg-white text-sm text-foreground hover:bg-primary hover:text-white hover:border-primary transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-slate-200 bg-white text-sm text-slate-900 hover:bg-primary hover:text-white hover:border-primary transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {pending ? (
         <Loader2 className="h-4 w-4 animate-spin" />

@@ -24,14 +24,14 @@ interface Props<T> {
 export function DataTable<T>({ rows, columns, rowKey, rowHref, empty }: Props<T>) {
   if (rows.length === 0) {
     return (
-      <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-16 text-center text-sm text-slate-500">
+      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-16 text-center text-sm text-slate-500">
         {empty ?? 'Aucun résultat.'}
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden transition-shadow hover:shadow-card-hover">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-md">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

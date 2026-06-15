@@ -81,7 +81,7 @@ export function NotificationsBell() {
           sideOffset={8}
           className="
             z-50 min-w-[340px] max-w-[400px] rounded-2xl bg-white p-1.5
-            ring-1 ring-slate-200/70 shadow-card-hover
+            border border-slate-200 shadow-card-hover
             animate-in fade-in zoom-in-95 duration-150
           "
         >

@@ -66,7 +66,7 @@ export function GenerateClosureForParticipantButton({
       onClick={handleClick}
       disabled={pending}
       title={error ?? 'Générer le pack fin de formation pour cet apprenant'}
-      className="inline-flex items-center gap-1 h-7 px-2 rounded-md border border-border bg-white text-[11px] text-foreground hover:bg-primary hover:text-white hover:border-primary transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className="inline-flex items-center gap-1 h-7 px-2 rounded-md border border-slate-200 bg-white text-[11px] text-slate-900 hover:bg-primary hover:text-white hover:border-primary transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {pending ? <Loader2 className="h-3 w-3 animate-spin" /> : <Package className="h-3 w-3" />}
       Pack fin de formation

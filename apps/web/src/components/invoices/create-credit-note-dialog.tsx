@@ -85,11 +85,11 @@ export function CreateCreditNoteDialog({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[520px] max-w-[92vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[520px] max-w-[92vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">
             Créer un avoir sur {originalNumber}
           </Dialog.Title>
-          <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-1 text-sm text-slate-500">
             Montant maximum créditable :{' '}
             <strong>{originalAmountHt.toFixed(2)} €</strong> HT. Un avoir partiel
             laisse la facture originale active ; un avoir total l'annule
@@ -113,7 +113,7 @@ export function CreateCreditNoteDialog({
                 min="0.01"
                 max={originalAmountHt}
                 {...register('amountHtToCredit', { valueAsNumber: true })}
-                className="w-full h-9 px-3 rounded-md border border-input bg-white text-sm"
+                className="w-full h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                 aria-invalid={!!errors.amountHtToCredit}
               />
               {errors.amountHtToCredit && (
@@ -131,7 +131,7 @@ export function CreateCreditNoteDialog({
                 id="motif"
                 rows={3}
                 {...register('motif')}
-                className="w-full px-3 py-2 rounded-md border border-input bg-white text-sm"
+                className="w-full px-3 py-2 rounded-md border border-slate-200 shadow-sm bg-white text-sm"
                 placeholder="Ex : Erreur de facturation, geste commercial, annulation partielle…"
                 aria-invalid={!!errors.motif}
               />
@@ -147,7 +147,7 @@ export function CreateCreditNoteDialog({
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-3 rounded-md border border-input bg-white text-sm disabled:opacity-50"
+                  className="h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-sm disabled:opacity-50"
                 >
                   Annuler
                 </button>

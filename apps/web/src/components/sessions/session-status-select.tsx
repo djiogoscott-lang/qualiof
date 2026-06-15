@@ -73,22 +73,22 @@ export function SessionStatusSelect({ sessionId, currentStatus }: Props) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         disabled={pending}
-        className="inline-flex items-center gap-1 rounded-md hover:bg-muted/40 px-1 py-0.5 -mx-1 -my-0.5 transition-colors"
+        className="inline-flex items-center gap-1 rounded-md hover:bg-slate-100/40 px-1 py-0.5 -mx-1 -my-0.5 transition-colors"
         title="Changer le statut"
       >
         <Badge variant={current.variant}>{current.label}</Badge>
         {pending ? (
-          <Loader2 className="h-3 w-3 animate-spin text-muted-foreground" />
+          <Loader2 className="h-3 w-3 animate-spin text-slate-500" />
         ) : (
-          <ChevronDown className="h-3 w-3 text-muted-foreground" />
+          <ChevronDown className="h-3 w-3 text-slate-500" />
         )}
       </button>
 
       {open && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 z-40 w-64 rounded-lg border border-border bg-white shadow-lg overflow-hidden">
-            <div className="px-3 py-2 text-[11px] uppercase tracking-wide text-muted-foreground border-b border-border">
+          <div className="absolute left-0 top-full mt-1 z-40 w-64 rounded-lg border border-slate-200 bg-white shadow-lg overflow-hidden">
+            <div className="px-3 py-2 text-[11px] uppercase tracking-wide text-slate-500 border-b border-slate-200">
               Changer le statut
             </div>
             <div className="py-1">
@@ -100,8 +100,8 @@ export function SessionStatusSelect({ sessionId, currentStatus }: Props) {
                     type="button"
                     onClick={() => handlePick(s.value)}
                     className={cn(
-                      'w-full px-3 py-2 text-left flex items-start gap-2 hover:bg-muted/30 transition-colors',
-                      active && 'bg-muted/40',
+                      'w-full px-3 py-2 text-left flex items-start gap-2 hover:bg-slate-100/30 transition-colors',
+                      active && 'bg-slate-100/40',
                     )}
                   >
                     <Check
@@ -115,7 +115,7 @@ export function SessionStatusSelect({ sessionId, currentStatus }: Props) {
                         <Badge variant={s.variant}>{s.label}</Badge>
                       </div>
                       {s.hint && (
-                        <div className="text-[11px] text-muted-foreground mt-0.5">{s.hint}</div>
+                        <div className="text-[11px] text-slate-500 mt-0.5">{s.hint}</div>
                       )}
                     </div>
                   </button>

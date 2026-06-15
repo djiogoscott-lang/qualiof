@@ -98,11 +98,11 @@ export function OfAssetsForm({ initial, onCancel }: OfAssetsFormProps) {
           onAskReset={() => setConfirmReset('signature-dirigeant')}
         />
 
-        <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+        <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
           <button
             type="button"
             onClick={onCancel}
-            className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors"
+            className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors"
           >
             Fermer
           </button>
@@ -117,11 +117,11 @@ export function OfAssetsForm({ initial, onCancel }: OfAssetsFormProps) {
       >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[420px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
+          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[420px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95">
             <Dialog.Title className="text-lg font-semibold">
               Restaurer l'image par défaut
             </Dialog.Title>
-            <Dialog.Description className="mt-2 text-sm text-muted-foreground">
+            <Dialog.Description className="mt-2 text-sm text-slate-500">
               Cette action supprimera l'image actuellement uploadée et restaurera
               le fichier par défaut bundled avec l'application. Continuer ?
             </Dialog.Description>
@@ -129,7 +129,7 @@ export function OfAssetsForm({ initial, onCancel }: OfAssetsFormProps) {
               <Dialog.Close asChild>
                 <button
                   type="button"
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors"
                 >
                   Annuler
                 </button>
@@ -195,9 +195,9 @@ function AssetRow({
 
   return (
     <div className="flex items-center gap-4 flex-wrap">
-      <div className="relative w-32 h-20 rounded-md border border-border bg-slate-50 flex items-center justify-center overflow-hidden shrink-0">
+      <div className="relative w-32 h-20 rounded-md border border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0">
         <ImageIcon
-          className="h-6 w-6 text-muted-foreground"
+          className="h-6 w-6 text-slate-500"
           aria-hidden="true"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -215,7 +215,7 @@ function AssetRow({
 
       <div className="flex-1 min-w-0">
         <div className="text-sm font-medium">{label}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">
+        <div className="text-xs text-slate-500 mt-0.5">
           {isDefault
             ? 'Image par défaut (bundled)'
             : 'Image personnalisée uploadée'}
@@ -227,8 +227,8 @@ function AssetRow({
           htmlFor={inputId}
           className={
             isPending
-              ? 'h-9 px-3 rounded-md border border-input bg-muted text-xs font-medium cursor-not-allowed opacity-50 inline-flex items-center'
-              : 'h-9 px-3 rounded-md border border-input bg-white text-xs font-medium hover:bg-muted transition-colors cursor-pointer inline-flex items-center'
+              ? 'h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-slate-100 text-xs font-medium cursor-not-allowed opacity-50 inline-flex items-center'
+              : 'h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-xs font-medium hover:bg-slate-100 transition-colors cursor-pointer inline-flex items-center'
           }
         >
           {isPending ? 'Upload…' : 'Remplacer'}
@@ -246,7 +246,7 @@ function AssetRow({
             type="button"
             onClick={onAskReset}
             disabled={isPending}
-            className="h-9 px-3 rounded-md border border-input bg-white text-xs font-medium hover:bg-muted transition-colors disabled:opacity-50 inline-flex items-center gap-1"
+            className="h-9 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-xs font-medium hover:bg-slate-100 transition-colors disabled:opacity-50 inline-flex items-center gap-1"
             title="Restaurer par défaut"
           >
             <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />

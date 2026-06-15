@@ -17,7 +17,7 @@ import type { CommercialKpis } from '@/lib/lead-load-stats';
 export function LeadLoadTable({ rows }: { rows: CommercialKpis[] }) {
   if (rows.length === 0) {
     return (
-      <div className="text-sm text-muted-foreground italic">
+      <div className="text-sm text-slate-500 italic">
         Aucun commercial actif dans ce tenant.
       </div>
     );
@@ -26,7 +26,7 @@ export function LeadLoadTable({ rows }: { rows: CommercialKpis[] }) {
     <div className="overflow-x-auto -mx-4 sm:mx-0">
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-border">
+          <tr className="border-b border-slate-200">
             <th className="text-left py-2 px-3 font-medium">Commercial</th>
             <th className="text-right py-2 px-3 font-medium">Leads en cours</th>
             <th className="text-right py-2 px-3 font-medium">Gagnés ce mois</th>
@@ -38,7 +38,7 @@ export function LeadLoadTable({ rows }: { rows: CommercialKpis[] }) {
           {rows.map((r) => (
             <tr
               key={r.userId}
-              className="border-b border-border/50 hover:bg-muted/30"
+              className="border-b border-slate-200/50 hover:bg-slate-100/30"
             >
               <td className="py-2 px-3">{r.name || '—'}</td>
               <td className="py-2 px-3 text-right tabular-nums">

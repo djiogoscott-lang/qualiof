@@ -70,25 +70,25 @@ export function TimelineSessionCard({ session }: Props) {
       href={`/app/sessions/${id}` as any}
       aria-label={`Voir la session ${productTitle} du ${fmtDate(startDate)}`}
       className={cn(
-        'block rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-4 hover:shadow-md hover:border-primary-200 transition-all max-w-2xl',
-        cancelled && 'bg-muted/30 opacity-70',
+        'block rounded-2xl border border-slate-200 bg-white shadow-sm p-4 hover:shadow-md hover:border-primary-200 transition-all max-w-2xl',
+        cancelled && 'bg-slate-100/30 opacity-70',
       )}
       id={`session-${id}`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="font-medium truncate text-foreground">{productTitle}</p>
-          <p className="text-xs text-muted-foreground">
+          <p className="font-medium truncate text-slate-900">{productTitle}</p>
+          <p className="text-xs text-slate-500">
             {fmtDateRange(startDate, endDate)} · {durationHours} h
           </p>
         </div>
         {funderCode && (
-          <span className="text-xs bg-muted px-2 py-0.5 rounded-full whitespace-nowrap">
+          <span className="text-xs bg-slate-100 px-2 py-0.5 rounded-full whitespace-nowrap">
             {formatFunderCode(funderCode)}
           </span>
         )}
       </div>
-      <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
+      <div className="mt-2 flex items-center gap-1 text-xs text-slate-500">
         {Array.from({ length: 5 }, (_, i) => (
           <span
             key={i}
@@ -104,7 +104,7 @@ export function TimelineSessionCard({ session }: Props) {
         </span>
       </div>
       {cancelled && (
-        <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+        <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">
           Annulée
         </span>
       )}

@@ -59,12 +59,13 @@ const VARIANTS: Record<ButtonVariant, string> = {
     'hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.35),0_0_20px_rgba(15,23,42,0.18)]',
     'focus-visible:ring-slate-300',
   ].join(' '),
-  // Glow primary Start Academy (#00527A → rgba(0,82,122))
+  // Glow indigo (#4F46E5 → rgba(79,70,229)) — Slate/Indigo SaaS theme.
+  // Gradient indigo→blue diagonal pour le CTA principal moderne.
   primary: [
-    'bg-gradient-to-br from-primary to-primary-700 text-white shadow-soft',
-    'hover:from-primary-600 hover:to-primary-800 hover:-translate-y-0.5',
-    'hover:shadow-[0_8px_24px_-4px_rgba(0,82,122,0.45),0_0_20px_rgba(0,82,122,0.25)]',
-    'focus-visible:ring-primary-200',
+    'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-soft',
+    'hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5',
+    'hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)]',
+    'focus-visible:ring-indigo-200',
   ].join(' '),
   // Outline : adaptation subtile bordure + texte + glow ambient slate-100
   outline: [
@@ -96,9 +97,9 @@ const VARIANTS: Record<ButtonVariant, string> = {
   ].join(' '),
   // Link : pas de transform (resterait collé au texte autour)
   link: [
-    'bg-transparent text-primary underline-offset-4',
-    'hover:underline hover:text-primary-700',
-    'focus-visible:ring-primary-200 active:scale-100',
+    'bg-transparent text-indigo-600 underline-offset-4',
+    'hover:underline hover:text-indigo-700',
+    'focus-visible:ring-indigo-200 active:scale-100',
   ].join(' '),
 };
 

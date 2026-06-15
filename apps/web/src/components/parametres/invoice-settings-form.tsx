@@ -108,7 +108,7 @@ export function InvoiceSettingsForm({ initial, onSaved, onCancel }: Props) {
       <div className="space-y-1.5 max-w-xs">
         <label
           htmlFor="invoice-creditNotePrefix"
-          className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+          className="text-xs font-medium uppercase tracking-wide text-slate-500"
         >
           Préfixe avoirs
         </label>
@@ -121,11 +121,11 @@ export function InvoiceSettingsForm({ initial, onSaved, onCancel }: Props) {
           })}
           placeholder="AVO"
           aria-describedby="invoice-creditNotePrefix-help"
-          className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
         />
         <p
           id="invoice-creditNotePrefix-help"
-          className="text-[11px] text-muted-foreground"
+          className="text-[11px] text-slate-500"
         >
           Format : majuscules + chiffres uniquement (1-8 caractères). Ex : AVO, NC, AV2026.
           Séquence distincte des factures (CGI art. 289).
@@ -138,7 +138,7 @@ export function InvoiceSettingsForm({ initial, onSaved, onCancel }: Props) {
       <div className="space-y-1.5 max-w-sm">
         <label
           htmlFor="invoice-invoiceReminderDaysCsv"
-          className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+          className="text-xs font-medium uppercase tracking-wide text-slate-500"
         >
           Délais de relance (jours après échéance)
         </label>
@@ -148,11 +148,11 @@ export function InvoiceSettingsForm({ initial, onSaved, onCancel }: Props) {
           {...register('invoiceReminderDaysCsv')}
           placeholder="30, 45"
           aria-describedby="invoice-reminder-days-help"
-          className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
         />
         <p
           id="invoice-reminder-days-help"
-          className="text-[11px] text-muted-foreground"
+          className="text-[11px] text-slate-500"
         >
           1 à 3 délais strictement croissants (ex : 30, 45 ou 30, 45, 60). Niveau 1
           (ton amical) au premier délai, niveau 2 (ton ferme) au second.
@@ -162,13 +162,13 @@ export function InvoiceSettingsForm({ initial, onSaved, onCancel }: Props) {
         )}
       </div>
 
-      <div className="flex justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex justify-end gap-2 pt-2 border-t border-slate-200">
         {onCancel ? (
           <button
             type="button"
             onClick={onCancel}
             disabled={isPending}
-            className="inline-flex items-center px-4 py-2 rounded-md border border-input bg-white hover:bg-muted disabled:opacity-50 text-sm font-medium"
+            className="inline-flex items-center px-4 py-2 rounded-md border border-slate-200 shadow-sm bg-white hover:bg-slate-100 disabled:opacity-50 text-sm font-medium"
           >
             Annuler
           </button>

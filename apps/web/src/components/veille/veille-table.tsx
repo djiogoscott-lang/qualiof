@@ -30,12 +30,12 @@ interface VeilleTableProps {
 export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
   if (watches.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-border bg-muted/30 p-8 text-center">
-        <p className="text-sm text-muted-foreground">
+      <div className="rounded-lg border border-dashed border-slate-200 bg-slate-100/30 p-8 text-center">
+        <p className="text-sm text-slate-500">
           Aucune source pour ce thème.
         </p>
         {canEdit && (
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Cliquez sur « Ajouter une source » pour commencer.
           </p>
         )}
@@ -44,10 +44,10 @@ export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
   }
 
   return (
-    <div className="rounded-lg border border-border overflow-x-auto -mx-4 sm:mx-0">
+    <div className="rounded-lg border border-slate-200 overflow-x-auto -mx-4 sm:mx-0">
       <table className="w-full text-sm">
-        <thead className="bg-muted/50">
-          <tr className="text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+        <thead className="bg-slate-100/50">
+          <tr className="text-left text-[11px] uppercase tracking-wider text-slate-500">
             <th className="px-3 py-2 font-semibold">Titre</th>
             <th className="px-3 py-2 font-semibold">Source / Type</th>
             <th className="px-3 py-2 font-semibold">Responsable</th>
@@ -66,8 +66,8 @@ export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
               key={w.id}
               className={
                 w.status === 'DRAFT'
-                  ? 'border-t border-border bg-amber-50/50'
-                  : 'border-t border-border'
+                  ? 'border-t border-slate-200 bg-amber-50/50'
+                  : 'border-t border-slate-200'
               }
             >
               <td className="px-3 py-2.5 font-medium align-top">
@@ -89,7 +89,7 @@ export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
                   </span>
                 )}
               </td>
-              <td className="px-3 py-2.5 text-muted-foreground align-top">
+              <td className="px-3 py-2.5 text-slate-500 align-top">
                 <div className="space-y-0.5">
                   {w.source && <div>{w.source}</div>}
                   {w.typeSource && (
@@ -98,11 +98,11 @@ export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
                   {!w.source && !w.typeSource && <span>—</span>}
                 </div>
               </td>
-              <td className="px-3 py-2.5 text-muted-foreground align-top">
-                {w.responsable ?? <span className="text-muted-foreground/60">—</span>}
+              <td className="px-3 py-2.5 text-slate-500 align-top">
+                {w.responsable ?? <span className="text-slate-500/60">—</span>}
               </td>
-              <td className="px-3 py-2.5 text-muted-foreground align-top">
-                {w.frequency ?? <span className="text-muted-foreground/60">—</span>}
+              <td className="px-3 py-2.5 text-slate-500 align-top">
+                {w.frequency ?? <span className="text-slate-500/60">—</span>}
               </td>
               <td className="px-3 py-2.5 align-top">
                 {canEdit ? (
@@ -112,7 +112,7 @@ export function VeilleTable({ watches, canEdit }: VeilleTableProps) {
                     className={
                       w.exploitation
                         ? 'text-sm'
-                        : 'text-sm text-muted-foreground italic'
+                        : 'text-sm text-slate-500 italic'
                     }
                   >
                     {w.exploitation ?? '—'}

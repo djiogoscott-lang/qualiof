@@ -50,7 +50,7 @@ export function BulkRemindersButton({ pendingCount }: Props) {
             ? 'Aucune pré-inscription en attente'
             : 'Envoyer une relance à tous les liens > 7 jours sans soumission'
         }
-        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <Bell className="h-4 w-4" /> Relancer en attente
       </button>
@@ -63,21 +63,21 @@ export function BulkRemindersButton({ pendingCount }: Props) {
         className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
         onClick={() => !pending && setOpen(false)}
       />
-      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border bg-white p-6 shadow-xl">
+      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-slate-200 bg-white p-6 shadow-xl">
         <div className="flex items-center gap-2 mb-3">
           <Bell className="h-5 w-5 text-primary" />
           <h2 className="font-semibold text-lg">Relancer les pré-inscriptions</h2>
         </div>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-sm text-slate-500 mb-4">
           Envoie une relance email à toutes les pré-inscriptions <strong>PENDING_FORM</strong> :
         </p>
-        <ul className="text-sm space-y-1 mb-4 ml-4 list-disc text-muted-foreground">
+        <ul className="text-sm space-y-1 mb-4 ml-4 list-disc text-slate-500">
           <li>Plus de 7 jours sans soumission</li>
           <li>Lien encore valide (non expiré)</li>
           <li>Moins de 3 relances déjà envoyées</li>
           <li>Dernière relance &gt; 6 jours (anti-spam)</li>
         </ul>
-        <p className="text-xs text-muted-foreground italic mb-4">
+        <p className="text-xs text-slate-500 italic mb-4">
           Si SMTP n'est pas configuré (.env), la relance tourne en mode test (log only).
         </p>
         <div className="flex justify-end gap-2">
@@ -85,7 +85,7 @@ export function BulkRemindersButton({ pendingCount }: Props) {
             type="button"
             onClick={() => setOpen(false)}
             disabled={pending}
-            className="h-9 px-4 rounded-md border border-border bg-white text-sm hover:bg-muted/40 disabled:opacity-60"
+            className="h-9 px-4 rounded-md border border-slate-200 bg-white text-sm hover:bg-slate-100/40 disabled:opacity-60"
           >
             Annuler
           </button>
@@ -93,7 +93,7 @@ export function BulkRemindersButton({ pendingCount }: Props) {
             type="button"
             onClick={run}
             disabled={pending}
-            className="inline-flex items-center gap-1.5 h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 disabled:opacity-60"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Bell className="h-4 w-4" />}
             Envoyer

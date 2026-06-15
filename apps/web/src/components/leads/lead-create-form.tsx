@@ -51,7 +51,7 @@ export function LeadCreateForm() {
           <label className="block text-sm font-medium mb-1">Prénom</label>
           <input
             {...register('firstName')}
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
           {errors.firstName && (
             <p className="text-xs text-red-600 mt-1">
@@ -63,7 +63,7 @@ export function LeadCreateForm() {
           <label className="block text-sm font-medium mb-1">Nom *</label>
           <input
             {...register('lastName')}
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
           {errors.lastName && (
             <p className="text-xs text-red-600 mt-1">
@@ -76,7 +76,7 @@ export function LeadCreateForm() {
           <input
             type="email"
             {...register('email')}
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
           {errors.email && (
             <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>
@@ -86,7 +86,7 @@ export function LeadCreateForm() {
           <label className="block text-sm font-medium mb-1">Téléphone</label>
           <input
             {...register('phone')}
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
         </div>
         <div className="sm:col-span-2">
@@ -94,7 +94,7 @@ export function LeadCreateForm() {
           <input
             {...register('source')}
             placeholder="LinkedIn, Salon, Recommandation, Formulaire public…"
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
         </div>
         <div className="sm:col-span-2">
@@ -102,7 +102,7 @@ export function LeadCreateForm() {
           <textarea
             {...register('notes')}
             rows={3}
-            className="w-full px-3 py-2 rounded-md border border-border"
+            className="w-full px-3 py-2 rounded-md border border-slate-200"
           />
         </div>
       </div>

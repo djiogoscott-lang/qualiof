@@ -111,7 +111,7 @@ export async function sendPreEnrollmentReminder(
     subject,
     html,
     text,
-    idempotencyKey: `preinscription-reminder:${preEnrollmentId}:${reminderNumber}`,
+    idempotencyKey: `preinscription-reminder-${preEnrollmentId}-${reminderNumber}`,
   });
   if (!r.ok) {
     return { ok: false, preEnrollmentId, to: recipient, error: r.error };

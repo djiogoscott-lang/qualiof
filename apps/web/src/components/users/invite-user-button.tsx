@@ -84,7 +84,7 @@ export function InviteUserButton() {
       <Dialog.Trigger asChild>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-md bg-primary text-white text-sm font-medium px-3 py-2 hover:bg-primary-600 transition-colors"
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium px-3 py-2 shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200"
         >
           <UserPlus className="h-4 w-4" />
           Inviter un utilisateur
@@ -92,11 +92,11 @@ export function InviteUserButton() {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-foreground/40 backdrop-blur-sm z-40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-border bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[480px] max-w-[90vw] rounded-lg border border-slate-200 bg-white p-6 shadow-xl data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0">
           <Dialog.Title className="text-lg font-semibold">
             Inviter un utilisateur
           </Dialog.Title>
-          <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+          <Dialog.Description className="mt-1 text-sm text-slate-500">
             Un email contenant un lien d'activation (valable 7 jours) sera envoyé.
           </Dialog.Description>
 
@@ -104,18 +104,18 @@ export function InviteUserButton() {
             <div className="space-y-1.5">
               <label
                 htmlFor="invite-email"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 Email *
               </label>
               <div className="relative">
-                <Mail className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Mail className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
                 <input
                   id="invite-email"
                   type="email"
                   autoComplete="off"
                   {...register('email')}
-                  className="w-full rounded-md border border-border bg-white pl-8 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white pl-8 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                   placeholder="prenom.nom@start-academy.fr"
                 />
               </div>
@@ -128,7 +128,7 @@ export function InviteUserButton() {
               <div className="space-y-1.5">
                 <label
                   htmlFor="invite-firstName"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Prénom *
                 </label>
@@ -137,7 +137,7 @@ export function InviteUserButton() {
                   type="text"
                   autoComplete="off"
                   {...register('firstName')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
                 {errors.firstName && (
                   <p className="text-xs text-red-600">{errors.firstName.message}</p>
@@ -146,7 +146,7 @@ export function InviteUserButton() {
               <div className="space-y-1.5">
                 <label
                   htmlFor="invite-lastName"
-                  className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                  className="text-xs font-medium uppercase tracking-wide text-slate-500"
                 >
                   Nom *
                 </label>
@@ -155,7 +155,7 @@ export function InviteUserButton() {
                   type="text"
                   autoComplete="off"
                   {...register('lastName')}
-                  className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                 />
                 {errors.lastName && (
                   <p className="text-xs text-red-600">{errors.lastName.message}</p>
@@ -166,14 +166,14 @@ export function InviteUserButton() {
             <div className="space-y-1.5">
               <label
                 htmlFor="invite-role"
-                className="text-xs font-medium uppercase tracking-wide text-muted-foreground"
+                className="text-xs font-medium uppercase tracking-wide text-slate-500"
               >
                 Rôle *
               </label>
               <select
                 id="invite-role"
                 {...register('role')}
-                className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
               >
                 {ROLES.map((r) => (
                   <option key={r} value={r}>
@@ -184,18 +184,18 @@ export function InviteUserButton() {
               {errors.role && (
                 <p className="text-xs text-red-600">{errors.role.message}</p>
               )}
-              <p className="text-[11px] text-muted-foreground">
+              <p className="text-[11px] text-slate-500">
                 Le rôle est modifiable ultérieurement dans le menu d'actions
                 de la ligne utilisateur.
               </p>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
               <Dialog.Close asChild>
                 <button
                   type="button"
                   disabled={pending}
-                  className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+                  className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
                 >
                   Annuler
                 </button>
@@ -203,7 +203,7 @@ export function InviteUserButton() {
               <button
                 type="submit"
                 disabled={pending}
-                className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {pending ? 'Envoi…' : 'Envoyer l\'invitation'}
               </button>

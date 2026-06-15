@@ -115,11 +115,11 @@ export function SessionOnlyDocsBlock({
   return (
     <section
       aria-labelledby="session-only-docs-heading"
-      className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-5"
+      className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5"
     >
       <h2
         id="session-only-docs-heading"
-        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-muted-foreground mb-4"
+        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-slate-500 mb-4"
       >
         <FileText className="h-4 w-4" aria-hidden="true" /> Documents session
       </h2>
@@ -153,7 +153,7 @@ export function SessionOnlyDocsBlock({
                       <FileText className="h-4 w-4" aria-hidden="true" /> Voir le PDF
                     </a>
                   ) : (
-                    <p className="text-xs text-muted-foreground italic">
+                    <p className="text-xs text-slate-500 italic">
                       Généré par participant (voir matrice)
                     </p>
                   )}
@@ -162,7 +162,7 @@ export function SessionOnlyDocsBlock({
                       type="button"
                       disabled={isPending || deroulleDisabled}
                       onClick={() => handleGenerate(card.key, card.shortLabel, { force: true })}
-                      className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground disabled:opacity-50 disabled:cursor-wait"
+                      className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 disabled:opacity-50 disabled:cursor-wait"
                     >
                       <RefreshCw className="h-3.5 w-3.5" aria-hidden="true" />
                       {isPending ? 'Génération…' : 'Re-générer'}
@@ -171,7 +171,7 @@ export function SessionOnlyDocsBlock({
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 mt-auto">
-                  <p className="text-xs text-muted-foreground italic">Pas encore généré</p>
+                  <p className="text-xs text-slate-500 italic">Pas encore généré</p>
                   {canWrite && (
                     <button
                       type="button"

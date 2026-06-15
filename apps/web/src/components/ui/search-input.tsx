@@ -38,10 +38,10 @@ export function SearchInput({ placeholder = 'Rechercher…' }: { placeholder?: s
         className="
           w-full h-10 pl-9 pr-9 rounded-xl
           bg-white text-sm text-slate-900 placeholder:text-slate-400
-          ring-1 ring-slate-200 shadow-soft
+          border border-slate-200 shadow-sm
           transition-all duration-200
-          hover:ring-slate-300 hover:shadow-card
-          focus:outline-none focus:ring-2 focus:ring-primary-200 focus:shadow-card
+          hover:border-slate-300 hover:shadow
+          focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 focus:shadow-md
         "
       />
       {value && (

@@ -19,17 +19,17 @@ export function TimelineYearMarker({ year, sessionsCount }: Props) {
       <h3 className="sr-only">Année {year}</h3>
       <span
         aria-hidden
-        className="text-base font-semibold text-foreground"
+        className="text-base font-semibold text-slate-900"
       >
         {year}
       </span>
       <span
-        className="text-xs text-muted-foreground"
+        className="text-xs text-slate-500"
         title={`${label} en ${year}`}
       >
         {label}
       </span>
-      <div className="flex-1 border-t border-border" aria-hidden />
+      <div className="flex-1 border-t border-slate-200" aria-hidden />
     </div>
   );
 }

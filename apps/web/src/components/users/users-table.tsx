@@ -42,8 +42,8 @@ export function UsersTable({ users, currentUserId }: UsersTableProps) {
 
   if (users.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-border p-8 text-center">
-        <p className="text-sm text-muted-foreground">
+      <div className="rounded-lg border border-dashed border-slate-200 p-8 text-center">
+        <p className="text-sm text-slate-500">
           Aucun utilisateur enregistré. Cliquez sur « Inviter un utilisateur »
           pour commencer.
         </p>
@@ -52,10 +52,10 @@ export function UsersTable({ users, currentUserId }: UsersTableProps) {
   }
 
   return (
-    <div className="rounded-lg border border-border overflow-x-auto -mx-4 sm:mx-0">
+    <div className="rounded-lg border border-slate-200 overflow-x-auto -mx-4 sm:mx-0">
       <table className="w-full text-sm">
-        <thead className="bg-muted/50">
-          <tr className="text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+        <thead className="bg-slate-100/50">
+          <tr className="text-left text-[11px] uppercase tracking-wider text-slate-500">
             <th className="px-3 py-2 font-semibold">Email</th>
             <th className="px-3 py-2 font-semibold">Nom</th>
             <th className="px-3 py-2 font-semibold">Rôle</th>
@@ -74,8 +74,8 @@ export function UsersTable({ users, currentUserId }: UsersTableProps) {
                 key={u.id}
                 className={
                   isDisabled
-                    ? 'border-t border-border opacity-60'
-                    : 'border-t border-border'
+                    ? 'border-t border-slate-200 opacity-60'
+                    : 'border-t border-slate-200'
                 }
               >
                 <td className="px-3 py-2.5 font-medium">
@@ -109,7 +109,7 @@ export function UsersTable({ users, currentUserId }: UsersTableProps) {
                     </span>
                   )}
                 </td>
-                <td className="px-3 py-2.5 text-xs text-muted-foreground">
+                <td className="px-3 py-2.5 text-xs text-slate-500">
                   {fmtDate(u.lastLoginAt)}
                 </td>
                 <td className="px-3 py-2.5 text-right">

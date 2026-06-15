@@ -47,7 +47,7 @@ export function SessionCompletenessBadge({ completeness }: Props) {
         {completeness.blockers.length > 1 ? 's' : ''})
       </summary>
       <div className="absolute z-10 mt-2 w-80 rounded-lg border border-slate-200 bg-white shadow-sm p-4 shadow-lg space-y-2">
-        <p className="text-xs uppercase tracking-wide font-semibold text-muted-foreground">
+        <p className="text-xs uppercase tracking-wide font-semibold text-slate-500">
           À compléter avant de générer le pack
         </p>
         <ul className="space-y-2">
@@ -62,8 +62,8 @@ export function SessionCompletenessBadge({ completeness }: Props) {
                   aria-hidden="true"
                 />
                 <div className="min-w-0 flex-1">
-                  <div className="font-medium text-foreground">{b.label}</div>
-                  <div className="text-muted-foreground mt-0.5">{b.hint}</div>
+                  <div className="font-medium text-slate-900">{b.label}</div>
+                  <div className="text-slate-500 mt-0.5">{b.hint}</div>
                   <span className="inline-flex items-center gap-1 mt-1.5 text-primary font-medium text-[11px]">
                     {b.fix.label}
                     <ArrowRight className="h-3 w-3" aria-hidden="true" />
@@ -72,7 +72,7 @@ export function SessionCompletenessBadge({ completeness }: Props) {
               </>
             );
             const cls =
-              'flex items-start gap-2 text-xs rounded-md p-2 -m-1 hover:bg-muted/50 transition-colors cursor-pointer';
+              'flex items-start gap-2 text-xs rounded-md p-2 -m-1 hover:bg-slate-100/50 transition-colors cursor-pointer';
             return (
               <li key={b.key}>
                 {isAnchor ? (

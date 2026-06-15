@@ -35,7 +35,7 @@ export function QuoteDeleteButton({ quoteId, number, status }: Props) {
       onClick={handleDelete}
       disabled={pending}
       title={status === 'ACCEPTED' ? 'Devis accepté — non supprimable' : 'Supprimer le devis'}
-      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-border bg-white text-red-700 text-sm font-medium hover:bg-red-50 disabled:opacity-60"
+      className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-slate-200 bg-white text-red-700 text-sm font-medium hover:bg-red-50 disabled:opacity-60"
     >
       {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
     </button>

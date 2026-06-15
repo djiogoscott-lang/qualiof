@@ -87,7 +87,7 @@ export function OfBankingForm({ initial, onSaved, onCancel }: OfBankingFormProps
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="space-y-1.5 sm:col-span-2">
-          <label htmlFor="of-iban" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-iban" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             IBAN
           </label>
           <input
@@ -96,16 +96,16 @@ export function OfBankingForm({ initial, onSaved, onCancel }: OfBankingFormProps
             placeholder="FR76 1234 5678 9012 3456 7890 123"
             title="Format : FR + 2 chiffres + 23 caractères, espaces autorisés"
             {...register('iban')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.iban && <p className="text-xs text-red-600">{errors.iban.message}</p>}
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-[11px] text-slate-500">
             FR + 2 chiffres + 23 caractères. Les espaces sont autorisés (ils seront retirés à l'enregistrement).
           </p>
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="of-bic" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-bic" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             BIC
           </label>
           <input
@@ -114,25 +114,25 @@ export function OfBankingForm({ initial, onSaved, onCancel }: OfBankingFormProps
             placeholder="BNPAFRPP"
             title="8 ou 11 caractères, MAJUSCULES"
             {...register('bic')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-mono uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
           {errors.bic && <p className="text-xs text-red-600">{errors.bic.message}</p>}
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
         <button
           type="button"
           onClick={onCancel}
           disabled={isPending}
-          className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+          className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
         >
           Annuler
         </button>
         <button
           type="submit"
           disabled={isPending}
-          className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? 'Enregistrement…' : 'Enregistrer'}
         </button>

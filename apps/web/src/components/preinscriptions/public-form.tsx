@@ -296,7 +296,7 @@ export function PublicPreEnrollmentForm({
 
       {/* Section pièces */}
       <Section title="Tes pièces justificatives" icon={Upload}>
-        <p className="text-sm text-muted-foreground -mt-1 mb-3">
+        <p className="text-sm text-slate-500 -mt-1 mb-3">
           Glisse-dépose ou clique pour choisir. PDF, JPG ou PNG. Max 10 Mo par fichier.
         </p>
         <div className="space-y-3">
@@ -312,7 +312,7 @@ export function PublicPreEnrollmentForm({
 
       {/* Signature électronique */}
       <Section title="Ta signature" icon={PenTool}>
-        <p className="text-sm text-muted-foreground -mt-1 mb-3">
+        <p className="text-sm text-slate-500 -mt-1 mb-3">
           Signe ta demande de pré-inscription pour la valider. Ta signature est horodatée
           et enregistrée avec une valeur probante (hash cryptographique + IP + date).
         </p>

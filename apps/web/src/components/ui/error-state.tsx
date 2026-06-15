@@ -36,9 +36,9 @@ export function ErrorState({
   homeLabel = 'Tableau de bord',
 }: ErrorStateProps) {
   return (
-    <div className="max-w-md mx-auto mt-12 rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card-hover p-8">
+    <div className="max-w-md mx-auto mt-12 rounded-2xl border border-slate-200 bg-white shadow-md p-8">
       <div className="flex flex-col items-center text-center">
-        <div className="inline-flex h-14 w-14 mb-4 rounded-2xl bg-gradient-to-br from-red-50 via-red-100/60 to-red-50 text-red-600 items-center justify-center ring-1 ring-red-100 shadow-soft">
+        <div className="inline-flex h-14 w-14 mb-4 rounded-2xl bg-gradient-to-br from-red-50 via-red-100/60 to-red-50 text-red-600 items-center justify-center border border-red-100 shadow-sm">
           <AlertTriangle className="h-6 w-6" strokeWidth={1.75} />
         </div>
 
@@ -48,7 +48,7 @@ export function ErrorState({
         </p>
 
         {digest && (
-          <p className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-slate-50 ring-1 ring-slate-200 px-2.5 py-1.5 text-[11px] font-mono text-slate-500">
+          <p className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-slate-50 border border-slate-200 px-2.5 py-1.5 text-[11px] font-mono text-slate-500">
             <span className="uppercase tracking-wider font-semibold text-slate-400">ID</span> {digest}
           </p>
         )}

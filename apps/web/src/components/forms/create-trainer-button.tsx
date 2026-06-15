@@ -45,8 +45,8 @@ export function CreateTrainerButton({ variant = 'primary' }: { variant?: 'primar
 
   const btnClass =
     variant === 'primary'
-      ? 'inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg bg-primary text-white hover:bg-primary/90'
-      : 'inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-border hover:bg-muted';
+      ? 'inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200'
+      : 'inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-lg border border-slate-200 hover:bg-slate-100';
 
   return (
     <>
@@ -68,43 +68,43 @@ export function CreateTrainerButton({ variant = 'primary' }: { variant?: 'primar
             <form onSubmit={onSubmit} className="space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Prénom *</label>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Prénom *</label>
                   <input
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
                     autoFocus
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-muted-foreground mb-1">Nom *</label>
+                  <label className="block text-xs font-medium text-slate-500 mb-1">Nom *</label>
                   <input
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                    className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">Email</label>
+                <label className="block text-xs font-medium text-slate-500 mb-1">Email</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">Téléphone</label>
+                <label className="block text-xs font-medium text-slate-500 mb-1">Téléphone</label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2 border border-border rounded-lg text-sm"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm"
                 />
               </div>
               {error && (
@@ -117,14 +117,14 @@ export function CreateTrainerButton({ variant = 'primary' }: { variant?: 'primar
                   type="button"
                   onClick={() => setOpen(false)}
                   disabled={busy}
-                  className="px-3 py-1.5 text-sm border border-border rounded-lg hover:bg-muted"
+                  className="px-3 py-1.5 text-sm border border-slate-200 rounded-lg hover:bg-slate-100"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={busy}
-                  className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+                  className="px-3 py-1.5 text-sm bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-xl shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50"
                 >
                   {busy ? 'Création…' : 'Créer le formateur'}
                 </button>

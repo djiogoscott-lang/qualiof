@@ -57,14 +57,14 @@ function formatDateRange(start: Date, end: Date | null): string {
 export function ProductSessionsTab({ sessions, productId }: Props) {
   if (sessions.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-border bg-muted/30 p-8 text-center">
+      <div className="rounded-lg border border-dashed border-slate-200 bg-slate-100/30 p-8 text-center">
         <h3 className="text-base font-semibold mb-1">Aucune session pour ce produit</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-sm text-slate-500 mb-4">
           Créez une session de formation pour démarrer.
         </p>
         <Link
           href={`/app/sessions/new?productId=${productId}` as any}
-          className="inline-flex items-center gap-1.5 rounded-md bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 transition-colors"
         >
           <Plus className="h-4 w-4" />
           + Créer une session
@@ -76,25 +76,25 @@ export function ProductSessionsTab({ sessions, productId }: Props) {
   return (
     <div className="overflow-x-auto -mx-4 sm:mx-0">
       <table className="min-w-full text-sm">
-        <thead className="border-b border-border">
+        <thead className="border-b border-slate-200">
           <tr className="text-left">
-            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-muted-foreground font-medium">
+            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-slate-500 font-medium">
               Code
             </th>
-            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-muted-foreground font-medium">
+            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-slate-500 font-medium">
               Dates
             </th>
-            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-muted-foreground font-medium">
+            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-slate-500 font-medium">
               Statut
             </th>
-            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-muted-foreground font-medium text-right">
+            <th scope="col" className="px-4 py-2 text-xs uppercase tracking-wide text-slate-500 font-medium text-right">
               Participants
             </th>
           </tr>
         </thead>
         <tbody>
           {sessions.map((s) => (
-            <tr key={s.id} className="border-b border-border hover:bg-muted/30 transition-colors">
+            <tr key={s.id} className="border-b border-slate-200 hover:bg-slate-100/30 transition-colors">
               <td className="px-4 py-3">
                 <Link
                   href={`/app/sessions/${s.id}` as any}

@@ -92,19 +92,19 @@ export function OfAddressForm({ initial, onSaved, onCancel }: OfAddressFormProps
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
         <div className="space-y-1.5 sm:col-span-6">
-          <label htmlFor="of-street" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-street" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Rue
           </label>
           <input
             id="of-street"
             type="text"
             {...register('address.street')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
 
         <div className="space-y-1.5 sm:col-span-2">
-          <label htmlFor="of-postalCode" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-postalCode" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Code postal
           </label>
           <input
@@ -112,33 +112,33 @@ export function OfAddressForm({ initial, onSaved, onCancel }: OfAddressFormProps
             type="text"
             inputMode="numeric"
             {...register('address.postalCode')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
 
         <div className="space-y-1.5 sm:col-span-4">
-          <label htmlFor="of-city" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-city" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Ville
           </label>
           <input
             id="of-city"
             type="text"
             {...register('address.city')}
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           />
         </div>
       </div>
 
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <label htmlFor="of-legalMentions" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          <label htmlFor="of-legalMentions" className="text-xs font-medium uppercase tracking-wide text-slate-500">
             Mentions légales
           </label>
           <span
             className={
               legalCount > MAX_LEGAL_MENTIONS
                 ? 'text-xs text-red-600'
-                : 'text-xs text-muted-foreground'
+                : 'text-xs text-slate-500'
             }
           >
             {legalCount} / {MAX_LEGAL_MENTIONS}
@@ -151,7 +151,7 @@ export function OfAddressForm({ initial, onSaved, onCancel }: OfAddressFormProps
           {...register('legalMentions', {
             onChange: (e) => setLegalCount(e.target.value.length),
           })}
-          className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+          className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
           placeholder="Apparaîtra en bas de page des conventions, factures, ..."
         />
         {errors.legalMentions && (
@@ -159,19 +159,19 @@ export function OfAddressForm({ initial, onSaved, onCancel }: OfAddressFormProps
         )}
       </div>
 
-      <div className="flex items-center justify-end gap-2 pt-2 border-t border-border">
+      <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200">
         <button
           type="button"
           onClick={onCancel}
           disabled={isPending}
-          className="h-9 px-4 rounded-md border border-input bg-white text-sm font-medium hover:bg-muted transition-colors disabled:opacity-50"
+          className="h-9 px-4 rounded-md border border-slate-200 shadow-sm bg-white text-sm font-medium hover:bg-slate-100 transition-colors disabled:opacity-50"
         >
           Annuler
         </button>
         <button
           type="submit"
           disabled={isPending}
-          className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="h-9 px-4 rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? 'Enregistrement…' : 'Enregistrer'}
         </button>

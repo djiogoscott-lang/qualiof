@@ -93,7 +93,7 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md border border-dashed border-border hover:border-primary-300 hover:bg-primary-50/30"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-indigo-700 px-2 py-1 rounded-lg border border-dashed border-slate-300 hover:border-indigo-400 hover:bg-indigo-50/40 transition-all duration-200"
         title="Créer un apprenant qui n'existe pas encore en base"
       >
         <Plus className="h-3 w-3" /> Nouveau
@@ -104,14 +104,14 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
   return (
     <>
       <div
-        className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+        className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-150"
         onClick={() => !busy && close()}
       />
-      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6 shadow-xl">
+      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-slate-200 bg-white shadow-2xl p-6">
         <div className="flex items-start justify-between mb-4">
           <div>
             <h2 className="font-semibold text-lg">Nouvel apprenant</h2>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Création rapide — tu pourras compléter le profil plus tard
             </p>
           </div>
@@ -119,7 +119,7 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
             type="button"
             onClick={() => !busy && close()}
             disabled={busy}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-slate-500 hover:text-slate-900"
             aria-label="Fermer"
           >
             <X className="h-5 w-5" />
@@ -129,12 +129,12 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-3">
             <label className="block">
-              <span className="text-xs font-medium text-muted-foreground">Civilité</span>
+              <span className="text-xs font-medium text-slate-500">Civilité</span>
               <select
                 value={civility}
                 onChange={(e) => setCivility(e.target.value as 'MR' | 'MME' | '')}
                 disabled={busy}
-                className="mt-1 w-full h-9 rounded-md border border-border px-2 text-sm"
+                className="mt-1 w-full h-9 rounded-lg border border-slate-200 px-2 text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               >
                 <option value="">—</option>
                 <option value="MR">M.</option>
@@ -142,7 +142,7 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
               </select>
             </label>
             <label className="block col-span-2">
-              <span className="text-xs font-medium text-muted-foreground">
+              <span className="text-xs font-medium text-slate-500">
                 Prénom <span className="text-red-500">*</span>
               </span>
               <input
@@ -151,13 +151,13 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
                 onChange={(e) => setFirstName(e.target.value)}
                 disabled={busy}
                 autoFocus
-                className="mt-1 w-full h-9 rounded-md border border-border px-2 text-sm"
+                className="mt-1 w-full h-9 rounded-lg border border-slate-200 px-2 text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               />
             </label>
           </div>
 
           <label className="block">
-            <span className="text-xs font-medium text-muted-foreground">
+            <span className="text-xs font-medium text-slate-500">
               Nom <span className="text-red-500">*</span>
             </span>
             <input
@@ -165,18 +165,18 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               disabled={busy}
-              className="mt-1 w-full h-9 rounded-md border border-border px-2 text-sm uppercase"
+              className="mt-1 w-full h-9 rounded-lg border border-slate-200 px-2 text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 uppercase"
             />
           </label>
 
           <label className="block">
-            <span className="text-xs font-medium text-muted-foreground">Email</span>
+            <span className="text-xs font-medium text-slate-500">Email</span>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={busy}
-              className="mt-1 w-full h-9 rounded-md border border-border px-2 text-sm"
+              className="mt-1 w-full h-9 rounded-lg border border-slate-200 px-2 text-sm text-slate-900 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               placeholder="prenom@exemple.fr"
             />
           </label>
@@ -188,12 +188,12 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
           )}
         </div>
 
-        <div className="flex items-center justify-end gap-2 mt-5 pt-4 border-t border-border">
+        <div className="flex items-center justify-end gap-2 mt-5 pt-4 border-t border-slate-200">
           <button
             type="button"
             onClick={close}
             disabled={busy}
-            className="h-9 px-3 text-sm font-medium text-muted-foreground hover:text-foreground"
+            className="h-9 px-3 text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
           >
             Annuler
           </button>
@@ -201,7 +201,7 @@ export function QuickCreatePersonButton({ onCreated }: Props) {
             type="button"
             onClick={submit}
             disabled={busy || !firstName.trim() || !lastName.trim()}
-            className="h-9 px-4 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="h-9 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm transition-all duration-200 hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
           >
             {busy ? 'Création…' : 'Créer et ajouter'}
           </button>

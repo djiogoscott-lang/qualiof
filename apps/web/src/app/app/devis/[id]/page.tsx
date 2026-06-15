@@ -80,12 +80,12 @@ export default async function QuoteDetailPage({
             <h1 className="text-2xl font-semibold">{quote.number}</h1>
             <Badge variant={status.variant}>{status.label}</Badge>
             {isLocked && (
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-slate-500">
                 · figé (édition désactivée)
               </span>
             )}
           </div>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-slate-500 mt-1">
             Créé le {new Date(quote.createdAt).toLocaleDateString('fr-FR', { dateStyle: 'long' })}
             {quote.validUntil && (
               <> · Valide jusqu'au {new Date(quote.validUntil).toLocaleDateString('fr-FR')}</>

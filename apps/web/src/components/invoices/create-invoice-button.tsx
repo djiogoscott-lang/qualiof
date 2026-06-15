@@ -47,7 +47,7 @@ export function CreateInvoiceButton({ participantId, alreadyInvoiced }: { partic
           'inline-flex items-center gap-1.5 h-8 px-3 rounded-md text-xs font-medium transition-all duration-300 ease-out active:scale-[0.97]',
           alreadyInvoiced
             ? 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            : 'bg-violet-600 text-white hover:bg-violet-700',
+            : 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white hover:from-indigo-700 hover:to-blue-700',
           pending && 'opacity-70 cursor-wait',
         )}
         title={alreadyInvoiced ? 'Une facture a déjà été émise — re-clique pour en créer une nouvelle' : 'Émet une facture FAC-NNNNNN avec numérotation continue + PDF conforme'}

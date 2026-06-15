@@ -30,7 +30,7 @@ export default async function ClosureBatchPage({
     <div className="space-y-6 max-w-5xl">
       <Link
         href={`/app/sessions/${sessionId}`}
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Retour à la session {session.code}
       </Link>
@@ -38,7 +38,7 @@ export default async function ClosureBatchPage({
       <PageHeader
         title="Pack fin de formation"
         subtitle={
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-slate-500">
             {session.product?.title ?? session.name ?? '(formation)'} — batch{' '}
             <code className="font-mono text-xs">{batchId.slice(0, 8)}</code>
           </span>

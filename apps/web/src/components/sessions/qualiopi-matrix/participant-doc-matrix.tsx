@@ -119,9 +119,9 @@ export function ParticipantDocMatrix({
   return (
     <section
       aria-labelledby="participant-doc-matrix-heading"
-      className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden"
+      className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden"
     >
-      <div className="flex items-center justify-between p-5 border-b border-border gap-3 flex-wrap">
+      <div className="flex items-center justify-between p-5 border-b border-slate-200 gap-3 flex-wrap">
         <div>
           <h2
             id="participant-doc-matrix-heading"
@@ -130,7 +130,7 @@ export function ParticipantDocMatrix({
             <Users className="h-5 w-5 text-primary" aria-hidden="true" /> Documents participants
           </h2>
           {rows.length > 0 && (
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               {rows.length} apprenant{rows.length > 1 ? 's' : ''} · {totalDocsTracked} document
               {totalDocsTracked > 1 ? 's' : ''} suivi{totalDocsTracked > 1 ? 's' : ''}
             </p>
@@ -141,7 +141,7 @@ export function ParticipantDocMatrix({
       {rows.length === 0 ? (
         <div className="p-8 text-center">
           <p className="text-sm font-medium">Aucun apprenant inscrit</p>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Inscrivez au moins un apprenant pour suivre ses documents Qualiopi.
           </p>
         </div>
@@ -156,7 +156,7 @@ export function ParticipantDocMatrix({
             columnLabels={DOC_TYPE_LABELS}
           />
           <div className="px-5 pb-4">
-            <p className="text-xs text-muted-foreground mt-2 flex flex-wrap gap-x-3 gap-y-1">
+            <p className="text-xs text-slate-500 mt-2 flex flex-wrap gap-x-3 gap-y-1">
               <span>Légende :</span>
               <span>● Prêt</span>
               <span>⚠ Sans preuve</span>

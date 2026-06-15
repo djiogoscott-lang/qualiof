@@ -88,7 +88,7 @@ export default async function BudgetAgeficePage({
     <div className="space-y-6">
       <Link
         href="/app"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Retour au dashboard
       </Link>
@@ -100,7 +100,7 @@ export default async function BudgetAgeficePage({
         />
         <a
           href={exportHref}
-          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-border bg-white text-sm font-medium hover:bg-muted/40 shrink-0"
+          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 shrink-0"
         >
           <Download className="h-4 w-4" /> Exporter CSV
         </a>
@@ -133,7 +133,7 @@ export default async function BudgetAgeficePage({
 
       {availableYears.length > 1 && (
         <div className="space-y-2">
-          <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-medium">
+          <div className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">
             Année du dossier
           </div>
           <FilterChips chips={yearChips} />
@@ -143,7 +143,7 @@ export default async function BudgetAgeficePage({
       <div className="flex items-center gap-3 flex-wrap">
         <DossiersOpcoSearchInput placeholder="Rechercher un apprenant (nom, prénom, email)…" />
         {q && (
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-slate-500">
             {rows.length} résultat{rows.length > 1 ? 's' : ''} pour « {q} »
           </span>
         )}
@@ -152,19 +152,19 @@ export default async function BudgetAgeficePage({
       <FilterChips chips={filterChips} />
 
       {/* Liste */}
-      <section className="rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card overflow-hidden">
-        <div className="px-5 py-4 border-b border-border flex items-center justify-between flex-wrap gap-3">
-          <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between flex-wrap gap-3">
+          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
             {rows.length} apprenant{rows.length > 1 ? 's' : ''} {filter === 'has_budget_left' ? 'avec budget restant' : filter === 'no_consumption' ? "n'ayant rien consommé" : filter === 'near_limit' ? 'proches du plafond' : filter === 'over' ? 'au plafond ou au-delà' : 'éligibles'}
           </h2>
         </div>
 
         {rows.length === 0 ? (
-          <p className="p-12 text-center text-sm text-muted-foreground italic">
+          <p className="p-12 text-center text-sm text-slate-500 italic">
             Aucun apprenant ne correspond aux critères pour {year}.
           </p>
         ) : (
-          <ul className="divide-y divide-border">
+          <ul className="divide-y divide-slate-200">
             {rows.map((r) => {
               const barColor =
                 r.status === 'over'
@@ -175,12 +175,12 @@ export default async function BudgetAgeficePage({
                       ? 'bg-amber-400'
                       : r.status === 'low'
                         ? 'bg-emerald-500'
-                        : 'bg-muted';
+                        : 'bg-slate-100';
               return (
                 <li key={r.personId}>
                   <Link
                     href={`/app/apprenants/${r.personId}?tab=activity`}
-                    className="block p-4 hover:bg-muted/30 transition-colors"
+                    className="block p-4 hover:bg-slate-100/30 transition-colors"
                   >
                     <div className="flex items-center gap-4 flex-wrap">
                       <div className="h-9 w-9 rounded-full bg-primary-100 text-primary-700 inline-flex items-center justify-center font-semibold text-xs shrink-0">
@@ -193,14 +193,14 @@ export default async function BudgetAgeficePage({
                           {r.firstName} {r.lastName.toUpperCase()}
                         </div>
                         {r.email && (
-                          <div className="text-xs text-muted-foreground truncate">{r.email}</div>
+                          <div className="text-xs text-slate-500 truncate">{r.email}</div>
                         )}
                       </div>
 
                       {/* Barre de progression */}
                       <div className="flex-1 min-w-[200px] max-w-md">
                         <div className="flex items-center justify-between text-xs mb-1">
-                          <span className="text-muted-foreground tabular-nums">
+                          <span className="text-slate-500 tabular-nums">
                             {fmtEUR.format(r.consomme)} / {fmtEUR.format(PLAFOND_AGEFICE)}
                           </span>
                           <span
@@ -210,13 +210,13 @@ export default async function BudgetAgeficePage({
                                 ? 'text-red-700'
                                 : r.status === 'near_limit'
                                   ? 'text-orange-700'
-                                  : 'text-muted-foreground',
+                                  : 'text-slate-500',
                             )}
                           >
                             {r.pct}%
                           </span>
                         </div>
-                        <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+                        <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
                           <div
                             className={cn('h-full transition-all', barColor)}
                             style={{ width: `${Math.min(100, r.pct)}%` }}
@@ -228,7 +228,7 @@ export default async function BudgetAgeficePage({
                         <div className="text-sm font-semibold tabular-nums">
                           {fmtEUR.format(r.restant)}
                         </div>
-                        <div className="text-[11px] text-muted-foreground">
+                        <div className="text-[11px] text-slate-500">
                           restant
                         </div>
                       </div>
@@ -250,7 +250,7 @@ export default async function BudgetAgeficePage({
                             🎯 À relancer
                           </Badge>
                         )}
-                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                        <ChevronRight className="h-4 w-4 text-slate-500" />
                       </div>
                     </div>
                   </Link>
@@ -284,14 +284,14 @@ function KPICard({
         ? 'border-emerald-200 bg-emerald-50/50'
         : accent === 'amber'
           ? 'border-amber-200 bg-amber-50/50'
-          : 'border-border bg-white';
+          : 'border-slate-200 bg-white';
   return (
     <div className={`rounded-xl border p-4 ${cls}`}>
-      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-muted-foreground mb-2">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-slate-500 mb-2">
         <Icon className="h-3 w-3" /> {label}
       </div>
       <div className="text-xl font-semibold tabular-nums">{value}</div>
-      {hint && <div className="text-[11px] text-muted-foreground mt-0.5">{hint}</div>}
+      {hint && <div className="text-[11px] text-slate-500 mt-0.5">{hint}</div>}
     </div>
   );
 }

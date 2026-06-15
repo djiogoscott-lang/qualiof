@@ -11,7 +11,7 @@ import { buttonStyles } from '@/components/ui/button';
  */
 export default function AppNotFound() {
   return (
-    <div className="max-w-xl mx-auto mt-12 rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-8 text-center">
+    <div className="max-w-xl mx-auto mt-12 rounded-2xl border border-slate-200 bg-white shadow-sm p-8 text-center">
       <div className="inline-flex h-14 w-14 mb-4 rounded-2xl bg-blue-50 text-primary items-center justify-center">
         <Compass className="h-7 w-7" strokeWidth={1.75} />
       </div>

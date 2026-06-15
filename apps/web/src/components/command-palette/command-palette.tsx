@@ -119,31 +119,31 @@ export function CommandPalette() {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center pt-[15vh] px-4"
+      className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-start justify-center pt-[15vh] px-4 animate-in fade-in duration-150"
       onClick={() => setOpen(false)}
     >
       <div
-        className="w-full max-w-2xl rounded-2xl bg-white ring-1 ring-slate-200 shadow-2xl overflow-hidden"
+        className="w-full max-w-2xl rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <Command shouldFilter={false} loop>
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
-            <Search className="h-4 w-4 text-muted-foreground" />
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+            <Search className="h-4 w-4 text-slate-500" />
             <Command.Input
               autoFocus
               value={query}
               onValueChange={setQuery}
               placeholder="Chercher un apprenant, organisation, session, produit…"
-              className="flex-1 outline-none text-sm bg-transparent placeholder:text-muted-foreground"
+              className="flex-1 outline-none text-sm bg-transparent placeholder:text-slate-500"
             />
-            <kbd className="text-[10px] text-muted-foreground border border-border rounded px-1.5 py-0.5">
+            <kbd className="text-[10px] text-slate-500 border border-slate-200 rounded px-1.5 py-0.5">
               Esc
             </kbd>
           </div>
 
           <Command.List className="max-h-[60vh] overflow-y-auto p-2">
             {loading && (
-              <div className="px-3 py-2 text-xs text-muted-foreground italic">
+              <div className="px-3 py-2 text-xs text-slate-500 italic">
                 Recherche…
               </div>
             )}
@@ -159,16 +159,16 @@ export function CommandPalette() {
                       key={`${r.kind}-${r.id}`}
                       value={`recent-${r.id}`}
                       onSelect={() => navigate(r.href, r)}
-                      className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-muted text-sm"
+                      className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-slate-100 text-sm"
                     >
-                      <Icon className="h-4 w-4 text-muted-foreground shrink-0" />
+                      <Icon className="h-4 w-4 text-slate-500 shrink-0" />
                       <div className="flex-1 min-w-0">
                         <div className="font-medium truncate">{r.title}</div>
                         {r.subtitle && (
-                          <div className="text-xs text-muted-foreground truncate">{r.subtitle}</div>
+                          <div className="text-xs text-slate-500 truncate">{r.subtitle}</div>
                         )}
                       </div>
-                      <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
+                      <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
                     </Command.Item>
                   );
                 })}
@@ -186,11 +186,11 @@ export function CommandPalette() {
                       key={s.href}
                       value={s.label + ' ' + s.keywords}
                       onSelect={() => navigate(s.href)}
-                      className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-muted text-sm"
+                      className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-slate-100 text-sm"
                     >
                       <Icon className="h-4 w-4 text-primary shrink-0" />
                       <span className="flex-1 font-medium">{s.label}</span>
-                      <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
+                      <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
                     </Command.Item>
                   );
                 })}
@@ -204,21 +204,21 @@ export function CommandPalette() {
             <ResultGroup label="Produits" hits={results.products} onSelect={navigate} />
 
             {query.trim().length >= 2 && totalResults === 0 && !loading && (
-              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
+              <div className="px-4 py-8 text-center text-sm text-slate-500">
                 Aucun résultat pour <strong>"{query}"</strong>.
               </div>
             )}
           </Command.List>
 
-          <div className="flex items-center justify-between px-4 py-2 border-t border-border text-[11px] text-muted-foreground">
+          <div className="flex items-center justify-between px-4 py-2 border-t border-slate-200 text-[11px] text-slate-500">
             <span>
-              <kbd className="border border-border rounded px-1 py-0.5">↑</kbd>
-              <kbd className="border border-border rounded px-1 py-0.5 ml-1">↓</kbd> naviguer
-              <kbd className="border border-border rounded px-1 py-0.5 ml-3">↵</kbd> ouvrir
+              <kbd className="border border-slate-200 rounded px-1 py-0.5">↑</kbd>
+              <kbd className="border border-slate-200 rounded px-1 py-0.5 ml-1">↓</kbd> naviguer
+              <kbd className="border border-slate-200 rounded px-1 py-0.5 ml-3">↵</kbd> ouvrir
             </span>
             <span>
-              <kbd className="border border-border rounded px-1 py-0.5">⌘</kbd>
-              <kbd className="border border-border rounded px-1 py-0.5 ml-1">K</kbd> pour rouvrir
+              <kbd className="border border-slate-200 rounded px-1 py-0.5">⌘</kbd>
+              <kbd className="border border-slate-200 rounded px-1 py-0.5 ml-1">K</kbd> pour rouvrir
             </span>
           </div>
         </Command>
@@ -235,7 +235,7 @@ function GroupHeader({
   label: string;
 }) {
   return (
-    <div className="flex items-center gap-1.5 px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+    <div className="flex items-center gap-1.5 px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
       <Icon className="h-3 w-3" /> {label}
     </div>
   );
@@ -253,7 +253,7 @@ function ResultGroup({
   if (hits.length === 0) return null;
   return (
     <Command.Group>
-      <div className="flex items-center gap-1.5 px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+      <div className="flex items-center gap-1.5 px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
         {label}
       </div>
       {hits.map((h) => {
@@ -265,14 +265,14 @@ function ResultGroup({
             onSelect={() =>
               onSelect(h.href, { kind: h.kind, id: h.id, title: h.title, subtitle: h.subtitle, href: h.href })
             }
-            className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-muted text-sm"
+            className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer aria-selected:bg-slate-100 text-sm"
           >
-            <Icon className="h-4 w-4 text-muted-foreground shrink-0" />
+            <Icon className="h-4 w-4 text-slate-500 shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="font-medium truncate">{h.title}</div>
-              {h.subtitle && <div className="text-xs text-muted-foreground truncate">{h.subtitle}</div>}
+              {h.subtitle && <div className="text-xs text-slate-500 truncate">{h.subtitle}</div>}
             </div>
-            <span className="text-[10px] text-muted-foreground">{KIND_LABEL[h.kind]}</span>
+            <span className="text-[10px] text-slate-500">{KIND_LABEL[h.kind]}</span>
           </Command.Item>
         );
       })}

@@ -54,7 +54,7 @@ export function SettingsSection({
   return (
     <section
       className={cn(
-        'rounded-2xl ring-1 ring-slate-200/70 bg-white shadow-card p-6',
+        'rounded-2xl border border-slate-200 bg-white shadow-sm p-6',
         className,
       )}
     >
@@ -64,7 +64,7 @@ export function SettingsSection({
           <div className="min-w-0">
             <h2 className="font-semibold leading-tight">{title}</h2>
             {description ? (
-              <p className="text-xs text-muted-foreground mt-1">{description}</p>
+              <p className="text-xs text-slate-500 mt-1">{description}</p>
             ) : null}
           </div>
         </div>
@@ -72,7 +72,7 @@ export function SettingsSection({
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="h-8 px-3 rounded-md border border-input bg-white text-xs font-medium hover:bg-muted transition-colors shrink-0"
+            className="h-8 px-3 rounded-md border border-slate-200 shadow-sm bg-white text-xs font-medium hover:bg-slate-100 transition-colors shrink-0"
           >
             Modifier
           </button>

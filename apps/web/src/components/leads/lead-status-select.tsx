@@ -53,7 +53,7 @@ export function LeadStatusSelect({
       disabled={pending}
       aria-label="Statut du lead"
       onChange={(e) => execute(e.target.value as LeadStatus)}
-      className="px-2 py-1 rounded-md border border-border bg-white text-sm disabled:opacity-50"
+      className="px-2 py-1 rounded-md border border-slate-200 bg-white text-sm disabled:opacity-50"
     >
       {(Object.keys(STATUS_LABELS) as LeadStatus[]).map((s) => (
         <option key={s} value={s}>
