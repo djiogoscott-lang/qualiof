@@ -30,19 +30,40 @@ export async function createPreEnrollmentLink(input: {
   intendedSessionId?: string;
   validityDays?: number;
 }): Promise<CreatePreEnrollmentLinkResult> {
+  // ════════════════════════════════════════════════════════════════
+  // Diagnostic logging (16-06-2026) — l'action retournait { ok:false }
+  // côté client sans aucune trace dans les logs Vercel. Cause possible :
+  // les logs Pino structurés JSON arrivent parfois en retard ou sont
+  // filtrés par le moteur d'agrégation Vercel après return de la function.
+  // On double désormais chaque log critique avec un console.error/log
+  // (stderr/stdout direct) qui apparaît toujours dans les Logs Vercel.
+  // ════════════════════════════════════════════════════════════════
+  console.log(
+    '[PREINSCRIPTION_LINK] start',
+    JSON.stringify({ hasEmail: !!input.email, hasFirstName: !!input.firstName }),
+  );
+
   // Wrap intégral try/catch : aucune exception ne doit remonter au client.
   // Un throw dans une server action est silencieusement avalé par useTransition
   // côté React → l'UI semble "ne rien faire". Toutes les erreurs deviennent un
   // { ok: false, error } qui est affichable côté client.
   try {
     const { user } = await validateRequest();
-    if (!user) return { ok: false, error: 'Non authentifié.' };
+    if (!user) {
+      console.warn('[PREINSCRIPTION_LINK] unauthenticated');
+      return { ok: false, error: 'Non authentifié.' };
+    }
+    console.log(
+      '[PREINSCRIPTION_LINK] auth ok',
+      JSON.stringify({ userId: user.id, tenantId: user.tenantId }),
+    );
 
     const token = randomUUID().replace(/-/g, '');
     const validity = input.validityDays ?? DEFAULT_VALIDITY_DAYS;
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + validity);
 
+    console.log('[PREINSCRIPTION_LINK] before prisma.create');
     const created = await prisma.preEnrollment.create({
       data: {
         tenantId: user.tenantId,
@@ -58,6 +79,10 @@ export async function createPreEnrollmentLink(input: {
         status: 'PENDING_FORM',
       },
     });
+    console.log(
+      '[PREINSCRIPTION_LINK] prisma.create ok',
+      JSON.stringify({ id: created.id, token: token.slice(0, 8) + '…' }),
+    );
 
     // URL absolue calculée côté serveur. Préfère NEXT_PUBLIC_APP_URL puis APP_URL.
     const baseUrl =
@@ -110,16 +135,36 @@ export async function createPreEnrollmentLink(input: {
       emailDryRun,
     };
   } catch (e) {
-    const msg = (e as Error).message ?? 'Erreur technique';
+    const err = e as Error;
+    const msg = err.message ?? 'Erreur technique';
+    // Triple logging pour garantir une trace dans Vercel logs :
+    //  - log.error (Pino JSON structuré, idéal pour grep/agrégation)
+    //  - console.error (stderr direct, capturé inconditionnellement)
+    //  - inclusion du code Prisma si dispo (P1001/P2002/etc.)
+    const prismaCode = (e as { code?: string }).code;
     log.error(
-      { err: { message: msg, stack: (e as Error).stack }, input },
+      {
+        err: { message: msg, stack: err.stack, code: prismaCode, name: err.name },
+        input: { hasEmail: !!input.email, hasFirstName: !!input.firstName },
+      },
       'preinscription.createLink.failed',
     );
+    console.error(
+      '[PREINSCRIPTION_LINK] FAILED',
+      JSON.stringify({
+        message: msg,
+        name: err.name,
+        prismaCode,
+        stack: err.stack?.split('\n').slice(0, 5).join(' | '),
+      }),
+    );
     // Message générique côté client (sécurité — ne pas leak stack/path internes).
+    // On inclut le `code` Prisma (P10xx, P20xx) pour aider au support si besoin.
     return {
       ok: false,
-      error:
-        'Erreur lors de la création du lien de pré-inscription. Réessaie ou contacte le support.',
+      error: prismaCode
+        ? `Erreur base de données (${prismaCode}). Réessaie ou contacte le support.`
+        : 'Erreur lors de la création du lien de pré-inscription. Réessaie ou contacte le support.',
     };
   }
 }

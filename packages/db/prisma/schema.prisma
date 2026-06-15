@@ -19,7 +19,15 @@ generator client {
 
 datasource db {
   provider   = "postgresql"
+  // `url` : connection POOLÉE (Neon `-pooler` / PgBouncer transaction mode).
+  // Utilisée par l'app Vercel serverless en runtime (chaque function ouvre 1
+  // connection brève via le pool). Évite l'épuisement Postgres en cold start.
   url        = env("DATABASE_URL")
+  // `directUrl` : connection DIRECTE (sans pooler), recommandée par Neon pour
+  // les opérations qui posent problème avec PgBouncer en mode transaction :
+  // prisma migrate, prisma db push, introspections, prepared statements.
+  // Fallback sur DATABASE_URL si DIRECT_URL n'est pas configuré.
+  directUrl  = env("DIRECT_URL")
   extensions = [pgcrypto, uuid_ossp(map: "uuid-ossp"), pg_trgm, unaccent]
 }
 
