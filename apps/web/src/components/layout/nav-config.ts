@@ -19,6 +19,7 @@ import {
   Sliders,
   Newspaper,
   FilePlus,
+  Mail,
 } from 'lucide-react';
 import type { UserRole } from '@qualiof/db';
 
@@ -202,6 +203,13 @@ export const NAV: NavSection[] = [
         label: 'Historique',
         href: '/app/parametres/historique',
         icon: History,
+        allowedRoles: ['ADMIN'],
+      },
+      // Historique des conversations email (Mission 2026-06-22) : ADMIN only
+      {
+        label: 'Historique conversations',
+        href: '/app/parametres/historique-conversations',
+        icon: Mail,
         allowedRoles: ['ADMIN'],
       },
     ],

@@ -123,7 +123,7 @@ export async function createInvoiceFromParticipant(
 
   let pdfBuffer: Buffer;
   try {
-    pdfBuffer = await renderHtmlToPdf(renderInvoiceHtml(data), { footerHtml: renderOfStandardFooterHtml() });
+    pdfBuffer = await renderHtmlToPdf(renderInvoiceHtml(data), { footerHtml: renderOfStandardFooterHtml(of) });
   } catch (e: any) {
     return { ok: false, error: `Erreur génération PDF : ${e?.message ?? e}`, invoiceId: invoice.id };
   }
@@ -313,7 +313,7 @@ export async function createInvoiceForSponsorGroup(input: {
 
   let pdfBuffer: Buffer;
   try {
-    pdfBuffer = await renderHtmlToPdf(renderInvoiceHtml(data), { footerHtml: renderOfStandardFooterHtml() });
+    pdfBuffer = await renderHtmlToPdf(renderInvoiceHtml(data), { footerHtml: renderOfStandardFooterHtml(of) });
   } catch (e: any) {
     return { ok: false, error: `Erreur génération PDF : ${e?.message ?? e}`, invoiceId: invoice.id };
   }
@@ -406,6 +406,25 @@ export async function recordInvoicePayment(input: {
   const newPaid = Number(invoice.amountPaid) + input.amount;
   const fullyPaid = newPaid >= Number(invoice.amountTTC);
 
+  // FIX FACT-05 (2026-06-22) : amountCollected/amountRemaining doivent être mis à
+  // jour AUSSI pour les factures groupées (sponsor employeur paie pour N salariés).
+  // Sans ça, le KPI DSO et "À encaisser" restent faussement positifs sur ces dossiers.
+  const allParticipantIds: string[] = [];
+  if (invoice.participantId) {
+    allParticipantIds.push(invoice.participantId);
+  } else if (Array.isArray(invoice.participantIds)) {
+    for (const id of invoice.participantIds as unknown[]) {
+      if (typeof id === 'string') allParticipantIds.push(id);
+    }
+  }
+
+  const groupParticipants = fullyPaid && allParticipantIds.length > 0
+    ? await prisma.sessionParticipant.findMany({
+        where: { id: { in: allParticipantIds }, session: { tenantId: user.tenantId } },
+        select: { id: true, priceHT: true },
+      })
+    : [];
+
   await prisma.$transaction([
     prisma.invoicePayment.create({
       data: {
@@ -424,18 +443,16 @@ export async function recordInvoicePayment(input: {
         paidAt: fullyPaid ? new Date() : invoice.paidAt,
       },
     }),
-    ...(fullyPaid && invoice.participantId
-      ? [
-          prisma.sessionParticipant.update({
-            where: { id: invoice.participantId },
-            data: {
-              paymentReceived: true,
-              amountCollected: new Prisma.Decimal(invoice.participant!.priceHT),
-              amountRemaining: new Prisma.Decimal(0),
-            },
-          }),
-        ]
-      : []),
+    ...groupParticipants.map((p) =>
+      prisma.sessionParticipant.update({
+        where: { id: p.id },
+        data: {
+          paymentReceived: true,
+          amountCollected: new Prisma.Decimal(p.priceHT),
+          amountRemaining: new Prisma.Decimal(0),
+        },
+      }),
+    ),
   ]);
 
   // Phase 11 Plan 11-08 backfill FACT-01 (D-18) — trace paiement comptable.

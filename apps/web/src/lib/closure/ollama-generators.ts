@@ -1,18 +1,24 @@
 /**
- * Generators IA pour les 3 docs Qualiopi assistés (QCM, GRILLE_OBS, ANALYSE_BESOIN).
+ * Generators IA pour les docs Qualiopi assistés (QCM, GRILLE_OBS, ANALYSE_BESOIN,
+ * POSITIONNEMENT, SATISFACTIONS, DEROULE, GRILLE_OBS_SESSION).
+ *
+ * Migration 2026-06-22 : Ollama local → OpenRouter cloud (profil `closure`).
+ * Le modèle effectif est résolu par `ai-config.ts` via `OPENROUTER_MODEL_CLOSURE`
+ * (défaut `mistralai/mistral-large-2411`). Plus aucune dépendance Ollama.
  *
  * Chaque generator :
  *   1. Construit un prompt user à partir du contexte (formation + stagiaire)
- *   2. Appelle Ollama via callOllama (format JSON)
+ *   2. Appelle le LLM via callLlm (format JSON forcé)
  *   3. Valide la forme du JSON avec Zod (au cas où le modèle dérape)
  *   4. Si erreur ou JSON invalide → retourne null, l'appelant fallback sur le stub
  *
- * Logging : on persiste un AIGenerationJob (modèle, latence, status, erreur).
+ * Logging : on persiste un AIGenerationJob (provider, modèle, latence, status, erreur).
  */
 
 import { z } from 'zod';
 import { prisma } from '@qualiof/db';
-import { callOllama } from '@/lib/ai-ollama';
+import { callLlm } from '@/lib/ai-llm';
+import { getLlmModel, getLlmProvider } from '@/lib/ai-config';
 import { getDayStartEnd, PAUSE_DEJEUNER } from '@/lib/formation-horaires';
 import {
   PROMPT_VERSION,
@@ -34,14 +40,10 @@ import type { SatisfactionFroidContent } from './satisfaction-froid-template';
 import type { DerouleContent } from './deroule-template';
 import type { GrilleSessionContent } from './grille-obs-session-template';
 
-// mistral-small:24b est le meilleur compromis qualité/vitesse/JSON-compliance
-// pour ces 3 docs. qwen3:30b-a3b a un comportement instable avec
-// `format: json` (thinking caché → réponse vide) — éviter ici.
-// Override possible via env CLOSURE_OLLAMA_MODEL.
-const MODEL = process.env.CLOSURE_OLLAMA_MODEL ?? 'mistral-small:24b';
-// Override de modèle par kind. Permet d'utiliser un modèle plus léger (gpt-oss:20b)
-// pour les docs longs comme le déroulé pédagogique sans toucher au reste.
-const MODEL_DEROULE = process.env.CLOSURE_OLLAMA_MODEL_DEROULE ?? MODEL;
+// Modèle résolu via ai-config.ts (profil 'closure'). Override par env
+// OPENROUTER_MODEL_CLOSURE. Pour le déroulé (output long), on peut basculer
+// vers un modèle dédié via OPENROUTER_MODEL_CLOSURE_DEROULE — sinon même
+// modèle que les autres docs.
 const QCM_QUESTIONS_DEFAULT = Number(process.env.CLOSURE_QCM_QUESTIONS ?? 13);
 
 export interface FormationCtx {
@@ -451,20 +453,19 @@ async function tryOnce<T>(
   systemPrompt: string,
   userPrompt: string,
   schema: z.ZodSchema<T>,
-  modelOverride?: string,
+  _modelOverride?: string,
 ): Promise<{ ok: true; data: T; latencyMs: number } | { ok: false; reason: string; latencyMs: number }> {
   const startedAt = Date.now();
-  const modelUsed = modelOverride ?? MODEL;
   try {
-    const result = await callOllama({
-      model: modelUsed,
+    const result = await callLlm({
+      profile: 'closure',
       systemPrompt,
       prompt: userPrompt,
       jsonOutput: true,
       temperature: 0.3,
       maxTokens: 8192,
-      // 10 min : avec saturation GPU sur Apple Silicon, le QCM peut prendre 5+ min
-      timeoutMs: 600_000,
+      // 5 min : OpenRouter ~5-30s en nominal, marge pour pic de charge
+      timeoutMs: 300_000,
     });
     const latencyMs = Date.now() - startedAt;
 
@@ -480,7 +481,7 @@ async function tryOnce<T>(
         .join(' / ');
       return { ok: false, reason: `Schema invalide : ${msg}`, latencyMs };
     }
-    console.log(`[ollama-${taskName}] ✓ ${latencyMs}ms (model=${modelUsed}, prompt=${PROMPT_VERSION})`);
+    console.log(`[closure-${taskName}] ✓ ${latencyMs}ms (model=${result.model}, prompt=${PROMPT_VERSION})`);
     return { ok: true, data: parsed.data, latencyMs };
   } catch (err) {
     const latencyMs = Date.now() - startedAt;
@@ -620,11 +621,10 @@ Ajoute obligatoirement :
     refTable,
     refId,
     tenantId,
-    MODEL_DEROULE,
   );
 }
 
-const MAX_ATTEMPTS = Number(process.env.CLOSURE_OLLAMA_RETRIES ?? 2); // 1 essai initial + 1 retry par défaut
+const MAX_ATTEMPTS = Number(process.env.CLOSURE_LLM_RETRIES ?? 2); // 1 essai initial + 1 retry par défaut
 
 async function runOllamaJson<T>(
   taskName: string,
@@ -634,15 +634,15 @@ async function runOllamaJson<T>(
   refTable: string,
   refId: string | null,
   tenantId: string | null,
-  modelOverride?: string,
 ): Promise<T | null> {
-  const modelUsed = modelOverride ?? MODEL;
+  const provider = getLlmProvider();
+  const modelUsed = getLlmModel('closure');
   const inputHash = simpleHash(`${taskName}:${userPrompt}`);
   const jobLog = tenantId
     ? await prisma.aIGenerationJob.create({
         data: {
           tenantId,
-          provider: 'ollama',
+          provider,
           model: modelUsed,
           promptVersion: PROMPT_VERSION,
           inputHash,
@@ -656,7 +656,7 @@ async function runOllamaJson<T>(
   let lastReason = '';
   let totalLatency = 0;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const r = await tryOnce(taskName, systemPrompt, userPrompt, schema, modelOverride);
+    const r = await tryOnce(taskName, systemPrompt, userPrompt, schema);
     totalLatency += r.latencyMs;
     if (r.ok) {
       if (jobLog) {
@@ -665,12 +665,11 @@ async function runOllamaJson<T>(
           data: { status: 'done', latencyMs: totalLatency, retries: attempt - 1 },
         });
       }
-      if (attempt > 1) console.log(`[ollama-${taskName}] ✓ après retry #${attempt - 1}`);
+      if (attempt > 1) console.log(`[closure-${taskName}] ✓ après retry #${attempt - 1}`);
       return r.data;
     }
     lastReason = r.reason;
-    console.warn(`[ollama-${taskName}] attempt ${attempt}/${MAX_ATTEMPTS} KO (${r.latencyMs}ms): ${r.reason.slice(0, 120)}`);
-    // Petit backoff entre 2 tentatives pour laisser la queue Ollama se vider
+    console.warn(`[closure-${taskName}] attempt ${attempt}/${MAX_ATTEMPTS} KO (${r.latencyMs}ms): ${r.reason.slice(0, 120)}`);
     if (attempt < MAX_ATTEMPTS) await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
   }
 

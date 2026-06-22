@@ -62,3 +62,4 @@ data/uploads/
 
 # GSD planning (local-only)
 .planning/
+.vercel

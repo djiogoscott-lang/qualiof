@@ -215,7 +215,7 @@ ${avoirMention}
     </tr>
     <tr>
       <td>TVA ${exonerationTva ? '(exonération)' : `(${d.vatRate}%)`}</td>
-      <td class="right">${fmtEUR.format(d.amountTTC - d.amountHT)}</td>
+      <td class="right">${fmtEUR.format(Math.round((d.amountTTC - d.amountHT) * 100) / 100)}</td>
     </tr>
     <tr class="total">
       <td>Total TTC à régler</td>

@@ -7,7 +7,7 @@
  * par Laurent (cf word/footer1.xml des conventions DOCX).
  */
 
-import { getOfConfig } from './of-config';
+import { getOfConfig, type OfConfig } from './of-config';
 
 const BRAND_DARK = '#00527A';
 
@@ -22,10 +22,14 @@ function escapeHtml(raw: string): string {
 /**
  * Footer HTML autonome répété par Gotenberg sur chaque page (passé en
  * `footer.html` dans le multipart). À utiliser via `renderHtmlToPdf(html,
- * { footerHtml: renderOfStandardFooterHtml() })`.
+ * { footerHtml: renderOfStandardFooterHtml(of) })`.
+ *
+ * FIX FACT-06 (2026-06-22) — `of` est passé en argument pour respecter le
+ * pattern Phase 7 D-01 hybrid (BDD-fallback-ENV). Le caller charge `of` via
+ * `loadOfConfig(tenantId)` puis injecte. Sans argument, fallback ENV via
+ * `getOfConfig()` (compat tests/scripts).
  */
-export function renderOfStandardFooterHtml(): string {
-  const of = getOfConfig();
+export function renderOfStandardFooterHtml(of: OfConfig = getOfConfig()): string {
   const contactNom = `${of.contact.prenom} ${of.contact.nom}`.trim();
   // Chromium downscale fortement le contenu du footer.html Gotenberg
   // (~30% effectif). On passe donc à font-size 36pt pour avoir un rendu
