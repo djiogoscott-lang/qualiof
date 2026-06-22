@@ -114,13 +114,23 @@ export function NewLinkButton() {
           lastName: lastName.trim(),
         });
         if (r.ok) {
+          // Reconstruit l'URL avec window.location.origin pour ouvrir dans
+          // le même domaine/port que l'admin (évite le bug NEXT_PUBLIC_APP_URL
+          // figé à :3000 quand `next dev` se rabat sur :3001).
+          let localUrl = r.url;
+          try {
+            const parsed = new URL(r.url);
+            localUrl = `${window.location.origin}${parsed.pathname}`;
+          } catch {
+            // r.url malformée → fallback sur la valeur brute
+          }
           if (win && !win.closed) {
-            win.location.href = r.url;
+            win.location.href = localUrl;
           } else {
             // Fallback : si l'onglet a été fermé ou bloqué, on tente une
             // ouverture directe (peut être bloquée par popup-blocker côté
             // navigateur — dans ce cas l'utilisateur verra un message Chrome).
-            window.open(r.url, '_blank');
+            window.open(localUrl, '_blank');
           }
           setOpen(false);
           reset();
@@ -330,20 +340,36 @@ export function NewLinkButton() {
                   💡 Une fois le formulaire rempli, l'IA analysera les pièces et tu recevras une notification dans <strong>/app/inscriptions</strong>.
                 </div>
                 <div className="flex items-center justify-between gap-2 pt-2">
-                  {/* CTA gauche : ouvre le formulaire dans un nouvel onglet (use-case commercial au tel) */}
-                  <a
-                    href={generatedUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-white text-slate-700 border border-slate-200 text-sm font-medium shadow-soft hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(241,245,249,0.8),0_4px_12px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 ease-out active:scale-[0.97]"
+                  {/* CTA gauche : ouvre le formulaire dans un nouvel onglet.
+                   *
+                   * ⚠ Robustesse : on reconstruit l'URL avec window.location.origin
+                   * pour ouvrir dans le même domaine/port que l'admin connecté.
+                   * La server action retourne une URL bâtie sur NEXT_PUBLIC_APP_URL
+                   * (.env) qui peut diverger du port réel quand `next dev` se
+                   * rabat sur 3001 parce que 3000 est occupé. Cf. bug "le bouton
+                   * ne fait rien" — en réalité le navigateur ouvrait une URL
+                   * sur un port sans serveur. */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      try {
+                        const u = new URL(generatedUrl);
+                        const localUrl = `${window.location.origin}${u.pathname}`;
+                        window.open(localUrl, '_blank', 'noopener,noreferrer');
+                      } catch {
+                        window.open(generatedUrl, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
+                    className="btn-ghost-mystic h-9"
                   >
                     <ExternalLink className="h-3.5 w-3.5" strokeWidth={2} /> Ouvrir le formulaire
-                  </a>
+                  </button>
                   {/* CTA droit : ferme la modale */}
                   <button
                     type="button"
                     onClick={() => { setOpen(false); reset(); }}
-                    className="inline-flex items-center h-9 px-4 rounded-md bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.35),0_0_20px_rgba(15,23,42,0.18)] transition-all duration-300 ease-out active:scale-[0.97]"
+                    className="btn-mystic h-9"
                   >
                     Fermer
                   </button>
