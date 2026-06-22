@@ -56,57 +56,63 @@ export function Sidebar({ role }: SidebarProps) {
   return (
     <aside
       className={cn(
-        'hidden md:flex shrink-0 bg-slate-50/80 h-screen fixed top-0 left-0 z-30 flex-col transition-[width] duration-200 ease-in-out',
-        // Bordure 1px gris très clair côté droit — invisible mais sépare net du contenu.
-        'border-r border-slate-200/60',
+        'hidden md:flex shrink-0 fixed top-4 left-4 bottom-4 z-30 flex-col transition-[width] duration-300 ease-out',
+        'glass-panel-strong overflow-hidden',
         collapsed ? 'w-[68px]' : 'w-64',
       )}
     >
-      {/* Header logo — pas de border-bottom, l'aération suffit */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -left-16 h-64 w-64 rounded-full bg-primary/20 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-halloween-glow/15 blur-3xl"
+      />
+
       <div
         className={cn(
-          'flex items-center',
+          'relative flex items-center',
           collapsed ? 'px-3 py-5 justify-center' : 'px-5 py-5',
         )}
       >
         <Link href="/app" className="flex items-center gap-3 group">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-bold inline-flex items-center justify-center shrink-0 shadow-card ring-1 ring-white/20 transition-all duration-200 group-hover:scale-105 group-hover:shadow-card-hover">
-            Q
+          <div className="relative h-10 w-10 rounded-xl bg-mystic-gradient text-white font-bold inline-flex items-center justify-center shrink-0 ring-1 ring-white/20 shadow-mystic transition-all duration-300 group-hover:scale-105 group-hover:shadow-ember">
+            <span className="relative z-10">Q</span>
+            <div className="absolute inset-0 rounded-xl bg-ember-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10 group-hover:hidden">Q</span>
+            <span className="absolute z-10 hidden group-hover:inline">🎃</span>
           </div>
           {!collapsed && (
             <div className="min-w-0">
-              <div className="font-semibold text-sm leading-tight text-slate-900">QualiOF</div>
-              <div className="text-[11px] text-slate-500">Start Academy</div>
+              <div className="font-semibold text-sm leading-tight text-zinc-100">QualiOF</div>
+              <div className="text-[11px] text-zinc-400">Start Academy</div>
             </div>
           )}
         </Link>
       </div>
 
-      {/* Zone scrollable avec gradient en bas pour signaler le contenu coupé */}
-      <div className="flex-1 relative overflow-hidden">
+      <div className="relative flex-1 overflow-hidden">
         <SidebarNav nav={nav} collapsed={collapsed} />
-        {/* Gradient bas — signale que la zone scrolle si contenu débordant */}
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-slate-50/80 to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
 
-      {/* Badge "génération de pack en cours" — affiché uniquement si batch actif */}
       <ActiveBatchesBadge collapsed={collapsed} />
 
-      {/* Footer collapse toggle — pas de border, séparation via espacement */}
       <div
         className={cn(
-          'flex items-center',
+          'relative flex items-center',
           collapsed ? 'p-2 justify-center' : 'px-5 py-3 justify-between',
         )}
       >
         {!collapsed && (
-          <span className="text-[10px] uppercase tracking-wider font-medium text-slate-400">v0.1.0</span>
+          <span className="text-[10px] uppercase tracking-wider font-medium text-zinc-500">v0.1.0</span>
         )}
         <button
           type="button"
           onClick={toggle}
           title={collapsed ? 'Déplier la sidebar' : 'Replier la sidebar'}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-white hover:shadow-soft transition-all duration-200"
+          className="p-1.5 rounded-lg text-zinc-400 hover:text-halloween-glow hover:bg-white/5 hover:ring-1 hover:ring-halloween-glow/30 transition-all duration-300"
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>

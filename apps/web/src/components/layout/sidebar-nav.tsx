@@ -73,7 +73,7 @@ export function SidebarNav({ nav, collapsed, onNavigate }: SidebarNavProps) {
                 <button
                   type="button"
                   onClick={() => toggleSection(section.id!)}
-                  className="w-full px-5 mb-2 flex items-center justify-between text-[10px] uppercase tracking-wider font-semibold text-slate-400 hover:text-slate-700 transition-colors"
+                  className="w-full px-5 mb-2 flex items-center justify-between text-[10px] uppercase tracking-wider font-semibold text-zinc-500 hover:text-halloween-glow transition-colors"
                 >
                   <span>{section.title}</span>
                   <ChevronDown
@@ -84,7 +84,7 @@ export function SidebarNav({ nav, collapsed, onNavigate }: SidebarNavProps) {
                   />
                 </button>
               ) : (
-                <div className="px-5 mb-2 text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+                <div className="px-5 mb-2 text-[10px] uppercase tracking-wider font-semibold text-zinc-500">
                   {section.title}
                 </div>
               )
@@ -111,19 +111,17 @@ export function SidebarNav({ nav, collapsed, onNavigate }: SidebarNavProps) {
                           'group flex items-center gap-3 rounded-lg text-sm transition-all duration-200 ease-in-out relative',
                           collapsed ? 'justify-center p-2.5' : 'px-3 py-2',
                           active
-                            // Active : carte blanche flottante + accent indigo + rail gauche.
-                            ? 'bg-white text-indigo-700 font-semibold shadow-card border border-slate-200'
-                            : 'text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-soft',
+                            ? 'bg-primary/15 text-primary-100 font-semibold ring-1 ring-primary/30 shadow-glow'
+                            : 'text-zinc-300 hover:bg-white/5 hover:text-halloween-glow hover:ring-1 hover:ring-halloween-glow/20',
                         )}
                       >
-                        {/* Pastille active discrète à gauche (sidebar non-collapsed seulement) */}
                         {active && !collapsed && (
-                          <span className="absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-r-full bg-indigo-600" aria-hidden />
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-r-full bg-gradient-to-b from-halloween-glow to-primary" aria-hidden />
                         )}
                         <Icon
                           className={cn(
                             'h-[18px] w-[18px] shrink-0 transition-colors',
-                            active ? 'text-indigo-600' : 'text-slate-400 group-hover:text-slate-700',
+                            active ? 'text-primary-200' : 'text-zinc-500 group-hover:text-halloween-glow',
                           )}
                           strokeWidth={active ? 2.2 : 1.75}
                         />
