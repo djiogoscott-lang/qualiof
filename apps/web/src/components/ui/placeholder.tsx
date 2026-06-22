@@ -13,27 +13,27 @@ export function Placeholder({ icon: Icon = Sparkles, title, subtitle, palier, fe
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-        {subtitle && <p className="text-sm text-slate-500 mt-1">{subtitle}</p>}
+        <h1 className="text-2xl font-semibold tracking-tight text-zinc-100">{title}</h1>
+        {subtitle && <p className="text-sm text-zinc-400 mt-1">{subtitle}</p>}
       </div>
 
-      <div className="rounded-2xl border border-dashed border-primary-200 bg-primary-50/30 p-10 text-center">
-        <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white mb-4">
+      <div className="glass-panel-strong border-dashed border-primary/30 p-10 text-center">
+        <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-mystic-gradient text-white mb-4 shadow-mystic ring-1 ring-primary/40">
           <Icon className="h-6 w-6" />
         </div>
-        <h2 className="text-lg font-semibold">Bientôt disponible</h2>
-        <p className="text-sm text-slate-500 mt-1.5 max-w-md mx-auto">
-          Cette section arrive au <span className="font-medium text-primary-700">{palier}</span>.
+        <h2 className="text-lg font-semibold text-zinc-100">Bientôt disponible</h2>
+        <p className="text-sm text-zinc-400 mt-1.5 max-w-md mx-auto">
+          Cette section arrive au <span className="font-medium text-mystic-gradient">{palier}</span>.
         </p>
         {features.length > 0 && (
           <div className="mt-6 max-w-md mx-auto text-left">
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
+            <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2">
               Au programme :
             </div>
-            <ul className="space-y-1.5 text-sm text-slate-900">
+            <ul className="space-y-1.5 text-sm text-zinc-200">
               {features.map((f, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-halloween-glow shadow-[0_0_8px_rgba(245,158,11,0.6)] shrink-0" />
                   <span>{f}</span>
                 </li>
               ))}

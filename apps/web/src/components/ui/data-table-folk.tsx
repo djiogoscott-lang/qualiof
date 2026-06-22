@@ -37,24 +37,24 @@ interface Props<T> {
 export function DataTableFolk<T>({ rows, columns, rowKey, rowHref, empty }: Props<T>) {
   if (rows.length === 0) {
     return (
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm py-20 text-center text-sm text-slate-500">
+      <div className="glass-panel py-20 text-center text-sm text-zinc-400">
         {empty ?? 'Aucun résultat.'}
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden transition-shadow hover:shadow-card-hover">
+    <div className="glass-panel overflow-hidden transition-shadow duration-300 hover:shadow-card-hover">
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-white">
+            <tr className="border-b border-white/10 bg-white/[0.03]">
               {columns.map((col) => (
                 <th
                   key={col.key}
                   scope="col"
                   className={cn(
-                    'py-3 px-4 text-left text-xs font-bold uppercase tracking-wider text-slate-600',
+                    'py-3 px-4 text-left text-xs font-bold uppercase tracking-wider text-zinc-400',
                     col.className,
                   )}
                   style={col.width ? { width: col.width } : undefined}
@@ -71,14 +71,14 @@ export function DataTableFolk<T>({ rows, columns, rowKey, rowHref, empty }: Prop
                 <tr
                   key={rowKey(row)}
                   className={cn(
-                    'border-b border-slate-100/80 last:border-0 transition-colors',
-                    href && 'hover:bg-slate-50/80 cursor-pointer',
+                    'border-b border-white/5 last:border-0 transition-colors duration-200',
+                    href && 'hover:bg-white/[0.04] cursor-pointer',
                   )}
                 >
                   {columns.map((col) => (
                     <td
                       key={col.key}
-                      className={cn('py-3.5 px-4 align-top text-sm text-slate-700', col.className)}
+                      className={cn('py-3.5 px-4 align-top text-sm text-zinc-200', col.className)}
                     >
                       {href && !col.noLink ? (
                         <a href={href} className="block">

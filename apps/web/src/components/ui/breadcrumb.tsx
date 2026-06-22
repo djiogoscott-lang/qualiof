@@ -36,7 +36,7 @@ export function Breadcrumb({
     <nav
       aria-label="Fil d'Ariane"
       className={cn(
-        'flex items-center gap-1 text-xs text-slate-500',
+        'flex items-center gap-1 text-xs text-zinc-500',
         className,
       )}
     >
@@ -48,13 +48,13 @@ export function Breadcrumb({
               {item.href && !isLast ? (
                 <Link
                   href={item.href as any}
-                  className="hover:text-slate-900 transition-colors"
+                  className="hover:text-halloween-glow transition-colors"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <span
-                  className={cn(isLast && 'text-slate-900 font-medium')}
+                  className={cn(isLast && 'text-zinc-100 font-medium')}
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {item.label}

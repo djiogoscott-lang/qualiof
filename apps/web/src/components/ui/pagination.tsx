@@ -25,21 +25,21 @@ export function Pagination({ total, page, pageSize, basePath, searchParams = {} 
   const start = (page - 1) * pageSize + 1;
   const end = Math.min(page * pageSize, total);
 
-  // Bouton SaaS Premium — bordure slate + shadow-sm, hover élévation.
+  // Bouton — glass-panel léger + hover ambré (Halloween).
   const btn = (disabled: boolean) =>
     cn(
       'inline-flex h-9 items-center gap-1 px-3 rounded-xl text-xs font-semibold',
-      'bg-white text-slate-700 border border-slate-200 shadow-sm transition-all duration-200',
-      'hover:border-slate-300 hover:shadow-md hover:text-slate-900 hover:-translate-y-0.5',
+      'bg-white/[0.04] text-zinc-200 border border-white/10 backdrop-blur-md shadow-soft transition-all duration-300 ease-out',
+      'hover:border-halloween-glow/40 hover:text-halloween-glow hover:bg-white/[0.07] hover:-translate-y-0.5 hover:shadow-[0_0_18px_-4px_rgba(245,158,11,0.30)]',
       disabled && 'opacity-40 pointer-events-none',
     );
 
   return (
     <div className="flex items-center justify-between gap-3 flex-wrap">
-      <div className="text-xs text-slate-500">
-        <span className="font-semibold text-slate-900 tabular-nums">{start}–{end}</span>
-        <span className="text-slate-300 mx-1.5">·</span>
-        sur <span className="font-semibold text-slate-900 tabular-nums">{total}</span>
+      <div className="text-xs text-zinc-500">
+        <span className="font-semibold text-zinc-100 tabular-nums">{start}–{end}</span>
+        <span className="text-zinc-700 mx-1.5">·</span>
+        sur <span className="font-semibold text-zinc-100 tabular-nums">{total}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <Link
@@ -49,8 +49,8 @@ export function Pagination({ total, page, pageSize, basePath, searchParams = {} 
         >
           <ChevronLeft className="h-3.5 w-3.5" strokeWidth={2} /> Préc.
         </Link>
-        <span className="text-xs text-slate-500 font-semibold px-2.5 tabular-nums">
-          {page} <span className="text-slate-300">/</span> {totalPages}
+        <span className="text-xs text-zinc-400 font-semibold px-2.5 tabular-nums">
+          {page} <span className="text-zinc-700">/</span> {totalPages}
         </span>
         <Link
           href={buildHref(Math.min(totalPages, page + 1)) as never}

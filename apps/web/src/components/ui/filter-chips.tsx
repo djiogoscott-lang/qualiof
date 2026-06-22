@@ -9,12 +9,11 @@ interface Chip {
 }
 
 /**
- * FilterChips SaaS Premium — pills style Stripe/Linear/Vercel.
+ * FilterChips — Sortilège d'Halloween (dark mode).
  *
- *  - Inactif : `bg-white ring-1 ring-slate-200 text-slate-700` avec shadow-soft
- *  - Actif : `bg-slate-900 text-white shadow-card` — élévation + ring slate-700
- *  - Hover : translate-y léger pour la sensation de bouton
- *  - Compteur : ring-1 ring-white/20 quand actif, tabular-nums dans tous les cas
+ *  - Inactif : glass-panel léger + texte zinc
+ *  - Actif : gradient mystic violet + ring primary + glow
+ *  - Hover : bordure ambrée + translate-y
  */
 export function FilterChips({ chips }: { chips: Chip[] }) {
   return (
@@ -24,10 +23,10 @@ export function FilterChips({ chips }: { chips: Chip[] }) {
           key={chip.href}
           href={chip.href as never}
           className={cn(
-            'inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-xs font-semibold transition-all duration-200',
+            'inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-xs font-semibold transition-all duration-300 ease-out backdrop-blur-md',
             chip.active
-              ? 'bg-slate-900 text-white shadow-sm border border-slate-800'
-              : 'bg-white text-slate-700 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 hover:text-slate-900 hover:-translate-y-0.5',
+              ? 'bg-mystic-gradient text-white border border-primary/40 shadow-mystic'
+              : 'bg-white/[0.04] text-zinc-300 border border-white/10 hover:border-halloween-glow/40 hover:text-halloween-glow hover:bg-white/[0.07] hover:-translate-y-0.5 hover:shadow-[0_0_18px_-4px_rgba(245,158,11,0.30)]',
           )}
         >
           {chip.label}
@@ -35,7 +34,7 @@ export function FilterChips({ chips }: { chips: Chip[] }) {
             <span
               className={cn(
                 'tabular-nums text-[10px] font-bold rounded-full px-1.5 py-0.5',
-                chip.active ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500',
+                chip.active ? 'bg-white/20 text-white ring-1 ring-white/15' : 'bg-white/[0.05] text-zinc-400 ring-1 ring-white/10',
               )}
             >
               {chip.count}

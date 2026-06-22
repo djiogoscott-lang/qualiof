@@ -80,20 +80,20 @@ export function CollapsibleSection({
         aria-expanded={open}
         aria-controls={contentId}
         aria-label={ariaLabel}
-        className="w-full flex items-center gap-2 text-left mb-3 hover:text-slate-900 transition-colors group"
+        className="w-full flex items-center gap-2 text-left mb-3 hover:text-halloween-glow transition-colors group"
       >
         {icon}
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500 group-hover:text-slate-900">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500 group-hover:text-halloween-glow transition-colors">
           {title}
         </h2>
         {subtitle && (
-          <span className="text-xs text-slate-500 font-normal normal-case">
+          <span className="text-xs text-zinc-500 font-normal normal-case">
             · {subtitle}
           </span>
         )}
         <ChevronDown
           className={cn(
-            'h-4 w-4 text-slate-500 ml-auto transition-transform',
+            'h-4 w-4 text-zinc-500 ml-auto transition-transform group-hover:text-halloween-glow',
             open ? 'rotate-180' : 'rotate-0',
           )}
           aria-hidden="true"

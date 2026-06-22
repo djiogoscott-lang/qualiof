@@ -3,29 +3,22 @@ import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 /**
- * Système de boutons partagé — SaaS Haut de Gamme (Stripe/Linear/Vercel).
+ * Système de boutons partagé — Sortilège d'Halloween (dark mode mystic).
  *
  * Micro-interactions premium :
- *  - Fluidité : `transition-all duration-300 ease-out` (courbe douce)
- *  - Tactile : `active:scale-[0.97]` (enfoncement physique au clic)
- *  - Élévation : `hover:-translate-y-0.5` (le bouton se soulève de 2px)
- *  - Rayonnement (glow) : `hover:shadow-[arbitrary]` projette une lumière
- *    diffuse de la couleur du bouton — slate pour dark, primary pour primary,
- *    emerald pour success, red pour danger, slate-100 ambient pour outline/ghost.
+ *  - Fluidité : `transition-all duration-300 ease-out`
+ *  - Tactile : `active:scale-[0.97]`
+ *  - Élévation : `hover:-translate-y-0.5`
+ *  - Glow : hover projette une lueur ambrée/violette/emerald/rouge selon variant.
  *
  * Variants :
- *  - `dark`     — CTA primaire SaaS, slate-900 (style Linear/Vercel)
- *  - `primary`  — Charte Start Academy (#00527A), pour actions "métier"
- *  - `outline`  — Secondaire blanc, hover border-slate-400 + glow ambient
- *  - `ghost`    — Sans fond, hover slate-100 + glow subtil
- *  - `success`  — Validation forte (emerald) + glow vert
- *  - `danger`   — Action destructive (red) + glow rouge
- *  - `link`     — Style ancre, primary souligné (pas de transform)
- *
- * Sizes : sm (h-9), default (h-10), lg (h-12), icon (carré).
- *
- * Note layout : `translate-y` et `scale` sont des transforms GPU — ils
- * n'occasionnent PAS de reflow. Le footprint du bouton reste stable.
+ *  - `dark`     — surface sombre, hover halo violet subtil
+ *  - `primary`  — CTA mystic violet→ambre au hover (cf .btn-mystic)
+ *  - `outline`  — glass-panel + bordure ambrée au hover
+ *  - `ghost`    — sans fond, hover halo ambré
+ *  - `success`  — gradient emerald + glow vert
+ *  - `danger`   — gradient red + glow rouge
+ *  - `link`     — ancre primary, souligné
  */
 
 export type ButtonVariant =
@@ -52,54 +45,54 @@ const BASE = [
 ].join(' ');
 
 const VARIANTS: Record<ButtonVariant, string> = {
-  // Glow slate diffus + soulèvement 2px
+  // Dark — surface sombre glass, halo violet discret au hover
   dark: [
-    'bg-slate-900 text-white shadow-soft',
-    'hover:bg-slate-800 hover:-translate-y-0.5',
-    'hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.35),0_0_20px_rgba(15,23,42,0.18)]',
-    'focus-visible:ring-slate-300',
+    'bg-white/[0.06] text-zinc-100 border border-white/10 backdrop-blur-md shadow-soft',
+    'hover:bg-white/[0.10] hover:border-primary/30 hover:-translate-y-0.5',
+    'hover:shadow-[0_8px_24px_-4px_rgba(168,85,247,0.35),0_0_20px_rgba(168,85,247,0.20)]',
+    'focus-visible:ring-primary/40',
   ].join(' '),
-  // Glow indigo (#4F46E5 → rgba(79,70,229)) — Slate/Indigo SaaS theme.
-  // Gradient indigo→blue diagonal pour le CTA principal moderne.
+  // Primary — gradient violet, glow ambré au hover (signature Halloween).
   primary: [
-    'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-soft',
-    'hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5',
-    'hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)]',
-    'focus-visible:ring-indigo-200',
+    'text-white shadow-mystic',
+    'bg-gradient-to-br from-primary via-primary-700 to-primary-900',
+    'hover:-translate-y-0.5',
+    'hover:shadow-[0_8px_28px_-4px_rgba(245,158,11,0.55),0_0_30px_-2px_rgba(245,158,11,0.45),0_4px_16px_-4px_rgba(168,85,247,0.45)]',
+    'focus-visible:ring-primary/50',
   ].join(' '),
-  // Outline : adaptation subtile bordure + texte + glow ambient slate-100
+  // Outline — glass-panel + bordure ambrée au hover
   outline: [
-    'bg-white text-slate-700 border border-slate-200 shadow-soft',
-    'hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5',
-    'hover:shadow-[0_0_15px_rgba(241,245,249,0.8),0_4px_12px_-2px_rgba(15,23,42,0.08)]',
-    'focus-visible:ring-slate-200',
+    'bg-white/[0.03] text-zinc-200 border border-white/10 backdrop-blur-md shadow-soft',
+    'hover:border-halloween-glow/45 hover:bg-halloween-glow/[0.06] hover:text-amber-200 hover:-translate-y-0.5',
+    'hover:shadow-[0_0_24px_-4px_rgba(245,158,11,0.40)]',
+    'focus-visible:ring-halloween-glow/40',
   ].join(' '),
-  // Ghost : changement de couleur + glow ambient discret (pas de translate pour rester ancré)
+  // Ghost — sans fond, halo ambré au hover
   ghost: [
-    'bg-transparent text-slate-600',
-    'hover:bg-slate-100 hover:text-slate-900',
-    'hover:shadow-[0_0_15px_rgba(241,245,249,0.8)]',
-    'focus-visible:ring-slate-200',
+    'bg-transparent text-zinc-300',
+    'hover:bg-white/5 hover:text-halloween-glow',
+    'hover:shadow-[0_0_18px_-4px_rgba(245,158,11,0.30)]',
+    'focus-visible:ring-halloween-glow/40',
   ].join(' '),
-  // Glow emerald
+  // Success — gradient emerald + glow vert
   success: [
-    'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-soft',
-    'hover:from-emerald-600 hover:to-emerald-700 hover:-translate-y-0.5',
-    'hover:shadow-[0_8px_24px_-4px_rgba(16,185,129,0.45),0_0_20px_rgba(16,185,129,0.25)]',
-    'focus-visible:ring-emerald-200',
+    'bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-soft',
+    'hover:from-emerald-400 hover:to-emerald-600 hover:-translate-y-0.5',
+    'hover:shadow-[0_8px_24px_-4px_rgba(16,185,129,0.50),0_0_20px_rgba(16,185,129,0.30)]',
+    'focus-visible:ring-emerald-300',
   ].join(' '),
-  // Glow red
+  // Danger — gradient red + glow rouge
   danger: [
-    'bg-gradient-to-br from-red-500 to-red-600 text-white shadow-soft',
-    'hover:from-red-600 hover:to-red-700 hover:-translate-y-0.5',
-    'hover:shadow-[0_8px_24px_-4px_rgba(239,68,68,0.45),0_0_20px_rgba(239,68,68,0.25)]',
-    'focus-visible:ring-red-200',
+    'bg-gradient-to-br from-red-500 to-red-700 text-white shadow-soft',
+    'hover:from-red-400 hover:to-red-600 hover:-translate-y-0.5',
+    'hover:shadow-[0_8px_24px_-4px_rgba(239,68,68,0.50),0_0_20px_rgba(239,68,68,0.30)]',
+    'focus-visible:ring-red-300',
   ].join(' '),
-  // Link : pas de transform (resterait collé au texte autour)
+  // Link — ancre primary souligné (pas de transform)
   link: [
-    'bg-transparent text-indigo-600 underline-offset-4',
-    'hover:underline hover:text-indigo-700',
-    'focus-visible:ring-indigo-200 active:scale-100',
+    'bg-transparent text-primary-200 underline-offset-4',
+    'hover:underline hover:text-halloween-glow',
+    'focus-visible:ring-primary/40 active:scale-100',
   ].join(' '),
 };
 

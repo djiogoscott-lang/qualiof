@@ -28,7 +28,7 @@ export function SearchInput({ placeholder = 'Rechercher…' }: { placeholder?: s
   return (
     <div className="relative w-full max-w-xs">
       <Search
-        className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"
+        className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500"
         strokeWidth={1.75}
       />
       <input
@@ -37,11 +37,11 @@ export function SearchInput({ placeholder = 'Rechercher…' }: { placeholder?: s
         placeholder={placeholder}
         className="
           w-full h-10 pl-9 pr-9 rounded-xl
-          bg-white text-sm text-slate-900 placeholder:text-slate-400
-          border border-slate-200 shadow-sm
-          transition-all duration-200
-          hover:border-slate-300 hover:shadow
-          focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 focus:shadow-md
+          bg-white/[0.04] text-sm text-zinc-100 placeholder:text-zinc-500
+          border border-white/10 backdrop-blur-md shadow-soft
+          transition-all duration-300 ease-out
+          hover:border-white/20 hover:bg-white/[0.06]
+          focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 focus:bg-white/[0.07]
         "
       />
       {value && (
@@ -51,7 +51,7 @@ export function SearchInput({ placeholder = 'Rechercher…' }: { placeholder?: s
           className="
             absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 rounded-md
             inline-flex items-center justify-center
-            text-slate-400 hover:text-slate-700 hover:bg-slate-100
+            text-zinc-500 hover:text-halloween-glow hover:bg-white/5
             transition-colors
           "
           aria-label="Effacer"

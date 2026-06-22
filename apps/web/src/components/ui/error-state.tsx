@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import type { Route } from 'next';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
-import { buttonStyles } from '@/components/ui/button';
 
 /**
  * État d'erreur partagé pour tous les error.tsx — style SaaS Premium.
@@ -36,20 +35,20 @@ export function ErrorState({
   homeLabel = 'Tableau de bord',
 }: ErrorStateProps) {
   return (
-    <div className="max-w-md mx-auto mt-12 rounded-2xl border border-slate-200 bg-white shadow-md p-8">
+    <div className="max-w-md mx-auto mt-12 glass-panel-strong p-8">
       <div className="flex flex-col items-center text-center">
-        <div className="inline-flex h-14 w-14 mb-4 rounded-2xl bg-gradient-to-br from-red-50 via-red-100/60 to-red-50 text-red-600 items-center justify-center border border-red-100 shadow-sm">
+        <div className="inline-flex h-14 w-14 mb-4 rounded-2xl bg-gradient-to-br from-red-500/20 via-red-500/15 to-red-700/20 text-red-300 items-center justify-center ring-1 ring-red-400/40 shadow-[0_0_24px_-4px_rgba(239,68,68,0.45)]">
           <AlertTriangle className="h-6 w-6" strokeWidth={1.75} />
         </div>
 
-        <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
-        <p className="text-sm text-slate-500 mt-1.5 max-w-sm leading-relaxed">
+        <h2 className="text-lg font-semibold text-zinc-100">{title}</h2>
+        <p className="text-sm text-zinc-400 mt-1.5 max-w-sm leading-relaxed">
           {message || "Recharge la page ou retourne à l'accueil. Si le problème persiste, contacte le support."}
         </p>
 
         {digest && (
-          <p className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-slate-50 border border-slate-200 px-2.5 py-1.5 text-[11px] font-mono text-slate-500">
-            <span className="uppercase tracking-wider font-semibold text-slate-400">ID</span> {digest}
+          <p className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-white/[0.04] border border-white/10 px-2.5 py-1.5 text-[11px] font-mono text-zinc-400">
+            <span className="uppercase tracking-wider font-semibold text-zinc-500">ID</span> {digest}
           </p>
         )}
 
@@ -58,14 +57,14 @@ export function ErrorState({
             <button
               type="button"
               onClick={onReset}
-              className="inline-flex items-center gap-1.5 h-10 px-4 rounded-xl text-xs font-medium bg-slate-900 text-white shadow-card hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(15,23,42,0.35),0_0_20px_rgba(15,23,42,0.18)] hover:shadow-card-hover active:scale-[0.98] transition-all duration-200"
+              className="btn-mystic"
             >
               <RefreshCw className="h-3.5 w-3.5" strokeWidth={1.75} /> Réessayer
             </button>
           )}
           <Link
             href={homeHref as Route}
-            className="inline-flex items-center gap-1.5 h-10 px-3.5 rounded-xl text-xs font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 ease-out active:scale-[0.97]"
+            className="btn-ghost-mystic"
           >
             <Home className="h-3.5 w-3.5" strokeWidth={1.75} /> {homeLabel}
           </Link>
