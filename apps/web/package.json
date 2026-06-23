@@ -27,7 +27,8 @@
     "smoke:closure": "dotenv -e ../../.env -- tsx scripts/closure-smoke-test.ts",
     "dump:closure": "dotenv -e ../../.env -- tsx scripts/closure-dump-pdfs.ts",
     "bench:closure": "dotenv -e ../../.env -- tsx scripts/closure-bench-ollama.ts",
-    "e2e:closure": "dotenv -e ../../.env -- tsx scripts/closure-e2e-test.ts"
+    "e2e:closure": "dotenv -e ../../.env -- tsx scripts/closure-e2e-test.ts",
+    "seed:test-session": "dotenv -e ../../.env -- tsx scripts/seed-test-session.ts"
   },
   "//": "Le .env est lu depuis la racine du monorepo via next.config.mjs (loadEnv).",
   "dependencies": {
@@ -74,6 +75,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
     "@lucia-auth/adapter-prisma": "^4.0.1",
     "@types/archiver": "^7.0.0",
     "@types/node": "^22.10.0",
