@@ -26,6 +26,12 @@ export const lucia = new Lucia(adapter, {
   sessionCookie: {
     expires: false,
     attributes: {
+      // Note Qualiopi audit 2026-06-23 : Lucia v3 applique par défaut
+      // `httpOnly: true` et `sameSite: 'lax'` (cf. source lucia/src/cookie.ts),
+      // ce qui couvre la protection XSS (httpOnly) et CSRF (sameSite). On NE
+      // les déclare PAS explicitement ici : leur typage casse l'inférence
+      // générique de `new Lucia(adapter, ...)` et fait perdre `User.tenantId`,
+      // `role` etc. dans tout le repo. À reconsidérer lors d'un upgrade Lucia.
       secure: process.env.NODE_ENV === 'production',
     },
   },

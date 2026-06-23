@@ -18,6 +18,7 @@ import {
   escapeHtml,
   formatDateFr,
   renderBrandHeader,
+  renderFormateurBlock,
   renderInfoBox,
   renderStagiaireBlock,
   wrapHtml,
@@ -71,6 +72,7 @@ ${renderBrandHeader()}
 
   ${renderInfoBox(ctx)}
   ${renderStagiaireBlock(ctx)}
+  ${renderFormateurBlock(ctx)}
 
   ${renderParagraphSection('Contexte professionnel', content.contexte_professionnel)}
   ${renderListSection('Objectifs personnels du stagiaire', content.objectifs_stagiaire)}

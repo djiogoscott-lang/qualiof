@@ -20,6 +20,7 @@ import {
   type ClosureContext,
   escapeHtml,
   renderBrandHeader,
+  renderFormateurBlock,
   renderInfoBox,
   renderStagiaireBlock,
   wrapHtml,
@@ -99,6 +100,7 @@ ${renderBrandHeader()}
 
   ${renderInfoBox(ctx)}
   ${renderStagiaireBlock(ctx)}
+  ${renderFormateurBlock(ctx)}
 
   <div style="display:inline-block; background:${scoreColor}; color:white; padding:8px 16px; border-radius:4px; margin: 4px 0 14px 0;">
     <div style="font-size:14pt; font-weight:700;">Score : ${score}%</div>

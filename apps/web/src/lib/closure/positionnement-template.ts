@@ -27,6 +27,7 @@ import {
   BRAND_DARK,
   escapeHtml,
   renderBrandHeader,
+  renderFormateurBlock,
   renderInfoBox,
   renderStagiaireBlock,
   wrapHtml,
@@ -89,6 +90,7 @@ ${renderBrandHeader()}
 
   ${renderInfoBox(ctx)}
   ${renderStagiaireBlock(ctx)}
+  ${renderFormateurBlock(ctx)}
 
   ${content.objectifs_formation ? `
   <h2 class="section">1) Vos objectifs et attentes vis-à-vis de la formation</h2>

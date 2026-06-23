@@ -153,7 +153,23 @@ export async function loginAction(
 export async function logoutAction(): Promise<void> {
   const sessionId = (await cookies()).get(lucia.sessionCookieName)?.value;
   if (sessionId) {
-    await lucia.invalidateSession(sessionId);
+    // Observabilité : trace le logout pour l'audit Qualiopi. On résout l'user
+    // AVANT d'invalider la session pour pouvoir attacher le userId au log.
+    // safeAudit ne propage aucune erreur (cf. helper plus haut).
+    const { session, user } = await lucia.validateSession(sessionId);
+    if (user) {
+      await safeAudit({
+        tenantId: user.tenantId,
+        userId: user.id,
+        targetUserId: user.id,
+        action: 'auth.logout',
+      });
+    }
+    if (session) {
+      await lucia.invalidateSession(session.id);
+    } else {
+      await lucia.invalidateSession(sessionId);
+    }
   }
   const blank = lucia.createBlankSessionCookie();
   (await cookies()).set(blank.name, blank.value, blank.attributes);

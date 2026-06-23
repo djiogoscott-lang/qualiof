@@ -330,6 +330,16 @@ export const SHARED_STYLES = `
     text-align: center;
   }
   footer.corp strong { color: ${BRAND_DARK}; }
+  /* Mention légale Qualiopi (L.6352-12) + RGPD — discrète mais lisible,
+   * conforme article L.6352-12 du Code du travail + RGPD art. 12-14. */
+  footer.corp .legal {
+    display: block;
+    margin-top: 3px;
+    font-size: 8.5pt;
+    font-style: italic;
+    color: ${MUTED};
+    line-height: 1.35;
+  }
 
   /* Bandeau "logos officiels" (Ministère du Travail à gauche, Qualiopi à droite)
    * — conforme au modèle DOCX C3_i11 du certificat de réalisation. */
@@ -522,17 +532,28 @@ export const SHARED_STYLES = `
  * centré (style Qualiopi Gen). Hauteur 35mm pour reproduire le rendu jsPDF
  * d'origine.
  */
-export function renderBrandHeader(of?: OfConfig, tenantId?: string): string {
+export function renderBrandHeader(
+  of?: OfConfig,
+  tenantId?: string,
+  opts?: { withQualiopiBadges?: boolean },
+): string {
   // Phase 7 — `of` optionnel : si passé par l'appelant (loadOfConfig(tenantId)),
   // utilise BDD-first. Sinon fallback `getOfConfig()` sync legacy (ENV-only).
   // `tenantId` (Plan 07-03) permet de lire d'abord le logo blanc uploadé dans
   // public/of-assets/{tenantId}/, fallback bundled.
+  //
+  // Audit Qualiopi 2026-06-23 : ajout des badges officiels (Ministère + Qualiopi
+  // processus certifié) par défaut sur TOUS les docs closure — exigence Qualiopi.
+  // Désactivable via `opts.withQualiopiBadges = false` si le template a déjà
+  // un emplacement custom pour les logos officiels.
   const cfg = of ?? getOfConfig();
   const dataUrl = loadLogoWhiteDataUrl(tenantId);
   const inner = dataUrl
     ? `<img class="logo" src="${dataUrl}" alt="${escapeHtml(cfg.name)}" />`
     : `<div class="of-name">${escapeHtml(cfg.name).toUpperCase()}</div>`;
-  return `<header class="brand">${inner}</header>`;
+  const brand = `<header class="brand">${inner}</header>`;
+  const withBadges = opts?.withQualiopiBadges !== false;
+  return withBadges ? `${brand}\n${renderOfficialBadges()}` : brand;
 }
 
 /**
@@ -587,6 +608,33 @@ export function renderInfoBox(ctx: ClosureContext): string {
 }
 
 /**
+ * Bloc "Formateur(s)" — identité + qualification.
+ * Conformité Qualiopi indicateur 21 (compétences et qualification des intervenants).
+ * Affiche tous les formateurs listés dans ctx.sessionTrainers. Vide → fallback
+ * neutre "À préciser" pour ne jamais casser le document.
+ */
+export function renderFormateurBlock(ctx: ClosureContext): string {
+  const trainers = (ctx.sessionTrainers ?? []).filter((t) => t && t.trim().length > 0);
+  if (trainers.length === 0) {
+    return `
+<div class="stagiaire-block">
+  <div class="title">Formateur</div>
+  <div class="meta">À préciser</div>
+</div>
+`.trim();
+  }
+  const list = trainers.map((t) => escapeHtml(t)).join(', ');
+  const label = trainers.length > 1 ? 'Formateurs' : 'Formateur';
+  return `
+<div class="stagiaire-block">
+  <div class="title">${label}</div>
+  <div class="name">${list}</div>
+  <div class="meta">Intervenant(s) qualifié(s) — indicateur Qualiopi 21</div>
+</div>
+`.trim();
+}
+
+/**
  * Bloc "Stagiaire" — style Qualiopi Gen : titre "Stagiaire" puis nom + entreprise/fonction.
  */
 export function renderStagiaireBlock(ctx: ClosureContext): string {
@@ -619,7 +667,8 @@ export function renderCorpFooter(of?: OfConfig): string {
   return `
 <footer class="corp">
   <strong>${escapeHtml(cfg.name)}</strong> – Siège social : ${escapeHtml(cfg.addressFull)} - SIRET : ${escapeHtml(cfg.siret)} – NDA ${escapeHtml(cfg.rnq)}<br>
-  Coordonnées de contact : ${escapeHtml(contactNom)} - ${escapeHtml(cfg.contact.email)} - ${escapeHtml(cfg.contact.phone)}
+  Coordonnées de contact : ${escapeHtml(contactNom)} - ${escapeHtml(cfg.contact.email)} - ${escapeHtml(cfg.contact.phone)}<br>
+  <span class="legal">Cet enregistrement ne vaut pas agrément de l'État (article L.6352-12 du Code du travail). Données traitées conformément au RGPD (UE) 2016/679 — droits d'accès, rectification, suppression : ${escapeHtml(cfg.contact.email)}.</span>
 </footer>
 `.trim();
 }

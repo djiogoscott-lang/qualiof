@@ -16,7 +16,6 @@ import {
   formatHours,
   loadSignatureDataUrl,
   renderBrandHeader,
-  renderOfficialBadges,
   stagiaireLabel,
   wrapHtml,
 } from './shared-template';
@@ -54,7 +53,6 @@ export function renderCertificatHtml(ctx: ClosureContext): string {
 
   const body = `
 ${renderBrandHeader(ctx.of, ctx.tenantId)}
-${renderOfficialBadges()}
 <main class="body">
   <h1 class="doc-title center" style="font-size: 20pt;">CERTIFICAT DE RÉALISATION</h1>
   <p class="doc-subtitle center">En application des dispositions de l'article L.6353-1 du Code du travail</p>
