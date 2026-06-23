@@ -26,14 +26,14 @@ export function LoginForm() {
     });
   };
 
-  // Style partagé pour les inputs — bord gris doux, focus bleu avec ring.
+  // Style partagé pour les inputs — dark slate solide (audit 2026-06-23).
   const inputClass =
-    'w-full h-11 px-3.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 shadow-soft transition-all duration-200 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 focus:shadow-card';
+    'w-full h-11 px-3.5 rounded-xl border border-slate-700 bg-slate-900 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm transition-all duration-200 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30';
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-1.5">
-        <label htmlFor="email" className="text-xs font-medium text-slate-700">
+        <label htmlFor="email" className="text-xs font-medium text-slate-300">
           Email
         </label>
         <input
@@ -45,11 +45,11 @@ export function LoginForm() {
           className={inputClass}
           placeholder="vous@startacademy.fr"
         />
-        {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>}
+        {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="password" className="text-xs font-medium text-slate-700">
+        <label htmlFor="password" className="text-xs font-medium text-slate-300">
           Mot de passe
         </label>
         <input
@@ -60,11 +60,11 @@ export function LoginForm() {
           className={inputClass}
           placeholder="••••••••"
         />
-        {errors.password && <p className="text-xs text-red-600 mt-1">{errors.password.message}</p>}
+        {errors.password && <p className="text-xs text-red-400 mt-1">{errors.password.message}</p>}
       </div>
 
       {error && (
-        <div className="rounded-xl bg-red-50 ring-1 ring-red-200 p-3 text-sm text-red-700 flex items-start gap-2.5 shadow-soft">
+        <div className="rounded-xl bg-red-900/40 ring-1 ring-red-500/40 p-3 text-sm text-red-200 flex items-start gap-2.5 shadow-sm">
           <span className="leading-relaxed">{error}</span>
         </div>
       )}

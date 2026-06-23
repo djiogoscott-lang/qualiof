@@ -50,15 +50,15 @@ export default async function InvitationPage({
   const used = invitation.usedAt != null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-primary-50/30">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="min-h-screen bg-slate-950">
+      <header className="border-b border-slate-800 bg-slate-900">
         <div className="max-w-3xl mx-auto px-6 py-5 flex items-center gap-3">
           <div className="h-10 w-10 rounded-lg bg-primary text-white font-bold inline-flex items-center justify-center">
             S
           </div>
           <div>
-            <div className="font-semibold">QualiOF — Start Academy</div>
-            <div className="text-xs text-slate-500">Activation de votre compte</div>
+            <div className="font-semibold text-slate-100">QualiOF — Start Academy</div>
+            <div className="text-xs text-slate-400">Activation de votre compte</div>
           </div>
         </div>
       </header>
@@ -78,8 +78,8 @@ export default async function InvitationPage({
         )}
       </main>
 
-      <footer className="border-t border-slate-200 bg-white py-5 mt-10">
-        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+      <footer className="border-t border-slate-800 bg-slate-900 py-5 mt-10">
+        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
           <div className="inline-flex items-center gap-1.5">
             <ShieldCheck className="h-3.5 w-3.5" /> Données stockées en France · Qualiopi · RGPD
           </div>
@@ -92,10 +92,10 @@ export default async function InvitationPage({
 
 function ExpiredState() {
   return (
-    <div className="rounded-2xl border border-red-200 bg-red-50 p-12 text-center space-y-4">
-      <Clock className="h-12 w-12 text-red-600 mx-auto" />
-      <h1 className="text-xl font-bold text-red-900">Ce lien a expiré</h1>
-      <p className="text-sm text-red-800 max-w-md mx-auto">
+    <div className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-lg p-12 text-center space-y-4">
+      <Clock className="h-12 w-12 text-red-400 mx-auto" />
+      <h1 className="text-xl font-bold text-slate-100">Ce lien a expiré</h1>
+      <p className="text-sm text-slate-300 max-w-md mx-auto">
         Le lien d'invitation n'est plus valable (les liens expirent après 7 jours).
         Contactez votre administrateur pour recevoir un nouveau lien.
       </p>
@@ -105,16 +105,16 @@ function ExpiredState() {
 
 function AlreadyUsedState() {
   return (
-    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-12 text-center space-y-4">
-      <CheckCircle2 className="h-12 w-12 text-emerald-700 mx-auto" />
-      <h1 className="text-xl font-bold text-emerald-900">Invitation déjà acceptée</h1>
-      <p className="text-sm text-emerald-800 max-w-md mx-auto">
+    <div className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-lg p-12 text-center space-y-4">
+      <CheckCircle2 className="h-12 w-12 text-emerald-400 mx-auto" />
+      <h1 className="text-xl font-bold text-slate-100">Invitation déjà acceptée</h1>
+      <p className="text-sm text-slate-300 max-w-md mx-auto">
         Vous avez déjà défini votre mot de passe via ce lien. Connectez-vous normalement
         avec votre email et le mot de passe que vous aviez choisi.
       </p>
       <Link
         href="/login"
-        className="inline-block text-sm font-medium text-primary underline"
+        className="inline-block text-sm font-medium text-indigo-400 underline"
       >
         Aller à la page de connexion
       </Link>

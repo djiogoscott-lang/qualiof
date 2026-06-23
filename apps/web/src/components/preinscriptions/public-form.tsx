@@ -182,16 +182,16 @@ export function PublicPreEnrollmentForm({
 
   if (done) {
     return (
-      <div className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-12 text-center space-y-4">
-        <div className="h-16 w-16 rounded-full bg-emerald-100 mx-auto inline-flex items-center justify-center">
-          <Check className="h-8 w-8 text-emerald-700" />
+      <div className="bg-slate-800 text-slate-100 border-2 border-emerald-500/40 rounded-xl shadow-lg p-12 text-center space-y-4">
+        <div className="h-16 w-16 rounded-full bg-emerald-500/20 ring-1 ring-emerald-400/40 mx-auto inline-flex items-center justify-center">
+          <Check className="h-8 w-8 text-emerald-300" />
         </div>
-        <h2 className="text-2xl font-bold text-emerald-900">Dossier envoyé !</h2>
-        <p className="text-emerald-800 max-w-md mx-auto">
+        <h2 className="text-2xl font-bold text-slate-100">Dossier envoyé !</h2>
+        <p className="text-slate-200 max-w-md mx-auto">
           Merci {firstName} ! Ton dossier est en cours de traitement automatique.
-          Start Academy te recontactera très bientôt par email à <strong>{email}</strong>.
+          Start Academy te recontactera très bientôt par email à <strong className="text-slate-100">{email}</strong>.
         </p>
-        <p className="text-xs text-emerald-700 italic">
+        <p className="text-xs text-slate-400 italic">
           Tu peux fermer cette fenêtre.
         </p>
       </div>
@@ -324,17 +324,17 @@ export function PublicPreEnrollmentForm({
 
       {/* RGPD */}
       <div className={cn(
-        'rounded-xl border bg-white shadow-sm p-4 transition-colors',
-        rgpd ? 'border-blue-200 bg-blue-50/40' : 'border-gray-200 hover:border-gray-300',
+        'rounded-xl border bg-slate-800 shadow-md p-4 transition-colors',
+        rgpd ? 'border-indigo-500/40 bg-indigo-500/10' : 'border-slate-700 hover:border-slate-600',
       )}>
         <label className="flex items-start gap-3 cursor-pointer">
           <input
             type="checkbox"
             checked={rgpd}
             onChange={(e) => setRgpd(e.target.checked)}
-            className="mt-0.5 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-100 focus:ring-offset-0"
+            className="mt-0.5 h-4 w-4 rounded border-slate-700 bg-slate-900 text-indigo-500 focus:ring-2 focus:ring-indigo-500/30 focus:ring-offset-0"
           />
-          <span className="text-xs leading-relaxed text-gray-700">
+          <span className="text-xs leading-relaxed text-slate-300">
             J'accepte que Start Academy traite ces informations dans le cadre de ma pré-inscription
             à une formation, conformément au RGPD. Mes données seront conservées pendant la durée
             nécessaire au traitement de mon dossier et à mes obligations légales (Qualiopi, OPCO).
@@ -344,7 +344,7 @@ export function PublicPreEnrollmentForm({
       </div>
 
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 flex items-start gap-2.5">
+        <div className="rounded-xl border border-red-500/40 bg-red-900/30 p-4 text-sm text-red-200 flex items-start gap-2.5">
           <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
           <span className="leading-relaxed">{error}</span>
         </div>
@@ -354,8 +354,8 @@ export function PublicPreEnrollmentForm({
         <UploadProgress step={progressStep} />
       )}
 
-      <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200 flex-wrap">
-        <p className="text-xs text-gray-500 inline-flex items-center gap-1.5">
+      <div className="flex items-center justify-between gap-4 pt-4 border-t border-slate-700 flex-wrap">
+        <p className="text-xs text-slate-400 inline-flex items-center gap-1.5">
           <span aria-hidden>🔒</span> Tes données sont stockées en France sur les serveurs de Start Academy
         </p>
         <button
@@ -363,8 +363,8 @@ export function PublicPreEnrollmentForm({
           onClick={handleSubmit}
           disabled={pending}
           className={cn(
-            'inline-flex items-center gap-2 h-12 px-6 rounded-xl bg-emerald-600 text-white font-semibold shadow-sm transition-all',
-            'hover:bg-emerald-700 hover:shadow focus:outline-none focus:ring-2 focus:ring-emerald-200',
+            'inline-flex items-center gap-2 h-12 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-semibold shadow-lg transition-all',
+            'hover:from-emerald-400 hover:to-emerald-600 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(16,185,129,0.45)] focus:outline-none focus:ring-2 focus:ring-emerald-400/40',
             pending && 'opacity-70 cursor-wait',
           )}
         >
@@ -395,14 +395,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-xl border border-gray-200 bg-white shadow-sm p-6">
+    <section className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-md p-6">
       <div className="flex items-center gap-3 mb-5">
-        <div className="h-10 w-10 rounded-full bg-blue-100 text-blue-600 inline-flex items-center justify-center shrink-0">
+        <div className="h-10 w-10 rounded-full bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30 inline-flex items-center justify-center shrink-0">
           <Icon className="h-5 w-5" />
         </div>
         <div>
-          <h2 className="font-semibold text-base text-gray-900 leading-tight">{title}</h2>
-          {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
+          <h2 className="font-semibold text-base text-slate-100 leading-tight">{title}</h2>
+          {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
         </div>
       </div>
       {children}
@@ -423,7 +423,7 @@ function Field({
 }) {
   return (
     <div className={cn('space-y-1.5', className)}>
-      <label className="text-xs font-medium text-gray-700">
+      <label className="text-xs font-medium text-slate-300">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       {children}
@@ -433,7 +433,7 @@ function Field({
 
 // Classes Tailwind partagées par tous les <input>/<select>/<textarea> du formulaire.
 // Centralisées ici pour garantir la cohérence : bordure gray-300 → focus bleu avec ring.
-const INPUT_CLASS = 'w-full h-11 px-3.5 rounded-lg border border-gray-300 bg-white text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100';
+const INPUT_CLASS = 'w-full h-11 px-3.5 rounded-lg border border-slate-700 bg-slate-900 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30';
 
 function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | null) => void }) {
   const Icon = slot.icon;
@@ -492,20 +492,20 @@ function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | nul
         onDragLeave={() => setDragOver(false)}
         onDrop={onDrop}
         className={cn(
-          'group flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm cursor-pointer transition-all duration-150',
+          'group flex items-center gap-4 p-4 rounded-xl bg-slate-800 shadow-md cursor-pointer transition-all duration-150',
           slot.file
-            ? 'border border-green-200 bg-green-50/40 hover:bg-green-50'
+            ? 'border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/15'
             : dragOver
-              ? 'border-2 border-dashed border-blue-500 bg-blue-50 scale-[1.01] shadow-md'
-              : 'border border-gray-200 hover:border-2 hover:border-dashed hover:border-blue-400 hover:bg-blue-50/40 hover:shadow',
+              ? 'border-2 border-dashed border-indigo-400 bg-indigo-500/10 scale-[1.01] shadow-lg'
+              : 'border border-slate-700 hover:border-2 hover:border-dashed hover:border-indigo-400 hover:bg-indigo-500/5 hover:shadow-lg',
         )}
       >
         {/* Thumbnail / icône — cercle, fond doux qui passe au vert quand rempli */}
         <div className={cn(
           'h-12 w-12 rounded-full inline-flex items-center justify-center shrink-0 overflow-hidden transition-colors duration-150',
           slot.file
-            ? 'bg-green-100 text-green-600'
-            : 'bg-blue-100 text-blue-600 group-hover:bg-blue-500 group-hover:text-white',
+            ? 'bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-400/40'
+            : 'bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30 group-hover:bg-indigo-500 group-hover:text-white',
         )}>
           {previewUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -521,18 +521,18 @@ function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | nul
 
         {/* Titre + état (description ou nom+taille) */}
         <div className="flex-1 min-w-0">
-          <div className="font-medium text-sm text-gray-900">
+          <div className="font-medium text-sm text-slate-100">
             {slot.label}{' '}
             {slot.required && <span className="text-red-500">*</span>}
           </div>
           {slot.file ? (
-            <div className="text-xs text-green-700 truncate flex items-center gap-1.5 mt-0.5">
+            <div className="text-xs text-emerald-300 truncate flex items-center gap-1.5 mt-0.5">
               <Check className="h-3 w-3 shrink-0" />
               <span className="truncate font-medium">{slot.file.name}</span>
-              <span className="text-green-600/70 shrink-0">· {formatFileSize(slot.file.size)}</span>
+              <span className="text-emerald-400/80 shrink-0">· {formatFileSize(slot.file.size)}</span>
             </div>
           ) : (
-            <div className="text-xs text-gray-500 mt-0.5">{slot.description}</div>
+            <div className="text-xs text-slate-400 mt-0.5">{slot.description}</div>
           )}
         </div>
 
@@ -541,7 +541,7 @@ function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | nul
           <button
             type="button"
             onClick={(e) => { e.preventDefault(); handleFile(null); }}
-            className="h-9 w-9 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 inline-flex items-center justify-center shrink-0 transition-colors"
+            className="h-9 w-9 rounded-lg bg-red-500/15 hover:bg-red-500/25 text-red-300 ring-1 ring-red-500/30 inline-flex items-center justify-center shrink-0 transition-colors"
             title="Retirer le fichier"
             aria-label="Retirer le fichier"
           >
@@ -552,8 +552,8 @@ function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | nul
             className={cn(
               'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium shrink-0 transition-colors duration-150',
               dragOver
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 group-hover:bg-blue-600 group-hover:text-white',
+                ? 'bg-indigo-500 text-white'
+                : 'bg-slate-700 text-slate-300 group-hover:bg-indigo-500 group-hover:text-white',
             )}
           >
             <UploadCloud className="h-3.5 w-3.5" />
@@ -571,7 +571,7 @@ function FileDrop({ slot, onChange }: { slot: FileSlot; onChange: (f: File | nul
       </label>
 
       {localError && (
-        <p className="text-xs text-red-600 inline-flex items-center gap-1 pl-1">
+        <p className="text-xs text-red-300 inline-flex items-center gap-1 pl-1">
           <AlertCircle className="h-3 w-3" /> {localError}
         </p>
       )}
@@ -589,7 +589,7 @@ function UploadProgress({ step }: { step: 'encoding' | 'uploading' | 'done' }) {
   const currentIdx = order.indexOf(step);
 
   return (
-    <div className="rounded-xl border border-blue-200 bg-blue-50/60 shadow-sm p-5">
+    <div className="rounded-xl border border-indigo-500/30 bg-indigo-500/10 shadow-md p-5">
       <ul className="space-y-3">
         {steps.map((s, idx) => {
           const isDone = idx < currentIdx;
@@ -602,8 +602,8 @@ function UploadProgress({ step }: { step: 'encoding' | 'uploading' | 'done' }) {
                   isDone
                     ? 'bg-emerald-500 text-white'
                     : isActive
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-gray-200 text-gray-400',
+                      ? 'bg-indigo-500 text-white shadow-md'
+                      : 'bg-slate-700 text-slate-400',
                 )}
               >
                 {isDone ? (
@@ -617,9 +617,9 @@ function UploadProgress({ step }: { step: 'encoding' | 'uploading' | 'done' }) {
               <span
                 className={cn(
                   'transition-colors',
-                  isDone && 'text-emerald-800 line-through opacity-70',
-                  isActive && 'text-blue-900 font-medium',
-                  !isDone && !isActive && 'text-gray-500',
+                  isDone && 'text-emerald-300 line-through opacity-80',
+                  isActive && 'text-indigo-200 font-medium',
+                  !isDone && !isActive && 'text-slate-400',
                 )}
               >
                 {s.label}

@@ -31,15 +31,15 @@ export default async function PublicPreEnrollmentPage({
   const alreadyDone = pe.status === 'CONVERTED' || pe.status === 'VALIDATED';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-primary-50/30">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="min-h-screen bg-slate-950">
+      <header className="border-b border-slate-800 bg-slate-900">
         <div className="max-w-3xl mx-auto px-6 py-5 flex items-center gap-3">
           <div className="h-10 w-10 rounded-lg bg-primary text-white font-bold inline-flex items-center justify-center">
             S
           </div>
           <div>
-            <div className="font-semibold">Start Academy</div>
-            <div className="text-xs text-slate-500">Organisme de formation Qualiopi</div>
+            <div className="font-semibold text-slate-100">Start Academy</div>
+            <div className="text-xs text-slate-400">Organisme de formation Qualiopi</div>
           </div>
         </div>
       </header>
@@ -52,15 +52,15 @@ export default async function PublicPreEnrollmentPage({
         ) : (
           <>
             <div className="mb-8 text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-800 text-xs font-medium mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary-200 ring-1 ring-primary/30 text-xs font-medium mb-3">
                 <Sparkles className="h-3 w-3" /> Pré-inscription en ligne
               </div>
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-100">
                 Bienvenue {pe.firstName ? pe.firstName : ''} 👋
               </h1>
-              <p className="text-sm text-slate-500 mt-2 max-w-md mx-auto">
+              <p className="text-sm text-slate-300 mt-2 max-w-md mx-auto">
                 Pour finaliser ton dossier de pré-inscription, dépose tes pièces justificatives
-                et complète quelques informations. <strong>Ça ne te prendra que 2 minutes.</strong>
+                et complète quelques informations. <strong className="text-slate-100">Ça ne te prendra que 2 minutes.</strong>
               </p>
             </div>
 
@@ -74,8 +74,8 @@ export default async function PublicPreEnrollmentPage({
         )}
       </main>
 
-      <footer className="border-t border-slate-200 bg-white py-5 mt-10">
-        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+      <footer className="border-t border-slate-800 bg-slate-900 py-5 mt-10">
+        <div className="max-w-3xl mx-auto px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
           <div className="inline-flex items-center gap-1.5">
             <ShieldCheck className="h-3.5 w-3.5" /> Données stockées en France · Qualiopi · RGPD
           </div>
@@ -88,14 +88,14 @@ export default async function PublicPreEnrollmentPage({
 
 function ExpiredState() {
   return (
-    <div className="rounded-2xl border border-red-200 bg-red-50 p-12 text-center space-y-4">
-      <Clock className="h-12 w-12 text-red-600 mx-auto" />
-      <h1 className="text-xl font-bold text-red-900">Ce lien a expiré</h1>
-      <p className="text-sm text-red-800 max-w-md mx-auto">
+    <div className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-lg p-12 text-center space-y-4">
+      <Clock className="h-12 w-12 text-red-400 mx-auto" />
+      <h1 className="text-xl font-bold text-slate-100">Ce lien a expiré</h1>
+      <p className="text-sm text-slate-300 max-w-md mx-auto">
         Le lien que tu as utilisé n'est plus valable. Contacte Start Academy pour
         recevoir un nouveau lien.
       </p>
-      <a href="mailto:contact@start-academy.fr" className="inline-block text-sm font-medium text-primary underline">
+      <a href="mailto:contact@start-academy.fr" className="inline-block text-sm font-medium text-indigo-400 underline">
         contact@start-academy.fr
       </a>
     </div>
@@ -104,10 +104,10 @@ function ExpiredState() {
 
 function AlreadyDoneState() {
   return (
-    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-12 text-center space-y-4">
-      <ShieldCheck className="h-12 w-12 text-emerald-700 mx-auto" />
-      <h1 className="text-xl font-bold text-emerald-900">Dossier déjà traité</h1>
-      <p className="text-sm text-emerald-800 max-w-md mx-auto">
+    <div className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-lg p-12 text-center space-y-4">
+      <ShieldCheck className="h-12 w-12 text-emerald-400 mx-auto" />
+      <h1 className="text-xl font-bold text-slate-100">Dossier déjà traité</h1>
+      <p className="text-sm text-slate-300 max-w-md mx-auto">
         Ton dossier a déjà été reçu et traité par Start Academy. Tu n'as rien d'autre à faire.
       </p>
     </div>

@@ -77,19 +77,19 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8 max-w-md mx-auto shadow-sm">
-      <h1 className="text-xl font-bold mb-1">
+    <div className="bg-slate-800 text-slate-100 border border-slate-700 rounded-xl shadow-lg p-8 max-w-md mx-auto">
+      <h1 className="text-xl font-bold mb-1 text-slate-100">
         Bienvenue{firstName ? ` ${firstName}` : ''} 👋
       </h1>
-      <p className="text-sm text-slate-500 mb-6">
+      <p className="text-sm text-slate-300 mb-6">
         Vous avez été invité(e) à rejoindre QualiOF en tant que{' '}
-        <strong>{ROLE_LABELS[role]}</strong>. Définissez un mot de passe pour activer
-        votre compte (<span className="font-mono text-xs">{email}</span>).
+        <strong className="text-slate-100">{ROLE_LABELS[role]}</strong>. Définissez un mot de passe pour activer
+        votre compte (<span className="font-mono text-xs text-slate-200">{email}</span>).
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="space-y-1.5">
-          <label className="block text-sm font-medium" htmlFor="password">
+          <label className="block text-sm font-medium text-slate-300" htmlFor="password">
             Mot de passe (8 caractères minimum)
           </label>
           <input
@@ -98,15 +98,15 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
             autoComplete="new-password"
             autoFocus
             {...register('password')}
-            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-700 bg-slate-900 text-slate-100 placeholder:text-slate-500 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
           />
           {errors.password && (
-            <p className="text-xs text-red-600">{errors.password.message}</p>
+            <p className="text-xs text-red-400">{errors.password.message}</p>
           )}
         </div>
 
         <div className="space-y-1.5">
-          <label className="block text-sm font-medium" htmlFor="confirm">
+          <label className="block text-sm font-medium text-slate-300" htmlFor="confirm">
             Confirmation du mot de passe
           </label>
           <input
@@ -114,22 +114,22 @@ export function SetPasswordForm({ token, email, firstName, role }: SetPasswordFo
             type="password"
             autoComplete="new-password"
             {...register('confirm')}
-            className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+            className="w-full rounded-md border border-slate-700 bg-slate-900 text-slate-100 placeholder:text-slate-500 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
           />
           {errors.confirm && (
-            <p className="text-xs text-red-600">{errors.confirm.message}</p>
+            <p className="text-xs text-red-400">{errors.confirm.message}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={pending}
-          className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium px-4 py-2.5 shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.97] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium px-4 py-2.5 shadow-lg hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45)] active:scale-[0.97] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {pending ? 'Activation…' : 'Activer mon compte'}
         </button>
 
-        <p className="text-xs text-slate-500 text-center pt-2">
+        <p className="text-xs text-slate-400 text-center pt-2">
           Après activation, vous serez connecté(e) automatiquement.
         </p>
       </form>

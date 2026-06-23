@@ -150,15 +150,17 @@ export function SignaturePad({ onChange, height = 180, disabled = false }: Signa
 
   return (
     <div className="space-y-3">
+      {/* Zone d'écriture : on garde bg-white pour la visibilité de l'encre slate-900.
+       *  L'encadrement et les textes périphériques restent en thème slate dark. */}
       <div
         ref={wrapRef}
         className={cn(
-          'rounded-xl bg-white relative overflow-hidden transition-colors shadow-sm',
+          'rounded-xl bg-white relative overflow-hidden transition-colors shadow-md',
           disabled
-            ? 'border border-gray-200 opacity-60 cursor-not-allowed'
+            ? 'border border-slate-700 opacity-60 cursor-not-allowed'
             : hasInk
-              ? 'border border-green-300 bg-green-50/30'
-              : 'border-2 border-dashed border-gray-300 hover:border-blue-400 hover:bg-blue-50/30',
+              ? 'border-2 border-emerald-400/60 ring-1 ring-emerald-400/20'
+              : 'border-2 border-dashed border-slate-600 hover:border-indigo-400',
         )}
         style={{ height }}
       >
@@ -172,7 +174,7 @@ export function SignaturePad({ onChange, height = 180, disabled = false }: Signa
         />
         {!hasInk && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className="text-xs text-gray-400 italic">
+            <span className="text-xs text-slate-400 italic">
               Signe ici avec ta souris, ton doigt ou ton stylet
             </span>
           </div>
@@ -181,11 +183,11 @@ export function SignaturePad({ onChange, height = 180, disabled = false }: Signa
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs">
           {hasInk ? (
-            <span className="inline-flex items-center gap-1.5 text-green-700 font-medium">
+            <span className="inline-flex items-center gap-1.5 text-emerald-300 font-medium">
               <Check className="h-3.5 w-3.5" strokeWidth={2.5} /> Signature enregistrée
             </span>
           ) : (
-            <span className="text-gray-500">Trace ta signature dans la zone ci-dessus</span>
+            <span className="text-slate-400">Trace ta signature dans la zone ci-dessus</span>
           )}
         </span>
         <button
@@ -195,8 +197,8 @@ export function SignaturePad({ onChange, height = 180, disabled = false }: Signa
           className={cn(
             'inline-flex items-center gap-1.5 h-8 px-3 rounded-lg text-xs font-medium transition-all duration-300 ease-out active:scale-[0.97]',
             hasInk && !disabled
-              ? 'bg-red-50 text-red-600 hover:bg-red-100'
-              : 'bg-gray-50 text-gray-300 cursor-not-allowed',
+              ? 'bg-red-500/15 text-red-300 ring-1 ring-red-500/30 hover:bg-red-500/25'
+              : 'bg-slate-700/40 text-slate-500 cursor-not-allowed',
           )}
         >
           <Eraser className="h-3.5 w-3.5" /> Effacer
