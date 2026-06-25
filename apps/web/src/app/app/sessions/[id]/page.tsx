@@ -553,7 +553,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               {completionPct}%
             </div>
           </div>
-          <div className="h-2 rounded-full bg-white border border-slate-200 overflow-hidden mb-4">
+          <div className="h-2 rounded-full bg-slate-700 border border-slate-600 overflow-hidden mb-4">
             <div
               className={`h-full transition-all ${completionPct >= 90 ? 'bg-emerald-500' : completionPct >= 50 ? 'bg-amber-500' : 'bg-red-500'}`}
               style={{ width: `${completionPct}%` }}
@@ -561,14 +561,14 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
           </div>
           {docsMissingMost.length > 0 ? (
             <div>
-              <p className="text-xs font-semibold text-slate-900/70 mb-2 uppercase tracking-wide">
+              <p className="text-xs font-semibold text-slate-300 mb-2 uppercase tracking-wide">
                 ⚠ Ce qui manque le plus
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {docsMissingMost.map((d) => (
-                  <li key={d.type} className="bg-white border border-slate-200 rounded-md px-3 py-2 text-xs flex items-center justify-between">
-                    <span className="font-medium">{d.label}</span>
-                    <span className={`font-semibold tabular-nums ${d.count === 0 ? 'text-red-600' : 'text-amber-700'}`}>
+                  <li key={d.type} className="bg-slate-800 text-slate-200 border border-slate-700 rounded-md px-3 py-2 text-xs flex items-center justify-between">
+                    <span className="font-medium text-slate-200">{d.label}</span>
+                    <span className={`font-semibold tabular-nums ${d.count === 0 ? 'text-red-300' : 'text-amber-300'}`}>
                       {d.count}/{d.total}
                     </span>
                   </li>
@@ -635,8 +635,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div className="flex items-center justify-between p-5 border-b border-slate-200 gap-3">
+          <section className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md overflow-hidden">
+            <div className="flex items-center justify-between p-5 border-b border-slate-700 gap-3">
               <h2 className="font-semibold inline-flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" /> Inscrits ({session.participants.length})
               </h2>
@@ -677,7 +677,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                     const totalHT = g.participants.reduce((s, p) => s + Number(p.priceHT), 0);
                     const allInvoiced = g.participants.every((p) => p.invoiceSent);
                     return (
-                      <div key={g.sponsor.id} className="p-4 hover:bg-slate-100/30 transition-colors">
+                      <div key={g.sponsor.id} className="p-4 hover:bg-slate-700/40 transition-colors">
                         {/* Header sponsor */}
                         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
                           <div className="text-xs text-slate-500 inline-flex items-center gap-2">
@@ -685,7 +685,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                             <span>Sponsor :</span>
                             <Link
                               href={`/app/organisations/${g.sponsor.id}`}
-                              className="text-slate-900 font-medium hover:text-primary"
+                              className="text-slate-200 font-medium hover:text-primary"
                             >
                               {g.sponsor.legalName}
                             </Link>
@@ -737,10 +737,10 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                                     const ratio = n / PERSONAL_DOC_TOTAL;
                                     const cls =
                                       ratio >= 0.8
-                                        ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                                        ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-300'
                                         : ratio >= 0.3
-                                          ? 'border-amber-200 bg-amber-50 text-amber-700'
-                                          : 'border-slate-200 bg-slate-50 text-slate-600';
+                                          ? 'border-amber-500/40 bg-amber-500/15 text-amber-300'
+                                          : 'border-slate-600 bg-slate-700/50 text-slate-300';
                                     return (
                                       <Link
                                         href={`/app/apprenants/${p.person.id}?tab=documents` as Route}
@@ -800,7 +800,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               contenu visible — sinon le scroll arrive sur du vide. */}
           <section
             id="section-formateurs"
-            className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 scroll-mt-20 target:ring-2 target:ring-primary target:ring-offset-2"
+            className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-5 scroll-mt-20 target:ring-2 target:ring-primary target:ring-offset-2"
           >
             <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
               Formateurs
@@ -845,7 +845,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 pt-4 border-t border-slate-200">
+                <div className="mt-4 pt-4 border-t border-slate-700">
                   <p className="text-xs text-slate-500 mb-2">Ajouter un autre formateur :</p>
                   <SessionTrainerPicker sessionId={session.id} setAsPrimary={false} />
                 </div>
@@ -858,7 +858,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               actionnable (BUG-18). */}
           <section
             id="section-lieu"
-            className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 scroll-mt-20"
+            className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-5 scroll-mt-20"
           >
             <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
               Lieu de formation
@@ -882,7 +882,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                   })()}
                 </div>
                 <details className="text-sm">
-                  <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-900 inline-flex items-center gap-1">
+                  <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-200 inline-flex items-center gap-1">
                     Changer de lieu
                   </summary>
                   <div className="mt-2">
@@ -927,8 +927,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               (cf docCompletionByParticipant) — utilisées aussi dans les
               badges par-ligne de la liste des inscrits. */}
           {session.participants.length > 0 && (
-            <details className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden group">
-              <summary className="flex items-center justify-between p-5 border-b border-slate-200 cursor-pointer hover:bg-slate-100/20 transition-colors list-none [&::-webkit-details-marker]:hidden">
+            <details className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md overflow-hidden group">
+              <summary className="flex items-center justify-between p-5 border-b border-slate-700 cursor-pointer hover:bg-slate-700/40 transition-colors list-none [&::-webkit-details-marker]:hidden">
                 <h2 className="font-semibold inline-flex items-center gap-2">
                   <ClipboardCheck className="h-5 w-5 text-primary" /> Conformité Qualiopi
                   <span className="text-xs font-normal text-slate-500 ml-2 tabular-nums">
@@ -990,7 +990,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                         { label: invoice?.number ?? 'Facture', href: invoice ? `/app/factures/${invoice.id}` : undefined },
                       ];
                       return (
-                        <tr key={p.id} className="hover:bg-slate-100/20">
+                        <tr key={p.id} className="hover:bg-slate-700/40">
                           <td className="px-4 py-2">
                             <Link
                               href={`/app/apprenants/${p.person.id}?tab=documents`}
@@ -1049,7 +1049,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
             const renderRow = (b: typeof latest) => (
               <Link
                 href={`/app/sessions/${session.id}/closure/${b.id}` as Route}
-                className="flex items-center gap-3 p-4 hover:bg-slate-100/20 transition-colors"
+                className="flex items-center gap-3 p-4 hover:bg-slate-700/40 transition-colors"
               >
                 <Badge variant={variantOf(b.status)}>{b.status}</Badge>
                 <span className="text-sm flex-1">
@@ -1063,14 +1063,14 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               </Link>
             );
             return (
-              <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-                <div className="p-5 border-b border-slate-200 flex items-center justify-between gap-3 flex-wrap">
+              <section className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md overflow-hidden">
+                <div className="p-5 border-b border-slate-700 flex items-center justify-between gap-3 flex-wrap">
                   <h2 className="font-semibold inline-flex items-center gap-2">
                     <Package className="h-5 w-5 text-primary" /> Pack fin de formation
                   </h2>
                   <Link
                     href={`/app/sessions/${session.id}/closure` as Route}
-                    className="text-xs text-slate-500 hover:text-slate-900 transition-colors inline-flex items-center gap-1"
+                    className="text-xs text-slate-500 hover:text-slate-200 transition-colors inline-flex items-center gap-1"
                   >
                     Voir l&apos;historique complet <ChevronRight className="h-3 w-3" />
                   </Link>
@@ -1079,8 +1079,8 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                   <li key={latest.id}>{renderRow(latest)}</li>
                 </ul>
                 {previous.length > 0 && (
-                  <details className="border-t border-slate-200">
-                    <summary className="cursor-pointer select-none text-xs text-slate-500 hover:text-slate-900 transition-colors px-5 py-3 list-none [&::-webkit-details-marker]:hidden">
+                  <details className="border-t border-slate-700">
+                    <summary className="cursor-pointer select-none text-xs text-slate-500 hover:text-slate-200 transition-colors px-5 py-3 list-none [&::-webkit-details-marker]:hidden">
                       ▸ Historique ({previous.length} pack{previous.length > 1 ? 's' : ''} précédent{previous.length > 1 ? 's' : ''})
                     </summary>
                     <ul className="divide-y divide-slate-200 bg-slate-100/10">
@@ -1098,14 +1098,14 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
         <div className="space-y-6">
           {/* BUG-17 anchor — completeness badge link vers la section Produit (fallback si pas de productId) */}
           <div id="section-produit" className="scroll-mt-20" />
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <section className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-6">
             <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
               Produit de formation
             </h2>
             {session.product ? (
               <Link
                 href={`/app/produits/${session.product.id}`}
-                className="block p-3 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
+                className="block p-3 rounded-lg border border-slate-700 hover:bg-slate-700/40 transition-colors"
               >
                 <div className="font-medium">{session.product.title}</div>
                 <div className="text-xs text-slate-500 mt-1">
@@ -1123,7 +1123,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
               dans la matrice 17-col).
               Programme + Déroulé = niveau PRODUIT
               Grille obs session + Check-list = niveau SESSION */}
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <section className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-6">
             <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500 inline-flex items-center gap-2">
               <FileText className="h-4 w-4" /> Documents partagés
             </h2>
@@ -1134,9 +1134,9 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
                 { label: 'Grille observation (C3.i11)', href: grilleSessionDocId ? `/api/documents/${grilleSessionDocId}` : null, scope: 'Session' },
                 { label: 'Check-list formation (C4.i17)', href: checklistDocId ? `/api/documents/${checklistDocId}` : null, scope: 'Session' },
               ].map((d) => (
-                <li key={d.label} className="flex items-center justify-between gap-2 py-1.5 border-b last:border-0 border-slate-200/50">
+                <li key={d.label} className="flex items-center justify-between gap-2 py-1.5 border-b last:border-0 border-slate-700/70">
                   <div className="min-w-0 flex-1">
-                    <div className="font-medium text-slate-900 truncate">{d.label}</div>
+                    <div className="font-medium text-slate-200 truncate">{d.label}</div>
                     <div className="text-[10px] uppercase tracking-wide text-slate-500">{d.scope}</div>
                   </div>
                   {d.href ? (
@@ -1158,7 +1158,7 @@ export default async function SessionDetailPage({ params }: { params: Promise<{ 
           </section>
 
           {session.internalNotes && (
-            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <section className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-6">
               <h2 className="font-semibold mb-2 text-sm uppercase tracking-wide text-slate-500">
                 Notes internes
               </h2>

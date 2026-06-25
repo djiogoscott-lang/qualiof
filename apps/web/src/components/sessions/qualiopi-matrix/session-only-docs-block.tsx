@@ -115,11 +115,11 @@ export function SessionOnlyDocsBlock({
   return (
     <section
       aria-labelledby="session-only-docs-heading"
-      className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5"
+      className="rounded-2xl bg-slate-800 text-slate-200 border border-slate-700 shadow-md p-5"
     >
       <h2
         id="session-only-docs-heading"
-        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-slate-500 mb-4"
+        className="font-semibold inline-flex items-center gap-2 text-sm uppercase tracking-wide text-slate-400 mb-4"
       >
         <FileText className="h-4 w-4" aria-hidden="true" /> Documents session
       </h2>
@@ -132,10 +132,10 @@ export function SessionOnlyDocsBlock({
           return (
             <article
               key={card.key}
-              className="rounded-lg border border-slate-200 bg-white shadow-sm p-4 flex flex-col gap-3"
+              className="rounded-xl bg-slate-900 text-slate-200 border border-slate-700 shadow-md p-4 flex flex-col gap-3"
             >
               <div className="flex items-start justify-between gap-2">
-                <h3 className="text-base font-semibold leading-tight">{card.title}</h3>
+                <h3 className="text-base font-semibold leading-tight text-slate-200">{card.title}</h3>
                 <DocStatusBadge
                   state={hasPdf ? 'GENERATED' : 'MISSING'}
                   label={card.title}
@@ -148,12 +148,12 @@ export function SessionOnlyDocsBlock({
                       href={`/api/documents/${pdf.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-300 hover:text-indigo-200 hover:underline"
                     >
                       <FileText className="h-4 w-4" aria-hidden="true" /> Voir le PDF
                     </a>
                   ) : (
-                    <p className="text-xs text-slate-500 italic">
+                    <p className="text-xs text-slate-400 italic">
                       Généré par participant (voir matrice)
                     </p>
                   )}
@@ -162,7 +162,7 @@ export function SessionOnlyDocsBlock({
                       type="button"
                       disabled={isPending || deroulleDisabled}
                       onClick={() => handleGenerate(card.key, card.shortLabel, { force: true })}
-                      className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 disabled:opacity-50 disabled:cursor-wait"
+                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 disabled:opacity-50 disabled:cursor-wait"
                     >
                       <RefreshCw className="h-3.5 w-3.5" aria-hidden="true" />
                       {isPending ? 'Génération…' : 'Re-générer'}
@@ -171,13 +171,13 @@ export function SessionOnlyDocsBlock({
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 mt-auto">
-                  <p className="text-xs text-slate-500 italic">Pas encore généré</p>
+                  <p className="text-xs text-slate-400 italic">Pas encore généré</p>
                   {canWrite && (
                     <button
                       type="button"
                       disabled={isPending || deroulleDisabled}
                       onClick={() => handleGenerate(card.key, card.shortLabel)}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline disabled:opacity-50 disabled:cursor-wait"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-300 hover:text-indigo-200 hover:underline disabled:opacity-50 disabled:cursor-wait"
                     >
                       <Sparkles className="h-4 w-4" aria-hidden="true" />
                       {isPending ? 'Génération…' : `Générer ${card.article} ${card.shortLabel}`}
