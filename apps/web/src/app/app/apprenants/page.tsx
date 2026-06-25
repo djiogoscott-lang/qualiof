@@ -98,10 +98,10 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
       header: 'Nom',
       cell: (row) => (
         <div>
-          <div className="font-medium text-slate-900">
+          <div className="font-medium text-slate-100">
             {row.lastName.toUpperCase()} {row.firstName}
           </div>
-          <div className="text-xs text-slate-500 mt-0.5">{row.professionalStatus ?? '—'}</div>
+          <div className="text-xs text-slate-400 mt-0.5">{row.professionalStatus ?? '—'}</div>
         </div>
       ),
     },
@@ -110,10 +110,10 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
       header: 'Contact',
       cell: (row) => (
         <div>
-          <div className={row.email ? 'text-slate-900' : 'text-slate-500 italic'}>
+          <div className={row.email ? 'text-slate-100' : 'text-slate-400 italic'}>
             {row.email ?? 'email manquant'}
           </div>
-          <div className="text-xs text-slate-500 mt-0.5">{row.phone ?? '—'}</div>
+          <div className="text-xs text-slate-400 mt-0.5">{row.phone ?? '—'}</div>
         </div>
       ),
     },
@@ -122,13 +122,13 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
       header: 'Organisation(s)',
       cell: (row) => {
         if (row.legalLinks.length === 0) {
-          return <span className="text-xs text-slate-500 italic">aucune</span>;
+          return <span className="text-xs text-slate-400 italic">aucune</span>;
         }
         return (
           <div className="flex flex-col gap-1">
             {row.legalLinks.slice(0, 2).map((link) => (
               <div key={link.organization.id} className="flex items-center gap-1.5">
-                <Briefcase className="h-3 w-3 text-slate-500 shrink-0" />
+                <Briefcase className="h-3 w-3 text-slate-400 shrink-0" />
                 <span className="text-xs truncate max-w-[220px]">{link.organization.legalName}</span>
                 {link.role === 'EI_SELF' && (
                   <Badge variant="primary" className="text-[10px]">EI</Badge>
@@ -136,7 +136,7 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
               </div>
             ))}
             {row.legalLinks.length > 2 && (
-              <span className="text-xs text-slate-500">+{row.legalLinks.length - 2} autre(s)</span>
+              <span className="text-xs text-slate-400">+{row.legalLinks.length - 2} autre(s)</span>
             )}
           </div>
         );
@@ -159,7 +159,7 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
             <LearnerQuickViewButton personId={row.id} />
           </div>
           {row.requiresCleanup && row.cleanupNotes && (
-            <span className="text-[11px] text-amber-700 italic max-w-[240px] truncate" title={row.cleanupNotes}>
+            <span className="text-[11px] text-amber-300 italic max-w-[240px] truncate" title={row.cleanupNotes}>
               {row.cleanupNotes}
             </span>
           )}
@@ -181,7 +181,7 @@ export default async function ApprenantsPage({ searchParams }: { searchParams: P
         <div className="flex items-center gap-2">
           <Link
             href={hrefWith({ q, filter, all: showAll ? undefined : '1' }) as any}
-            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 shadow-sm hover:border-slate-300 hover:shadow-md hover:text-slate-900 hover:-translate-y-0.5 transition-all duration-200"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-700 bg-slate-800 text-xs font-semibold text-slate-200 shadow-md hover:border-slate-600 hover:bg-slate-700/60 hover:text-slate-100 hover:-translate-y-0.5 transition-all duration-200"
           >
             {showAll ? (
               <>

@@ -564,8 +564,8 @@ export default async function ApprenantDetailPage({
       {tab === 'info' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
+            <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-400">
                 Coordonnées
               </h2>
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -589,9 +589,9 @@ export default async function ApprenantDetailPage({
               </dl>
             </section>
 
-            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+            <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+                <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
                   Liens juridiques ({person.legalLinks.length})
                 </h2>
                 {person.legalLinks.length >= 2 && (
@@ -603,8 +603,8 @@ export default async function ApprenantDetailPage({
           </div>
 
           <div className="space-y-6">
-            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
+            <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+              <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-400">
                 Profil pédagogique
               </h2>
               <dl className="space-y-3 text-sm">
@@ -641,23 +641,23 @@ export default async function ApprenantDetailPage({
             />
 
             {person.requiresCleanup && (
-              <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800">
+              <section className="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-5 text-sm text-amber-200">
                 <h3 className="font-semibold mb-1">À corriger</h3>
                 <p>{person.cleanupNotes ?? "Cette fiche a été flaggée à l'import SmartOF."}</p>
               </section>
             )}
 
             {canSeeSensitive && decryptedSsn && (
-              <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-                <h2 className="font-semibold mb-2 text-sm uppercase tracking-wide text-slate-500">
+              <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+                <h2 className="font-semibold mb-2 text-sm uppercase tracking-wide text-slate-400">
                   Données sensibles (RGPD)
                 </h2>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-400">
                   Chiffrées at-rest (pgcrypto). Accès limité aux rôles ADMIN/MANAGER.
                 </p>
                 <div className="mt-3 text-sm">
-                  <span className="text-slate-500">N° sécurité sociale : </span>
-                  <code className="font-mono text-xs">{decryptedSsn}</code>
+                  <span className="text-slate-400">N° sécurité sociale : </span>
+                  <code className="font-mono text-xs text-slate-100">{decryptedSsn}</code>
                 </div>
               </section>
             )}
@@ -707,20 +707,20 @@ export default async function ApprenantDetailPage({
           </div>
 
           {/* Historique sessions — id pour anchor des KPI cliquables (UX-05) */}
-          <section id="inscriptions-list" className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden scroll-mt-20">
-            <div className="p-5 border-b border-slate-200">
-              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+          <section id="inscriptions-list" className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 overflow-hidden scroll-mt-20">
+            <div className="p-5 border-b border-slate-700">
+              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
                 Toutes les inscriptions ({totalParticipations})
               </h2>
             </div>
             {totalParticipations === 0 ? (
-              <p className="p-8 text-center text-sm text-slate-500 italic">
+              <p className="p-8 text-center text-sm text-slate-400 italic">
                 Aucune inscription enregistrée pour cet apprenant.
               </p>
             ) : (
-              <ul className="divide-y divide-slate-200">
+              <ul className="divide-y divide-slate-700">
                 {person.participations.map((p) => (
-                  <li key={p.id} className="p-4 hover:bg-slate-100/30 transition-colors">
+                  <li key={p.id} className="p-4 hover:bg-slate-700/40 transition-colors">
                     <div className="flex items-center gap-3 flex-wrap">
                       <Link
                         href={`/app/sessions/${p.session.id}`}
@@ -732,7 +732,7 @@ export default async function ApprenantDetailPage({
                         <span className="font-medium flex-1 min-w-0 truncate group-hover:text-primary">
                           {p.session.name ?? p.session.product?.title ?? '(sans nom)'}
                         </span>
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-slate-400">
                           {new Date(p.session.startDate).toLocaleDateString('fr-FR')}
                         </span>
                         <Badge variant="muted" className="text-[10px]">
@@ -749,7 +749,7 @@ export default async function ApprenantDetailPage({
                         <Badge variant="muted" className="text-[10px]">
                           {p.enrollmentStatus}
                         </Badge>
-                        <ChevronRight className="h-3.5 w-3.5 text-slate-500" />
+                        <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
                       </Link>
                       <GenerateClosureForParticipantButton
                         sessionId={p.session.id}
@@ -784,28 +784,28 @@ export default async function ApprenantDetailPage({
           bySession.set(d.sessionId, list);
         }
         const PILLAR_LABELS = {
-          qualiopi: { label: 'Qualiopi', cls: 'bg-emerald-100 text-emerald-800' },
-          pedagogique: { label: 'Pédagogique', cls: 'bg-blue-100 text-blue-800' },
-          admin: { label: 'Administratif', cls: 'bg-slate-100 text-slate-700' },
-          finance: { label: 'Financier', cls: 'bg-amber-100 text-amber-800' },
+          qualiopi: { label: 'Qualiopi', cls: 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/30' },
+          pedagogique: { label: 'Pédagogique', cls: 'bg-sky-500/20 text-sky-200 border border-sky-500/30' },
+          admin: { label: 'Administratif', cls: 'bg-slate-700 text-slate-200 border border-slate-600' },
+          finance: { label: 'Financier', cls: 'bg-amber-500/20 text-amber-200 border border-amber-500/30' },
         } as const;
         // UX-03 : CTA pour générer un document si l'apprenant a au moins une participation
         const hasParticipations = person.participations.length > 0;
         return (
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <div className="p-5 border-b border-slate-200 flex items-start justify-between gap-3 flex-wrap">
+          <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 overflow-hidden">
+            <div className="p-5 border-b border-slate-700 flex items-start justify-between gap-3 flex-wrap">
               <div>
-                <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+                <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
                   Documents générés ({documents.length})
                 </h2>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Groupés par session — clic sur un document pour l'ouvrir.
                 </p>
               </div>
               {hasParticipations && (
                 <Link
                   href={`/app/apprenants/${person.id}?tab=activity#inscriptions-list`}
-                  className="inline-flex items-center gap-2 h-9 px-3 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700 text-sm font-medium shadow-sm hover:border-indigo-300 hover:bg-indigo-100 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 ease-out active:scale-[0.97]"
+                  className="inline-flex items-center gap-2 h-9 px-3 rounded-xl border border-primary/40 bg-primary/15 text-primary-200 text-sm font-medium shadow-sm hover:border-primary/60 hover:bg-primary/25 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 ease-out active:scale-[0.97]"
                   title="Aller à l'onglet Activité — chaque session a un menu Actions pour générer ses documents"
                 >
                   <FileText className="h-4 w-4" />
@@ -814,30 +814,30 @@ export default async function ApprenantDetailPage({
               )}
             </div>
             {documents.length === 0 ? (
-              <p className="p-8 text-center text-sm text-slate-500 italic">
+              <p className="p-8 text-center text-sm text-slate-400 italic">
                 Aucun document généré. Les documents apparaîtront ici dès qu'une fiche AGEFICE,
                 programme, attestation, certificat, QCM, grille d'observation ou facture sera
                 produite pour cet apprenant.
               </p>
             ) : (
-              <div className="divide-y divide-slate-200">
+              <div className="divide-y divide-slate-700">
                 {Array.from(bySession.entries()).map(([sId, items]) => {
                   const meta = sId ? sessionMetaById.get(sId) : null;
                   return (
                     <div key={sId ?? 'no-session'} className="p-4">
-                      <div className="text-xs text-slate-500 mb-2 inline-flex items-center gap-2 flex-wrap">
+                      <div className="text-xs text-slate-400 mb-2 inline-flex items-center gap-2 flex-wrap">
                         {meta ? (
                           <>
                             <Link
                               href={`/app/sessions/${meta.id}`}
-                              className="font-mono text-[11px] bg-slate-100/60 px-2 py-0.5 rounded hover:bg-slate-100"
+                              className="font-mono text-[11px] bg-slate-900/60 px-2 py-0.5 rounded hover:bg-slate-900 text-slate-200"
                             >
                               {meta.code}
                             </Link>
-                            <span className="text-slate-900">{meta.product?.title ?? meta.name}</span>
+                            <span className="text-slate-100">{meta.product?.title ?? meta.name}</span>
                           </>
                         ) : (
-                          <span className="italic">Hors session</span>
+                          <span className="italic text-slate-400">Hors session</span>
                         )}
                         <span className="text-[11px]">· {items.length} doc{items.length > 1 ? 's' : ''}</span>
                       </div>
@@ -850,17 +850,17 @@ export default async function ApprenantDetailPage({
                                 href={d.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-indigo-300 hover:shadow-sm transition-all duration-200"
+                                className="flex items-center gap-3 p-2.5 rounded-xl border border-slate-700 bg-slate-900/40 hover:bg-slate-700/40 hover:border-primary/40 hover:shadow-md transition-all duration-200"
                               >
                                 <FileText className="h-4 w-4 text-primary shrink-0" />
-                                <span className="flex-1 font-medium text-sm truncate">{d.label}</span>
+                                <span className="flex-1 font-medium text-sm truncate text-slate-100">{d.label}</span>
                                 <span className={`text-[10px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded ${pillar.cls}`}>
                                   {pillar.label}
                                 </span>
-                                <span className="text-xs text-slate-500 tabular-nums">
+                                <span className="text-xs text-slate-400 tabular-nums">
                                   {new Date(d.createdAt).toLocaleDateString('fr-FR')}
                                 </span>
-                                <ChevronRight className="h-3.5 w-3.5 text-slate-500" />
+                                <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
                               </a>
                             </li>
                           );
@@ -893,12 +893,12 @@ function Field({
 }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
+      <Icon className="h-4 w-4 text-slate-400 mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <div className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">
+        <div className="text-[11px] uppercase tracking-wide text-slate-400 font-medium">
           {label}
         </div>
-        <div className={muted ? 'text-slate-500 italic' : multiline ? 'whitespace-pre-line' : ''}>
+        <div className={muted ? 'text-slate-500 italic' : multiline ? 'whitespace-pre-line text-slate-200' : 'text-slate-200'}>
           {value}
         </div>
       </div>
@@ -922,27 +922,27 @@ function KPI({
 }) {
   const cls =
     accent === 'red'
-      ? 'border-red-200 bg-red-50/60'
+      ? 'border-red-500/40 bg-red-500/10 text-slate-100'
       : accent === 'orange'
-        ? 'border-amber-200 bg-amber-50/60'
-        : 'border-slate-200 bg-white';
+        ? 'border-amber-500/40 bg-amber-500/10 text-slate-100'
+        : 'border-slate-700 bg-slate-800 text-slate-100';
   const inner = (
     <>
-      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-slate-500 mb-1">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-slate-400 mb-1">
         <Icon className="h-3 w-3" /> {label}
       </div>
-      <div className="text-lg font-semibold tabular-nums">{value}</div>
+      <div className="text-lg font-semibold tabular-nums text-slate-100">{value}</div>
     </>
   );
   if (href) {
     return (
       <a
         href={href}
-        className={`rounded-xl border p-4 shadow-sm transition-all duration-200 hover:border-indigo-300 hover:-translate-y-0.5 hover:shadow-md cursor-pointer ${cls}`}
+        className={`rounded-xl border p-4 shadow-md transition-all duration-200 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-card-hover cursor-pointer ${cls}`}
       >
         {inner}
       </a>
     );
   }
-  return <div className={`rounded-xl border p-4 shadow-sm ${cls}`}>{inner}</div>;
+  return <div className={`rounded-xl border p-4 shadow-md ${cls}`}>{inner}</div>;
 }

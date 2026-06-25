@@ -56,11 +56,11 @@ const STATUS_BADGE: Record<
 function jobIcon(status: ClosureBatchStatusJob['status']) {
   switch (status) {
     case 'DONE':
-      return <CheckCircle2 className="h-4 w-4 text-emerald-600" />;
+      return <CheckCircle2 className="h-4 w-4 text-emerald-400" />;
     case 'ERROR':
-      return <AlertCircle className="h-4 w-4 text-red-600" />;
+      return <AlertCircle className="h-4 w-4 text-red-400" />;
     case 'PROCESSING':
-      return <Loader2 className="h-4 w-4 text-blue-600 animate-spin" />;
+      return <Loader2 className="h-4 w-4 text-sky-400 animate-spin" />;
     case 'QUEUED':
       return <Clock className="h-4 w-4 text-slate-400" />;
   }
@@ -97,7 +97,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+      <div className="rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-sm text-red-200">
         <AlertCircle className="inline-block h-4 w-4 mr-2" />
         {error}
       </div>
@@ -105,7 +105,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
   }
   if (!batch) {
     return (
-      <div className="rounded-lg border border-slate-200 bg-white p-6 text-sm text-slate-500">
+      <div className="rounded-lg border border-slate-700 bg-slate-800 p-6 text-sm text-slate-400">
         <Loader2 className="inline-block h-4 w-4 mr-2 animate-spin" /> Chargement…
       </div>
     );
@@ -162,14 +162,14 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
   return (
     <div className="space-y-5">
       {/* Header status + actions */}
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
+      <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
             <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>
-            <span className="text-sm text-slate-500">
+            <span className="text-sm text-slate-400">
               {batch.doneDocs} / {batch.totalDocs} documents générés
-              {batch.errorDocs > 0 && <span className="text-red-600"> · {batch.errorDocs} erreur(s)</span>}
-              {stubCount > 0 && <span className="text-amber-600"> · {stubCount} doc(s) à régénérer (IA)</span>}
+              {batch.errorDocs > 0 && <span className="text-red-300"> · {batch.errorDocs} erreur(s)</span>}
+              {stubCount > 0 && <span className="text-amber-300"> · {stubCount} doc(s) à régénérer (IA)</span>}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -178,7 +178,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
                 type="button"
                 onClick={() => handleRetry(false)}
                 disabled={retrying}
-                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:hover:translate-y-0"
+                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-slate-700 bg-slate-800 text-sm font-medium text-slate-200 shadow-md hover:border-slate-600 hover:bg-slate-700/60 hover:text-slate-100 hover:-translate-y-0.5 hover:shadow-card-hover transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {retrying ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
                 Régénérer les erreurs
@@ -190,7 +190,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
                 onClick={() => handleRetry(true)}
                 disabled={retrying}
                 title="Relance la génération IA pour les docs où Mistral avait échoué (contenu générique). Indispensable avant un audit Qualiopi."
-                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-amber-200 bg-amber-50 text-amber-800 text-sm font-medium hover:bg-amber-100 disabled:opacity-60"
+                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-md border border-amber-500/40 bg-amber-500/10 text-amber-200 text-sm font-medium hover:bg-amber-500/20 disabled:opacity-60"
               >
                 {retrying ? <Loader2 className="h-4 w-4 animate-spin" /> : <AlertTriangle className="h-4 w-4" />}
                 Régénérer les {stubCount} doc{stubCount > 1 ? 's' : ''} génériques
@@ -199,7 +199,7 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
             {canDownload && (
               <a
                 href={`/api/closure/${batchId}/zip`}
-                className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-indigo-700 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-4px_rgba(79,70,229,0.45),0_0_20px_rgba(79,70,229,0.25)] active:scale-[0.97] transition-all duration-200"
+                className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-gradient-to-r from-primary to-fuchsia-600 text-white text-sm font-medium shadow-md hover:from-primary/90 hover:to-fuchsia-500 hover:-translate-y-0.5 hover:shadow-card-hover active:scale-[0.97] transition-all duration-200"
               >
                 <Download className="h-4 w-4" /> Télécharger le zip
               </a>
@@ -208,21 +208,21 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
         </div>
 
         {/* Progress bar */}
-        <div className="mt-4 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
+        <div className="mt-4 h-2 w-full rounded-full bg-slate-900 overflow-hidden">
           <div
-            className={`h-full transition-all duration-500 ${batch.errorDocs > 0 ? 'bg-gradient-to-r from-amber-400 to-amber-500' : 'bg-gradient-to-r from-indigo-500 to-blue-500'}`}
+            className={`h-full transition-all duration-500 ${batch.errorDocs > 0 ? 'bg-gradient-to-r from-amber-400 to-amber-500' : 'bg-gradient-to-r from-primary to-fuchsia-500'}`}
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="mt-1 text-right text-xs text-slate-500 tabular-nums">{pct}%</div>
+        <div className="mt-1 text-right text-xs text-slate-400 tabular-nums">{pct}%</div>
       </div>
 
       {/* Liste des participants */}
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-        <div className="px-5 py-3 border-b border-slate-200 bg-slate-100/30">
-          <h2 className="font-semibold text-sm">{groups.size} apprenant(s)</h2>
+      <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 overflow-hidden">
+        <div className="px-5 py-3 border-b border-slate-700 bg-slate-900/60">
+          <h2 className="font-semibold text-sm text-slate-200">{groups.size} apprenant(s)</h2>
         </div>
-        <ul className="divide-y divide-slate-200">
+        <ul className="divide-y divide-slate-700">
           {Array.from(groups.values()).map((g) => (
             <li key={g.name} className="p-4">
               <div className="font-medium text-sm mb-2">{g.name}</div>
@@ -230,44 +230,53 @@ export function ClosureBatchProgress({ batchId, sessionId: _sessionId }: Props) 
                 {g.jobs.map((j) => (
                   <div
                     key={j.id}
-                    className={`flex items-center gap-2 text-xs px-2.5 py-1.5 rounded-md border ${
-                      j.status === 'DONE' && j.usedStub
-                        ? 'border-amber-200 bg-amber-50/60'
-                        : 'border-slate-200 bg-slate-100/20'
+                    className={`flex flex-col gap-1 text-xs px-2.5 py-1.5 rounded-md border ${
+                      j.status === 'ERROR'
+                        ? 'border-red-500/40 bg-red-500/10'
+                        : j.status === 'DONE' && j.usedStub
+                          ? 'border-amber-500/40 bg-amber-500/10'
+                          : 'border-slate-700 bg-slate-900/60'
                     }`}
                     title={j.errorMessage ?? undefined}
                   >
-                    {jobIcon(j.status)}
-                    <span className="flex-1 truncate">{j.kindLabel}</span>
-                    {j.status === 'DONE' && j.usedStub && (
-                      <button
-                        type="button"
-                        onClick={() => handleRegenSingle(j)}
-                        disabled={retrying}
-                        className="shrink-0 inline-flex items-center gap-1 text-amber-700 text-[10px] font-semibold uppercase tracking-wide hover:bg-amber-100 hover:text-amber-900 rounded px-1.5 py-0.5 transition-colors disabled:opacity-50 disabled:cursor-wait"
-                        title="Ce document a été généré avec un contenu de remplacement (l'IA Mistral a échoué ou répondu invalide). Cliquez pour relancer la génération IA. À faire avant tout audit Qualiopi."
-                      >
-                        <AlertTriangle className="h-3 w-3" aria-hidden="true" /> À régénérer
-                      </button>
-                    )}
-                    {j.status === 'DONE' && (j.documentId || j.pedagogicalAssetId) && (
-                      <a
-                        href={
-                          j.documentId
-                            ? `/api/documents/${j.documentId}`
-                            : `/api/pedagogical-assets/${j.pedagogicalAssetId}`
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-primary hover:underline shrink-0"
-                      >
-                        Voir
-                      </a>
-                    )}
-                    {j.status === 'ERROR' && (
-                      <span className="text-red-600 shrink-0 truncate max-w-[120px]" title={j.errorMessage ?? ''}>
-                        Erreur
-                      </span>
+                    <div className="flex items-center gap-2">
+                      {jobIcon(j.status)}
+                      <span className="flex-1 truncate text-slate-100">{j.kindLabel}</span>
+                      {j.status === 'DONE' && j.usedStub && (
+                        <button
+                          type="button"
+                          onClick={() => handleRegenSingle(j)}
+                          disabled={retrying}
+                          className="shrink-0 inline-flex items-center gap-1 text-amber-200 text-[10px] font-semibold uppercase tracking-wide hover:bg-amber-500/20 hover:text-amber-100 rounded px-1.5 py-0.5 transition-colors disabled:opacity-50 disabled:cursor-wait"
+                          title="Ce document a été généré avec un contenu de remplacement (l'IA Mistral a échoué ou répondu invalide). Cliquez pour relancer la génération IA. À faire avant tout audit Qualiopi."
+                        >
+                          <AlertTriangle className="h-3 w-3" aria-hidden="true" /> À régénérer
+                        </button>
+                      )}
+                      {j.status === 'DONE' && (j.documentId || j.pedagogicalAssetId) && (
+                        <a
+                          href={
+                            j.documentId
+                              ? `/api/documents/${j.documentId}`
+                              : `/api/pedagogical-assets/${j.pedagogicalAssetId}`
+                          }
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-primary-200 hover:underline shrink-0"
+                        >
+                          Voir
+                        </a>
+                      )}
+                      {j.status === 'ERROR' && (
+                        <span className="text-red-300 shrink-0 text-[10px] font-semibold uppercase tracking-wide">
+                          Erreur
+                        </span>
+                      )}
+                    </div>
+                    {j.status === 'ERROR' && j.errorMessage && (
+                      <p className="text-[10px] text-red-200/80 break-words leading-snug pl-6">
+                        {j.errorMessage}
+                      </p>
                     )}
                   </div>
                 ))}
