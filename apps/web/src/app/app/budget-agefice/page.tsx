@@ -88,7 +88,7 @@ export default async function BudgetAgeficePage({
     <div className="space-y-6">
       <Link
         href="/app"
-        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Retour au dashboard
       </Link>
@@ -100,7 +100,7 @@ export default async function BudgetAgeficePage({
         />
         <a
           href={exportHref}
-          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-200 bg-white text-sm font-medium hover:bg-slate-100/40 shrink-0"
+          className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md border border-slate-700 bg-slate-800 text-slate-200 text-sm font-medium hover:bg-slate-700/60 shrink-0"
         >
           <Download className="h-4 w-4" /> Exporter CSV
         </a>
@@ -152,19 +152,19 @@ export default async function BudgetAgeficePage({
       <FilterChips chips={filterChips} />
 
       {/* Liste */}
-      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-        <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between flex-wrap gap-3">
-          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+      <section className="rounded-xl bg-slate-800 text-slate-100 border border-slate-700 shadow-md overflow-hidden">
+        <div className="px-5 py-4 border-b border-slate-700 flex items-center justify-between flex-wrap gap-3">
+          <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
             {rows.length} apprenant{rows.length > 1 ? 's' : ''} {filter === 'has_budget_left' ? 'avec budget restant' : filter === 'no_consumption' ? "n'ayant rien consommé" : filter === 'near_limit' ? 'proches du plafond' : filter === 'over' ? 'au plafond ou au-delà' : 'éligibles'}
           </h2>
         </div>
 
         {rows.length === 0 ? (
-          <p className="p-12 text-center text-sm text-slate-500 italic">
+          <p className="p-12 text-center text-sm text-slate-400 italic">
             Aucun apprenant ne correspond aux critères pour {year}.
           </p>
         ) : (
-          <ul className="divide-y divide-slate-200">
+          <ul className="divide-y divide-slate-700">
             {rows.map((r) => {
               const barColor =
                 r.status === 'over'
@@ -175,48 +175,48 @@ export default async function BudgetAgeficePage({
                       ? 'bg-amber-400'
                       : r.status === 'low'
                         ? 'bg-emerald-500'
-                        : 'bg-slate-100';
+                        : 'bg-slate-600';
               return (
                 <li key={r.personId}>
                   <Link
                     href={`/app/apprenants/${r.personId}?tab=activity`}
-                    className="block p-4 hover:bg-slate-100/30 transition-colors"
+                    className="block p-4 hover:bg-slate-700/40 transition-colors"
                   >
                     <div className="flex items-center gap-4 flex-wrap">
-                      <div className="h-9 w-9 rounded-full bg-primary-100 text-primary-700 inline-flex items-center justify-center font-semibold text-xs shrink-0">
+                      <div className="h-9 w-9 rounded-full bg-primary/20 text-primary-200 ring-1 ring-primary/30 inline-flex items-center justify-center font-semibold text-xs shrink-0">
                         {r.firstName.charAt(0)}
                         {r.lastName.charAt(0)}
                       </div>
 
                       <div className="flex-1 min-w-[180px]">
-                        <div className="font-medium">
+                        <div className="font-medium text-slate-200">
                           {r.firstName} {r.lastName.toUpperCase()}
                         </div>
                         {r.email && (
-                          <div className="text-xs text-slate-500 truncate">{r.email}</div>
+                          <div className="text-xs text-slate-400 truncate">{r.email}</div>
                         )}
                       </div>
 
                       {/* Barre de progression */}
                       <div className="flex-1 min-w-[200px] max-w-md">
                         <div className="flex items-center justify-between text-xs mb-1">
-                          <span className="text-slate-500 tabular-nums">
+                          <span className="text-slate-400 tabular-nums">
                             {fmtEUR.format(r.consomme)} / {fmtEUR.format(PLAFOND_AGEFICE)}
                           </span>
                           <span
                             className={cn(
                               'font-medium tabular-nums',
                               r.status === 'over'
-                                ? 'text-red-700'
+                                ? 'text-red-300'
                                 : r.status === 'near_limit'
-                                  ? 'text-orange-700'
-                                  : 'text-slate-500',
+                                  ? 'text-orange-300'
+                                  : 'text-slate-400',
                             )}
                           >
                             {r.pct}%
                           </span>
                         </div>
-                        <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                        <div className="h-1.5 rounded-full bg-slate-700 overflow-hidden">
                           <div
                             className={cn('h-full transition-all', barColor)}
                             style={{ width: `${Math.min(100, r.pct)}%` }}
@@ -225,10 +225,10 @@ export default async function BudgetAgeficePage({
                       </div>
 
                       <div className="text-right shrink-0 min-w-[120px]">
-                        <div className="text-sm font-semibold tabular-nums">
+                        <div className="text-sm font-semibold tabular-nums text-slate-200">
                           {fmtEUR.format(r.restant)}
                         </div>
-                        <div className="text-[11px] text-slate-500">
+                        <div className="text-[11px] text-slate-400">
                           restant
                         </div>
                       </div>
@@ -250,7 +250,7 @@ export default async function BudgetAgeficePage({
                             🎯 À relancer
                           </Badge>
                         )}
-                        <ChevronRight className="h-4 w-4 text-slate-500" />
+                        <ChevronRight className="h-4 w-4 text-slate-400" />
                       </div>
                     </div>
                   </Link>
@@ -279,19 +279,19 @@ function KPICard({
 }) {
   const cls =
     accent === 'primary'
-      ? 'border-primary-200 bg-primary-50/50'
+      ? 'border-primary/40 bg-primary/10'
       : accent === 'emerald'
-        ? 'border-emerald-200 bg-emerald-50/50'
+        ? 'border-emerald-500/40 bg-emerald-500/10'
         : accent === 'amber'
-          ? 'border-amber-200 bg-amber-50/50'
-          : 'border-slate-200 bg-white';
+          ? 'border-amber-500/40 bg-amber-500/10'
+          : 'border-slate-700 bg-slate-800';
   return (
     <div className={`rounded-xl border p-4 ${cls}`}>
-      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-slate-500 mb-2">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-slate-400 mb-2">
         <Icon className="h-3 w-3" /> {label}
       </div>
-      <div className="text-xl font-semibold tabular-nums">{value}</div>
-      {hint && <div className="text-[11px] text-slate-500 mt-0.5">{hint}</div>}
+      <div className="text-xl font-semibold tabular-nums text-slate-100">{value}</div>
+      {hint && <div className="text-[11px] text-slate-400 mt-0.5">{hint}</div>}
     </div>
   );
 }

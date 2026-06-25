@@ -64,22 +64,24 @@ export function MatrixRow({
       aria-selected={selected}
       className={cn(
         'transition-colors',
-        selected ? 'border-l-4 border-primary bg-primary-50/30' : 'hover:bg-slate-100/30',
+        // Note : les cellules sticky restent OPAQUES (bg-slate-800 sans /60)
+        // pour ne pas laisser voir le défilement à travers en x-scroll.
+        selected ? 'border-l-4 border-primary bg-primary/15' : 'hover:bg-slate-700/40',
       )}
     >
-      <td className="sticky left-0 bg-white z-10 px-2 py-1.5 border-b align-middle">
+      <td className="sticky left-0 bg-slate-800 z-10 px-2 py-1.5 border-b border-slate-700 align-middle">
         <input
           type="checkbox"
           checked={selected}
           onChange={(e) => onSelectionChange(participant.id, e.target.checked)}
           aria-label={`Sélectionner ${participant.fullName}`}
           disabled={readOnly}
-          className="h-4 w-4 rounded border-slate-200 accent-primary"
+          className="h-4 w-4 rounded border-slate-700 bg-slate-900 accent-primary"
         />
       </td>
       <th
         scope="row"
-        className="sticky left-[40px] bg-white z-10 px-3 py-1.5 text-left text-sm font-medium border-b min-w-[180px] align-middle"
+        className="sticky left-[40px] bg-slate-800 z-10 px-3 py-1.5 text-left text-sm font-medium text-slate-200 border-b border-slate-700 min-w-[180px] align-middle"
       >
         <Link
           href={`/app/apprenants/${participant.personId}`}
@@ -89,7 +91,7 @@ export function MatrixRow({
           {participant.fullName}
         </Link>
         {participant.sponsorOrgLabel && (
-          <span className="text-xs text-slate-500 truncate block">
+          <span className="text-xs text-slate-400 truncate block">
             {participant.sponsorOrgLabel}
           </span>
         )}
@@ -102,7 +104,7 @@ export function MatrixRow({
         return (
           <td
             key={docType}
-            className="px-1 py-1.5 text-center border-b min-w-[48px] align-middle"
+            className="px-1 py-1.5 text-center border-b border-slate-700 min-w-[48px] align-middle"
           >
             <div className="inline-flex items-center gap-0.5">
               {cell.state === 'GENERATED' && pdfRef ? (
