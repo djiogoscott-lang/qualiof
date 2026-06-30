@@ -47,6 +47,10 @@ async function processOne(jobId: string): Promise<{ ok: boolean; error?: string 
   });
   if (!job) return { ok: false, error: 'Job introuvable' };
 
+  // Mémorise le status d'origine pour ajuster les compteurs batch correctement
+  // (ERROR → done++, err-- ; DONE,stub → ni l'un ni l'autre, juste passe en non-stub).
+  const wasError = job.status === 'ERROR';
+
   // 1. Marque PROCESSING + reset errorMessage
   await prisma.closureJob.update({
     where: { id: jobId },
@@ -193,14 +197,17 @@ async function processOne(jobId: string): Promise<{ ok: boolean; error?: string 
       },
     });
 
-    // Décrémente errorDocs, incrémente doneDocs sur le batch
-    await prisma.closureBatch.update({
-      where: { id: job.batchId },
-      data: {
-        errorDocs: { decrement: 1 },
-        doneDocs: { increment: 1 },
-      },
-    });
+    // Ajuste les compteurs batch UNIQUEMENT pour les jobs ex-ERROR.
+    // Pour un job DONE,stub re-traité, les compteurs étaient déjà corrects.
+    if (wasError) {
+      await prisma.closureBatch.update({
+        where: { id: job.batchId },
+        data: {
+          errorDocs: { decrement: 1 },
+          doneDocs: { increment: 1 },
+        },
+      });
+    }
 
     return { ok: true };
   } catch (err) {
@@ -214,14 +221,23 @@ async function processOne(jobId: string): Promise<{ ok: boolean; error?: string 
 }
 
 async function main() {
-  const sessionCode = process.argv[2];
-  const kindFilter = process.argv[3] as ClosureDocKind | undefined;
+  const args = process.argv.slice(2);
+  const includeStubs = args.includes('--include-stubs');
+  const positional = args.filter((a) => !a.startsWith('--'));
+  const sessionCode = positional[0];
+  const kindFilter = positional[1] as ClosureDocKind | undefined;
   if (!sessionCode) {
-    console.error('Usage: tsx scripts/retry-closure-jobs.ts <sessionCode> [kind]');
+    console.error('Usage: tsx scripts/retry-closure-jobs.ts <sessionCode> [kind] [--include-stubs]');
     process.exit(1);
   }
 
-  console.log(`→ Recherche ClosureJob ERROR sur session ${sessionCode}${kindFilter ? ` / ${kindFilter}` : ''}…`);
+  const statusFilter = includeStubs
+    ? [{ status: 'ERROR' as const }, { status: 'DONE' as const, usedStub: true }]
+    : [{ status: 'ERROR' as const }];
+
+  console.log(
+    `→ Recherche ClosureJob ${includeStubs ? 'ERROR+stub' : 'ERROR'} sur session ${sessionCode}${kindFilter ? ` / ${kindFilter}` : ''}…`,
+  );
 
   const session = await prisma.trainingSession.findFirst({
     where: { code: sessionCode },
@@ -234,11 +250,11 @@ async function main() {
 
   const jobs = await prisma.closureJob.findMany({
     where: {
-      status: 'ERROR',
+      OR: statusFilter,
       batch: { sessionId: session.id },
       ...(kindFilter ? { kind: kindFilter } : {}),
     },
-    select: { id: true, kind: true, participantId: true },
+    select: { id: true, kind: true, participantId: true, status: true, usedStub: true },
   });
 
   console.log(`→ ${jobs.length} job(s) à relancer.`);

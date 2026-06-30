@@ -19,7 +19,9 @@ export type LlmProfile = 'text' | 'vision' | 'classify' | 'closure';
 
 const DEFAULTS: Record<LlmProfile, string> = {
   // Texte structuré (extraction préinscription, ai-fill-product, etc.).
-  text: 'mistralai/mistral-large-2411',
+  // 2512 remplace 2411 retiré d'OpenRouter le 30/06/2026 (HTTP 404
+  // "No endpoints found"). Même famille mistral-large, 4× moins cher.
+  text: 'mistralai/mistral-large-2512',
   // OCR vision (CNI / RIB photographiés).
   vision: 'mistralai/pixtral-12b',
   // Classification courte (veille réglementaire, scoring rapide).
@@ -28,7 +30,7 @@ const DEFAULTS: Record<LlmProfile, string> = {
   // Génération de documents Qualiopi (closure pack). Profil distinct pour
   // pouvoir tester un modèle plus puissant (Sonnet) sur ce flux critique
   // sans impacter le reste de l'app.
-  closure: 'mistralai/mistral-large-2411',
+  closure: 'mistralai/mistral-large-2512',
 };
 
 const ENV_VAR: Record<LlmProfile, string> = {
