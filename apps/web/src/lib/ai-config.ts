@@ -22,11 +22,15 @@ const DEFAULTS: Record<LlmProfile, string> = {
   // 2512 remplace 2411 retiré d'OpenRouter le 30/06/2026 (HTTP 404
   // "No endpoints found"). Même famille mistral-large, 4× moins cher.
   text: 'mistralai/mistral-large-2512',
-  // OCR vision (CNI / RIB photographiés).
-  vision: 'mistralai/pixtral-12b',
+  // OCR vision (CNI / RIB / CFP photographiés).
+  // Gemini 3.1 Flash Lite remplace pixtral-12b retiré d'OpenRouter le
+  // 30/06/2026. Multimodal complet (texte+image+vidéo+fichier+audio),
+  // excellent sur le FR avec accents, ~$0.00029 par OCR.
+  vision: 'google/gemini-3.1-flash-lite',
   // Classification courte (veille réglementaire, scoring rapide).
   // Modèle plus léger : la classification ne demande pas un grand modèle.
-  classify: 'mistralai/mistral-small-2402',
+  // 24b-instruct-2501 remplace small-2402 retiré le 30/06/2026.
+  classify: 'mistralai/mistral-small-24b-instruct-2501',
   // Génération de documents Qualiopi (closure pack). Profil distinct pour
   // pouvoir tester un modèle plus puissant (Sonnet) sur ce flux critique
   // sans impacter le reste de l'app.

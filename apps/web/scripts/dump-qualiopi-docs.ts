@@ -1,12 +1,13 @@
 /**
  * Trousse de prévisualisation locale des PDFs Qualiopi.
  *
- * Génère en local, sans toucher à la BDD ni au cloud R2, les 4 documents
+ * Génère en local, sans toucher à la BDD ni au cloud R2, les 5 documents
  * clés pour un apprenant d'une session :
- *   - ATTESTATION de fin de formation (closure renderer)
- *   - CERTIFICAT de réalisation (closure renderer)
- *   - PROGRAMME pédagogique (template + WeasyPrint)
- *   - CONVENTION de formation (template + WeasyPrint)
+ *   - ATTESTATION de fin de formation (closure renderer, statique)
+ *   - CERTIFICAT de réalisation (closure renderer, statique)
+ *   - PROGRAMME pédagogique (template + WeasyPrint, statique)
+ *   - CONVENTION de formation (template + WeasyPrint, statique)
+ *   - ANALYSE_BESOIN (IA via OpenRouter / mistral-large) — pilier Qualiopi #4
  *
  * Sortie : Bureau\qualiof-dump-{sessionCode}\<doc>-<apprenant>.pdf
  *
@@ -145,6 +146,29 @@ async function main() {
   fs.writeFileSync(path.join(outDir, `certificat-${apprenantSlug}.pdf`), cert.pdfBuffer);
   console.log(`  ✓ certificat-${apprenantSlug}.pdf (${(cert.pdfBuffer.length / 1024).toFixed(1)} ko)`);
 
+  // 2bis. Docs IA closure (passent tous par OpenRouter / mistral-large-2512).
+  // Chacun renvoie usedStub=true si le LLM échoue → fallback contenu générique.
+  const iaDocs: Array<{ kind: 'ANALYSE_BESOIN' | 'POSITIONNEMENT' | 'GRILLE_OBS' | 'QCM' | 'SATISFACTION_CHAUD' | 'SATISFACTION_FROID' | 'DEROULE_PEDA'; slug: string }> = [
+    { kind: 'ANALYSE_BESOIN', slug: 'analyse-besoin' },
+    { kind: 'POSITIONNEMENT', slug: 'positionnement' },
+    { kind: 'GRILLE_OBS', slug: 'grille-observation' },
+    { kind: 'QCM', slug: 'qcm' },
+    { kind: 'SATISFACTION_CHAUD', slug: 'satisfaction-chaud' },
+    { kind: 'SATISFACTION_FROID', slug: 'satisfaction-froid' },
+    { kind: 'DEROULE_PEDA', slug: 'deroule-pedagogique' },
+  ];
+  for (const { kind, slug } of iaDocs) {
+    console.log(`→ ${kind} (IA)…`);
+    try {
+      const r = await renderClosureDoc(kind, ctx);
+      fs.writeFileSync(path.join(outDir, `${slug}-${apprenantSlug}.pdf`), r.pdfBuffer);
+      const badge = r.usedStub ? '⚠ STUB (fallback générique)' : '✓ IA réelle';
+      console.log(`  ✓ ${slug}-${apprenantSlug}.pdf (${(r.pdfBuffer.length / 1024).toFixed(1)} ko) — ${badge}`);
+    } catch (e: any) {
+      console.log(`  ✗ ${kind} échec : ${e?.message ?? e}`);
+    }
+  }
+
   // 3. PROGRAMME
   console.log('→ PROGRAMME…');
   const programmeData: ProgrammeData = {
@@ -224,7 +248,8 @@ async function main() {
   fs.writeFileSync(path.join(outDir, `convention-${apprenantSlug}.pdf`), conventionPdf);
   console.log(`  ✓ convention-${apprenantSlug}.pdf (${(conventionPdf.length / 1024).toFixed(1)} ko)`);
 
-  console.log(`\n✓ 4 PDFs écrits dans : ${outDir}`);
+  const pdfCount = fs.readdirSync(outDir).filter((f) => f.endsWith('.pdf')).length;
+  console.log(`\n✓ ${pdfCount} PDFs écrits dans : ${outDir}`);
   console.log('  Ouvre le dossier dans l\'explorateur :');
   console.log(`    Invoke-Item "${outDir}"`);
 }

@@ -140,13 +140,13 @@ Règles strictes pour les ratings (échelle "Très bien" / "Bien" / "Moyen" / "M
 Pour "utilité de la formation", utiliser uniquement : "Très utile", "Utile", "Peu utile", "Pas utile" — favoriser "Très utile".
 Pour "recommandation" : "Oui" toujours.
 
-Réponds UNIQUEMENT en JSON, sans markdown ni explication, au format suivant :
+Réponds UNIQUEMENT en JSON, sans markdown ni explication, au format suivant (utilise une valeur valide de l'échelle pour CHAQUE rating, ne recopie JAMAIS la liste avec barres verticales) :
 {
-  "organisation": { "communication": "Très bien|Bien|Moyen", "delai": "Très bien|Bien|Moyen", "duree": "Très bien|Bien|Moyen", "engagements": "Très bien|Bien|Moyen", "commentaire": "string (1 phrase)" },
-  "moyens": { "cadre": "...", "locaux": "...", "supports": "...", "materiel": "...", "commentaire": "string" },
-  "pedagogie": { "difficulte": "...", "articulation": "...", "theorique": "...", "pratique": "...", "rythme": "...", "approche": "...", "ecoute": "...", "animation": "...", "commentaire": "string" },
-  "groupe": { "ambiance": "...", "nombre": "...", "heterogeneite": "...", "attention": "...", "commentaire": "string" },
-  "benefice": { "adequation": "...", "utilite": "Très utile|Utile|Peu utile", "commentaire": "string" },
+  "organisation": { "communication": "Très bien", "delai": "Bien", "duree": "Très bien", "engagements": "Très bien", "commentaire": "string (1 phrase)" },
+  "moyens": { "cadre": "Très bien", "locaux": "Bien", "supports": "Très bien", "materiel": "Très bien", "commentaire": "string" },
+  "pedagogie": { "difficulte": "Bien", "articulation": "Très bien", "theorique": "Très bien", "pratique": "Très bien", "rythme": "Bien", "approche": "Très bien", "ecoute": "Très bien", "animation": "Très bien", "commentaire": "string" },
+  "groupe": { "ambiance": "Très bien", "nombre": "Bien", "heterogeneite": "Bien", "attention": "Très bien", "commentaire": "string" },
+  "benefice": { "adequation": "Très bien", "utilite": "Très utile", "commentaire": "string" },
   "recommandation": "Oui",
   "remarques": "string (1-2 phrases — retour d'expérience global)"
 }`;
@@ -155,15 +155,15 @@ export const SYSTEM_PROMPT_SATISFACTION_FROID = `Tu es un expert en évaluation 
 
 Le ton doit être positif et naturel, avec des références concrètes à la mise en pratique des acquis depuis la fin de la formation.
 
-Règles strictes :
+Règles strictes pour les ratings (échelle "Très bien" / "Bien" / "Moyen" / "Mauvais") :
 - AU MOINS 90% des ratings en "Très bien" ou "Bien". JAMAIS de "Mauvais". Maximum 1 "Moyen".
 - "recommandation" : "Oui" toujours.
 
 Réponds UNIQUEMENT en JSON, sans markdown ni explication, au format suivant :
 {
-  "mise_en_pratique": { "applique": "Très bien|Bien|Moyen", "frequence": "...", "resultats": "...", "commentaire": "string (1 phrase concrète sur l'application au quotidien)" },
-  "impact": { "performance": "...", "autonomie": "...", "confiance": "...", "satisfaction_client": "...", "commentaire": "string (1 phrase)" },
-  "bilan": { "atteinte_objectifs": "Très bien|Bien", "recommandation": "Oui", "utilite_long_terme": "Très bien|Bien" },
+  "mise_en_pratique": { "applique": "Très bien", "frequence": "Très bien", "resultats": "Bien", "commentaire": "string (1 phrase concrète sur l'application au quotidien)" },
+  "impact": { "performance": "Très bien", "autonomie": "Bien", "confiance": "Très bien", "satisfaction_client": "Très bien", "commentaire": "string (1 phrase)" },
+  "bilan": { "atteinte_objectifs": "Très bien", "recommandation": "Oui", "utilite_long_terme": "Très bien" },
   "remarques": "string (1 phrase — retour bilan global)"
 }`;
 
