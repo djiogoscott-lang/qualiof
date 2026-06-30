@@ -200,7 +200,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
           <div className="flex items-center gap-2">
             <Link
               href="/app/sessions/rattrapage"
-              className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md text-xs font-medium text-amber-700 hover:bg-amber-50 transition-all duration-300 ease-out active:scale-[0.97]"
+              className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md text-xs font-medium text-amber-300 hover:bg-amber-500/15 transition-all duration-300 ease-out active:scale-[0.97]"
             >
               <Sparkles className="h-3.5 w-3.5" strokeWidth={1.75} /> Rattraper
             </Link>
@@ -220,18 +220,18 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
       </div>
 
       {rows.length === 0 ? (
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm py-16 text-center">
+        <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 py-16 text-center">
           <div className="inline-flex h-10 w-10 mb-3 rounded-lg bg-slate-100 text-slate-400 items-center justify-center">
             <Calendar className="h-5 w-5" strokeWidth={1.75} />
           </div>
-          <h3 className="text-sm font-medium text-slate-900">
+          <h3 className="text-sm font-medium text-slate-100">
             {q ? 'Aucun résultat' : 'Aucune session pour le moment'}
           </h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+          <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
             {q ? (
-              <>Aucune session ne correspond à <span className="font-medium text-slate-700">« {q} »</span>.</>
+              <>Aucune session ne correspond à <span className="font-medium text-slate-200">« {q} »</span>.</>
             ) : (
-              <>Crée ta première session de formation via le bouton <span className="font-medium text-slate-700">Nouvelle session</span>.</>
+              <>Crée ta première session de formation via le bouton <span className="font-medium text-slate-200">Nouvelle session</span>.</>
             )}
           </p>
         </div>
@@ -249,10 +249,10 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
             }
             return Array.from(grouped.entries()).map(([month, items]) => (
               <div key={month}>
-                <h2 className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2 px-2">
-                  {month} <span className="text-slate-900/40">— {items.length} session{items.length > 1 ? 's' : ''}</span>
+                <h2 className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2 px-2">
+                  {month} <span className="text-slate-100/40">— {items.length} session{items.length > 1 ? 's' : ''}</span>
                 </h2>
-                <div className="rounded-2xl border border-slate-200 bg-white divide-y divide-slate-200 overflow-hidden">
+                <div className="rounded-2xl border border-slate-700 bg-slate-800 text-slate-100 divide-y divide-slate-700 overflow-hidden">
                   {items.map((s) => {
                     const start = new Date(s.startDate);
                     const end = new Date(s.endDate);
@@ -260,7 +260,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                     const isPast = end < now;
                     const noLearners = s._count.participants === 0;
                     const primaryTrainer = s.trainers[0]?.person;
-                    const rowBg = noLearners ? 'bg-amber-50/40 hover:bg-amber-50' : 'hover:bg-slate-100/30';
+                    const rowBg = noLearners ? 'bg-amber-500/10 hover:bg-amber-500/15' : 'hover:bg-slate-700/40';
                     return (
                       <Link
                         key={s.id}
@@ -272,7 +272,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-medium truncate">{s.name ?? s.product?.title ?? '(sans nom)'}</div>
-                          <div className="text-xs text-slate-500 mt-0.5 flex items-center gap-3 flex-wrap">
+                          <div className="text-xs text-slate-400 mt-0.5 flex items-center gap-3 flex-wrap">
                             <span className="inline-flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {sameDay
@@ -280,7 +280,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                                 : `${start.toLocaleDateString('fr-FR')} → ${end.toLocaleDateString('fr-FR')}`}
                             </span>
                             {s.product?.durationHours ? <span>· {s.product.durationHours}h</span> : null}
-                            <span className={`inline-flex items-center gap-1 ${noLearners ? 'text-amber-700 font-semibold' : ''}`}>
+                            <span className={`inline-flex items-center gap-1 ${noLearners ? 'text-amber-300 font-semibold' : ''}`}>
                               <Users className="h-3 w-3" /> {s._count.participants} inscrit{s._count.participants > 1 ? 's' : ''}
                             </span>
                             {primaryTrainer && (

@@ -92,23 +92,23 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
       <div>
         <Link
           href="/app/factures"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 mb-3 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-100 mb-3 transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Toutes les factures
         </Link>
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-4">
-            <div className="h-10 w-10 rounded-lg bg-violet-50 text-violet-600 inline-flex items-center justify-center">
+            <div className="h-10 w-10 rounded-lg bg-violet-500/15 text-violet-300 inline-flex items-center justify-center">
               <Receipt className="h-7 w-7" strokeWidth={1.75} />
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <h1 className="text-3xl font-bold tracking-tight font-mono text-slate-900">{invoice.number}</h1>
+                <h1 className="text-3xl font-bold tracking-tight font-mono text-slate-100">{invoice.number}</h1>
                 <Badge variant={isOverdue ? 'danger' : status.variant}>{isOverdue ? 'En retard' : status.label}</Badge>
               </div>
-              <p className="text-sm text-slate-500 mt-1">
-                Émise le <span className="font-medium text-slate-700">{invoice.issueDate ? fmtDate.format(invoice.issueDate) : '—'}</span>
-                {invoice.dueDate && <> · échéance le <span className="font-semibold text-slate-900">{fmtDate.format(invoice.dueDate)}</span></>}
+              <p className="text-sm text-slate-400 mt-1">
+                Émise le <span className="font-medium text-slate-200">{invoice.issueDate ? fmtDate.format(invoice.issueDate) : '—'}</span>
+                {invoice.dueDate && <> · échéance le <span className="font-semibold text-slate-100">{fmtDate.format(invoice.dueDate)}</span></>}
               </p>
             </div>
           </div>
@@ -127,10 +127,10 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
 
       {/* Bandeau retour vers facture originale si on est sur un AVOIR — D-04 */}
       {isCreditNote && invoice.originalInvoice && (
-        <div className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+        <div className="rounded-lg bg-amber-500/15 border border-amber-500/40 p-3 text-sm text-amber-200">
           <Link
             href={`/app/factures/${invoice.originalInvoice.id}`}
-            className="inline-flex items-center gap-1.5 hover:text-amber-700 font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 hover:text-amber-300 font-medium transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Voir la facture originale <span className="font-mono">{invoice.originalInvoice.number}</span>
           </Link>
@@ -172,38 +172,38 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
 
       {/* Section "Avoirs liés" — D-04 + D-07 cross-nav */}
       {invoice.creditNotes && invoice.creditNotes.length > 0 && (
-        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-          <div className="px-5 py-4 border-b border-amber-100 bg-amber-50/40 flex items-center gap-2.5">
-            <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-amber-50 text-amber-700">
+        <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 overflow-hidden">
+          <div className="px-5 py-4 border-b border-amber-500/30 bg-amber-500/10 flex items-center gap-2.5">
+            <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-amber-500/15 text-amber-200">
               <FileText className="h-4 w-4" strokeWidth={2} />
             </span>
-            <h2 className="font-semibold text-sm text-slate-900">
-              Avoirs liés <span className="text-slate-500 font-normal">· {invoice.creditNotes.length}</span>
+            <h2 className="font-semibold text-sm text-slate-100">
+              Avoirs liés <span className="text-slate-400 font-normal">· {invoice.creditNotes.length}</span>
             </h2>
           </div>
-          <ul className="divide-y divide-slate-100">
+          <ul className="divide-y divide-slate-700">
             {invoice.creditNotes.map((cn) => (
-              <li key={cn.id} className="px-5 py-3.5 text-sm flex items-center justify-between gap-3 hover:bg-slate-50/60 transition-colors">
+              <li key={cn.id} className="px-5 py-3.5 text-sm flex items-center justify-between gap-3 hover:bg-slate-700/40 transition-colors">
                 <div className="min-w-0 flex-1">
                   <Link
                     href={`/app/factures/${cn.id}`}
-                    className="font-mono font-semibold hover:underline text-slate-900"
+                    className="font-mono font-semibold hover:underline text-slate-100"
                   >
                     {cn.number}
                   </Link>
                   {cn.issueDate && (
-                    <span className="ml-2 text-xs text-slate-500">
+                    <span className="ml-2 text-xs text-slate-400">
                       émis le <span className="tabular-nums">{fmtDate.format(cn.issueDate)}</span>
                     </span>
                   )}
                   {cn.notes && (
-                    <div className="text-xs text-slate-500 mt-0.5 truncate">
+                    <div className="text-xs text-slate-400 mt-0.5 truncate">
                       {cn.notes}
                     </div>
                   )}
                 </div>
-                <span className="font-semibold tabular-nums text-amber-700 whitespace-nowrap">
-                  {fmtEUR.format(Math.abs(Number(cn.amountHT)))} <span className="text-[10px] font-normal text-slate-500">HT</span>
+                <span className="font-semibold tabular-nums text-amber-300 whitespace-nowrap">
+                  {fmtEUR.format(Math.abs(Number(cn.amountHT)))} <span className="text-[10px] font-normal text-slate-400">HT</span>
                 </span>
               </li>
             ))}
@@ -219,9 +219,9 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/apprenants/${invoice.participant.person.id}`} className="font-medium hover:text-primary">
                 {invoice.participant.person.firstName} {invoice.participant.person.lastName}
               </Link>
-              {invoice.participant.person.email && <div className="text-xs text-slate-500 mt-0.5">{invoice.participant.person.email}</div>}
+              {invoice.participant.person.email && <div className="text-xs text-slate-400 mt-0.5">{invoice.participant.person.email}</div>}
             </>
-          ) : <span className="text-xs text-slate-500 italic">Non rattaché</span>}
+          ) : <span className="text-xs text-slate-400 italic">Non rattaché</span>}
         </Block>
 
         <Block icon={Building2} title="Payeur">
@@ -230,9 +230,9 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/organisations/${invoice.payerOrg.id}`} className="font-medium hover:text-primary">
                 {invoice.payerOrg.legalName}
               </Link>
-              {invoice.payerOrg.siret && <div className="text-xs text-slate-500 mt-0.5 font-mono">SIRET {invoice.payerOrg.siret}</div>}
+              {invoice.payerOrg.siret && <div className="text-xs text-slate-400 mt-0.5 font-mono">SIRET {invoice.payerOrg.siret}</div>}
             </>
-          ) : <span className="text-xs text-slate-500 italic">—</span>}
+          ) : <span className="text-xs text-slate-400 italic">—</span>}
         </Block>
 
         <Block icon={Calendar} title="Session de formation">
@@ -241,52 +241,52 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
               <Link href={`/app/sessions/${invoice.participant.session.id}`} className="font-medium hover:text-primary">
                 {invoice.participant.session.name ?? invoice.participant.session.code}
               </Link>
-              <div className="text-xs text-slate-500 mt-0.5 font-mono">{invoice.participant.session.code}</div>
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-slate-400 mt-0.5 font-mono">{invoice.participant.session.code}</div>
+              <div className="text-xs text-slate-400">
                 {fmtDate.format(invoice.participant.session.startDate)} → {fmtDate.format(invoice.participant.session.endDate)}
               </div>
             </>
-          ) : <span className="text-xs text-slate-500 italic">—</span>}
+          ) : <span className="text-xs text-slate-400 italic">—</span>}
         </Block>
 
         <Block icon={FileText} title="Notes">
           {invoice.notes ? (
             <p className="text-sm whitespace-pre-line">{invoice.notes}</p>
-          ) : <span className="text-xs text-slate-500 italic">Aucune note.</span>}
+          ) : <span className="text-xs text-slate-400 italic">Aucune note.</span>}
         </Block>
       </section>
 
       {/* Historique paiements */}
-      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2.5">
           <span className="inline-flex items-center justify-center h-9 w-9 rounded-xl bg-indigo-50 text-indigo-600">
             <Wallet className="h-4 w-4" strokeWidth={2} />
           </span>
-          <h2 className="font-semibold text-sm text-slate-900">
-            Historique des paiements <span className="text-slate-500 font-normal">· {invoice.payments.length}</span>
+          <h2 className="font-semibold text-sm text-slate-100">
+            Historique des paiements <span className="text-slate-400 font-normal">· {invoice.payments.length}</span>
           </h2>
         </div>
         {invoice.payments.length === 0 ? (
-          <p className="p-8 text-center text-sm text-slate-500 italic">
+          <p className="p-8 text-center text-sm text-slate-400 italic">
             Aucun paiement enregistré.
           </p>
         ) : (
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-slate-50/60 border-b border-slate-100">
-                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-500">Date</th>
-                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-500">Mode</th>
-                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-500">Référence</th>
-                <th className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-slate-500">Montant</th>
+                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400">Date</th>
+                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400">Mode</th>
+                <th className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400">Référence</th>
+                <th className="px-4 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-slate-400">Montant</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-700">
               {invoice.payments.map((p) => (
-                <tr key={p.id} className="hover:bg-slate-50/60 transition-colors">
+                <tr key={p.id} className="hover:bg-slate-700/40 transition-colors">
                   <td className="px-4 py-3.5 text-xs text-slate-600 tabular-nums whitespace-nowrap">{fmtDateTime.format(p.receivedAt)}</td>
-                  <td className="px-4 py-3.5 text-sm text-slate-700">{METHOD_LABEL[p.method] ?? p.method}</td>
-                  <td className="px-4 py-3.5 text-xs text-slate-500">{p.reference ?? <span className="text-slate-300">—</span>}</td>
-                  <td className="px-4 py-3.5 text-right tabular-nums font-semibold text-slate-900">{fmtEUR.format(Number(p.amount))}</td>
+                  <td className="px-4 py-3.5 text-sm text-slate-200">{METHOD_LABEL[p.method] ?? p.method}</td>
+                  <td className="px-4 py-3.5 text-xs text-slate-400">{p.reference ?? <span className="text-slate-300">—</span>}</td>
+                  <td className="px-4 py-3.5 text-right tabular-nums font-semibold text-slate-100">{fmtEUR.format(Number(p.amount))}</td>
                 </tr>
               ))}
             </tbody>
@@ -299,11 +299,11 @@ export default async function FactureDetailPage({ params }: { params: Promise<{ 
 
 function Block({ icon: Icon, title, children }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number | string }>; title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
-      <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider font-semibold text-slate-500 mb-2.5">
+    <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5">
+      <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider font-semibold text-slate-400 mb-2.5">
         <Icon className="h-3.5 w-3.5 text-slate-400" strokeWidth={2} /> {title}
       </div>
-      <div className="text-slate-900">{children}</div>
+      <div className="text-slate-100">{children}</div>
     </div>
   );
 }
@@ -312,12 +312,12 @@ function KpiCard({ label, value, accent }: { label: string; value: string; accen
   // Folk-style : carte sobre, chiffre coloré uniquement si accent.
   const valueClass =
     accent === 'primary' ? 'text-indigo-700'
-    : accent === 'success' ? 'text-emerald-700'
-    : accent === 'warning' ? 'text-amber-700'
-    : 'text-slate-900';
+    : accent === 'success' ? 'text-emerald-300'
+    : accent === 'warning' ? 'text-amber-300'
+    : 'text-slate-100';
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-4">
-      <div className="text-xs font-medium text-slate-500 mb-1.5">{label}</div>
+    <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-4">
+      <div className="text-xs font-medium text-slate-400 mb-1.5">{label}</div>
       <div className={`text-2xl font-semibold tabular-nums ${valueClass}`}>{value}</div>
     </div>
   );
