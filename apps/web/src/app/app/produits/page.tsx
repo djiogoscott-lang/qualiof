@@ -163,7 +163,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         >
           <div
             className={`flex items-center gap-2 text-xs uppercase tracking-wide mb-1 ${
-              catalogStats.aiDrafts > 0 ? 'text-amber-800' : 'text-slate-400'
+              catalogStats.aiDrafts > 0 ? 'text-amber-200' : 'text-slate-400'
             }`}
           >
             <Sparkles className="h-3.5 w-3.5" />
@@ -171,14 +171,14 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           </div>
           <div
             className={`text-2xl font-semibold ${
-              catalogStats.aiDrafts > 0 ? 'text-amber-900' : ''
+              catalogStats.aiDrafts > 0 ? 'text-amber-200' : ''
             }`}
           >
             {catalogStats.aiDrafts}
           </div>
           <div
             className={`text-xs ${
-              catalogStats.aiDrafts > 0 ? 'text-amber-800' : 'text-slate-400'
+              catalogStats.aiDrafts > 0 ? 'text-amber-200' : 'text-slate-400'
             }`}
           >
             {catalogStats.aiDrafts > 0
@@ -210,7 +210,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                     {p.aiDraftedAt && (
                       <span
                         title="Brouillon IA en attente de validation — bloque le pack fin de formation"
-                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-100 text-amber-800 border border-amber-200"
+                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-500/15 text-amber-200 border border-amber-500/40"
                       >
                         <Sparkles className="h-3 w-3" />
                         Draft IA

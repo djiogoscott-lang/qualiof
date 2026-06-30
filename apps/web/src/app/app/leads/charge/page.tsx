@@ -105,7 +105,7 @@ export default async function LeadsChargePage() {
         <h1 className="text-2xl font-semibold">
           Vue de charge — Distribution leads
         </h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <p className="text-sm text-slate-400 mt-1">
           Charge active et performance commerciale (mise à jour temps réel).
         </p>
       </header>
@@ -172,12 +172,12 @@ function PrioCardLocal({
   subtitle?: string;
 }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5">
+    <div className="rounded-lg border border-slate-700 bg-slate-800 p-5">
       <div className="flex items-center gap-3 mb-2">
-        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-slate-100 text-slate-900">
+        <span className="inline-flex items-center justify-center h-9 w-9 rounded-lg bg-slate-700 text-slate-100">
           <Icon className="h-4 w-4" />
         </span>
-        <div className="text-xs uppercase tracking-wide text-slate-500 font-medium leading-tight">
+        <div className="text-xs uppercase tracking-wide text-slate-400 font-medium leading-tight">
           {label}
         </div>
       </div>
@@ -185,7 +185,7 @@ function PrioCardLocal({
         {value}
       </div>
       {subtitle && (
-        <div className="text-xs text-slate-500 mt-1">{subtitle}</div>
+        <div className="text-xs text-slate-400 mt-1">{subtitle}</div>
       )}
     </div>
   );

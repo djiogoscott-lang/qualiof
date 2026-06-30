@@ -185,8 +185,8 @@ export default async function FinanceurDetailPage({
       header: 'Organisation',
       cell: (row) => (
         <div>
-          <div className="font-medium text-slate-900">{row.legalName}</div>
-          <div className="text-xs text-slate-500 mt-0.5 flex items-center gap-2">
+          <div className="font-medium text-slate-100">{row.legalName}</div>
+          <div className="text-xs text-slate-400 mt-0.5 flex items-center gap-2">
             <Badge variant="muted" className="text-[10px]">{FORM_LABEL[row.legalForm] ?? row.legalForm}</Badge>
             {row.siret && <code className="font-mono">{row.siret}</code>}
           </div>
@@ -203,7 +203,7 @@ export default async function FinanceurDetailPage({
             <FileCheck className="h-3 w-3" /> Profil prêt
           </Badge>
         ) : (
-          <span className="text-xs text-slate-500 italic">profil à compléter</span>
+          <span className="text-xs text-slate-400 italic">profil à compléter</span>
         ),
     },
     {
@@ -226,7 +226,7 @@ export default async function FinanceurDetailPage({
       width: '130px',
       className: 'tabular-nums text-right',
       cell: (row) => (
-        <span className={row.collected > 0 ? '' : 'text-slate-500'}>{fmtEUR.format(row.collected)}</span>
+        <span className={row.collected > 0 ? '' : 'text-slate-400'}>{fmtEUR.format(row.collected)}</span>
       ),
     },
   ];
@@ -238,7 +238,7 @@ export default async function FinanceurDetailPage({
       cell: (row) => (
         <div>
           <div className="font-medium truncate">{row.sessionName}</div>
-          <div className="text-xs text-slate-500 mt-0.5">{fmtDate.format(row.sessionStartDate)}</div>
+          <div className="text-xs text-slate-400 mt-0.5">{fmtDate.format(row.sessionStartDate)}</div>
         </div>
       ),
     },
@@ -248,7 +248,7 @@ export default async function FinanceurDetailPage({
       cell: (row) => (
         <div>
           <div className="font-medium">{row.personName}</div>
-          <div className="text-xs text-slate-500 mt-0.5 truncate">via {row.sponsorOrgName}</div>
+          <div className="text-xs text-slate-400 mt-0.5 truncate">via {row.sponsorOrgName}</div>
         </div>
       ),
     },
@@ -279,13 +279,13 @@ export default async function FinanceurDetailPage({
       <div>
         <Link
           href="/app/financeurs"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-primary mb-2"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-primary mb-2"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Tous les financeurs
         </Link>
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="h-12 w-12 rounded-xl bg-primary-50 text-primary-700 inline-flex items-center justify-center shrink-0">
+            <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary-200 inline-flex items-center justify-center shrink-0">
               <Landmark className="h-6 w-6" />
             </div>
             <div>
@@ -293,7 +293,7 @@ export default async function FinanceurDetailPage({
                 <h1 className="text-2xl font-semibold tracking-tight">{formatFunderCode(opco.code)}</h1>
                 <Badge variant="muted">{opco.type}</Badge>
               </div>
-              <p className="text-sm text-slate-500 mt-1">{opco.name}</p>
+              <p className="text-sm text-slate-400 mt-1">{opco.name}</p>
             </div>
           </div>
         </div>
@@ -307,25 +307,25 @@ export default async function FinanceurDetailPage({
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
+        <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5">
           <h2 className="font-semibold text-sm mb-3">Conditions de prise en charge</h2>
           <dl className="space-y-2.5 text-sm">
             <Row icon={Clock} label="Délai moyen" value={opco.averageDelayDays != null ? `${opco.averageDelayDays} jours` : null} />
             <Row icon={Wallet} label="Plafond par formation" value={opco.maxAmountPerTraining != null ? fmtEUR.format(Number(opco.maxAmountPerTraining)) : null} />
             <Row icon={Wallet} label="Plafond annuel par personne" value={opco.yearlyCapPerPerson != null ? fmtEUR.format(Number(opco.yearlyCapPerPerson)) : null} />
             {opco.conditions && (
-              <div className="pt-2 border-t border-slate-200">
-                <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">Conditions</div>
+              <div className="pt-2 border-t border-slate-700">
+                <div className="text-xs uppercase tracking-wide text-slate-400 mb-1">Conditions</div>
                 <p className="text-sm leading-relaxed whitespace-pre-line">{opco.conditions}</p>
               </div>
             )}
           </dl>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
+        <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5">
           <h2 className="font-semibold text-sm mb-3">Documents requis</h2>
           {requiredDocs.length === 0 ? (
-            <p className="text-sm text-slate-500 italic">Aucun document spécifique référencé.</p>
+            <p className="text-sm text-slate-400 italic">Aucun document spécifique référencé.</p>
           ) : (
             <ul className="space-y-1.5">
               {requiredDocs.map((doc, i) => (
@@ -338,21 +338,21 @@ export default async function FinanceurDetailPage({
           )}
 
           {(opco.contactEmail || opco.contactPhone || opco.website) && (
-            <div className="mt-4 pt-4 border-t border-slate-200 space-y-1.5 text-sm">
-              <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">Contact</div>
+            <div className="mt-4 pt-4 border-t border-slate-700 space-y-1.5 text-sm">
+              <div className="text-xs uppercase tracking-wide text-slate-400 mb-1">Contact</div>
               {opco.contactEmail && (
-                <a href={`mailto:${opco.contactEmail}`} className="flex items-center gap-2 text-slate-900 hover:text-primary">
-                  <Mail className="h-3.5 w-3.5 text-slate-500" /> {opco.contactEmail}
+                <a href={`mailto:${opco.contactEmail}`} className="flex items-center gap-2 text-slate-100 hover:text-primary">
+                  <Mail className="h-3.5 w-3.5 text-slate-400" /> {opco.contactEmail}
                 </a>
               )}
               {opco.contactPhone && (
-                <div className="flex items-center gap-2 text-slate-900">
-                  <Phone className="h-3.5 w-3.5 text-slate-500" /> {opco.contactPhone}
+                <div className="flex items-center gap-2 text-slate-100">
+                  <Phone className="h-3.5 w-3.5 text-slate-400" /> {opco.contactPhone}
                 </div>
               )}
               {opco.website && (
-                <a href={opco.website} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-900 hover:text-primary">
-                  <Globe className="h-3.5 w-3.5 text-slate-500" /> {opco.website}
+                <a href={opco.website} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-100 hover:text-primary">
+                  <Globe className="h-3.5 w-3.5 text-slate-400" /> {opco.website}
                 </a>
               )}
             </div>
@@ -361,7 +361,7 @@ export default async function FinanceurDetailPage({
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
           Organisations affiliées ({orgRows.length})
         </h2>
         <DataTable<OrgRow>
@@ -370,7 +370,7 @@ export default async function FinanceurDetailPage({
           rowKey={(r) => r.id}
           rowHref={(r) => `/app/organisations/${r.id}`}
           empty={
-            <span className="inline-flex items-center gap-2 text-slate-500">
+            <span className="inline-flex items-center gap-2 text-slate-400">
               <AlertCircle className="h-4 w-4" /> Aucune organisation rattachée à ce financeur pour l'instant.
             </span>
           }
@@ -378,7 +378,7 @@ export default async function FinanceurDetailPage({
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
           Dernières inscriptions financées ({participantRows.length})
         </h2>
         <DataTable<ParticipantRow>
@@ -405,12 +405,12 @@ function KpiCard({
   hint?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5">
-      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500 mb-2">
+    <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5">
+      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-400 mb-2">
         <Icon className="h-3.5 w-3.5" /> {label}
       </div>
       <div className="text-2xl font-semibold tabular-nums">{value}</div>
-      {hint && <div className="text-xs text-slate-500 mt-1">{hint}</div>}
+      {hint && <div className="text-xs text-slate-400 mt-1">{hint}</div>}
     </div>
   );
 }
@@ -426,10 +426,10 @@ function Row({
 }) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <dt className="inline-flex items-center gap-2 text-sm text-slate-500">
+      <dt className="inline-flex items-center gap-2 text-sm text-slate-400">
         <Icon className="h-3.5 w-3.5" /> {label}
       </dt>
-      <dd className="text-sm font-medium tabular-nums">{value ?? <span className="text-slate-500 italic">—</span>}</dd>
+      <dd className="text-sm font-medium tabular-nums">{value ?? <span className="text-slate-400 italic">—</span>}</dd>
     </div>
   );
 }

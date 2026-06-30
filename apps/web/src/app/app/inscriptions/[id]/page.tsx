@@ -58,13 +58,13 @@ export default async function PreEnrollmentDetailPage({
       <div>
         <Link
           href="/app/inscriptions"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-primary mb-2"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-primary mb-2"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Toutes les pré-inscriptions
         </Link>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-xl bg-primary-50 text-primary-700 inline-flex items-center justify-center">
+            <div className="h-12 w-12 rounded-xl bg-primary/15 text-primary-200 inline-flex items-center justify-center">
               <Inbox className="h-6 w-6" />
             </div>
             <div>
@@ -74,7 +74,7 @@ export default async function PreEnrollmentDetailPage({
                 </h1>
                 <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
               </div>
-              <p className="text-sm text-slate-500">{pe.email ?? '— pas d\'email —'}</p>
+              <p className="text-sm text-slate-400">{pe.email ?? '— pas d\'email —'}</p>
             </div>
           </div>
           {(pe.status === 'EXTRACTED' || pe.status === 'EXTRACTING' || pe.status === 'SUBMITTED') && (
@@ -97,18 +97,18 @@ export default async function PreEnrollmentDetailPage({
 
       {/* Banner IA en cours */}
       {pe.status === 'SUBMITTED' && (
-        <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900 inline-flex items-center gap-2">
+        <div className="rounded-xl border border-sky-500/40 bg-sky-500/10 p-4 text-sm text-sky-200 inline-flex items-center gap-2">
           <Loader2 className="h-4 w-4 animate-spin" />
           <strong>IA en cours d'analyse…</strong> Recharge la page dans 30s pour voir le résultat.
         </div>
       )}
       {pe.status === 'EXTRACTING' && (
-        <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900 inline-flex items-center gap-2">
+        <div className="rounded-xl border border-sky-500/40 bg-sky-500/10 p-4 text-sm text-sky-200 inline-flex items-center gap-2">
           <Loader2 className="h-4 w-4 animate-spin" /> Extraction IA en cours…
         </div>
       )}
       {pe.aiErrorMsg && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 inline-flex items-start gap-2">
+        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200 inline-flex items-start gap-2">
           <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0" />
           <div>
             <div className="font-medium">L'IA a rencontré un problème :</div>
@@ -136,7 +136,7 @@ export default async function PreEnrollmentDetailPage({
       )}
 
       {extracted?.warnings && extracted.warnings.length > 0 && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-200">
           <div className="font-medium mb-1 inline-flex items-center gap-2">
             <AlertCircle className="h-4 w-4" /> Avertissements de l'extraction
           </div>
@@ -149,8 +149,8 @@ export default async function PreEnrollmentDetailPage({
       )}
 
       {/* Données déclaratives */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
-        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500 mb-3">
+      <section className="rounded-2xl border border-slate-700 bg-slate-800 p-6">
+        <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400 mb-3">
           Données saisies par le contact
         </h2>
         <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
@@ -195,8 +195,8 @@ export default async function PreEnrollmentDetailPage({
       )}
 
       {pe.status === 'CONVERTED' && pe.convertedToPersonId && (
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm">
-          <div className="inline-flex items-center gap-2 text-emerald-900 font-medium">
+        <div className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-sm">
+          <div className="inline-flex items-center gap-2 text-emerald-200 font-medium">
             <Check className="h-4 w-4" /> Cette pré-inscription a été convertie en apprenant.
           </div>
           <Link
@@ -213,8 +213,8 @@ export default async function PreEnrollmentDetailPage({
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-3">
-      <div className="text-[10px] uppercase tracking-wide text-slate-500 mb-0.5">{label}</div>
+    <div className="rounded-xl border border-slate-700 bg-slate-800 p-3">
+      <div className="text-[10px] uppercase tracking-wide text-slate-400 mb-0.5">{label}</div>
       <div className="text-sm font-medium">{value}</div>
     </div>
   );
@@ -223,9 +223,9 @@ function Meta({ label, value }: { label: string; value: string }) {
 function Row({ label, value }: { label: string; value: string | null | undefined }) {
   return (
     <div className="flex items-center gap-3 py-1">
-      <dt className="text-xs text-slate-500 w-32 shrink-0">{label}</dt>
+      <dt className="text-xs text-slate-400 w-32 shrink-0">{label}</dt>
       <dd className="text-sm font-medium flex-1 min-w-0 truncate">
-        {value ?? <span className="text-slate-500 italic">—</span>}
+        {value ?? <span className="text-slate-400 italic">—</span>}
       </dd>
     </div>
   );
@@ -241,20 +241,20 @@ function ExtractCard({
   data: any;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+    <div className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
       <h3 className="font-semibold text-sm inline-flex items-center gap-2 mb-3">
         <Icon className="h-4 w-4 text-primary" /> {title}
         <Sparkles className="h-3 w-3 text-purple-500 ml-auto" />
       </h3>
       {!data ? (
-        <p className="text-xs text-slate-500 italic">Aucune donnée extraite (pièce manquante ou non lisible).</p>
+        <p className="text-xs text-slate-400 italic">Aucune donnée extraite (pièce manquante ou non lisible).</p>
       ) : (
         <dl className="space-y-1.5 text-xs">
           {Object.entries(data).map(([key, value]) => (
             <div key={key} className="flex items-start gap-2">
-              <dt className="text-slate-500 capitalize w-32 shrink-0">{key}</dt>
+              <dt className="text-slate-400 capitalize w-32 shrink-0">{key}</dt>
               <dd className="font-medium break-all">
-                {value == null || value === '' ? <span className="italic text-slate-500">∅</span> : String(value)}
+                {value == null || value === '' ? <span className="italic text-slate-400">∅</span> : String(value)}
               </dd>
             </div>
           ))}

@@ -96,8 +96,8 @@ export default async function HistoriqueConversationsPage({
       <div className="flex flex-wrap gap-2">
         <Link
           href={'/app/parametres/historique-conversations' as Route}
-          className={`rounded-md border border-slate-200 px-3 py-1 text-sm transition ${
-            !sp.status ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-700 hover:bg-slate-50'
+          className={`rounded-md border border-slate-700 px-3 py-1 text-sm transition ${
+            !sp.status ? 'bg-primary text-white shadow-md' : 'bg-slate-800 text-slate-200 hover:bg-slate-700/40'
           }`}
         >
           Tous ({total})
@@ -106,8 +106,8 @@ export default async function HistoriqueConversationsPage({
           <Link
             key={s}
             href={`/app/parametres/historique-conversations?status=${s}` as Route}
-            className={`rounded-md border border-slate-200 px-3 py-1 text-sm transition ${
-              sp.status === s ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-700 hover:bg-slate-50'
+            className={`rounded-md border border-slate-700 px-3 py-1 text-sm transition ${
+              sp.status === s ? 'bg-primary text-white shadow-md' : 'bg-slate-800 text-slate-200 hover:bg-slate-700/40'
             }`}
           >
             {STATUS_LABEL[s] ?? s}
@@ -115,9 +115,9 @@ export default async function HistoriqueConversationsPage({
         ))}
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-xl border border-slate-700 bg-slate-800 shadow-md text-slate-100">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+          <thead className="bg-slate-900/60 text-left text-xs uppercase tracking-wide text-slate-400">
             <tr>
               <th className="px-4 py-3 font-medium">Date</th>
               <th className="px-4 py-3 font-medium">Destinataire</th>
@@ -126,22 +126,22 @@ export default async function HistoriqueConversationsPage({
               <th className="px-4 py-3 font-medium">Statut</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-slate-700">
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-4 py-10 text-center text-slate-500">
+                <td colSpan={5} className="px-4 py-10 text-center text-slate-400">
                   Aucun email enregistré pour l&apos;instant. Les envois apparaîtront ici dès qu&apos;une action déclenchera un mail.
                 </td>
               </tr>
             ) : (
               rows.map((m) => (
-                <tr key={m.id} className="hover:bg-slate-50/60">
+                <tr key={m.id} className="hover:bg-slate-700/40">
                   <td className="whitespace-nowrap px-4 py-3 text-slate-600">
                     {dateFmt.format(m.createdAt)}
                   </td>
-                  <td className="px-4 py-3 text-slate-700">{formatRecipients(m.toEmails)}</td>
-                  <td className="px-4 py-3 text-slate-900">{m.subject}</td>
-                  <td className="px-4 py-3 text-slate-500">{m.relatedEntity ?? '—'}</td>
+                  <td className="px-4 py-3 text-slate-200">{formatRecipients(m.toEmails)}</td>
+                  <td className="px-4 py-3 text-slate-100">{m.subject}</td>
+                  <td className="px-4 py-3 text-slate-400">{m.relatedEntity ?? '—'}</td>
                   <td className="px-4 py-3">
                     <Badge variant={STATUS_VARIANT[m.status] ?? 'muted'}>
                       {STATUS_LABEL[m.status] ?? m.status}
@@ -166,7 +166,7 @@ export default async function HistoriqueConversationsPage({
                   ...(sp.status ? { status: sp.status } : {}),
                   page: String(page - 1),
                 }).toString()}` as Route}
-                className="rounded-md border border-slate-200 bg-white px-3 py-1 hover:bg-slate-50"
+                className="rounded-md border border-slate-700 bg-slate-800 px-3 py-1 hover:bg-slate-700/40"
               >
                 ← Précédent
               </Link>
@@ -177,7 +177,7 @@ export default async function HistoriqueConversationsPage({
                   ...(sp.status ? { status: sp.status } : {}),
                   page: String(page + 1),
                 }).toString()}` as Route}
-                className="rounded-md border border-slate-200 bg-white px-3 py-1 hover:bg-slate-50"
+                className="rounded-md border border-slate-700 bg-slate-800 px-3 py-1 hover:bg-slate-700/40"
               >
                 Suivant →
               </Link>

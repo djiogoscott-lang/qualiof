@@ -36,14 +36,14 @@ export default async function QualiopiBilanPage({
         <div>
           <Link
             href="/app"
-            className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary mb-2"
+            className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-primary mb-2"
           >
             <ChevronLeft className="h-3 w-3" /> Retour au pilotage
           </Link>
           <h1 className="text-2xl font-semibold tracking-tight inline-flex items-center gap-2">
             <BarChart3 className="h-6 w-6 text-primary" /> Bilan Qualiopi · {year}
           </h1>
-          <p className="text-slate-500 text-sm mt-1">
+          <p className="text-slate-400 text-sm mt-1">
             Indicateur C1.i2 — Indicateurs de résultats annuels (sessions, présences,
             satisfaction, recommandation).
           </p>
@@ -59,19 +59,19 @@ export default async function QualiopiBilanPage({
       <FilterChips chips={yearChips} />
 
       {bilan.rows.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-200 p-12 text-center">
-          <FileSpreadsheet className="h-10 w-10 mx-auto text-slate-500 mb-3" />
-          <p className="text-sm text-slate-500">
+        <div className="rounded-2xl border border-dashed border-slate-700 p-12 text-center">
+          <FileSpreadsheet className="h-10 w-10 mx-auto text-slate-400 mb-3" />
+          <p className="text-sm text-slate-400">
             Aucune session pour l'année {year}.
           </p>
         </div>
       ) : (
-        <section className="rounded-2xl border border-slate-200 bg-white overflow-hidden">
-          <div className="p-5 border-b border-slate-200">
-            <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+        <section className="rounded-2xl border border-slate-700 bg-slate-800 overflow-hidden">
+          <div className="p-5 border-b border-slate-700">
+            <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
               Tableau de suivi des formations animées année {year}
             </h2>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-400 mt-1">
               {bilan.total.nbSessions} session{bilan.total.nbSessions > 1 ? 's' : ''} ·{' '}
               {fmtNb.format(bilan.total.nbStagiairesPresents)}/{fmtNb.format(bilan.total.nbStagiairesPrevu)} stagiaires présents ·{' '}
               {fmtEUR.format(bilan.total.prixTTC)} TTC
@@ -79,8 +79,8 @@ export default async function QualiopiBilanPage({
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
-              <thead className="bg-slate-100/30">
-                <tr className="text-left text-[10px] uppercase tracking-wide text-slate-500">
+              <thead className="bg-slate-700/40">
+                <tr className="text-left text-[10px] uppercase tracking-wide text-slate-400">
                   <th className="px-3 py-2 font-semibold">Formation</th>
                   <th className="px-3 py-2 font-semibold">Formateur</th>
                   <th className="px-3 py-2 font-semibold">Dates</th>
@@ -94,26 +94,26 @@ export default async function QualiopiBilanPage({
                   <th className="px-3 py-2 font-semibold text-right">Prix TTC</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y divide-slate-700">
                 {bilan.rows.map((r) => (
-                  <tr key={r.sessionId} className="hover:bg-slate-100/20">
+                  <tr key={r.sessionId} className="hover:bg-slate-700/30">
                     <td className="px-3 py-2">
                       <Link href={`/app/sessions/${r.sessionId}`} className="hover:text-primary">
                         <div className="font-medium">{r.formationTitre}</div>
-                        <div className="text-[10px] text-slate-500 font-mono">{r.sessionCode}</div>
+                        <div className="text-[10px] text-slate-400 font-mono">{r.sessionCode}</div>
                       </Link>
                     </td>
                     <td className="px-3 py-2 text-[11px]">{r.formateur}</td>
                     <td className="px-3 py-2 text-[11px]">{r.datesLabel}</td>
                     <td className="px-3 py-2 text-center tabular-nums">{r.nbHeures}</td>
                     <td className="px-3 py-2 text-center tabular-nums">{r.nbStagiairesPrevu}</td>
-                    <td className="px-3 py-2 text-center tabular-nums text-emerald-700 font-medium">
+                    <td className="px-3 py-2 text-center tabular-nums text-emerald-300 font-medium">
                       {r.nbStagiairesPresents}
                     </td>
-                    <td className="px-3 py-2 text-center tabular-nums text-amber-700">
+                    <td className="px-3 py-2 text-center tabular-nums text-amber-300">
                       {r.nbStagiairesAbsents || '—'}
                     </td>
-                    <td className="px-3 py-2 text-center tabular-nums text-red-700">
+                    <td className="px-3 py-2 text-center tabular-nums text-red-300">
                       {r.nbStagiairesAbandonnes || '—'}
                     </td>
                     <td className="px-3 py-2 text-center tabular-nums">
@@ -125,7 +125,7 @@ export default async function QualiopiBilanPage({
                     <td className="px-3 py-2 text-right tabular-nums">{fmtEUR.format(r.prixTTC)}</td>
                   </tr>
                 ))}
-                <tr className="bg-primary-50/40 font-semibold">
+                <tr className="bg-primary/15/40 font-semibold">
                   <td className="px-3 py-2" colSpan={3}>
                     BILAN {year}
                   </td>
@@ -154,7 +154,7 @@ export default async function QualiopiBilanPage({
         </section>
       )}
 
-      <p className="text-xs text-slate-500 italic">
+      <p className="text-xs text-slate-400 italic">
         Les colonnes "Causes d'absence" et "Causes d'abandon" sont pré-remplies dans
         l'export Excel — à compléter manuellement avant validation.
       </p>

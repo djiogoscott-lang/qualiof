@@ -221,7 +221,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
 
       {rows.length === 0 ? (
         <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 py-16 text-center">
-          <div className="inline-flex h-10 w-10 mb-3 rounded-lg bg-slate-100 text-slate-400 items-center justify-center">
+          <div className="inline-flex h-10 w-10 mb-3 rounded-lg bg-slate-700 text-slate-400 items-center justify-center">
             <Calendar className="h-5 w-5" strokeWidth={1.75} />
           </div>
           <h3 className="text-sm font-medium text-slate-100">

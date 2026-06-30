@@ -385,7 +385,7 @@ export default async function DossiersOpcoPage({ searchParams }: { searchParams:
         ? 'bg-red-50 hover:bg-red-100'
         : lateLevel === 'warn'
           ? 'bg-amber-500/10 hover:bg-amber-500/15'
-          : `hover:bg-slate-100/30 ${idx % 2 === 1 ? 'bg-slate-100/10' : ''}`;
+          : `hover:bg-slate-700/40 ${idx % 2 === 1 ? 'bg-slate-700/10' : ''}`;
     const ageficeBudget = budgetByPerson.get(r.personId);
     return (
       <tr
@@ -613,7 +613,7 @@ export default async function DossiersOpcoPage({ searchParams }: { searchParams:
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-700 bg-slate-100/40">
+              <tr className="border-b border-slate-700 bg-slate-700/40">
                 <th className="px-3 py-2"><DossierSelectAllCheckbox allIds={allRowIds} /></th>
                 <SortableTh sortKey="date">Date</SortableTh>
                 <SortableTh sortKey="apprenant">Apprenant</SortableTh>
@@ -647,7 +647,7 @@ export default async function DossiersOpcoPage({ searchParams }: { searchParams:
                   ))}
                   {ungrouped.length > 0 && (
                     <>
-                      <tr className="bg-slate-100/20 border-t-2 border-slate-700">
+                      <tr className="bg-slate-700/30 border-t-2 border-slate-700">
                         <td colSpan={8} className="px-3 py-1.5 text-[10px] uppercase tracking-wide text-slate-400">
                           Dossiers sans sponsor (non groupés)
                         </td>
@@ -662,7 +662,7 @@ export default async function DossiersOpcoPage({ searchParams }: { searchParams:
             </tbody>
             {rows.length > 0 && (
               <tfoot>
-                <tr className="bg-slate-100/40 font-medium">
+                <tr className="bg-slate-700/40 font-medium">
                   <td colSpan={5} className="px-3 py-2 text-xs uppercase tracking-wide text-slate-400">
                     Total filtré ({totalShown})
                   </td>

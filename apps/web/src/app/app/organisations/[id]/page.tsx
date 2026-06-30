@@ -115,8 +115,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
+          <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-400">
               Identité juridique
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -130,8 +130,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
             </dl>
           </section>
 
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-500">
+          <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+            <h2 className="font-semibold mb-4 text-sm uppercase tracking-wide text-slate-400">
               Coordonnées
             </h2>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -149,9 +149,9 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
             </dl>
           </section>
 
-          <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+          <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
             <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
-              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-500">
+              <h2 className="font-semibold text-sm uppercase tracking-wide text-slate-400">
                 Personnes rattachées ({org.legalLinks.length})
               </h2>
               <AddPersonToOrgButton
@@ -160,15 +160,15 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
               />
             </div>
             {org.legalLinks.length === 0 ? (
-              <p className="text-sm text-slate-500 italic">Aucune personne rattachée.</p>
+              <p className="text-sm text-slate-400 italic">Aucune personne rattachée.</p>
             ) : (
               <ul className="space-y-2">
                 {org.legalLinks.map((link) => (
                   <li
                     key={link.id}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-100/30 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-lg border border-slate-700 hover:bg-slate-700/40 transition-colors"
                   >
-                    <Users className="h-4 w-4 text-slate-500 shrink-0" />
+                    <Users className="h-4 w-4 text-slate-400 shrink-0" />
                     <Link
                       href={`/app/apprenants/${link.person.id}`}
                       className="font-medium hover:text-primary transition-colors flex-1 min-w-0 truncate"
@@ -188,12 +188,12 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
 
         <div className="space-y-6">
           {org.ageficeProfile && (
-            <section className="rounded-2xl border border-sky-200 bg-sky-50/40 p-6">
+            <section className="rounded-2xl border border-sky-500/40 bg-sky-500/10/40 p-6">
               <div className="flex items-center gap-2 mb-3">
-                <FileCheck className="h-5 w-5 text-sky-700" />
-                <h2 className="font-semibold text-sky-900">Profil AGEFICE</h2>
+                <FileCheck className="h-5 w-5 text-sky-300" />
+                <h2 className="font-semibold text-sky-200">Profil AGEFICE</h2>
               </div>
-              <p className="text-xs text-sky-800 mb-4">
+              <p className="text-xs text-sky-200 mb-4">
                 Cette organisation est éligible à un financement AGEFICE. Les champs PDF AGEFICE seront
                 pré-remplis automatiquement (palier 3).
               </p>
@@ -205,14 +205,14 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
               </dl>
               {ageficeFields && (
                 <details className="mt-4">
-                  <summary className="text-xs text-sky-800 cursor-pointer hover:text-sky-900">
+                  <summary className="text-xs text-sky-200 cursor-pointer hover:text-sky-200">
                     Voir les {Object.keys(ageficeFields).length} champs pré-remplis
                   </summary>
                   <dl className="mt-3 space-y-1 text-xs max-h-64 overflow-auto">
                     {Object.entries(ageficeFields).map(([k, v]) => (
                       <div key={k} className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <dt className="text-sky-700 truncate">{k}</dt>
-                        <dd className="text-sky-900 truncate">{v || '—'}</dd>
+                        <dt className="text-sky-300 truncate">{k}</dt>
+                        <dd className="text-sky-200 truncate">{v || '—'}</dd>
                       </div>
                     ))}
                   </dl>
@@ -222,8 +222,8 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
           )}
 
           {org.opcoCatalog && (
-            <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
-              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-slate-500">
+            <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
+              <h2 className="font-semibold mb-3 text-sm uppercase tracking-wide text-slate-400">
                 {org.opcoCatalog.name}
               </h2>
               <dl className="space-y-2 text-sm">
@@ -259,7 +259,7 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
           )}
 
           {org.requiresCleanup && (
-            <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800">
+            <section className="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-5 text-sm text-amber-200">
               <h3 className="font-semibold mb-1 flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4" /> À corriger
               </h3>
@@ -275,7 +275,7 @@ export default async function OrgDetailPage({ params }: { params: Promise<{ id: 
 function Field({ label, value, multiline }: { label: string; value: React.ReactNode; multiline?: boolean }) {
   return (
     <div>
-      <dt className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">{label}</dt>
+      <dt className="text-[11px] uppercase tracking-wide text-slate-400 font-medium">{label}</dt>
       <dd className={multiline ? 'whitespace-pre-line' : ''}>{value}</dd>
     </div>
   );
@@ -294,9 +294,9 @@ function FieldIcon({
 }) {
   return (
     <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-slate-500 mt-0.5 shrink-0" />
+      <Icon className="h-4 w-4 text-slate-400 mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <div className="text-[11px] uppercase tracking-wide text-slate-500 font-medium">{label}</div>
+        <div className="text-[11px] uppercase tracking-wide text-slate-400 font-medium">{label}</div>
         <div className={multiline ? 'whitespace-pre-line' : ''}>{value}</div>
       </div>
     </div>

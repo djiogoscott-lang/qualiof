@@ -109,11 +109,11 @@ export default async function FinanceursPage() {
             <Link
               key={opco.id}
               href={`/app/financeurs/${opco.code}`}
-              className="group rounded-2xl border border-slate-200 bg-white shadow-sm p-6 hover:border-primary-300 hover:shadow-sm transition-all"
+              className="group rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6 hover:border-primary-300 hover:shadow-sm transition-all"
             >
               <div className="flex items-start justify-between gap-4 mb-5">
                 <div className="flex items-start gap-3 min-w-0">
-                  <div className="h-10 w-10 rounded-xl bg-primary-50 text-primary-700 inline-flex items-center justify-center shrink-0">
+                  <div className="h-10 w-10 rounded-xl bg-primary/15 text-primary-200 inline-flex items-center justify-center shrink-0">
                     <Landmark className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
@@ -121,10 +121,10 @@ export default async function FinanceursPage() {
                       <h3 className="font-semibold text-base">{formatFunderCode(opco.code)}</h3>
                       <Badge variant="muted" className="text-[10px]">{opco.type}</Badge>
                     </div>
-                    <p className="text-xs text-slate-500 mt-0.5 truncate">{opco.name}</p>
+                    <p className="text-xs text-slate-400 mt-0.5 truncate">{opco.name}</p>
                   </div>
                 </div>
-                <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
               </div>
 
               {/* grid-cols-2 OK même mobile : 2 KpiBlock compacts (chiffre + label court) */}
@@ -159,21 +159,21 @@ export default async function FinanceursPage() {
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-4 border-t border-slate-200 text-xs text-slate-500">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-4 border-t border-slate-700 text-xs text-slate-400">
                 {opco.averageDelayDays != null && (
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="h-3.5 w-3.5" />
-                    Délai moy. <strong className="text-slate-900">{opco.averageDelayDays} j</strong>
+                    Délai moy. <strong className="text-slate-100">{opco.averageDelayDays} j</strong>
                   </span>
                 )}
                 {opco.maxAmountPerTraining != null && (
                   <span>
-                    Plafond formation <strong className="text-slate-900">{fmtEUR.format(Number(opco.maxAmountPerTraining))}</strong>
+                    Plafond formation <strong className="text-slate-100">{fmtEUR.format(Number(opco.maxAmountPerTraining))}</strong>
                   </span>
                 )}
                 {opco.yearlyCapPerPerson != null && (
                   <span>
-                    Plafond annuel <strong className="text-slate-900">{fmtEUR.format(Number(opco.yearlyCapPerPerson))}</strong>
+                    Plafond annuel <strong className="text-slate-100">{fmtEUR.format(Number(opco.yearlyCapPerPerson))}</strong>
                   </span>
                 )}
               </div>
@@ -182,9 +182,9 @@ export default async function FinanceursPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+      <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-6">
         <h2 className="font-semibold mb-2">À propos des financeurs</h2>
-        <p className="text-sm text-slate-500 leading-relaxed">
+        <p className="text-sm text-slate-400 leading-relaxed">
           Les financeurs (OPCO et FAF) sont des <strong>attributs des organisations</strong>, jamais directement des apprenants.
           Pour qu'un apprenant bénéficie d'un financement AGEFICE, il doit être lié (via <code className="font-mono text-xs">LegalLink</code>)
           à une organisation dont l'OPCO est AGEFICE et dont le profil AGEFICE est rempli.
@@ -208,12 +208,12 @@ function KpiBlock({
 }) {
   return (
     <div>
-      <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+      <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-slate-400 mb-1">
         <Icon className="h-3 w-3" />
         {label}
       </div>
       <div className="font-semibold tabular-nums text-base">{value}</div>
-      <div className="text-[11px] text-slate-500 mt-0.5">{sub}</div>
+      <div className="text-[11px] text-slate-400 mt-0.5">{sub}</div>
     </div>
   );
 }

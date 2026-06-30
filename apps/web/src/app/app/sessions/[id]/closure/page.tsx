@@ -60,7 +60,7 @@ export default async function ClosureHubPage({
     <div className="space-y-6 max-w-5xl">
       <Link
         href={`/app/sessions/${sessionId}` as Route}
-        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-100 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" /> Retour à la session {session.code}
       </Link>
@@ -68,7 +68,7 @@ export default async function ClosureHubPage({
       <PageHeader
         title="Pack fin de formation"
         subtitle={
-          <span className="text-sm text-slate-500">
+          <span className="text-sm text-slate-400">
             {session.product?.title ?? session.name ?? '(formation)'} — {session._count.participants} apprenant{session._count.participants > 1 ? 's' : ''}
           </span>
         }
@@ -81,12 +81,12 @@ export default async function ClosureHubPage({
       />
 
       {batches.length === 0 ? (
-        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm p-8 text-center">
-          <Package className="h-12 w-12 text-slate-500 mx-auto mb-3" />
-          <p className="text-sm text-slate-500 mb-1">
+        <section className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-8 text-center">
+          <Package className="h-12 w-12 text-slate-400 mx-auto mb-3" />
+          <p className="text-sm text-slate-400 mb-1">
             Aucun pack généré pour cette session pour l&apos;instant.
           </p>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             Cliquez sur « Pack fin de formation » en haut à droite pour en lancer un.
           </p>
         </section>
@@ -94,7 +94,7 @@ export default async function ClosureHubPage({
         <>
           {latest && (
             <section className="space-y-3">
-              <h2 className="text-xs uppercase tracking-wide text-slate-500 font-semibold">
+              <h2 className="text-xs uppercase tracking-wide text-slate-400 font-semibold">
                 Dernier pack
               </h2>
               <BatchCard batch={latest} sessionId={sessionId} highlight />
@@ -103,7 +103,7 @@ export default async function ClosureHubPage({
 
           {previous.length > 0 && (
             <section className="space-y-3">
-              <h2 className="text-xs uppercase tracking-wide text-slate-500 font-semibold">
+              <h2 className="text-xs uppercase tracking-wide text-slate-400 font-semibold">
                 Historique ({previous.length})
               </h2>
               <div className="space-y-2">
@@ -141,12 +141,12 @@ function BatchCard({
   });
 
   const statusMeta = {
-    PENDING: { label: 'En attente', color: 'text-slate-500', Icon: Loader2 },
-    RUNNING: { label: 'En cours', color: 'text-blue-600', Icon: Loader2 },
+    PENDING: { label: 'En attente', color: 'text-slate-400', Icon: Loader2 },
+    RUNNING: { label: 'En cours', color: 'text-blue-300', Icon: Loader2 },
     COMPLETED: { label: 'Terminé', color: 'text-green-600', Icon: CheckCircle2 },
-    FAILED: { label: 'Échec', color: 'text-red-600', Icon: AlertCircle },
+    FAILED: { label: 'Échec', color: 'text-red-400', Icon: AlertCircle },
     PARTIAL: { label: 'Partiel', color: 'text-orange-600', Icon: AlertCircle },
-  }[batch.status] ?? { label: batch.status, color: 'text-slate-500', Icon: Package };
+  }[batch.status] ?? { label: batch.status, color: 'text-slate-400', Icon: Package };
 
   const Icon = statusMeta.Icon;
   const isRunning = batch.status === 'RUNNING' || batch.status === 'PENDING';
@@ -154,8 +154,8 @@ function BatchCard({
   return (
     <Link
       href={`/app/sessions/${sessionId}/closure/${batch.id}` as Route}
-      className={`block rounded-xl border p-4 transition-colors hover:bg-slate-100/50 ${
-        highlight ? 'border-primary/40 bg-primary-50/30' : 'border-slate-200 bg-white'
+      className={`block rounded-xl border p-4 transition-colors hover:bg-slate-700/50 ${
+        highlight ? 'border-primary/40 bg-primary/15' : 'border-slate-700 bg-slate-800'
       }`}
     >
       <div className="flex items-center justify-between gap-3 flex-wrap">
@@ -165,16 +165,16 @@ function BatchCard({
             <div className={`text-sm font-semibold ${statusMeta.color}`}>
               {statusMeta.label}
             </div>
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-slate-400">
               {dateFmt.format(batch.createdAt)} · batch{' '}
               <code className="font-mono">{batch.id.slice(0, 8)}</code>
             </div>
           </div>
         </div>
-        <div className="text-sm text-slate-500">
+        <div className="text-sm text-slate-400">
           {batch.doneDocs} / {batch.totalDocs} docs
           {batch.errorDocs > 0 && (
-            <span className="ml-2 text-red-600">· {batch.errorDocs} erreur{batch.errorDocs > 1 ? 's' : ''}</span>
+            <span className="ml-2 text-red-400">· {batch.errorDocs} erreur{batch.errorDocs > 1 ? 's' : ''}</span>
           )}
         </div>
       </div>

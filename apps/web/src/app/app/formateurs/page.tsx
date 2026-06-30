@@ -63,7 +63,7 @@ export default async function FormateursPage() {
       />
 
       {allTrainers.length === 0 ? (
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-12 text-center text-sm text-slate-500">
+        <div className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-12 text-center text-sm text-slate-400">
           Aucun formateur. L'import SmartOF en a importé 5 — vérifie que le seed est passé.
         </div>
       ) : (
@@ -75,21 +75,21 @@ export default async function FormateursPage() {
               <Link
                 key={t.id}
                 href={`/app/formateurs/${t.id}`}
-                className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 hover:border-primary/40 hover:shadow-sm transition-all"
+                className="rounded-2xl border border-slate-700 bg-slate-800 shadow-md text-slate-100 p-5 hover:border-primary/40 hover:shadow-sm transition-all"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-full bg-primary-100 text-primary-700 inline-flex items-center justify-center font-semibold text-sm shrink-0">
+                  <div className="h-10 w-10 rounded-full bg-primary-100 text-primary-200 inline-flex items-center justify-center font-semibold text-sm shrink-0">
                     {t.firstName.charAt(0)}{t.lastName.charAt(0)}
                   </div>
                   <div className="min-w-0">
                     <div className="font-medium truncate">
                       {t.firstName} {t.lastName.toUpperCase()}
                     </div>
-                    <div className="text-xs text-slate-500">{t.civility ?? ''}</div>
+                    <div className="text-xs text-slate-400">{t.civility ?? ''}</div>
                   </div>
                   {subOrg && <Badge variant="muted">Sous-trait.</Badge>}
                 </div>
-                <div className="space-y-1.5 text-xs text-slate-500">
+                <div className="space-y-1.5 text-xs text-slate-400">
                   {t.email && (
                     <div className="flex items-center gap-1.5 truncate">
                       <Mail className="h-3 w-3 shrink-0" /> <span className="truncate">{t.email}</span>
@@ -106,7 +106,7 @@ export default async function FormateursPage() {
                     </div>
                   )}
                   {subOrg && (
-                    <div className="flex items-center gap-1.5 pt-1.5 border-t border-slate-200 mt-2 truncate">
+                    <div className="flex items-center gap-1.5 pt-1.5 border-t border-slate-700 mt-2 truncate">
                       <Briefcase className="h-3 w-3 shrink-0" />
                       <span className="truncate">{subOrg.legalName}</span>
                     </div>
